@@ -4,7 +4,7 @@ import Card from '@/components/Card';
 
 export default function CoreValuesSection() {
   return (
-    <section className="w-full max-w-5xl mx-auto py-20 px-4 bg-background-section"> {/* Set white background */}
+    <section className="w-full max-w-5xl mx-auto py-20 px-4 bg-background-main"> {/* Revert to main background to avoid white-on-white */}
       <h2 className="text-3xl font-bold text-center mb-12 text-text-primary">오피스아트 핵심 가치</h2> {/* Ensure primary text color */}
       {/* Added items-stretch to make cards same height */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
@@ -13,7 +13,7 @@ export default function CoreValuesSection() {
         <Link href="/premium-chairs" aria-label="프리미엄 의자 자세히 보기">
           {/* Use Card component - Add h-full, flex, flex-col */}
           <Card className="overflow-hidden transform transition duration-300 hover:-translate-y-2 group h-full flex flex-col">
-            <div className="relative w-full h-48"> {/* Image 컴포넌트 사용 위해 relative 추가 */}
+            <div className="relative w-full h-48 rounded-t-lg overflow-hidden"> {/* Add rounded top corners and overflow hidden */}
                {/* Use Next.js Image component */}
                <Image
                  src="/images/values/premium-chair.jpg" // 실제 이미지 경로
@@ -37,7 +37,7 @@ export default function CoreValuesSection() {
            {/* Use Card component - Add h-full */}
            {/* Added flex flex-col for height alignment */}
            <Card className="overflow-hidden transform transition duration-300 hover:-translate-y-2 group flex flex-col h-full">
-            <div className="relative w-full h-48"> {/* Image 컴포넌트 사용 위해 relative 추가 */}
+            <div className="relative w-full h-48 rounded-t-lg overflow-hidden"> {/* Add rounded top corners and overflow hidden */}
                {/* Use Next.js Image component */}
                <Image
                  src="/images/values/focus-environment.jpg" // 실제 이미지 경로
@@ -63,7 +63,7 @@ export default function CoreValuesSection() {
            {/* Added flex flex-col for height alignment */}
            {/* Added flex flex-col for height alignment */}
            <Card className="overflow-hidden transform transition duration-300 hover:-translate-y-2 group flex flex-col h-full">
-            <div className="relative w-full h-48"> {/* Image 컴포넌트 사용 위해 relative 추가 */}
+            <div className="relative w-full h-48 rounded-t-lg overflow-hidden"> {/* Add rounded top corners and overflow hidden */}
                {/* Use Next.js Image component */}
                <Image
                  src="/images/values/creator-community.jpg" // 실제 이미지 경로
