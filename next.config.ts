@@ -5,6 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig: NextConfig = {
   /* config options here */
+  output: 'export', // Add this line for static export
   images: {
     remotePatterns: [
       {
