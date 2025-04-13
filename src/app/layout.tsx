@@ -88,9 +88,12 @@ export default function RootLayout({
     <html lang="ko">
       {/* Apply flex layout to ensure footer stays at the bottom */}
       {/* Added bg-light-gray as default background */}
-      <body className={`${notoSansKr.variable} font-sans antialiased text-medium-gray flex flex-col min-h-screen break-keep bg-light-gray`}> {/* Restored font-sans, kept medium-gray */}
+      {/* Apply new theme colors (cream background, dark gray text) */}
+      <body className={`${notoSansKr.variable} font-sans antialiased text-text-primary flex flex-col min-h-screen break-keep bg-background-main`}>
         <Header />
         {/* Make main content grow to push footer down */}
+        {/* Ensure main content area fills space and has a default white background */}
+        {/* Remove default background from main, let body background show through */}
         <main className="flex-grow">{children}</main>
         <Footer /> {/* Add the Footer component */}
       </body>

@@ -7,7 +7,7 @@ import Image from 'next/image';
 const GallerySlider = dynamic(() => import('@/components/GallerySlider'), {
   ssr: false, // ssr: false is allowed in Client Components
   loading: () => (
-    <div className="relative w-full h-96 flex items-center justify-center bg-gray-100 rounded-lg"> {/* Match slider height */}
+    <div className="relative w-full h-96 flex items-center justify-center bg-background-section rounded-lg"> {/* Apply new background */}
       <Image
         src="/images/logo/logo.png"
         alt="Loading gallery..."

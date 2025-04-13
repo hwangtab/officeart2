@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Define Giants-Bold font */
 @font-face {
@@ -70,4 +72,29 @@ h3 {
   .text-white {
     color: #ffffff;
   }
+  .text-header-orange {
+    color: #E64A19; /* Explicitly define text-header-orange */
+  }
+}
+
+/* Swiper Customization */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #E64A19; /* Use header orange color value */
+}
+
+.swiper-pagination-bullet {
+  background-color: #9CA3AF; /* Default bullet color (gray-400) */
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #E64A19; /* Use header orange color value */
+  opacity: 1;
+}
+
+/* Adjust arrow size if needed */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 1.5rem; /* text-2xl equivalent */
 }

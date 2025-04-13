@@ -1,9 +1,10 @@
-import type { NextConfig } from "next";
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+import withBundleAnalyzerFactory from '@next/bundle-analyzer';
+
+const withBundleAnalyzer = withBundleAnalyzerFactory({
   enabled: process.env.ANALYZE === 'true',
 });
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   /* config options here */
   output: 'export', // Add this line for static export
   images: {

@@ -36,13 +36,14 @@ const LinkButton: React.FC<LinkButtonProps> = ({
 
   // Variant styles (same as Button)
   const variantStyles = {
-    primary: 'bg-blue-700 hover:bg-blue-800 text-white focus:ring-primary-blue',
-    secondary: 'bg-gray-600 hover:bg-gray-700 text-white focus:ring-gray-500',
-    kakao: 'bg-yellow-400 hover:bg-yellow-500 text-black focus:ring-yellow-500',
-    naver: 'bg-naver-green hover:bg-naver-green-dark text-white focus:ring-naver-green',
-    outline: 'border border-gray-300 text-dark-gray hover:bg-gray-100 focus:ring-primary-blue',
-    ghost: 'text-dark-gray hover:bg-gray-100 focus:ring-primary-blue',
-    link: 'text-primary-blue hover:underline focus:ring-primary-blue',
+    // Updated variant styles for the new theme
+    primary: 'bg-primary hover:bg-orange-500 text-text-on-primary focus:ring-primary', // Use primary color (Orange 400)
+    secondary: 'bg-accent-blue hover:bg-light-blue-500 text-white focus:ring-accent-blue', // Use accent-blue (Light Blue 400)
+    kakao: 'bg-kakao hover:opacity-90 text-black focus:ring-yellow-500', // Keep Kakao color (use defined 'kakao' color if available, else default yellow)
+    naver: 'bg-naver-green hover:bg-naver-green-dark text-white focus:ring-naver-green', // Keep Naver color
+    outline: 'border border-border-light text-text-primary hover:bg-gray-100 focus:ring-primary', // Use new theme colors
+    ghost: 'text-text-primary hover:bg-gray-100 focus:ring-primary', // Use new theme colors
+    link: 'text-primary hover:underline focus:ring-primary', // Use primary color for link style
   };
 
   // Combine styles

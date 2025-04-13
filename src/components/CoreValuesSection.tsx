@@ -4,8 +4,8 @@ import Card from '@/components/Card';
 
 export default function CoreValuesSection() {
   return (
-    <section className="w-full max-w-5xl mx-auto py-20 px-4"> {/* Changed max-w-6xl to max-w-5xl */}
-      <h2 className="text-3xl font-bold text-center mb-12">오피스아트 핵심 가치</h2>
+    <section className="w-full max-w-5xl mx-auto py-20 px-4 bg-background-section"> {/* Set white background */}
+      <h2 className="text-3xl font-bold text-center mb-12 text-text-primary">오피스아트 핵심 가치</h2> {/* Ensure primary text color */}
       {/* Added items-stretch to make cards same height */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         {/* Card 1: Premium Chairs */}
@@ -27,7 +27,7 @@ export default function CoreValuesSection() {
             {/* p-6 is now handled by Card component - Add flex-grow */}
             <div className="flex-grow flex flex-col justify-center pt-4">
               <h3 className="text-xl font-bold mb-2">프리미엄 의자</h3>
-              <p className="text-dark-gray">120만원대 프리미엄 의자를 기본 제공합니다</p> {/* Restore original color */}
+              <p className="text-text-secondary">120만원대 프리미엄 의자를 기본 제공합니다</p> {/* Use secondary text color */}
             </div>
           </Card>
         </Link>
@@ -52,7 +52,7 @@ export default function CoreValuesSection() {
             {/* Added flex-grow to make text content fill available space */}
             <div className="flex-grow flex flex-col justify-center pt-4">
               <h3 className="text-xl font-bold mb-2">집중이 잘 되는 공간</h3>
-              <p className="text-dark-gray">모든 요소가 집중을 위해 설계되었습니다</p> {/* Restore original color */}
+              <p className="text-text-secondary">모든 요소가 집중을 위해 설계되었습니다</p> {/* Use secondary text color */}
             </div>
           </Card>
         </Link>
@@ -79,7 +79,7 @@ export default function CoreValuesSection() {
             {/* Added flex-grow to make text content fill available space */}
             <div className="flex-grow flex flex-col justify-center pt-4">
               <h3 className="text-xl font-bold mb-2">웹툰/일러스트레이터가 함께합니다</h3>
-              <p className="text-dark-gray">같은 분야 크리에이터와 함께하는 공간</p> {/* Restore original color */}
+              <p className="text-text-secondary">같은 분야 크리에이터와 함께하는 공간</p> {/* Use secondary text color */}
             </div>
           </Card>
         </Link>
