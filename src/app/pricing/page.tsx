@@ -68,7 +68,7 @@ export default function PricingPage() {
                 <li>24시간 자유 이용 (지문 인식)</li>
                 <li>JURA 프리미엄 커피 무제한</li>
                 <li>EPSON A3 컬러 복합기 무제한 (용지 제공)</li>
-                <li>초고속 유/무선 인터넷 (KT 1Gbps + LG U+ 백업)</li>
+                <li>초고속 유/무선 인터넷 (KT 1Gbps + 백업 회선)</li>
                 <li>냉난방 및 공기청정 시스템</li>
                 <li>휴게 공간 이용</li>
               </ul>
@@ -139,9 +139,8 @@ export default function PricingPage() {
                <div>
                    <h3 className="text-xl font-bold mb-4 flex items-center"><ContractIcon className="h-5 w-5 mr-2 text-primary-blue" /> 계약 방식</h3>
                    <ul className="list-disc list-inside space-y-1 text-dark-gray text-sm pl-7"> {/* Indent list */}
-                       <li>전자계약 또는 방문계약 진행</li>
-                       <li>필요 서류: 신분증 (사업자등록증은 해당 시)</li>
-                       <li>계약 담당: 김성은 (<a href="tel:02-764-3114" className="hover:underline">010-4255-7893</a>)</li>
+                       <li>전자계약 (카카오톡으로 간편하게)</li>
+                       <li>계약 담당: 김성은 팀장</li>
                    </ul>
                </div>
                <div>

@@ -87,7 +87,7 @@ export default function FacilitiesServicesPage() {
             {/* Stability */}
              <div>
               <h3 className="text-xl font-semibold mb-2">백업 회선 구비</h3>
-              <p className="text-dark-gray text-sm">LG U+ 백업 회선을 통해 예기치 못한 인터넷 장애 발생 시에도 끊김 없는 업무 환경을 보장합니다.</p>
+              <p className="text-dark-gray text-sm">백업 회선을 통해 예기치 못한 인터넷 장애 발생 시에도 끊김 없는 업무 환경을 보장합니다.</p>
             </div>
           </div>
         </section>

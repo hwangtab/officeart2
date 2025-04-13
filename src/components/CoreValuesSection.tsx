@@ -25,7 +25,7 @@ export default function CoreValuesSection() {
                />
             </div>
             {/* p-6 is now handled by Card component - Add flex-grow */}
-            <div className="flex-grow">
+            <div className="flex-grow flex flex-col justify-center pt-4">
               <h3 className="text-xl font-bold mb-2">프리미엄 의자</h3>
               <p className="text-dark-gray">120만원대 프리미엄 의자를 기본 제공합니다</p> {/* Restore original color */}
             </div>
@@ -50,7 +50,7 @@ export default function CoreValuesSection() {
             </div>
             {/* p-6 is now handled by Card component */}
             {/* Added flex-grow to make text content fill available space */}
-            <div className="flex-grow">
+            <div className="flex-grow flex flex-col justify-center pt-4">
               <h3 className="text-xl font-bold mb-2">집중이 잘 되는 공간</h3>
               <p className="text-dark-gray">모든 요소가 집중을 위해 설계되었습니다</p> {/* Restore original color */}
             </div>
@@ -77,7 +77,7 @@ export default function CoreValuesSection() {
             {/* p-6 is now handled by Card component */}
             {/* Added flex-grow to make text content fill available space */}
             {/* Added flex-grow to make text content fill available space */}
-            <div className="flex-grow">
+            <div className="flex-grow flex flex-col justify-center pt-4">
               <h3 className="text-xl font-bold mb-2">웹툰/일러스트레이터가 함께합니다</h3>
               <p className="text-dark-gray">같은 분야 크리에이터와 함께하는 공간</p> {/* Restore original color */}
             </div>
