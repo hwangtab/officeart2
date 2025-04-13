@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: 'export', // Add this line for static export
   images: {
+    unoptimized: true, // Disable Image Optimization for static export
     remotePatterns: [
       {
         protocol: 'https',
