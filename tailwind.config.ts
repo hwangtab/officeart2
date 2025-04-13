@@ -17,6 +17,7 @@ const config: Config = {
         'naver-green-dark': '#02B350',
         'accent-purple': '#9013FE',
         'dark-gray': '#333333',
+        'medium-gray': '#555555', // Add medium gray for body text
         'light-gray': '#F5F5F5',
         'warning-red': '#FF3B30',
         'success-green': '#4CD964',
@@ -24,6 +25,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
+        // gong: ['var(--font-gong)', ...defaultTheme.fontFamily.sans], // Removed GongGothic
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

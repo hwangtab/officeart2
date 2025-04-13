@@ -1,6 +1,40 @@
 @import "tailwindcss";
 
+/* Define Giants-Bold font */
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Add GmarketSansMedium font */
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal; /* Note: Only normal weight defined */
+    font-style: normal;
+}
+
 /* Add any global custom styles below */
+
+/* Apply Giants-Bold font directly to h1 */
+h1 {
+  font-family: 'Giants-Bold', sans-serif; /* Add sans-serif as fallback */
+}
+
+/* Apply GmarketSansMedium as the default body font */
+body {
+  font-family: 'GmarketSansMedium', sans-serif; /* Add sans-serif as fallback */
+}
+
+/* Apply specific weights for h2 and h3 */
+h2 {
+  font-weight: 700; /* bold */
+}
+h3 {
+  font-weight: 500; /* medium */
+}
 
 /* Responsive Table Styles */
 @media (max-width: 639px) { /* Corresponds to sm: breakpoint */
