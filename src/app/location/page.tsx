@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'; // Import Metadata type
 // Removed unused Link import
-import BackButton from '@/components/BackButton'; // Import BackButton
-import LinkButton from '@/components/LinkButton'; // Import LinkButton
-// Import icons (remove ArrowLeftIcon)
+import BackButton from '@/components/BackButton';
+import LinkButton from '@/components/LinkButton';
+import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
+import Card from '@/components/Card'; // Import Card
 import {
   HiMapPin as MapPinIcon,
   // Removed unused BuildingOfficeIcon
@@ -42,8 +43,9 @@ export default function LocationPage() {
         <h1 className="text-4xl font-bold text-center mb-12">오시는 길</h1>
 
         {/* 1. Map Section (4.6 지도 섹션) */}
-        <section className="mb-16 bg-white p-6 rounded-lg shadow"> {/* Changed p-8 to p-6 */}
-          <h2 className="text-3xl font-bold mb-8 text-center">지도</h2>
+        {/* Use Card and SectionTitle */}
+        <Card className="mb-16">
+          <SectionTitle as="h2" size="xlarge" className="text-center">지도</SectionTitle>
           {/* Google Map iframe */}
           <div className="w-full h-[450px] rounded-lg overflow-hidden mb-6 shadow"> {/* Added shadow */}
             <iframe
@@ -88,47 +90,51 @@ export default function LocationPage() {
                카카오맵 길찾기
              </LinkButton>
           </div>
-        </section>
+        </Card>
 
         {/* 2. Public Transport (4.6 지하철/버스 접근성) */}
         <section className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Subway Access */}
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-2xl font-bold mb-6 flex items-center">
-                <SubwayIcon className="h-6 w-6 mr-2 text-primary-blue" />
+          {/* Use Card and SectionTitle */}
+          <Card>
+            {/* Use SectionTitle with medium size and icon */}
+            <SectionTitle as="h2" size="medium" iconLeft={<SubwayIcon className="h-6 w-6 text-accent-blue" />} className="mb-6">
                  지하철 이용 시
-            </h2>
-            <div className="text-dark-gray text-sm space-y-2">
+            </SectionTitle>
+            {/* Adjust text color */}
+            <div className="text-text-secondary text-sm space-y-2">
               <h3 className="text-lg font-semibold mb-3">영등포구청역 (2, 5호선)</h3>
               <p>6번 출구에서 도보 약 3분 거리입니다.</p>
             </div>
-          </div>
+          </Card>
 
-          {/* Bus Access */}
-          <div className="bg-white p-6 rounded-lg shadow">
-             <h2 className="text-2xl font-bold mb-6 flex items-center">
-                 <BusIcon className="h-6 w-6 mr-2 text-primary-blue" />
+          {/* Bus Access - Use Card and SectionTitle */}
+          <Card>
+             {/* Use SectionTitle with medium size and icon */}
+             <SectionTitle as="h2" size="medium" iconLeft={<BusIcon className="h-6 w-6 text-accent-blue" />} className="mb-6">
                   버스 이용 시
-             </h2>
-             <div className="text-dark-gray text-sm space-y-2">
+             </SectionTitle>
+             {/* Adjust text color */}
+             <div className="text-text-secondary text-sm space-y-2">
                <h3 className="text-lg font-semibold mb-3">영등포구청 정류장</h3>
                <p>(정류소 ID: 19-852) 도보로 약 3분 거리입니다.</p>
              </div>
-          </div>
+          </Card>
         </section>
 
         {/* 3. Parking Information (4.6 주차 정보) */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center flex items-center justify-center">
-              <ParkingIcon className="h-6 w-6 mr-2 text-primary-blue" /> {/* Unified icon size */}
+          {/* Use SectionTitle */}
+          <SectionTitle as="h2" size="xlarge" iconLeft={<ParkingIcon className="h-6 w-6 text-accent-blue" />} className="text-center mb-8">
                주차 안내
-          </h2>
-          {/* Apply card styles only to the outer container, add padding */}
-          <div className="bg-white rounded-lg shadow p-6 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
-            {/* Remove redundant card styles from inner div */}
+          </SectionTitle>
+          {/* Use Card component */}
+          <Card className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm"> {/* Removed bg, rounded, shadow, p */}
             <div>
-              <h3 className="text-lg font-semibold mb-3">건물 내 주차</h3>
-              <ul className="list-disc list-inside space-y-1 text-dark-gray pl-5">
+              {/* Adjust text color */}
+              <h3 className="text-lg font-semibold mb-3 text-text-primary">건물 내 주차</h3>
+              {/* Adjust text color */}
+              <ul className="list-disc list-inside space-y-1 text-text-secondary pl-5">
                 <li>시간당 주차: 2,000원</li>
                 <li>월 정기주차: 10만원</li>
                 {/* TODO: Add contact info for monthly parking if available */}
@@ -136,40 +142,47 @@ export default function LocationPage() {
             </div>
             {/* Remove redundant card styles from inner div */}
             <div>
-              <h3 className="text-lg font-semibold mb-3">인근 공영주차장</h3>
-              <p className="text-dark-gray">영등포구청역 공영주차장 (시간당 1,200원)</p>
+              {/* Adjust text color */}
+              <h3 className="text-lg font-semibold mb-3 text-text-primary">인근 공영주차장</h3>
+              {/* Adjust text color */}
+              <p className="text-text-secondary">영등포구청역 공영주차장 (시간당 1,200원)</p>
             </div>
-          </div>
+          </Card>
         </section>
 
         {/* 4. Nearby Amenities (4.6 주변 편의시설) */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center flex items-center justify-center">
-              <AmenitiesIcon className="h-6 w-6 mr-2 text-primary-blue" /> {/* Unified icon size */}
+          {/* Use SectionTitle */}
+          <SectionTitle as="h2" size="xlarge" iconLeft={<AmenitiesIcon className="h-6 w-6 text-accent-blue" />} className="text-center mb-8">
                주변 편의시설 (반경 500m 내)
-          </h2>
-          <div className="bg-white p-6 rounded-lg shadow"> {/* Changed p-8 to p-6 */}
-            {/* Changed to icon list */}
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-dark-gray">
+          </SectionTitle>
+          {/* Use Card component */}
+          <Card className="mb-16"> {/* Removed bg, p, rounded, shadow */}
+            {/* Adjust text color */}
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-text-secondary">
               <li className="flex items-center gap-2">
-                <ShopIcon className="h-5 w-5 text-gray-500 flex-shrink-0" />
-                <span><span className="font-semibold">영등포전통시장:</span> 도보 약 10분</span>
+                {/* Adjust icon color */}
+                <ShopIcon className="h-5 w-5 text-text-secondary flex-shrink-0" />
+                <span><span className="font-semibold text-text-primary">영등포전통시장:</span> 도보 약 10분</span>
               </li>
               <li className="flex items-center gap-2">
-                <CafeIcon className="h-5 w-5 text-gray-500 flex-shrink-0" />
+                {/* Adjust icon color */}
+                <CafeIcon className="h-5 w-5 text-text-secondary flex-shrink-0" />
                 <span><span className="font-semibold">카페/음식점:</span> 브런치, 한식, 분식 등 다수</span>
               </li>
               <li className="flex items-center gap-2">
-                <StoreIcon className="h-5 w-5 text-gray-500 flex-shrink-0" />
+                {/* Adjust icon color */}
+                <StoreIcon className="h-5 w-5 text-text-secondary flex-shrink-0" />
                 <span><span className="font-semibold">편의점:</span> GS25, CU 등 인접</span>
               </li>
                <li className="flex items-center gap-2">
-                <BankIcon className="h-5 w-5 text-gray-500 flex-shrink-0" />
-                <span><span className="font-semibold">은행/약국:</span> 도보 거리 내 위치</span>
+                {/* Adjust icon color */}
+                <BankIcon className="h-5 w-5 text-text-secondary flex-shrink-0" />
+                <span><span className="font-semibold text-text-primary">은행/약국:</span> 도보 거리 내 위치</span>
               </li>
               {/* Add more specific amenities if needed */}
             </ul>
-          </div>
+          </Card>
         </section>
 
         {/* Back to Home Button */}

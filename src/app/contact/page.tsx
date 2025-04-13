@@ -4,9 +4,9 @@ import type { Metadata } from 'next'; // Import Metadata type
 // Removed unused Link import
 // Removed unused imports: useState, useCallback, emailjs, useForm, SubmitHandler
 import BackButton from '@/components/BackButton'; // Import BackButton
-// Removed unused Button import
 import LinkButton from '@/components/LinkButton'; // Import LinkButton
-// Import icons (remove ArrowLeftIcon)
+import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
+import Card from '@/components/Card'; // Import Card component
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { HiOutlinePhone as PhoneIcon, HiOutlineEnvelope as EmailIcon, HiOutlineMapPin as VisitIcon } from 'react-icons/hi2'; // Corrected MapPin
 
@@ -28,14 +28,18 @@ export default function ContactPage() {
   return (
     <main className="flex min-h-screen flex-col items-center py-16 px-4"> {/* Removed bg-light-gray as it's now in layout */}
       <div className="w-full max-w-5xl mx-auto"> {/* Changed max-w-4xl to max-w-5xl */}
-        <h1 className="text-4xl font-bold text-center mb-12">상담 및 문의</h1>
+        {/* Use SectionTitle for page title */}
+        {/* Restore h1 for page title, apply styles directly */}
+        <h1 className="text-4xl font-bold text-center mb-12 text-text-primary">상담 및 문의</h1>
 
         {/* Render the client component for the form */}
         <ContactForm />
 
         {/* 2. KakaoTalk Section (4.8 카카오톡 상담) */}
         <section className="mb-16 text-center">
-           <h2 className="text-2xl font-bold mb-6">카카오톡 상담</h2>
+           {/* Ensure consistent styling with other sub-section title */}
+           {/* Use SectionTitle for sub-section title */}
+           <SectionTitle as="h2" size="medium" className="text-center">카카오톡 상담</SectionTitle>
            {/* KakaoTalk Button Only */}
            {/* Use LinkButton component */}
            <LinkButton
@@ -51,32 +55,35 @@ export default function ContactPage() {
         </section>
 
         {/* 3. Direct Contact Info (4.8 직접 문의) */}
-        <section className="mb-16 bg-white p-6 rounded-lg shadow"> {/* Changed p-8 to p-6 */}
-            <h2 className="text-2xl font-bold mb-6 text-center">직접 문의</h2>
+        {/* Use Card component for Direct Contact Info */}
+        <Card className="mb-16"> {/* Remove bg, p, rounded, shadow from here */}
+            {/* Adjust heading style */}
+            {/* Use SectionTitle for sub-section title */}
+            <SectionTitle as="h2" size="medium" className="text-center">직접 문의</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
                 {/* Phone */}
                 <div className="text-center md:text-left">
-                    <h3 className="font-bold mb-2 flex items-center justify-center md:justify-start"><PhoneIcon className="h-4 w-4 mr-1 text-primary-blue" /> 전화</h3>
-                    <p>대표번호: <a href="tel:02-764-3114" className="hover:underline">02-764-3114</a></p>
-                    
-                    <p className="text-xs text-gray-600 mt-1">(운영시간: 평일 10:00-19:00)</p>
+                    {/* Use accent-blue for icon */}
+                    <h3 className="font-bold mb-2 flex items-center justify-center md:justify-start text-text-primary"><PhoneIcon className="h-4 w-4 mr-1 text-accent-blue" /> 전화</h3>
+                    <p className="text-text-primary">대표번호: <a href="tel:02-764-3114" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">02-764-3114</a></p>
+                    <p className="text-xs text-text-secondary mt-1">(운영시간: 평일 10:00-19:00)</p>
                 </div>
                 {/* Email */}
                  <div className="text-center md:text-left">
-                    <h3 className="font-bold mb-2 flex items-center justify-center md:justify-start"><EmailIcon className="h-4 w-4 mr-1 text-primary-blue" /> 이메일</h3>
-                    <p>대표: <a href="mailto:contact@kosmart.org" className="hover:underline">contact@kosmart.org</a></p>
-
-                     <p className="text-xs text-gray-600 mt-1">(응답시간: 평일 기준 24시간 이내)</p>
+                    {/* Use accent-blue for icon */}
+                    <h3 className="font-bold mb-2 flex items-center justify-center md:justify-start text-text-primary"><EmailIcon className="h-4 w-4 mr-1 text-accent-blue" /> 이메일</h3>
+                    <p className="text-text-primary">대표: <a href="mailto:contact@kosmart.org" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">contact@kosmart.org</a></p>
+                    <p className="text-xs text-text-secondary mt-1">(응답시간: 평일 기준 24시간 이내)</p>
                 </div>
                 {/* Visit */}
                  <div className="text-center md:text-left">
-                    <h3 className="font-bold mb-2 flex items-center justify-center md:justify-start"><VisitIcon className="h-4 w-4 mr-1 text-primary-blue" /> 방문 상담</h3>
-                    <p>주소: 서울특별시 영등포구 양산로 96</p>
-                    <p>상담 시간: 평일 10:00-19:00</p>
-                    
+                    {/* Use accent-blue for icon */}
+                    <h3 className="font-bold mb-2 flex items-center justify-center md:justify-start text-text-primary"><VisitIcon className="h-4 w-4 mr-1 text-accent-blue" /> 방문 상담</h3>
+                    <p className="text-text-primary">주소: 서울특별시 영등포구 양산로 96</p>
+                    <p className="text-text-primary">상담 시간: 평일 10:00-19:00</p>
                 </div>
             </div>
-        </section>
+        </Card>
 
         {/* Back to Home Button */}
         <BackButton />

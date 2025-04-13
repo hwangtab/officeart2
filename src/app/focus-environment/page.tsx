@@ -1,8 +1,10 @@
+import React from 'react'; // Import React
 import type { Metadata } from 'next'; // Import Metadata type
 import Image from 'next/image';
 // Removed unused Link import
-import BackButton from '@/components/BackButton'; // Import BackButton
-import Card from '@/components/Card'; // Import Card component
+import BackButton from '@/components/BackButton';
+import Card from '@/components/Card';
+import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
 // Import icons (Removed ArrowLeftIcon)
 import {
   HiOutlineUserGroup as PersonalSpaceIcon, HiOutlineSparkles as OptimizedEnvIcon, HiOutlineClock as AccessIcon,
@@ -26,10 +28,12 @@ export default function FocusEnvironmentPage() {
 
         {/* 1. Space Introduction (4.3 공간 소개) */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">오피스아트 공간 소개 (총 75석)</h2> {/* md:text-left 제거 */}
+          {/* Use SectionTitle */}
+          <SectionTitle as="h2" size="xlarge" className="text-center">오피스아트 공간 소개 (총 75석)</SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             {/* Workspace Image */}
-            <div className="w-full relative h-80 bg-light-gray rounded-lg overflow-hidden">
+            {/* Add rounded corners */}
+            <div className="w-full relative h-80 bg-gray-100 rounded-lg overflow-hidden"> {/* Use gray-100 for placeholder bg */}
               {/* TODO: Add workspace image (오피스아트 자체 촬영) */}
               <Image
                 src="/images/gallery/DSC07707.jpeg" // 실제 이미지 경로 적용 (작업 공간 전경)
@@ -39,7 +43,8 @@ export default function FocusEnvironmentPage() {
               />
             </div>
             {/* L-shaped Desk Image */}
-            <div className="w-full relative h-80 bg-light-gray rounded-lg overflow-hidden">
+            {/* Add rounded corners */}
+            <div className="w-full relative h-80 bg-gray-100 rounded-lg overflow-hidden"> {/* Use gray-100 for placeholder bg */}
               {/* TODO: Add L-shaped desk image (오피스아트 자체 촬영) */}
               <Image
                  src="/images/gallery/l-shape-desk.jpg.jpg" // 실제 이미지 경로 적용 (L형 책상) - 파일명 확인 필요
@@ -51,50 +56,60 @@ export default function FocusEnvironmentPage() {
           </div>
           <div className="text-center mb-8 bg-white p-6 rounded-lg shadow">
             <h3 className="text-2xl font-bold mb-4">160cm L형 책상</h3>
-            <p className="text-dark-gray">가로 160cm, 세로 160cm, 높이 72cm</p>
-            <p className="text-dark-gray">듀얼 모니터 설치 가능한 넓은 작업면과 수납공간</p>
+            {/* Adjust text color */}
+            <p className="text-text-secondary">가로 160cm, 세로 160cm, 높이 72cm</p>
+            <p className="text-text-secondary">듀얼 모니터 설치 가능한 넓은 작업면과 수납공간</p>
           </div>
           {/* Floor Plan Section Removed */}
         </section>
 
         {/* 2. Concentration Enhancement Factors (4.3 집중력 향상 요소) */}
-        <section className="mb-16 bg-light-gray p-6 rounded-lg"> {/* Changed p-8 to p-6 */}
-          <h2 className="text-3xl font-bold mb-8 text-center">집중력 향상 요소</h2>
+        {/* Use Card component */}
+        <Card className="mb-16"> {/* Removed bg, p, rounded */}
+          {/* Use SectionTitle */}
+          <SectionTitle as="h2" size="xlarge" className="text-center">집중력 향상 요소</SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Personal Space */}
             {/* Use Card component */}
             <Card className="text-center flex flex-col items-center">
-              <PersonalSpaceIcon className="h-8 w-8 mb-3 text-primary-blue" />
-              <h3 className="text-xl font-bold mb-3">적절한 개인 공간</h3>
-              <p className="text-dark-gray text-sm">넓은 L형 책상이 당신만의 집중 영역을 만들어 드립니다. 장비와 자료를 여유롭게 펼쳐놓고 마음껏 작업에 몰입하세요. 오피스아트가 응원합니다.</p>
+              {/* Adjust icon and text colors */}
+              <PersonalSpaceIcon className="h-8 w-8 mb-3 text-accent-blue" />
+              <h3 className="text-xl font-bold mb-3 text-text-primary">적절한 개인 공간</h3>
+              <p className="text-text-secondary text-sm">넓은 L형 책상이 당신만의 집중 영역을 만들어 드립니다. 장비와 자료를 여유롭게 펼쳐놓고 마음껏 작업에 몰입하세요. 오피스아트가 응원합니다.</p>
             </Card>
             {/* Optimized Environment */}
             {/* Use Card component */}
             <Card className="text-center flex flex-col items-center">
-               <OptimizedEnvIcon className="h-8 w-8 mb-3 text-primary-blue" />
-              <h3 className="text-xl font-bold mb-3">업무 최적화 환경</h3>
-              <p className="text-dark-gray text-sm">적절한 조명, 최적 온도 유지(풍부한 냉난방), 산소공급 시스템 및 조용한 분위기로 쾌적함을 유지합니다. 작가님의 작업 능률 향상을 위한 최고의 환경입니다.</p>
+               {/* Adjust icon and text colors */}
+               <OptimizedEnvIcon className="h-8 w-8 mb-3 text-accent-blue" />
+              <h3 className="text-xl font-bold mb-3 text-text-primary">업무 최적화 환경</h3>
+              <p className="text-text-secondary text-sm">적절한 조명, 최적 온도 유지(풍부한 냉난방), 산소공급 시스템 및 조용한 분위기로 쾌적함을 유지합니다. 작가님의 작업 능률 향상을 위한 최고의 환경입니다.</p>
             </Card>
             {/* 24-Hour Access */}
             {/* Use Card component */}
             <Card className="text-center flex flex-col items-center">
-               <AccessIcon className="h-8 w-8 mb-3 text-primary-blue" />
-              <h3 className="text-xl font-bold mb-3">24시간 자유로운 이용</h3>
-              <p className="text-dark-gray text-sm">지문인식 출입 시스템으로 심야/새벽 작업 등 개인 일정에 맞춰 유연하게 이용 가능합니다. 보안 문제 발생 시 KT텔레캅이 즉시 출동하여 안전을 보장합니다.</p>
+               {/* Adjust icon and text colors */}
+               <AccessIcon className="h-8 w-8 mb-3 text-accent-blue" />
+              <h3 className="text-xl font-bold mb-3 text-text-primary">24시간 자유로운 이용</h3>
+              <p className="text-text-secondary text-sm">지문인식 출입 시스템으로 심야/새벽 작업 등 개인 일정에 맞춰 유연하게 이용 가능합니다. 보안 문제 발생 시 KT텔레캅이 즉시 출동하여 안전을 보장합니다.</p>
             </Card>
           </div>
-        </section>
+        </Card>
 
         {/* 3. Comparison with Cafes (4.3 카페와의 비교) */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">카페 작업과의 비교</h2>
-          <div className="overflow-x-auto bg-white rounded-lg shadow">
-            <table className="min-w-full border border-gray-200 text-sm">
+        {/* Use Card component */}
+        <Card className="mb-16 overflow-x-auto"> {/* Added overflow-x-auto for table responsiveness */}
+          {/* Use SectionTitle */}
+          <SectionTitle as="h2" size="xlarge" className="text-center">카페 작업과의 비교</SectionTitle>
+          {/* Adjust table styles */}
+          <div className="overflow-x-auto"> {/* Keep overflow-x-auto on inner div if Card adds padding */}
+            <table className="min-w-full border border-border-light text-sm">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="py-3 px-4 border-b text-left font-semibold">항목</th>
-                  <th className="py-3 px-4 border-b text-left font-semibold">카페</th>
-                  <th className="py-3 px-4 border-b text-left font-semibold text-primary-blue">오피스아트</th>
+                {/* Adjust header background and text color */}
+                <tr className="bg-gray-50">
+                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">항목</th>
+                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">카페</th>
+                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-primary">오피스아트</th> {/* Use primary color */}
                 </tr>
               </thead>
               <tbody>
@@ -111,7 +126,8 @@ export default function FocusEnvironmentPage() {
                     {/* Item Column with Icon */}
                     <td className="py-3 px-4 border-b font-medium">
                       <div className="flex items-center gap-2">
-                        {row.icon}
+                        {/* Adjust icon color */}
+                        {React.cloneElement(row.icon, { className: "h-5 w-5 text-text-secondary" })}
                         <span>{row.item}</span>
                       </div>
                     </td>
@@ -123,8 +139,9 @@ export default function FocusEnvironmentPage() {
                       </div>
                     </td>
                     {/* Office Art Column with Icon and Highlight */}
-                    <td className="py-3 px-4 border-b bg-blue-50"> {/* Added subtle background */}
-                      <div className="flex items-center gap-1 font-bold text-primary-blue">
+                    {/* Adjust highlight background and text color */}
+                    <td className="py-3 px-4 border-b border-border-light bg-orange-50"> {/* Use light orange bg */}
+                      <div className="flex items-center gap-1 font-bold text-primary"> {/* Use primary color */}
                         {row.officeart.icon}
                         <span>{row.officeart.text}</span>
                       </div>
@@ -134,18 +151,22 @@ export default function FocusEnvironmentPage() {
               </tbody>
             </table>
           </div>
-        </section>
+        </Card>
 
         {/* 4. Comparison with General Coworking Spaces */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">일반 공유오피스와의 비교</h2>
-          <div className="overflow-x-auto bg-white rounded-lg shadow">
-            <table className="min-w-full border border-gray-200 text-sm">
+        {/* Use Card component */}
+        <Card className="mb-16 overflow-x-auto"> {/* Added overflow-x-auto */}
+          {/* Use SectionTitle */}
+          <SectionTitle as="h2" size="xlarge" className="text-center">일반 공유오피스와의 비교</SectionTitle>
+          {/* Adjust table styles */}
+          <div className="overflow-x-auto">
+            <table className="min-w-full border border-border-light text-sm">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="py-3 px-4 border-b text-left font-semibold">항목</th>
-                  <th className="py-3 px-4 border-b text-left font-semibold">일반 공유오피스</th>
-                  <th className="py-3 px-4 border-b text-left font-semibold text-primary-blue">오피스아트</th>
+                {/* Adjust header background and text color */}
+                <tr className="bg-gray-50">
+                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">항목</th>
+                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">일반 공유오피스</th>
+                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-primary">오피스아트</th> {/* Use primary color */}
                 </tr>
               </thead>
               <tbody>
@@ -164,7 +185,8 @@ export default function FocusEnvironmentPage() {
                     {/* Item Column with Icon */}
                     <td className="py-3 px-4 border-b font-medium">
                       <div className="flex items-center gap-2">
-                        {row.icon}
+                        {/* Adjust icon color */}
+                        {React.cloneElement(row.icon, { className: "h-5 w-5 text-text-secondary" })}
                         <span>{row.item}</span>
                       </div>
                     </td>
@@ -176,8 +198,9 @@ export default function FocusEnvironmentPage() {
                       </div>
                     </td>
                     {/* Office Art Column with Icon and Highlight */}
-                    <td className="py-3 px-4 border-b bg-blue-50"> {/* Added subtle background */}
-                      <div className="flex items-center gap-1 font-bold text-primary-blue">
+                    {/* Adjust highlight background and text color */}
+                    <td className="py-3 px-4 border-b border-border-light bg-orange-50"> {/* Use light orange bg */}
+                      <div className="flex items-center gap-1 font-bold text-primary"> {/* Use primary color */}
                         {row.officeart.icon}
                         <span>{row.officeart.text}</span>
                       </div>
@@ -187,7 +210,7 @@ export default function FocusEnvironmentPage() {
               </tbody>
             </table>
           </div>
-        </section>
+        </Card>
 
         {/* Back to Home Button */}
         <BackButton />

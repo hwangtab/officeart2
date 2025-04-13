@@ -1,24 +1,50 @@
 import React from 'react';
+import { ElementType } from 'react';
 
 interface SectionTitleProps {
   children: React.ReactNode;
-  className?: string; // Allow passing additional classes for alignment etc.
+  as?: ElementType;
+  size?: 'large' | 'xlarge' | 'medium';
+  iconLeft?: React.ReactNode;
+  className?: string;
 }
 
-const SectionTitle: React.FC<SectionTitleProps> = ({ children, className = '' }) => {
-  // Define base title styles
-  // Increased size, added bottom padding and primary border bottom
-  const baseStyles = "text-4xl font-bold text-text-primary mb-12 pb-2 border-b-4 border-primary inline-block";
+const SectionTitle: React.FC<SectionTitleProps> = ({
+  children,
+  as: Tag = 'h2',
+  size = 'large',
+  className = '',
+  iconLeft,
+}) => {
+  // Base styles: font, color, margin, padding, border, inline-block
+  const baseStyles = "font-bold text-text-primary mb-12 pb-2 border-b-4 border-orange-400 inline-block";
 
-  // Combine base styles with any additional classes passed via props
-  const combinedClassName = `${baseStyles} ${className}`;
+  // Size specific styles
+  const sizeStyles = {
+    large: "text-4xl",
+    xlarge: "text-3xl",
+    medium: "text-2xl",
+  };
+
+  // Check if centering is needed from className prop
+  const isCentered = className.includes('text-center');
+  // Remove text-center from className prop to avoid applying it to the Tag itself
+  const remainingClassName = className.replace('text-center', '').trim();
+
+  // Combine styles for the Tag component
+  // Add inline-flex and items-center if icon is present
+  const tagClassName = `${baseStyles} ${sizeStyles[size]} ${remainingClassName} ${iconLeft ? 'inline-flex items-center' : ''}`.trim();
+
+  // Wrapper class for centering
+  const wrapperClassName = isCentered ? 'text-center w-full' : '';
 
   return (
-    // Use a div wrapper for centering if needed via className prop (e.g., text-center)
-    <div className={className ? (className.includes('text-center') ? 'text-center' : '') : ''}>
-      <h2 className={combinedClassName}>
+    // Use a div wrapper for centering if text-center was passed
+    <div className={wrapperClassName}>
+      <Tag className={tagClassName}>
+        {iconLeft && <span className="mr-2">{iconLeft}</span>} {/* Render icon if provided */}
         {children}
-      </h2>
+      </Tag>
     </div>
   );
 };
