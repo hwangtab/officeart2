@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Card from '@/components/Card';
-
+import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
 export default function CoreValuesSection() {
   return (
     <section className="w-full max-w-5xl mx-auto py-20 px-4 bg-background-main"> {/* Revert to main background to avoid white-on-white */}
-      <h2 className="text-3xl font-bold text-center mb-12 text-text-primary">오피스아트 핵심 가치</h2> {/* Ensure primary text color */}
+      {/* Use SectionTitle component */}
+      <SectionTitle className="text-center">오피스아트 핵심 가치</SectionTitle>
       {/* Added items-stretch to make cards same height */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         {/* Card 1: Premium Chairs */}

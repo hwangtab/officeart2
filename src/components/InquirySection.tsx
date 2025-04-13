@@ -1,12 +1,14 @@
 import LinkButton from '@/components/LinkButton';
 import Card from '@/components/Card'; // Import Card component
+import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
 import { RiKakaoTalkFill } from "react-icons/ri"; // Use Remix Icon for KakaoTalk
 import { HiOutlinePhone as PhoneIcon, HiOutlinePencilSquare as PencilSquareIcon } from 'react-icons/hi2'; // Added PhoneIcon and PencilSquareIcon
 
 export default function InquirySection() {
   return (
     <section className="w-full bg-background-main py-20 px-4"> {/* Revert to main background color */}
-      <h2 className="text-3xl font-bold text-center mb-12 text-text-primary">궁금한 점이 있으신가요?</h2> {/* Ensure primary text color */}
+      {/* Use SectionTitle component */}
+      <SectionTitle className="text-center">궁금한 점이 있으신가요?</SectionTitle>
       {/* Card Container */}
       {/* Increased max-width to potentially fit buttons horizontally */}
       <Card className="max-w-xl mx-auto shadow-lg text-center"> {/* Use Card component */}
