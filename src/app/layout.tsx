@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
-import { Noto_Sans_KR } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer"; // Import the Footer component
 import "./globals.css";
@@ -34,10 +33,10 @@ export const metadata: Metadata = {
     // Add a default image for social sharing (Replace with actual image path)
     images: [
       {
-        url: '/images/og-image.jpg', // Default Open Graph image
-        width: 1200,
+        url: '/images/hero/hero-background.jpg', // Temporary Open Graph image
+        width: 1200, // Keep standard dimensions, actual image might be different
         height: 630,
-        alt: '오피스아트 작업 공간',
+        alt: '오피스아트 히어로 배경 이미지', // Updated alt text
       },
     ],
     locale: 'ko_KR',
@@ -49,7 +48,7 @@ export const metadata: Metadata = {
     title: "오피스아트 | 웹툰/일러스트 작가를 위한 프리미엄 작업실",
     description: "영등포구청역 5분, 프리미엄 의자와 160cm L형 책상으로 집중력을 높이는 창작자 특화 공유오피스.",
     // Add the same default image for Twitter cards
-    images: ['/images/og-image.jpg'],
+    images: ['/images/hero/hero-background.jpg'], // Use the same temporary image
     // Add Twitter handle if available
     // site: '@yourTwitterHandle',
     // creator: '@creatorTwitterHandle',
