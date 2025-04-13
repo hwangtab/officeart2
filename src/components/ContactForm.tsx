@@ -8,6 +8,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 // Interface for form data (can be shared or redefined)
 interface FormData {
   name: string;
+  email: string; // Add email field
   contact: string;
   visitDate: string;
   visitTime: string;
@@ -22,10 +23,10 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
 
-  // EmailJS IDs from environment variables
-  const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-  const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
-  const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+  // EmailJS IDs provided by user
+  const SERVICE_ID = "service_lop4659";
+  const TEMPLATE_ID = "template_wxwj093";
+  const PUBLIC_KEY = "E5wHxyFgSkrjQhYVG"; // Assuming this is the Public Key
 
   // Function to run on valid form submission
   const onValid: SubmitHandler<FormData> = useCallback((data) => {
@@ -34,8 +35,10 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    // Ensure email field exists in FormData interface and form registration later
     const templateParams = {
       name: data.name,
+      email: data.email, // Add email field - REQUIRES UI and interface update
       phone: data.contact,
       date: `${data.visitDate} ${data.visitTime || ''}`.trim(),
       message: data.inquiry,
@@ -61,16 +64,28 @@ export default function ContactForm() {
       <h2 className="text-3xl font-bold mb-8 text-center">간편 상담 신청</h2>
       {/* Use react-hook-form's handleSubmit */}
       <form onSubmit={handleRHFSubmit(onValid)} className="space-y-6">
-        {/* Row 1: Name & Contact */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Row 1: Name, Email & Contact */}
+        {/* Changed grid columns to 3 for better alignment on medium screens */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-1 text-dark-gray">이름 <span className="text-warning-red">*</span></label>
             <input
               type="text" id="name" placeholder="홍길동"
               {...register("name", { required: "이름을 입력해주세요." })}
               className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-1 ${errors.name ? 'border-warning-red focus:ring-warning-red' : 'border-gray-300 focus:ring-primary-blue'}`} />
-            {/* Error Message */}
             {errors.name && <span className="text-warning-red text-xs mt-1">{errors.name.message}</span>}
+          </div>
+          {/* Add Email Field */}
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium mb-1 text-dark-gray">이메일 <span className="text-warning-red">*</span></label>
+            <input
+              type="email" id="email" placeholder="email@example.com"
+              {...register("email", {
+                required: "이메일을 입력해주세요.",
+                pattern: { value: /^\S+@\S+$/i, message: "올바른 이메일 형식이 아닙니다." }
+              })}
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-1 ${errors.email ? 'border-warning-red focus:ring-warning-red' : 'border-gray-300 focus:ring-primary-blue'}`} />
+            {errors.email && <span className="text-warning-red text-xs mt-1">{errors.email.message}</span>}
           </div>
           <div>
             <label htmlFor="contact" className="block text-sm font-medium mb-1 text-dark-gray">연락처 <span className="text-warning-red">*</span></label>
@@ -81,7 +96,6 @@ export default function ContactForm() {
                 pattern: { value: /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/, message: "올바른 연락처 형식(010-1234-5678)으로 입력해주세요." }
               })}
               className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-1 ${errors.contact ? 'border-warning-red focus:ring-warning-red' : 'border-gray-300 focus:ring-primary-blue'}`} />
-            {/* Error Message */}
             {errors.contact && <span className="text-warning-red text-xs mt-1">{errors.contact.message}</span>}
           </div>
         </div>
