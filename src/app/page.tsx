@@ -7,8 +7,8 @@ import GallerySection from '@/components/GallerySection';
 import InquirySection from '@/components/InquirySection';
 
 // Define metadata for the Home page
+// title is inherited from layout.tsx's default title
 export const metadata: Metadata = {
-  title: '홈', // This will become "홈 | 오피스아트" due to the template
   description: '오피스아트 메인 페이지입니다. 프리미엄 의자, 집중 환경, 크리에이터 커뮤니티 등 오피스아트의 핵심 가치를 확인하고 상담을 신청하세요.',
   // You can override Open Graph or Twitter details here if needed for this specific page
   // openGraph: {
