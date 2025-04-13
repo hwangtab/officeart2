@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
-// import localFont from 'next/font/local'; // Removed localFont import
+import { Noto_Sans_KR } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer"; // Import the Footer component
 import "./globals.css";
@@ -12,7 +12,7 @@ const notoSansKr = Noto_Sans_KR({
   variable: "--font-noto-sans-kr", // CSS variable name
 });
 
-// Removed local GongGothic font loading
+// Define base URL for metadata resolution (Replace with actual URL)
 
 // Define base URL for metadata resolution (Replace with actual URL)
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr'; // Example URL
@@ -89,7 +89,7 @@ export default function RootLayout({
     <html lang="ko">
       {/* Apply flex layout to ensure footer stays at the bottom */}
       {/* Added bg-light-gray as default background */}
-      <body className={`${notoSansKr.variable} antialiased text-medium-gray flex flex-col min-h-screen break-keep bg-light-gray`}> {/* Changed default text color to medium-gray */}
+      <body className={`${notoSansKr.variable} font-sans antialiased text-medium-gray flex flex-col min-h-screen break-keep bg-light-gray`}> {/* Restored font-sans, kept medium-gray */}
         <Header />
         {/* Make main content grow to push footer down */}
         <main className="flex-grow">{children}</main>

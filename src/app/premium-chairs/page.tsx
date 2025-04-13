@@ -28,7 +28,7 @@ export default function PremiumChairsPage() {
 
         {/* 1. Chair Introduction Section (4.2 의자 소개 섹션) */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center md:text-left">오피스아트가 제공하는 의자</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">오피스아트가 제공하는 의자</h2> {/* Removed md:text-left */}
 
           {/* Steelcase Think */}
           <div className="mb-12 flex flex-col md:flex-row items-start gap-8 bg-white p-6 rounded-lg shadow">

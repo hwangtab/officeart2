@@ -21,6 +21,7 @@
 /* Apply Giants-Bold font directly to h1 */
 h1 {
   font-family: 'Giants-Bold', sans-serif; /* Add sans-serif as fallback */
+  letter-spacing: 0.025em; /* Add slight letter spacing */
 }
 
 /* Apply GmarketSansMedium as the default body font */
