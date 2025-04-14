@@ -13,7 +13,8 @@ interface LinkButtonProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElem
   disabled?: boolean; // Use boolean for disabled state, will be converted to aria-disabled
 }
 
-const LinkButton: React.FC<LinkButtonProps> = ({
+// Remove React.FC and type props directly
+const LinkButton = ({
   variant = 'primary',
   size = 'base',
   href,
@@ -23,37 +24,48 @@ const LinkButton: React.FC<LinkButtonProps> = ({
   className = '',
   disabled,
   ...props
-}) => {
-  // Base styles (same as Button)
-  const baseStyles = "inline-flex items-center justify-center gap-2 font-bold rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"; // Note: disabled styles might not work directly on <a>
+}: LinkButtonProps): JSX.Element => { // Add return type JSX.Element
+  // Base styles: Added hover transform and explicit focus offset color
+  // Removed pointer-events-none from base, will be applied only to disabled span
+  const baseStyles = "inline-flex items-center justify-center gap-2 font-bold rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-main disabled:opacity-50 disabled:cursor-not-allowed hover:-translate-y-px";
 
   // Size styles (same as Button)
   const sizeStyles = {
     sm: 'py-2 px-5 text-sm',
     base: 'py-3 px-8 text-base',
-    lg: 'py-3 px-8 text-lg', // Adjusted padding to px-8 for consistency
+    lg: 'py-3 px-8 text-lg',
   };
 
-  // Variant styles (same as Button)
+  // Variant styles (Focus ring color remains variant-specific for now)
   const variantStyles = {
-    // Updated variant styles for the new theme
-    primary: 'bg-primary hover:bg-orange-500 text-text-on-primary focus:ring-primary', // Use primary color (Orange 400)
-    secondary: 'bg-accent-blue hover:bg-light-blue-500 text-white focus:ring-accent-blue', // Use accent-blue (Light Blue 400)
-    kakao: 'bg-kakao hover:opacity-90 text-black focus:ring-yellow-500', // Keep Kakao color (use defined 'kakao' color if available, else default yellow)
-    naver: 'bg-naver-green hover:bg-naver-green-dark text-white focus:ring-naver-green', // Keep Naver color
-    outline: 'border border-border-light text-text-primary hover:bg-gray-100 focus:ring-primary', // Use new theme colors
-    ghost: 'text-text-primary hover:bg-gray-100 focus:ring-primary', // Use new theme colors
-    link: 'text-primary hover:underline focus:ring-primary', // Use primary color for link style
+    primary: 'bg-primary hover:bg-orange-500 text-text-on-primary focus:ring-primary',
+    secondary: 'bg-accent-blue hover:bg-light-blue-500 text-white focus:ring-accent-blue',
+    kakao: 'bg-kakao hover:opacity-90 text-black focus:ring-yellow-500',
+    naver: 'bg-naver-green hover:bg-naver-green-dark text-white focus:ring-naver-green',
+    outline: 'border border-border-light text-text-primary hover:bg-gray-100 focus:ring-primary',
+    ghost: 'text-text-primary hover:bg-gray-100 focus:ring-primary',
+    link: 'text-primary hover:underline focus:ring-primary',
   };
 
-  // Combine styles
-  const combinedClassName = `
-    ${baseStyles}
+  // Adjust baseStyles for link variant to remove translate-y if desired
+  const finalBaseStyles = variant === 'link' ? baseStyles.replace(' hover:-translate-y-px', '') : baseStyles;
+
+  // Combine styles for active link (without disabled styles affecting pointer events)
+  const activeClassName = `
+    ${finalBaseStyles}
     ${sizeStyles[size]}
     ${variantStyles[variant]}
     ${className}
-    ${disabled ? 'opacity-50 cursor-not-allowed' : ''} // Manually apply disabled styles
-  `;
+  `.trim().replace(/\s+/g, ' ');
+
+  // Combine styles for disabled span (adding pointer-events-none here)
+  const disabledClassName = `
+    ${finalBaseStyles}
+    ${sizeStyles[size]}
+    ${variantStyles[variant]}
+    ${className}
+    opacity-50 cursor-not-allowed pointer-events-none
+  `.trim().replace(/\s+/g, ' ');
 
   const content = (
     <>
@@ -63,26 +75,26 @@ const LinkButton: React.FC<LinkButtonProps> = ({
     </>
   );
 
-  // If disabled, prevent click and don't wrap with Link
+  // If disabled, render a span with pointer-events-none
   if (disabled) {
     return (
       <span
-        className={combinedClassName}
+        className={disabledClassName} // Use specific disabled class name
         aria-disabled="true"
-        {...props} // Pass other props like target, rel if needed, though they might not be relevant when disabled
+        {...props}
       >
         {content}
       </span>
     );
   }
 
-  // Render as Link component (which now behaves like an anchor)
+  // Render as Link component with active class name
   return (
     <Link
       href={href}
-      className={combinedClassName}
-      aria-disabled={disabled} // Use aria-disabled for links
-      {...props} // Pass remaining anchor attributes (target, rel, etc.)
+      className={activeClassName} // Use active class name
+      aria-disabled={disabled} // aria-disabled is false here, but kept for consistency
+      {...props}
     >
       {content}
     </Link>

@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Footer: React.FC = () => {
+// React.FC 제거하고 직접 타입 명시
+const Footer = (): JSX.Element => { // 반환 타입 JSX.Element 추가
   return (
     <footer className="bg-primary text-text-on-primary text-sm py-8 mt-16"> {/* Apply new theme colors */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">

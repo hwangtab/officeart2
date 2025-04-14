@@ -10,13 +10,7 @@
     font-style: normal;
 }
 
-/* Add GmarketSansMedium font */
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal; /* Note: Only normal weight defined */
-    font-style: normal;
-}
+/* GmarketSansMedium is now loaded via @next/font/local in layout.tsx */
 
 /* Add any global custom styles below */
 
@@ -26,10 +20,7 @@ h1 {
   letter-spacing: 0.025em; /* Add slight letter spacing */
 }
 
-/* Apply GmarketSansMedium as the default body font */
-body {
-  font-family: 'GmarketSansMedium', sans-serif; /* Add sans-serif as fallback */
-}
+/* Default body font is now handled by Tailwind config using CSS variables from @next/font */
 
 /* Apply specific weights for h2 and h3 */
 h2 {

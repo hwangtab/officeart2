@@ -101,15 +101,17 @@ export default function FocusEnvironmentPage() {
         <Card className="mb-16 overflow-x-auto"> {/* Added overflow-x-auto for table responsiveness */}
           {/* Use SectionTitle */}
           <SectionTitle as="h2" size="xlarge" className="text-center">카페 작업과의 비교</SectionTitle>
+          <p className="text-sm text-text-secondary text-center mb-4 md:hidden">표를 좌우로 스크롤하여 전체 내용을 확인하세요.</p>
           {/* Adjust table styles */}
           <div className="overflow-x-auto"> {/* Keep overflow-x-auto on inner div if Card adds padding */}
             <table className="min-w-full border border-border-light text-sm">
               <thead>
                 {/* Adjust header background and text color */}
                 <tr className="bg-gray-50">
-                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">항목</th>
-                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">카페</th>
-                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-primary">오피스아트</th> {/* Use primary color */}
+                  {/* Reduced padding for mobile */}
+                  <th className="py-3 px-2 md:px-4 border-b border-border-light text-left font-semibold text-text-primary">항목</th>
+                  <th className="py-3 px-2 md:px-4 border-b border-border-light text-left font-semibold text-text-primary">카페</th>
+                  <th className="py-3 px-2 md:px-4 border-b border-border-light text-left font-semibold text-primary">오피스아트</th> {/* Use primary color */}
                 </tr>
               </thead>
               <tbody>
@@ -124,7 +126,8 @@ export default function FocusEnvironmentPage() {
                 ].map((row, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     {/* Item Column with Icon */}
-                    <td className="py-3 px-4 border-b font-medium">
+                    {/* Reduced padding, allow word break */}
+                    <td className="py-3 px-2 md:px-4 border-b font-medium whitespace-normal">
                       <div className="flex items-center gap-2">
                         {/* Adjust icon color */}
                         {React.cloneElement(row.icon, { className: "h-5 w-5 text-text-secondary" })}
@@ -132,7 +135,8 @@ export default function FocusEnvironmentPage() {
                       </div>
                     </td>
                     {/* Cafe Column with Icon */}
-                    <td className="py-3 px-4 border-b">
+                    {/* Reduced padding, allow word break */}
+                    <td className="py-3 px-2 md:px-4 border-b whitespace-normal">
                       <div className="flex items-center gap-1">
                         {row.cafe.icon}
                         <span>{row.cafe.text}</span>
@@ -140,7 +144,8 @@ export default function FocusEnvironmentPage() {
                     </td>
                     {/* Office Art Column with Icon and Highlight */}
                     {/* Adjust highlight background and text color */}
-                    <td className="py-3 px-4 border-b border-border-light bg-orange-50"> {/* Use light orange bg */}
+                    {/* Reduced padding, allow word break */}
+                    <td className="py-3 px-2 md:px-4 border-b border-border-light bg-orange-50 whitespace-normal"> {/* Use light orange bg */}
                       <div className="flex items-center gap-1 font-bold text-primary"> {/* Use primary color */}
                         {row.officeart.icon}
                         <span>{row.officeart.text}</span>
@@ -158,15 +163,17 @@ export default function FocusEnvironmentPage() {
         <Card className="mb-16 overflow-x-auto"> {/* Added overflow-x-auto */}
           {/* Use SectionTitle */}
           <SectionTitle as="h2" size="xlarge" className="text-center">일반 공유오피스와의 비교</SectionTitle>
+          <p className="text-sm text-text-secondary text-center mb-4 md:hidden">표를 좌우로 스크롤하여 전체 내용을 확인하세요.</p>
           {/* Adjust table styles */}
           <div className="overflow-x-auto">
             <table className="min-w-full border border-border-light text-sm">
               <thead>
                 {/* Adjust header background and text color */}
                 <tr className="bg-gray-50">
-                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">항목</th>
-                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">일반 공유오피스</th>
-                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-primary">오피스아트</th> {/* Use primary color */}
+                  {/* Reduced padding for mobile */}
+                  <th className="py-3 px-2 md:px-4 border-b border-border-light text-left font-semibold text-text-primary">항목</th>
+                  <th className="py-3 px-2 md:px-4 border-b border-border-light text-left font-semibold text-text-primary">일반 공유오피스</th>
+                  <th className="py-3 px-2 md:px-4 border-b border-border-light text-left font-semibold text-primary">오피스아트</th> {/* Use primary color */}
                 </tr>
               </thead>
               <tbody>
@@ -183,7 +190,8 @@ export default function FocusEnvironmentPage() {
                 ].map((row, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     {/* Item Column with Icon */}
-                    <td className="py-3 px-4 border-b font-medium">
+                    {/* Reduced padding, allow word break */}
+                    <td className="py-3 px-2 md:px-4 border-b font-medium whitespace-normal">
                       <div className="flex items-center gap-2">
                         {/* Adjust icon color */}
                         {React.cloneElement(row.icon, { className: "h-5 w-5 text-text-secondary" })}
@@ -191,7 +199,8 @@ export default function FocusEnvironmentPage() {
                       </div>
                     </td>
                     {/* General Column with Icon */}
-                    <td className="py-3 px-4 border-b">
+                    {/* Reduced padding, allow word break */}
+                    <td className="py-3 px-2 md:px-4 border-b whitespace-normal">
                       <div className="flex items-center gap-1">
                         {row.general.icon}
                         <span>{row.general.text}</span>
@@ -199,7 +208,8 @@ export default function FocusEnvironmentPage() {
                     </td>
                     {/* Office Art Column with Icon and Highlight */}
                     {/* Adjust highlight background and text color */}
-                    <td className="py-3 px-4 border-b border-border-light bg-orange-50"> {/* Use light orange bg */}
+                    {/* Reduced padding, allow word break */}
+                    <td className="py-3 px-2 md:px-4 border-b border-border-light bg-orange-50 whitespace-normal"> {/* Use light orange bg */}
                       <div className="flex items-center gap-1 font-bold text-primary"> {/* Use primary color */}
                         {row.officeart.icon}
                         <span>{row.officeart.text}</span>

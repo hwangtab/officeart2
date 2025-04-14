@@ -79,7 +79,8 @@ export default function ContactPage() {
                  <div className="text-center md:text-left">
                     {/* Use accent-blue for icon */}
                     <h3 className="font-bold mb-2 flex items-center justify-center md:justify-start text-text-primary"><VisitIcon className="h-4 w-4 mr-1 text-accent-blue" /> 방문 상담</h3>
-                    <p className="text-text-primary">주소: 서울특별시 영등포구 양산로 96</p>
+                    {/* Add Naver Map link to address */}
+                    <p className="text-text-primary">주소: <a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%98%81%EB%93%B1%ED%8F%AC%EA%B5%AC%20%EC%96%91%EC%82%B0%EB%A1%9C%2096%20%EC%98%A4%ED%94%BC%EC%8A%A4%EC%95%84%ED%8A%B8" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">서울특별시 영등포구 양산로 96</a></p>
                     <p className="text-text-primary">상담 시간: 평일 10:00-19:00</p>
                 </div>
             </div>

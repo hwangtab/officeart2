@@ -13,7 +13,8 @@ export default function CoreValuesSection() {
         {/* Add aria-label to the link */}
         <Link href="/premium-chairs" aria-label="프리미엄 의자 자세히 보기">
           {/* Use Card component - Add h-full, flex, flex-col */}
-          <Card className="overflow-hidden transform transition duration-300 hover:-translate-y-2 group h-full flex flex-col">
+          {/* Added hover shadow and focus ring */}
+          <Card className="overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl group h-full flex flex-col focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg"> {/* Ensure rounded-lg for ring */}
             <div className="relative w-full h-48 rounded-t-lg overflow-hidden"> {/* Add rounded top corners and overflow hidden */}
                {/* Use Next.js Image component */}
                <Image
@@ -28,7 +29,7 @@ export default function CoreValuesSection() {
             {/* p-6 is now handled by Card component - Add flex-grow */}
             <div className="flex-grow flex flex-col justify-center pt-4">
               <h3 className="text-xl font-bold mb-2">프리미엄 의자</h3>
-              <p className="text-text-secondary">120만원대 프리미엄 의자를 기본 제공합니다</p> {/* Use secondary text color */}
+              <p className="text-text-secondary">180만원대 프리미엄 의자를 기본 제공합니다</p> {/* Use secondary text color */}
             </div>
           </Card>
         </Link>
@@ -37,7 +38,8 @@ export default function CoreValuesSection() {
         <Link href="/focus-environment" aria-label="집중이 잘 되는 공간 자세히 보기">
            {/* Use Card component - Add h-full */}
            {/* Added flex flex-col for height alignment */}
-           <Card className="overflow-hidden transform transition duration-300 hover:-translate-y-2 group flex flex-col h-full">
+           {/* Added hover shadow and focus ring */}
+           <Card className="overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl group flex flex-col h-full focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg"> {/* Ensure rounded-lg for ring */}
             <div className="relative w-full h-48 rounded-t-lg overflow-hidden"> {/* Add rounded top corners and overflow hidden */}
                {/* Use Next.js Image component */}
                <Image
@@ -63,7 +65,8 @@ export default function CoreValuesSection() {
            {/* Use Card component - Add h-full */}
            {/* Added flex flex-col for height alignment */}
            {/* Added flex flex-col for height alignment */}
-           <Card className="overflow-hidden transform transition duration-300 hover:-translate-y-2 group flex flex-col h-full">
+           {/* Added hover shadow and focus ring */}
+           <Card className="overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl group flex flex-col h-full focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg"> {/* Ensure rounded-lg for ring */}
             <div className="relative w-full h-48 rounded-t-lg overflow-hidden"> {/* Add rounded top corners and overflow hidden */}
                {/* Use Next.js Image component */}
                <Image

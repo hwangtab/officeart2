@@ -14,6 +14,7 @@ export default function HeroSection() {
           style={{ objectFit: 'cover' }} // CSS object-fit 적용
           priority // 중요 이미지 우선 로딩
           sizes="100vw" // Add sizes attribute for better optimization hint
+          // placeholder="blur" // Removed due to missing blurDataURL error with unoptimized images
         />
         <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay */}
       </div>
