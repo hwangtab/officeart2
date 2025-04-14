@@ -7,7 +7,7 @@ const withBundleAnalyzer = withBundleAnalyzerFactory({
 const nextConfig = {
   /* config options here */
   output: 'export', // Keep for static export
-  basePath: '/officeart2', // Add for GitHub Pages subpath
+  // basePath: '/officeart2', // Removed for custom domain
   images: {
     unoptimized: true, // Disable Image Optimization for static export
     remotePatterns: [
