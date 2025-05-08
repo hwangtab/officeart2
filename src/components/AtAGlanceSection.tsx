@@ -3,7 +3,7 @@ import SectionTitle from './SectionTitle';
 
 export default function AtAGlanceSection() {
   return (
-    <section className="w-full bg-background-main py-20 px-4"> {/* Revert to main background color */}
+    <section className="w-full py-20 px-4"> {/* Removed bg-background-main */}
       <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center"> {/* Changed max-w-4xl to max-w-5xl */}
         <div className="flex flex-col items-center">
           <MapPinIcon className="h-8 w-8 mb-3 text-accent-blue" aria-hidden="true" /> {/* Use accent-blue */}

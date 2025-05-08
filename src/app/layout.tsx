@@ -144,7 +144,7 @@ export default function RootLayout({
           }) }}
         />
       </head>
-      <body className={`${notoSansKr.variable} ${gmarketSans.variable} font-sans antialiased text-text-primary flex flex-col min-h-screen break-keep bg-background-main leading-relaxed`}>
+      <body className={`${notoSansKr.variable} ${gmarketSans.variable} font-sans antialiased text-text-primary flex flex-col min-h-screen break-keep leading-relaxed bg-gradient-to-b from-[#FFFBF0] via-[#FFFFFF] to-slate-100`}>
         {/* Removed loading conditional rendering */}
         <>
           <Header />

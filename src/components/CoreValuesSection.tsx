@@ -4,7 +4,7 @@ import Card from '@/components/Card';
 import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
 export default function CoreValuesSection() {
   return (
-    <section className="w-full max-w-5xl mx-auto py-20 px-4 bg-background-main"> {/* Revert to main background to avoid white-on-white */}
+    <section className="w-full max-w-5xl mx-auto py-20 px-4"> {/* Removed bg-background-main */}
       {/* Use SectionTitle component */}
       <SectionTitle level="section" className="text-center"><span className="">오피스아트 핵심 가치</span></SectionTitle> {/* Use level prop */}
       {/* Added items-stretch to make cards same height */}

@@ -6,7 +6,7 @@ import { HiOutlinePhone as PhoneIcon, HiOutlinePencilSquare as PencilSquareIcon,
 
 export default function InquirySection() {
   return (
-    <section className="w-full bg-background-main py-20 px-4"> {/* Revert to main background color */}
+    <section className="w-full py-20 px-4"> {/* Removed bg-background-main */}
       {/* Use SectionTitle component */}
       <SectionTitle level="section" className="text-center">궁금한 점이 있으신가요?</SectionTitle> {/* Use level prop */}
       {/* Card Container */}
