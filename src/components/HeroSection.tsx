@@ -25,7 +25,7 @@ export default function HeroSection() {
         <p className="text-xl md:text-2xl mb-6 animate-fade-in-up animation-delay-200"> {/* Added animation with delay */}
           정가 <del>45만원</del> <span className="text-accent-yellow font-bold text-2xl md:text-3xl whitespace-nowrap">오픈 기념 특가 월 25만원</span>으로 <span className="text-accent-yellow font-semibold">프리미엄 작업환경</span>에서 <span className="text-accent-yellow font-semibold">몰입</span>하세요
         </p>
-        <p className="text-sm md:text-base text-gray-300 mb-6 animate-fade-in-up animation-delay-400">(<span className="">한정 좌석 특가</span>, 소진 시 조기 마감될 수 있습니다)</p> {/* Added animation with delay */}
+        <p className="text-sm md:text-base text-white mb-6 animate-fade-in-up animation-delay-400">(<span className="">한정 좌석 특가</span>, 소진 시 조기 마감될 수 있습니다)</p> {/* Added animation with delay, changed text color to white */}
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up animation-delay-600">
           <LinkButton href="/pricing" variant="outlineWhite" size="lg"> {/* Added Pricing Button */}
