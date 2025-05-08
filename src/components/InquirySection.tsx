@@ -2,7 +2,7 @@ import LinkButton from '@/components/LinkButton';
 import Card from '@/components/Card'; // Import Card component
 import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
 import { RiKakaoTalkFill } from "react-icons/ri"; // Use Remix Icon for KakaoTalk
-import { HiOutlinePhone as PhoneIcon, HiOutlinePencilSquare as PencilSquareIcon } from 'react-icons/hi2'; // Added PhoneIcon and PencilSquareIcon
+import { HiOutlinePhone as PhoneIcon, HiOutlinePencilSquare as PencilSquareIcon, HiOutlineChatBubbleLeftEllipsis as ChatBubbleLeftEllipsisIcon } from 'react-icons/hi2'; // Added PhoneIcon, PencilSquareIcon and ChatBubbleLeftEllipsisIcon
 
 export default function InquirySection() {
   return (
@@ -48,7 +48,17 @@ export default function InquirySection() {
             iconLeft={<PhoneIcon className="h-5 w-5" />}
             className="w-full" // Make button full width
           >
-            전화 문의 (010-9528-3114)
+            전화 문의
+          </LinkButton>
+          {/* Use LinkButton component for SMS */}
+          <LinkButton
+            href="sms:010-9528-3114"
+            variant="secondary" // Use secondary variant (gray)
+            size="base"
+            iconLeft={<ChatBubbleLeftEllipsisIcon className="h-5 w-5" />}
+            className="w-full" // Make button full width
+          >
+            문자 메시지 문의
           </LinkButton>
         </div>
       </Card> {/* Close Card component */}
