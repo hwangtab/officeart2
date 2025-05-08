@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.example.com/</loc>
+    <!-- Optional: <lastmod>YYYY-MM-DD</lastmod> -->
+    <!-- Optional: <changefreq>daily/weekly/monthly</changefreq> -->
+    <!-- Optional: <priority>0.1-1.0</priority> -->
+  </url>
+  <url>
+    <loc>https://www.example.com/premium-chairs</loc>
+  </url>
+  <url>
+    <loc>https://www.example.com/focus-environment</loc>
+  </url>
+  <url>
+    <loc>https://www.example.com/creator-community</loc>
+  </url>
+  <url>
+    <loc>https://www.example.com/facilities-services</loc>
+  </url>
+  <url>
+    <loc>https://www.example.com/location</loc>
+  </url>
+  <url>
+    <loc>https://www.example.com/pricing</loc>
+  </url>
+  <url>
+    <loc>https://www.example.com/contact</loc>
+  </url>
+</urlset>

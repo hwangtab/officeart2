@@ -1,0 +1,41 @@
+import Image from 'next/image';
+import SectionTitle from './SectionTitle';
+import LinkButton from '@/components/LinkButton';
+
+export default function HeroSection() {
+  return (
+    <section className="relative w-full h-[600px] flex items-center justify-center text-center text-white bg-gray-800 overflow-x-hidden">
+      {/* TODO: Replace with actual high-quality image (정영신 담당자) */}
+      <div className="absolute inset-0">
+        {/* Use Next.js Image component */}
+        <Image
+          src="/images/hero/hero-background.jpg" // 실제 이미지 경로
+          alt="넓은 L자형 책상과 스틸케이스 프리미엄 의자가 놓인 오피스아트의 밝고 쾌적한 내부 작업 공간" // Improved alt text
+          fill // 부모 요소 채우기
+          style={{ objectFit: 'cover' }} // CSS object-fit 적용
+          priority // 중요 이미지 우선 로딩
+          sizes="100vw" // Add sizes attribute for better optimization hint
+        />
+        <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay */}
+      </div>
+      <div className="relative z-10 p-4">
+        <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center text-4xl md:text-5xl lg:text-6xl"> {/* Use level prop */}
+          <span className="">작업실의 본질</span>은 <span className="text-accent-yellow ">'의자'</span>입니다
+        </SectionTitle>
+        <p className="text-xl md:text-2xl mb-6 animate-fade-in-up animation-delay-200"> {/* Added animation with delay */}
+          정가 <del>45만원</del> <span className="text-accent-yellow font-bold text-2xl md:text-3xl">오픈 기념 특가 월 25만원</span>으로 <span className="text-accent-yellow font-semibold">프리미엄 작업환경</span>에서 <span className="text-accent-yellow font-semibold">몰입</span>하세요
+        </p>
+        <p className="text-sm md:text-base text-gray-300 mb-6 animate-fade-in-up animation-delay-400">(<span className="">한정 좌석 특가</span>, 소진 시 조기 마감될 수 있습니다)</p> {/* Added animation with delay */}
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up animation-delay-600">
+          <LinkButton href="/pricing" variant="outlineWhite" size="lg"> {/* Added Pricing Button */}
+            가격 자세히 보기
+          </LinkButton>
+          <LinkButton href="/contact" variant="primary" size="lg">
+            방문 상담 예약하기
+          </LinkButton>
+        </div>
+      </div>
+    </section>
+  );
+}
