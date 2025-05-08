@@ -27,11 +27,11 @@ export default function HeroSection() {
         </p>
         <p className="text-sm md:text-base text-white mb-6 animate-fade-in-up animation-delay-400">(<span className="">한정 좌석 특가</span>, 소진 시 조기 마감될 수 있습니다)</p> {/* Added animation with delay, changed text color to white */}
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up animation-delay-600">
-          <LinkButton href="/pricing" variant="outlineWhite" size="lg"> {/* Added Pricing Button */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up animation-delay-600 px-4 sm:px-0">
+          <LinkButton href="/pricing" variant="outlineWhite" size="lg" className="w-full sm:w-auto"> {/* Added Pricing Button */}
             가격 자세히 보기
           </LinkButton>
-          <LinkButton href="/contact" variant="primary" size="lg">
+          <LinkButton href="/contact" variant="primary" size="lg" className="w-full sm:w-auto">
             방문 상담 예약하기
           </LinkButton>
         </div>
