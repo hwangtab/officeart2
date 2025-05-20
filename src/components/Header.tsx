@@ -178,14 +178,15 @@ export default function Header() {
                     </span>
                   ) : (
                     // 하위 메뉴 또는 단일 메뉴 항목 (링크)
-                    <Link href={item.href!} legacyBehavior>
-                      <a className={`px-1 py-2 text-sm rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
+                    <Link
+                      href={item.href!}
+                      className={`px-1 py-2 text-sm rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
                         active
                           ? 'font-bold text-orange-300' // Active style
                           : 'hover:text-orange-300' // Hover style (removed underline)
-                      }`}>
-                        {item.name}
-                      </a>
+                      }`}
+                    >
+                      {item.name}
                     </Link>
                   )}
                 </li>

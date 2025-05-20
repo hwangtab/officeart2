@@ -117,10 +117,9 @@ export default function FocusEnvironmentPage() {
               <thead>
                 {/* Adjust header background and text color */}
                 <tr className="bg-gray-50">
-                  {/* Reduced padding for mobile */}
                   <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">항목</th>
-                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">카페</th> {/* Reverted to text-left */}
-                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-primary">오피스아트</th> {/* Reverted to text-left */}
+                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">카페</th>
+                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-primary">오피스아트</th>
                 </tr>
               </thead>
               <tbody>
@@ -133,32 +132,26 @@ export default function FocusEnvironmentPage() {
                   { item: '의자', icon: <ChairIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '불편한 카페 의자', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '180만원대 프리미엄 의자', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } }, // Updated price
                   { item: '네트워크', icon: <WifiIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '불안정할 수 있음', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '안정적인 기가 인터넷', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
                 ].map((row, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>{/* Item Column with Icon */}
-                    {/* Reduced padding, allow word break */}
+                  <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="py-3 px-4 border-b font-medium whitespace-normal" data-label="항목">
-                      <div className="flex items-center gap-1"> {/* Removed whitespace-nowrap */}
-                        {/* Adjust icon color */}
+                      <div className="flex items-center gap-1">
                         {React.cloneElement(row.icon, { className: "h-5 w-5 text-text-secondary flex-shrink-0" })}
                         <span>{row.item}</span>
                       </div>
                     </td>
-                    {/* Cafe Column with Icon */}
-                    {/* Reduced padding, allow word break */}
-                    <td className="py-3 px-4 border-b whitespace-normal" data-label="카페"> {/* Removed text-center */}
-                      <div className="flex items-center gap-1"> {/* Removed justify-center */}
+                    <td className="py-3 px-4 border-b whitespace-normal" data-label="카페">
+                      <div className="flex items-center gap-1">
                         {React.cloneElement(row.cafe.icon, { className: "h-5 w-5 text-warning-red flex-shrink-0" })}
                         <span>{row.cafe.text}</span>
                       </div>
                     </td>
-                    {/* Office Art Column with Icon and Highlight */}
-                    {/* Adjust highlight background and text color */}
-                    {/* Reduced padding, allow word break */}
-                    <td className="py-3 px-4 border-b border-border-light bg-orange-50 whitespace-normal" data-label="오피스아트"> {/* Removed text-center */}
-                      <div className="flex items-center gap-1  text-primary"> {/* Removed justify-center */}
+                    <td className="py-3 px-4 border-b border-border-light bg-orange-50 whitespace-normal" data-label="오피스아트">
+                      <div className="flex items-center gap-1 text-primary">
                         {React.cloneElement(row.officeart.icon, { className: "h-5 w-5 text-success-green flex-shrink-0" })}
                         <span>{row.officeart.text}</span>
                       </div>
-                    </td></tr>
+                    </td>
+                  </tr>
                 ))}
               </tbody>
             </table>
@@ -179,10 +172,9 @@ export default function FocusEnvironmentPage() {
               <thead>
                 {/* Adjust header background and text color */}
                 <tr className="bg-gray-50">
-                  {/* Reduced padding for mobile */}
                   <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">항목</th>
-                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">일반 공유오피스</th> {/* Reverted to text-left */}
-                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-primary">오피스아트</th> {/* Reverted to text-left */}
+                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">일반 공유오피스</th>
+                  <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-primary">오피스아트</th>
                 </tr>
               </thead>
               <tbody>
@@ -197,32 +189,26 @@ export default function FocusEnvironmentPage() {
                   { item: '네트워킹', icon: <PersonalSpaceIcon className="h-5 w-5 text-text-secondary" />, general: { text: '일반적', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '웹툰/일러스트 특화', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } }, // Reusing PersonalSpaceIcon for Networking
                   { item: '특화 서비스', icon: <ServiceIcon className="h-5 w-5 text-text-secondary" />, general: { text: '일반적', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '창작자 특화 서비스', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
                 ].map((row, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>{/* Item Column with Icon */}
-                    {/* Reduced padding, allow word break */}
+                  <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="py-3 px-4 border-b font-medium whitespace-normal" data-label="항목">
-                      <div className="flex items-center gap-1"> {/* Removed whitespace-nowrap */}
-                        {/* Adjust icon color */}
+                      <div className="flex items-center gap-1">
                         {React.cloneElement(row.icon, { className: "h-5 w-5 text-text-secondary flex-shrink-0" })}
                         <span>{row.item}</span>
                       </div>
                     </td>
-                    {/* General Column with Icon */}
-                    {/* Reduced padding, allow word break */}
-                    <td className="py-3 px-4 border-b whitespace-normal" data-label="일반 공유오피스"> {/* Removed text-center */}
-                      <div className="flex items-center gap-1"> {/* Removed justify-center */}
+                    <td className="py-3 px-4 border-b whitespace-normal" data-label="일반 공유오피스">
+                      <div className="flex items-center gap-1">
                         {React.cloneElement(row.general.icon, { className: "h-5 w-5 text-warning-red flex-shrink-0" })}
                         <span>{row.general.text}</span>
                       </div>
                     </td>
-                    {/* Office Art Column with Icon and Highlight */}
-                    {/* Adjust highlight background and text color */}
-                    {/* Reduced padding, allow word break */}
-                    <td className="py-3 px-4 border-b border-border-light bg-orange-50 whitespace-normal" data-label="오피스아트"> {/* Removed text-center */}
-                      <div className="flex items-center gap-1  text-primary"> {/* Removed justify-center */}
+                    <td className="py-3 px-4 border-b border-border-light bg-orange-50 whitespace-normal" data-label="오피스아트">
+                      <div className="flex items-center gap-1 text-primary">
                         {React.cloneElement(row.officeart.icon, { className: "h-5 w-5 text-success-green flex-shrink-0" })}
                         <span>{row.officeart.text}</span>
                       </div>
-                    </td></tr>
+                    </td>
+                  </tr>
                 ))}
               </tbody>
             </table>

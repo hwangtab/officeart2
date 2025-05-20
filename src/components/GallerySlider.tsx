@@ -35,9 +35,10 @@ export default function GallerySlider() {
     // Removed ScrollAnimationWrapper
     <div className="w-full rounded-lg overflow-hidden shadow-lg"> {/* Replaced ScrollAnimationWrapper with a simple div */}
       <Swiper
-        modules={[Navigation, Pagination, Autoplay, EffectFade]} // Add EffectFade module
-        effect="fade" // Set effect to fade
-        fadeEffect={{ crossFade: true }} // Optional: smoother crossfade
+        modules={[Navigation, Pagination, Autoplay, EffectFade]}
+        effect="fade"
+        fadeEffect={{ crossFade: true }}
+        speed={800} // Increase transition speed
         spaceBetween={0} // No space between slides
         slidesPerView={1} // Show one slide at a time
         navigation // Enable navigation arrows
@@ -52,14 +53,15 @@ export default function GallerySlider() {
       >
         {galleryImages.map((src, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full overflow-hidden group">
               <Image
                 src={src}
-                alt={`오피스아트 갤러리 ${index + 1}: [${src.split('/').pop()?.split('.')[0] || '이미지 설명'}]`} // Improved alt text format
+                alt={`오피스아트 갤러리 ${index + 1}: [${src.split('/').pop()?.split('.')[0] || '이미지 설명'}]`}
                 fill
                 style={{ objectFit: 'cover' }}
-                sizes="100vw" // Adjust sizes as needed
-                priority={index < 2} // Prioritize loading the first few images
+                sizes="100vw"
+                priority={index < 2}
+                className="transition-transform duration-500 ease-in-out group-hover:scale-105 cursor-pointer"
               />
             </div>
           </SwiperSlide>
