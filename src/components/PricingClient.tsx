@@ -23,7 +23,6 @@ import BackButton from '@/components/BackButton';
 
 export default function PricingClient() {
   // --- State for Interactivity ---
-  const [dailyPackage] = useState<string>('1day');
 
   // --- Data (Keep existing data) ---
   const coworkingComparison = [

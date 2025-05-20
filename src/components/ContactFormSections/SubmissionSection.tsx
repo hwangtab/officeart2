@@ -2,7 +2,7 @@ import React, { useState } from 'react'; // Import useState
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
 import { ContactFormData } from '@/types/contactForm'; // Import shared type
 import Modal from '@/components/Modal'; // Import the Modal component
-import { HiArrowPath, HiPaperAirplane } from 'react-icons/hi2'; // Import spinner icon and paper airplane icon
+import { HiPaperAirplane } from 'react-icons/hi2'; // Import paper airplane icon
 import { UnifiedButton } from '../UnifiedButton'; // 경로 확인 필요
 
 // Updated Privacy Policy Content
