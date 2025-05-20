@@ -2,9 +2,6 @@ import React, { ElementType, ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
-// Define alignment options
-type Align = 'left' | 'center' | 'right';
-
 // Define variants using cva
 const sectionTitleVariants = cva(
   'font-bold', // Base style

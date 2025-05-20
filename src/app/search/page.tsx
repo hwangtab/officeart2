@@ -5,7 +5,6 @@ import { Suspense, useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import BackButton from '@/components/BackButton';
 import SectionTitle from '@/components/SectionTitle';
-import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
 import Fuse from 'fuse.js';
 // Import types using 'import type'
 import type { FuseResult, IFuseOptions } from 'fuse.js';

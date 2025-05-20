@@ -7,9 +7,6 @@ const withBundleAnalyzer = withBundleAnalyzerFactory({
 const nextConfig = {
   /* config options here */
   output: 'export', // Keep for static export
-  experimental: {
-    instrumentationHook: false
-  },
   // basePath: '/officeart2', // Removed for custom domain
   images: {
     unoptimized: true, // Disable Image Optimization for static export

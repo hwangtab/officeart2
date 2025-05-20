@@ -2,7 +2,6 @@
 
 import dynamic from 'next/dynamic';
 import React from 'react'; // Import React for JSX
-import ScrollAnimationWrapper from './ScrollAnimationWrapper'; // Import wrapper
 
 // Skeleton UI Component
 const GallerySkeleton = () => (

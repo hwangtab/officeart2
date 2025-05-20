@@ -7,13 +7,12 @@ import LinkButton from '@/components/LinkButton';
 import SectionTitle from '@/components/SectionTitle';
 import Card from '@/components/Card';
 import {
-  HiOutlineDocumentText as ContractIcon, HiOutlineCreditCard as PaymentIcon, HiOutlinePhone as PhoneIcon,
+  HiOutlineDocumentText as ContractIcon, HiOutlineCreditCard as PaymentIcon,
   HiOutlineCurrencyDollar as CurrencyDollarIcon, HiOutlineRectangleGroup as ChairIcon, HiOutlineComputerDesktop as DeskIcon,
   HiOutlineSparkles as CoffeeIcon, HiOutlinePrinter as PrinterIcon, HiOutlineCalendarDays as CalendarDaysIcon,
   HiOutlineLockClosed as LockClosedIcon, HiOutlineUserGroup as UsersIcon, HiOutlineWrenchScrewdriver as WrenchIcon,
   HiOutlineWifi as WifiIcon, HiOutlineNoSymbol as NoSymbolIcon, HiOutlineClock as ClockIcon,
   HiOutlineCheckCircle as CheckCircleIcon, HiOutlineXCircle as XCircleIcon, HiOutlineCalendar as CalendarIcon, // Added for Visit Booking
-  HiOutlineChatBubbleLeftRight as ChatIcon // Added for Online Inquiry
 } from 'react-icons/hi2';
 import { RiKakaoTalkFill } from "react-icons/ri";
 import BackButton from '@/components/BackButton';
@@ -21,24 +20,10 @@ import BackButton from '@/components/BackButton';
 // Define types for pricing options if needed later
 // interface MonthlyOption { ... }
 // Define price constants and types
-const MONTHLY_BASE_PRICE = 250000; // 오픈 특가
-const DAILY_PRICES: { [key: string]: number } = {
-  '1day': 20000,
-  '3days': 50000,
-  '5days': 80000,
-  '10days': 150000,
-};
-const DAILY_PACKAGE_LABELS: { [key: string]: string } = {
-  '1day': '1일 이용',
-  '3days': '3일 패키지',
-  '5days': '5일 패키지',
-  '10days': '10일 패키지',
-};
 
 export default function PricingClient() {
   // --- State for Interactivity ---
-  const [dailyPackage, setDailyPackage] = useState<string>('1day');
-  const [selectedDailyPrice, setSelectedDailyPrice] = useState<number>(DAILY_PRICES['1day']);
+  const [dailyPackage] = useState<string>('1day');
 
   // --- Data (Keep existing data) ---
   const coworkingComparison = [
@@ -64,16 +49,6 @@ export default function PricingClient() {
     { item: '출력 서비스', icon: <PrinterIcon />, cafe: { text: '없음', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '무제한 무료', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
     { item: '네트워크', icon: <WifiIcon />, cafe: { text: '불안정', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '안정적인 기가 인터넷', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
   ];
-
-  // --- Calculation Logic ---
-  React.useEffect(() => {
-    setSelectedDailyPrice(DAILY_PRICES[dailyPackage]);
-  }, [dailyPackage]);
-
-  // Helper to format currency
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('ko-KR').format(amount);
-  };
 
   return (
     <div className="w-full max-w-5xl mx-auto">
