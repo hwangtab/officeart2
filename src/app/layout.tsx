@@ -1,8 +1,9 @@
-// Removed 'use client' to make it a Server Component
+// Server Component
 
 // Removed useState, useEffect imports
 import type { Metadata } from 'next'; // Import Metadata type
 import { Noto_Sans_KR } from "next/font/google";
+
 import localFont from 'next/font/local'; // Import localFont
 // Removed SplashScreen import
 import Header from "@/components/Header";

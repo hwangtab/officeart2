@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper'; // Import the wrapper
+import PopupBannerWrapper from '@/components/PopupBannerWrapper';
 // Import section components
 import HeroSection from '@/components/HeroSection';
 import CoreValuesSection from '@/components/CoreValuesSection';
@@ -22,7 +23,9 @@ export const metadata: Metadata = {
 export default function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center">
+    <>
+      <PopupBannerWrapper />
+      <main className="flex min-h-screen flex-col items-center">
       {/* 1. Hero Section */}
       <HeroSection /> {/* Hero section usually doesn't need scroll animation */}
 
@@ -44,6 +47,7 @@ export default function Home() {
       <ScrollAnimationWrapper>
         <InquirySection />
       </ScrollAnimationWrapper>
-    </main>
+      </main>
+    </>
   );
 }
