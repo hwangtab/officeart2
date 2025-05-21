@@ -1,5 +1,5 @@
 export async function queryOpenRouter(prompt: string) {
-  const apiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY || '';
+  const apiKey = process.env.OPENROUTER_API_KEY || '';
   const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST',
     headers: {

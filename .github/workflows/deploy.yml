@@ -1,47 +1,27 @@
-name: Deploy to GitHub Pages
+name: Deploy with OpenRouter API Key
 
 on:
   push:
-    branches:
-      - main # main 브랜치에 푸시될 때 실행
-  workflow_dispatch: # 수동 실행 옵션
-
-permissions:
-  contents: read
-  pages: write # pages 배포 권한
-  id-token: write # OIDC 토큰 발급 권한
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: '20.x' # 확인된 Node.js 버전
-          cache: 'npm'
+          node-version: 18
+          
       - name: Install dependencies
-        run: npm ci
-      - name: Build Next.js site
-        run: npm run build # next.config.mjs에 output: 'export' 설정 필요
+        run: npm install
+        
+      - name: Build with OpenRouter key
         env:
-          # 빌드 시 환경 변수가 필요하다면 여기에 추가
-          # NEXT_PUBLIC_EXAMPLE_VAR: ${{ secrets.EXAMPLE_VAR }}
-          NEXT_PUBLIC_BASE_PATH: '' # GitHub Pages 루트에서 서비스할 경우 빈 문자열 또는 생략
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out # Next.js 정적 빌드 출력 디렉토리
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: npm run build
+        
+      - name: Run tests
+        run: npm test
