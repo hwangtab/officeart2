@@ -10,7 +10,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production
+    # environment: production (주석 처리 - 환경 설정 전)
     steps:
       - uses: actions/checkout@v4
       
@@ -29,10 +29,5 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v30
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          scope: ${{ secrets.VERCEL_SCOPE }}
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
