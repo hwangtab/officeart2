@@ -54,8 +54,8 @@ export default function CoreValuesSection() {
             {/* p-6 is now handled by Card component */}
             {/* Added flex-grow to make text content fill available space */}
             <div className="flex-grow flex flex-col justify-center pt-4">
-              <SectionTitle as="h3" level="card"><span className="">집중이 잘 되는 공간</span></SectionTitle> {/* Use level prop */}
-              <p className="text-text-secondary">모든 요소가 <span className="">집중</span>을 위해 설계되었습니다</p> {/* Use secondary text color */}
+              <SectionTitle as="h3" level="card"><span className="">창작자를 이해하는 작업환경</span></SectionTitle> {/* Use level prop */}
+              <p className="text-text-secondary">모든 요소가 <span className="">창작 활동</span>을 위해 설계되었습니다</p> {/* Use secondary text color */}
             </div>
           </Card>
         </Link>
@@ -82,8 +82,8 @@ export default function CoreValuesSection() {
             {/* Added flex-grow to make text content fill available space */}
             {/* Added flex-grow to make text content fill available space */}
             <div className="flex-grow flex flex-col justify-center pt-4">
-              <SectionTitle as="h3" level="card"><span className="">웹툰/일러스트레이터</span>가 함께합니다</SectionTitle> {/* Use level prop */}
-              <p className="text-text-secondary">같은 분야 <span className="">크리에이터</span>와 함께하는 공간</p> {/* Use secondary text color */}
+              <SectionTitle as="h3" level="card"><span className="">약 630명 창작자 네트워크</span></SectionTitle> {/* Use level prop */}
+              <p className="text-text-secondary">다양한 분야 <span className="">창작자</span>들이 활동하는 협동조합이 운영합니다</p> {/* Use secondary text color */}
             </div>
           </Card>
         </Link>

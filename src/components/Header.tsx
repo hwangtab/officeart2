@@ -27,7 +27,7 @@ const navItems: NavItem[] = [
     children: [
       { name: '프리미엄 의자', href: '/premium-chairs' },
       { name: '집중 환경', href: '/focus-environment' },
-      { name: '크리에이터 커뮤니티', href: '/creator-community' },
+      { name: '창작자 커뮤니티', href: '/creator-community' },
     ],
   },
   {

@@ -21,7 +21,7 @@ export default function CreatorCommunityPage() {
   return (
     <main className="flex min-h-screen flex-col items-center py-20 px-4">
       <div className="w-full max-w-5xl mx-auto">
-        <SectionTitle as="h1" level="page" align="center">함께 성장하는 <span className="">크리에이터 커뮤니티</span></SectionTitle> {/* Use level prop */}
+        <SectionTitle as="h1" level="page" align="center">함께 성장하는 <span className="">창작자 커뮤니티</span></SectionTitle> {/* Use level prop */}
 
         {/* 1. Community Introduction (4.4 커뮤니티 소개) */}
         {/* Use Card and SectionTitle */}
