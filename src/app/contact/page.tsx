@@ -37,13 +37,6 @@ export default function ContactPage() {
         {/* Restore h1 for page title, apply styles directly */}
         <SectionTitle as="h1" level="page" align="center" className="text-text-primary">상담 및 문의</SectionTitle> {/* Use level prop */}
 
-        {/* Render the client component for the form (no searchParams prop needed) */}
-        <ScrollAnimationWrapper>
-          <Suspense fallback={<div>Loading...</div>}> {/* Wrap ContactForm with Suspense */}
-            <ContactForm />
-          </Suspense>
-        </ScrollAnimationWrapper>
-
         {/* 2. KakaoTalk Section (4.8 카카오톡 상담) */}
         <ScrollAnimationWrapper>
           <section className="mb-16 text-center">
@@ -97,10 +90,17 @@ export default function ContactPage() {
                 </div>
             </div>
           </Card>
-        </ScrollAnimationWrapper>
+       </ScrollAnimationWrapper>
 
-        {/* Back to Home Button */}
-        <BackButton />
+       {/* Render the client component for the form (no searchParams prop needed) */}
+       <ScrollAnimationWrapper>
+         <Suspense fallback={<div>Loading...</div>}> {/* Wrap ContactForm with Suspense */}
+           <ContactForm />
+         </Suspense>
+       </ScrollAnimationWrapper>
+
+       {/* Back to Home Button */}
+       <BackButton />
       </div>
     </main>
   );
