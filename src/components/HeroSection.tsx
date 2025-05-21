@@ -29,13 +29,13 @@ export default function HeroSection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 px-4 sm:px-0 animate-fade-in-up animation-delay-600">
           <div className="transition-transform duration-300 hover:scale-105 active:scale-95">
-            <LinkButton href="/pricing" variant="outlineWhite" size="lg" className="w-full sm:w-auto">
-              가격 자세히 보기
+            <LinkButton href="/pricing" variant="primary" size="lg" className="w-full sm:w-auto min-w-[100px] bg-amber-400 hover:bg-amber-500 text-gray-900">
+              가격보기
             </LinkButton>
           </div>
           <div className="transition-transform duration-300 hover:scale-105 active:scale-95">
-            <LinkButton href="/contact" variant="primary" size="lg" className="w-full sm:w-auto">
-              방문 상담 예약하기
+            <LinkButton href="/contact" variant="primary" size="lg" className="w-full sm:w-auto min-w-[100px]">
+              연락하기
             </LinkButton>
           </div>
         </div>
