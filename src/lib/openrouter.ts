@@ -1,5 +1,6 @@
 export async function queryOpenRouter(prompt: string) {
-  const apiKey = process.env.OPENROUTER_API_KEY || '';
+  const apiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY || '';
+  console.log('OpenRouter API Key loaded:', apiKey ? '***masked***' : 'NOT FOUND');
   const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -64,6 +65,12 @@ export async function queryOpenRouter(prompt: string) {
   });
 
   if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    console.error('OpenRouter API error:', {
+      status: response.status,
+      statusText: response.statusText,
+      errorData
+    });
     throw new Error(`OpenRouter API error: ${response.statusText}`);
   }
 
