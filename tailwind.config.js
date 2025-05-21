@@ -19,6 +19,11 @@ const config = {
         'accent-blue': '#4FC3F7', // Light Blue 400 (Accent)
         'accent-yellow': '#FFF176', // Yellow 400 (Accent)
         'accent-green': '#80CBC4', // Teal 200 (Accent)
+        'amber': {
+          400: '#FBBF24', // Amber 400
+          500: '#F59E0B', // Amber 500
+          600: '#D97706', // Amber 600
+        },
         'text-primary': '#424242', // Grey 800 (Primary text)
         'text-secondary': '#757575', // Grey 600 (Secondary text)
         'text-on-primary': '#FFFFFF', // White (Text on primary color)
