@@ -19,11 +19,11 @@ export default function HeroSection() {
         <div className="absolute inset-0 [background:linear-gradient(to_bottom,rgba(0,0,0,0.6)_0%,rgba(0,0,0,0.2)_50%,rgba(0,0,0,0)_100%)]"></div> {/* Lighter Black Gradient Overlay */}
       </div>
       <div className="relative z-10 p-4">
-        <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center text-4xl md:text-5xl lg:text-6xl"> {/* Use level prop */}
+        <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl break-words px-4"> {/* Use level prop */}
           <span className="">작업실의 본질</span>은 <span className="text-accent-yellow ">'의자'</span>입니다
         </SectionTitle>
-        <p className="text-xl md:text-2xl mb-6 animate-fade-in-up animation-delay-200"> {/* Added animation with delay */}
-          <span className="font-bold text-xl md:text-3xl whitespace-normal md:whitespace-nowrap">방사 회원 특별 이벤트 <span className="text-accent-yellow">5월 입주시 45만원→25만원</span> 평생할인!</span>
+        <p className="text-lg sm:text-xl md:text-xl lg:text-2xl mb-6 animate-fade-in-up animation-delay-200 px-4"> {/* Added animation with delay */}
+          <span className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl break-words md:whitespace-nowrap">방사 회원 특별 이벤트 <span className="text-accent-yellow">5월 입주시 45만원→25만원</span> 평생할인!</span>
         </p>
         <p className="text-sm md:text-base text-white mb-6 animate-fade-in-up animation-delay-400">(<span className="">한정 좌석 특가</span>, 소진 시 조기 마감될 수 있습니다)</p> {/* Added animation with delay, changed text color to white */}
         {/* CTA Buttons */}

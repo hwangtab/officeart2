@@ -1,3 +1,4 @@
+import AIChatWidget from '@/components/AIChatWidget';
 // Server Component
 
 // Removed useState, useEffect imports
@@ -151,6 +152,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />
+          <AIChatWidget />
         </>
       </body>
     </html>
