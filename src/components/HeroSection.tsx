@@ -23,7 +23,11 @@ export default function HeroSection() {
           <span className="text-accent-yellow">창작자가 창작자를 위해 만든 작업실</span>, <span className="">오피스아트</span>
         </SectionTitle>
         <p className="text-lg sm:text-xl md:text-xl lg:text-2xl mb-6 animate-fade-in-up animation-delay-200 px-4"> {/* Added animation with delay */}
-          <span className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl break-words md:whitespace-nowrap"><span className="text-accent-yellow">합리적 가격</span>으로 즐기는 <span className="text-accent-yellow">프리미엄 작업 환경</span></span>
+          <span className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl break-words">
+            <span className="text-accent-yellow">합리적 가격</span>으로{' '}
+            <span className="md:hidden"><br/></span>
+            즐기는 <span className="text-accent-yellow">프리미엄 작업 환경</span>
+          </span>
         </p>
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 px-4 sm:px-0 animate-fade-in-up animation-delay-600">
