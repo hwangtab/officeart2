@@ -6,7 +6,12 @@ const withBundleAnalyzer = withBundleAnalyzerFactory({
 
 const nextConfig = {
   /* config options here */
-  output: 'export', // Keep for static export
+  output: 'standalone', // Vercel 최적화 모드
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['officeart.co.kr', 'localhost:3000']
+    }
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
