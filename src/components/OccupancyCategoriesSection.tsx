@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckIcon } from '@heroicons/react/24/outline';
 import SectionTitle from './SectionTitle';
+import Link from 'next/link';
 
 interface CategoryItem {
   id: number;
@@ -81,9 +82,11 @@ const OccupancyCategoriesSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12" data-testid="occupancy-categories">
           {categories.map((category) => (
-            <div 
+            <Link
               key={category.id}
-              className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              href="/contact"
+              className="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              aria-label={`${category.name} 상담 신청하기`}
             >
               <h3 className="text-xl font-bold mb-4">{category.name}</h3>
               <ul className="space-y-2">
@@ -94,7 +97,7 @@ const OccupancyCategoriesSection = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
