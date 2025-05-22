@@ -4,6 +4,7 @@ import PopupBannerWrapper from '@/components/PopupBannerWrapper';
 // Import section components
 import HeroSection from '@/components/HeroSection';
 import CoreValuesSection from '@/components/CoreValuesSection';
+import OccupancyCategoriesSection from '@/components/OccupancyCategoriesSection';
 import AtAGlanceSection from '@/components/AtAGlanceSection';
 import GallerySection from '@/components/GallerySection';
 import InquirySection from '@/components/InquirySection';
@@ -34,7 +35,12 @@ export default function Home() {
         <CoreValuesSection />
       </ScrollAnimationWrapper>
 
-      {/* 3. At-a-Glance Section */}
+      {/* 3. Occupancy Categories Section */}
+      <ScrollAnimationWrapper>
+        <OccupancyCategoriesSection />
+      </ScrollAnimationWrapper>
+
+      {/* 4. At-a-Glance Section */}
       <ScrollAnimationWrapper>
         <AtAGlanceSection />
       </ScrollAnimationWrapper>
