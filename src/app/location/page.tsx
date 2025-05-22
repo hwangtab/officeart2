@@ -1,5 +1,4 @@
 'use client';
-import type { Metadata } from 'next'; // Import Metadata type
 
 declare global {
   interface Window {
@@ -40,12 +39,6 @@ import {
 import { RiKakaoTalkFill } from "react-icons/ri"; // Use KakaoTalk icon for Kakao Map link
 // Removed FaMapMarkerAlt import
 import { SiNaver as NaverIcon } from "react-icons/si"; // Import Naver icon from Simple Icons
-
-// Add metadata for the location page
-export const metadata: Metadata = {
-  title: "오시는 길 | 오피스아트",
-  description: "오피스아트 위치(영등포구청역 도보 3분), 지도, 대중교통(지하철, 버스), 주차 정보, 주변 편의시설 안내.",
-};
 
 import { useEffect } from 'react';
 export default function LocationPage() {
