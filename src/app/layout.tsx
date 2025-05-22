@@ -54,12 +54,12 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl), // Required for resolving relative image paths
   title: {
-    default: '오피스아트 | 창작자를 위한 집중 공간', // Default title
+    default: '오피스아트 | 합리적 가격으로 즐기는 프리미엄 작업 환경', // Default title
     template: '%s | 오피스아트', // Title template for subpages
   },
   description: '웹툰/일러스트 작가를 위한 최고의 선택! 영등포구청역 오피스아트에서 프리미엄 의자, 160cm L형 책상과 함께 압도적인 집중 환경을 경험하세요.', // Updated description
   openGraph: {
-    title: '오피스아트 | 창작자를 위한 집중 공간',
+    title: '오피스아트 | 합리적 가격으로 즐기는 프리미엄 작업 환경',
     description: '웹툰/일러스트 작가를 위한 최고의 선택! 영등포구청역 오피스아트에서 프리미엄 의자, 160cm L형 책상과 함께 압도적인 집중 환경을 경험하세요.', // Updated OG description
     url: siteUrl,
     siteName: '오피스아트',
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '오피스아트 | 창작자를 위한 집중 공간',
+    title: '오피스아트 | 합리적 가격으로 즐기는 프리미엄 작업 환경',
     description: '웹툰/일러스트 작가를 위한 최고의 선택! 영등포구청역 오피스아트에서 프리미엄 의자, 160cm L형 책상과 함께 압도적인 집중 환경을 경험하세요.', // Updated Twitter description
     images: [`${siteUrl}/og-image.png`], // Use absolute URL for Twitter card
   },
