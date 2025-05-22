@@ -153,6 +153,8 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
           <AIChatWidget />
+          {/* 네이버 서치어드바이저 소유권 확인 */}
+          <meta name="naver-site-verification" content="46c6013ba87872d453dc8ce6631eaa1e8ff18386" />
         </>
       </body>
     </html>

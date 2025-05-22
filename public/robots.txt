@@ -1,6 +1,11 @@
-# Allow all crawlers access to all content
+# Allow all search engines to crawl the site
 User-agent: *
 Allow: /
 
-# Sitemap location (Update with your actual domain)
-Sitemap: https://www.example.com/sitemap.xml
+# Sitemap location
+Sitemap: https://www.officeart.co.kr/sitemap.xml
+
+# Disallow crawling of admin and private pages
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
