@@ -4,7 +4,7 @@ import LinkButton from '@/components/LinkButton';
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-[600px] flex items-center justify-center text-center text-white bg-gray-800 overflow-x-hidden">
+    <section className="relative w-full h-[550px] flex items-center justify-center text-center text-white bg-gray-800 overflow-x-hidden">
       {/* TODO: Replace with actual high-quality image (정영신 담당자) */}
       <div className="absolute inset-0">
         {/* Use Next.js Image component */}
@@ -18,7 +18,7 @@ export default function HeroSection() {
         />
         <div className="absolute inset-0 [background:linear-gradient(to_bottom,rgba(0,0,0,0.6)_0%,rgba(0,0,0,0.2)_50%,rgba(0,0,0,0)_100%)]"></div> {/* Lighter Black Gradient Overlay */}
       </div>
-      <div className="relative z-10 p-4">
+      <div className="relative z-10 px-4 py-8 w-full max-w-4xl mx-auto">
         <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl break-words px-4"> {/* Use level prop */}
           <span className="text-accent-yellow">창작자가 창작자를 위해 만든 작업실</span>, <span className="">오피스아트</span>
         </SectionTitle>
@@ -30,7 +30,7 @@ export default function HeroSection() {
           </span>
         </p>
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 px-4 sm:px-0 animate-fade-in-up animation-delay-600">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8 animate-fade-in-up animation-delay-600">
           <div className="transition-transform duration-300 hover:scale-105 active:scale-95">
             <a
               href="/pricing"
