@@ -1,4 +1,22 @@
+'use client';
 import type { Metadata } from 'next'; // Import Metadata type
+
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+
+interface KakaoAddressSearchResult {
+  address_name: string;
+  y: string;
+  x: string;
+  address_type: string;
+  road_address?: {
+    address_name: string;
+    building_name: string;
+  };
+}
 // Removed unused Link import
 import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper'; // Import wrapper
 import BackButton from '@/components/BackButton';
@@ -29,9 +47,57 @@ export const metadata: Metadata = {
   description: "오피스아트 위치(영등포구청역 도보 3분), 지도, 대중교통(지하철, 버스), 주차 정보, 주변 편의시설 안내.",
 };
 
+import { useEffect } from 'react';
 export default function LocationPage() {
   const officeAddress = "서울특별시 영등포구 양산로 96 오피스아트";
-  // TODO: Get Google Maps API Key from 황경하
+  const kakaoMapApiKey = "9b52ab4382965154f8f524a4c8c37099";
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoMapApiKey}&libraries=services&autoload=false`;
+    script.onload = () => {
+      if (!window.kakao) return;
+      
+      window.kakao.maps.load(() => {
+        const container = document.getElementById('kakao-map-container');
+        if (!container) return;
+        
+        const options = {
+          center: new window.kakao.maps.LatLng(37.523806772049696, 126.89100097651672),
+          level: 3
+        };
+        const map = new window.kakao.maps.Map(container, options);
+
+        // 주소로 좌표 검색
+        const geocoder = new window.kakao.maps.services.Geocoder();
+        geocoder.addressSearch(officeAddress, (result: KakaoAddressSearchResult[], status: string) => {
+          if (status === window.kakao.maps.services.Status.OK && result[0]) {
+            const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
+            
+            // 지도 중심 변경
+            map.setCenter(coords);
+            
+            // 마커 생성 및 표시
+            const marker = new window.kakao.maps.Marker({
+              map: map,
+              position: coords
+            });
+
+            // 인포윈도우로 장소 표시
+            const infowindow = new window.kakao.maps.InfoWindow({
+              content: '<div style="width:150px;text-align:center;padding:6px 0;">오피스아트</div>'
+            });
+            infowindow.open(map, marker);
+          }
+        });
+      });
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, [officeAddress, kakaoMapApiKey]);
 
   // Function to generate map links (basic example)
   const getNaverMapUrl = () => `https://map.naver.com/v5/search/${encodeURIComponent(officeAddress)}`;
@@ -48,18 +114,9 @@ export default function LocationPage() {
         <ScrollAnimationWrapper>
           <Card className="mb-16">
           <SectionTitle as="h2" level="section" className="text-center">지도</SectionTitle> {/* Use level prop */}
-          {/* Google Map iframe */}
-          <div className="w-full h-[450px] rounded-lg overflow-hidden mb-6 shadow"> {/* Added shadow */}
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.326216325662!2d126.89100097651672!3d37.523806772049696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9fafc70f3463%3A0x9b1cfd246f0445fa!2z7Jik7ZS87Iqk7JWE7Yq4IOyYiOyIoOyduCDqs7XsnKDsnpHsl4Xsi6QsIOqzteycoOyYpO2UvOyKpA!5e0!3m2!1sko!2skr!4v1744362971639!5m2!1sko!2skr" // 제공된 iframe src로 교체
-              width="100%" // Tailwind로 제어되므로 유지 또는 제거 가능
-              height="100%" // Tailwind로 제어되므로 유지 또는 제거 가능
-              style={{ border: 0 }}
-              allowFullScreen={false} // allowfullscreen="" 대신 false 사용
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="오피스아트 위치 지도" // title 추가
-            ></iframe>
+          {/* Kakao Map Container */}
+          <div className="w-full h-[450px] rounded-lg overflow-hidden mb-6 shadow" id="kakao-map-container">
+            {/* Map will be rendered here */}
           </div>
           <p className="text-center text-lg font-medium mb-4 flex items-center justify-center gap-2">
              <MapPinIcon className="h-5 w-5 text-red-600" />
