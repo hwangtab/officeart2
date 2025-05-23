@@ -20,7 +20,7 @@ export default function HeroSection() {
       </div>
       <div className="relative z-10 px-4 py-8 w-full max-w-4xl mx-auto">
         <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl break-words px-4"> {/* Use level prop */}
-          <span className="text-accent-yellow">창의력과 집중력이 피어나는 작업 공간</span>, <span className="">오피스아트</span>
+          <span className="text-accent-yellow">창의력과 집중력이 피어나는 작업 공간</span> <span className="">오피스아트</span>
         </SectionTitle>
         <p className="text-lg sm:text-xl md:text-xl lg:text-2xl mb-6 animate-fade-in-up animation-delay-200 px-4"> {/* Added animation with delay */}
           <span className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl break-words">

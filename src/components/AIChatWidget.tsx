@@ -138,19 +138,23 @@ export default function AIChatWidget() {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="p-3 border-t border-gray-200">
-            <div className="flex">
+          <div className="p-3 border-t border-gray-200 overflow-x-hidden">
+            <div className="flex w-full min-w-0">
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                className="flex-1 border border-gray-300 rounded-l-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-[calc(100%-3rem)] border border-gray-300 rounded-l-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary box-border"
                 placeholder="메시지를 입력하세요..."
+                style={{
+                  WebkitAppearance: 'none',
+                  borderRadius: '0.5rem 0 0 0.5rem'
+                }}
               />
               <button
                 onClick={handleSendMessage}
-                className="bg-primary text-white px-3 rounded-r-lg hover:bg-primary-dark"
+                className="w-12 bg-primary text-white rounded-r-lg hover:bg-primary-dark flex items-center justify-center"
               >
                 <FiSend size={18} />
               </button>
