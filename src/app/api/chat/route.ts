@@ -5,10 +5,27 @@ export async function POST(request: Request) {
     const { prompt } = await request.json();
     const apiKey = process.env.OPENROUTER_API_KEY;
     
-    if (!apiKey) {
+    // API 키 유효성 검사
+    if (!apiKey || apiKey.trim() === '') {
       return NextResponse.json(
-        { error: 'OpenRouter API key not configured' },
-        { status: 500 }
+        {
+          error: 'OpenRouter API key not configured',
+          solution: 'Please configure OPENROUTER_API_KEY environment variable',
+          documentation: 'https://openrouter.ai/docs'
+        },
+        { status: 401 }
+      );
+    }
+
+    // API 키 형식 검사 (최소 길이 32자)
+    if (apiKey.length < 32) {
+      return NextResponse.json(
+        {
+          error: 'Invalid OpenRouter API key format',
+          solution: 'Please check your API key configuration',
+          documentation: 'https://openrouter.ai/docs'
+        },
+        { status: 400 }
       );
     }
 

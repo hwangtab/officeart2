@@ -94,12 +94,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  // Consider adding icons and manifest if needed
-  // icons: {
-  //   icon: '/favicon.ico',
-  //   apple: '/apple-touch-icon.png',
-  // },
-  // manifest: '/site.webmanifest',
+  // Icons configuration
+  icons: {
+    icon: '/favicon.ico',
+  },
+  // manifest: '/site.webmanifest', // Keep manifest commented for now
 };
 
 

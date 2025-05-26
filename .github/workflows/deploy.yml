@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 env:
-  OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+  OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY || '' }}
 
 jobs:
   deploy:
@@ -26,7 +26,12 @@ jobs:
       - name: Build project
         run: npm run build
         
+      - name: Check for OpenRouter API Key
+        if: env.OPENROUTER_API_KEY == ''
+        run: echo "::warning::OPENROUTER_API_KEY is not set - Chat API features will be disabled"
+        
       - name: Run tests
+        if: env.OPENROUTER_API_KEY != ''
         run: npm test
 
       - name: Deploy to GitHub Pages
