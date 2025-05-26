@@ -57,10 +57,10 @@ export const metadata: Metadata = {
     default: '오피스아트 | 합리적 가격으로 즐기는 프리미엄 작업 환경', // Default title
     template: '%s | 오피스아트', // Title template for subpages
   },
-  description: '웹툰/일러스트 작가를 위한 최고의 선택! 영등포구청역 오피스아트에서 프리미엄 의자, 160cm L형 책상과 함께 압도적인 집중 환경을 경험하세요.', // Updated description
+  description: '프리랜서, 스타트업, 창작자를 위한 프리미엄 공유오피스. 영등포구청역 오피스아트에서 합리적인 가격으로 프리미엄 의자, 넓은 작업공간과 최적의 집중 환경을 경험하세요.', // Updated description
   openGraph: {
     title: '오피스아트 | 합리적 가격으로 즐기는 프리미엄 작업 환경',
-    description: '웹툰/일러스트 작가를 위한 최고의 선택! 영등포구청역 오피스아트에서 프리미엄 의자, 160cm L형 책상과 함께 압도적인 집중 환경을 경험하세요.', // Updated OG description
+    description: '프리랜서, 스타트업, 창작자를 위한 프리미엄 공유오피스. 영등포구청역 오피스아트에서 합리적인 가격으로 최적의 작업 환경을 경험하세요.', // Updated OG description
     url: siteUrl,
     siteName: '오피스아트',
     images: [
@@ -77,11 +77,11 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '오피스아트 | 합리적 가격으로 즐기는 프리미엄 작업 환경',
-    description: '웹툰/일러스트 작가를 위한 최고의 선택! 영등포구청역 오피스아트에서 프리미엄 의자, 160cm L형 책상과 함께 압도적인 집중 환경을 경험하세요.', // Updated Twitter description
+    description: '프리랜서, 스타트업, 창작자를 위한 프리미엄 공유오피스. 영등포구청역 오피스아트에서 합리적인 가격으로 최적의 작업 환경을 경험하세요.', // Updated Twitter description
     images: [`${siteUrl}/og-image.png`], // Use absolute URL for Twitter card
   },
   // Add other relevant metadata fields
-  keywords: ['공유오피스', '영등포 공유오피스', '당산 공유오피스', '웹툰 작가', '일러스트레이터', '작업실', '집중 환경', '프리미엄 의자', 'L형 책상'],
+  keywords: ['공유오피스', '영등포 공유오피스', '당산 공유오피스', '프리랜서 오피스', '스타트업 오피스', '작업실', '집중 환경', '프리미엄 의자', 'L형 책상', '코워킹스페이스'],
   authors: [{ name: '오피스아트' }],
   robots: { // Basic robots configuration
     index: true,
@@ -133,7 +133,7 @@ export default function RootLayout({
               "postalCode": "07220",
               "addressCountry": "KR"
             },
-            "description": "영등포구청역 5분, 프리미엄 의자와 160cm L형 책상으로 집중력을 높이는 창작자 특화 공유오피스. 웹툰, 일러스트레이터에게 최적화된 환경을 제공합니다.",
+            "description": "영등포구청역 5분, 프리미엄 의자와 160cm L형 책상으로 집중력을 높이는 공유오피스. 프리랜서, 스타트업, 창작자에게 최적화된 작업 환경을 제공합니다.",
             "openingHoursSpecification": [
               {
                 "@type": "OpeningHoursSpecification",
