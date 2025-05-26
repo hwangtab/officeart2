@@ -1,7 +1,8 @@
-'use client'; // This component uses client-side hooks and dynamic import
+'use client';
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { UnifiedButton } from '@/components/UnifiedButton';
 
 // Dynamically import the CreatorChart component with loading indicator
 const DynamicCreatorChart = dynamic(() => import('@/components/CreatorChart'), {
@@ -12,7 +13,7 @@ const DynamicCreatorChart = dynamic(() => import('@/components/CreatorChart'), {
         src="/images/logo/logo.png"
         alt="Loading chart..."
         width={100}
-        height={27} // Adjust height based on logo aspect ratio (assuming 150x40)
+        height={27}
         className="animate-pulse mb-4"
       />
       <p className="text-sm text-gray-500">차트 로딩 중...</p>
@@ -21,6 +22,21 @@ const DynamicCreatorChart = dynamic(() => import('@/components/CreatorChart'), {
 });
 
 export default function CreatorCommunityClient() {
-  // This component only renders the dynamically imported chart
-  return <DynamicCreatorChart />;
+  const handleMembershipClick = () => {
+    window.location.href = '/pricing';
+  };
+
+  return (
+    <div className="space-y-8">
+      <DynamicCreatorChart />
+      <UnifiedButton
+        variant="primary"
+        size="base"
+        onClick={handleMembershipClick}
+        className="w-full md:w-auto"
+      >
+        멤버십 자세히 보기
+      </UnifiedButton>
+    </div>
+  );
 }

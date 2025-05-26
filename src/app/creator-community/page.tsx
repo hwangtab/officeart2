@@ -138,6 +138,35 @@ export default function CreatorCommunityPage() {
           </Card>
         </ScrollAnimationWrapper>
 
+        {/* 4. Reserved Seats Section */}
+        <ScrollAnimationWrapper>
+          <Card className="mb-16">
+            <SectionTitle as="h2" level="section" align="center"><span className="">프리미엄 지정석</span> 혜택</SectionTitle>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <SectionTitle as="h3" level="card" className="text-text-primary"><span className="">지정석 전용 혜택</span></SectionTitle>
+                <ul className="list-disc list-outside pl-5 space-y-2 text-text-secondary text-sm">
+                  <li><span className="">개인 전용 수납공간</span> - 안전한 개인 물품 보관 가능</li>
+                  <li><span className="">프리미엄 에르고노믹 의자</span> - 건강한 작업 환경 제공</li>
+                  <li><span className="">24시간 출입 가능</span> - 유연한 작업 시간 보장</li>
+                  <li><span className="">우선 예약권</span> - 회의실 및 장비 사용 우선권</li>
+                  <li><span className="">커뮤니티 멤버십</span> - 네트워킹 이벤트 초대 및 할인</li>
+                </ul>
+              </div>
+              <div>
+                <SectionTitle as="h3" level="card" className="text-text-primary"><span className="">커뮤니티 멤버십</span></SectionTitle>
+                <ul className="list-disc list-outside pl-5 space-y-2 text-text-secondary text-sm mb-4">
+                  <li><span className="">월간 크리에이터 미팅</span> 초대</li>
+                  <li><span className="">포트폴리오 리뷰 세션</span> 참여 기회</li>
+                  <li><span className="">협업 프로젝트</span> 매칭 지원</li>
+                  <li><span className="">전문가 워크샵</span> 할인</li>
+                </ul>
+                {/* 버튼은 이제 CreatorCommunityClient 내부에 포함됨 */}
+              </div>
+            </div>
+          </Card>
+        </ScrollAnimationWrapper>
+
         {/* Back to Home Button */}
         <BackButton />
       </div>

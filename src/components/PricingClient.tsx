@@ -76,7 +76,7 @@ export default function PricingClient() {
             </div>
 
             <ul className="list-disc list-outside pl-5 space-y-2 mb-6 text-text-secondary text-sm flex-grow mx-auto max-w-md"> {/* Removed pl-8, added mx-auto max-w-md for centering, added pl-5 for left padding */}
-              <li><span className="">고정석</span> (<span className="">160cm L형 책상</span>)</li>
+              <li><span className="">지정석</span> (<span className="">160cm L형 책상</span>)</li>
               <li><span className="">프리미엄 의자</span> (스틸케이스/휴먼스케일)</li>
               <li><span className="">24시간 자유 이용</span> (지문 인식)</li>
               <li><span className="">JURA 프리미엄 커피 무제한</span></li>

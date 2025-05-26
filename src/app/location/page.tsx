@@ -1,5 +1,21 @@
 'use client';
 
+import type { Metadata } from 'next';
+
+export const generateMetadata = (): Metadata => {
+  return {
+    openGraph: {
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+};
+
 declare global {
   interface Window {
     kakao: any;
@@ -100,6 +116,14 @@ export default function LocationPage() {
   return (
     <main className="flex min-h-screen flex-col items-center py-20 px-4"> {/* Removed bg-light-gray as it's now in layout */}
       <div className="w-full max-w-5xl mx-auto">
+        {/* 썸네일 이미지 표시 */}
+        <div className="mb-8 w-full h-48 rounded-lg overflow-hidden shadow-md">
+          <img
+            src="/og-image.png"
+            alt="오피스아트 썸네일 이미지"
+            className="w-full h-full object-cover"
+          />
+        </div>
         <SectionTitle as="h1" level="page" align="center">오시는 길</SectionTitle> {/* Use level prop */}
 
         {/* 1. Map Section (4.6 지도 섹션) */}

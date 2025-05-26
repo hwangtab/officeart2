@@ -54,7 +54,7 @@ export default function CoreValuesSection() {
             {/* p-6 is now handled by Card component */}
             {/* Added flex-grow to make text content fill available space */}
             <div className="flex-grow flex flex-col justify-center pt-4">
-              <SectionTitle as="h3" level="card"><span className="">집중이 잘 되는 작업환경</span></SectionTitle> {/* Use level prop */}
+              <SectionTitle as="h3" level="card"><span className="">집중이 잘 되는 넓은 지정석</span></SectionTitle> {/* Use level prop */}
               <p className="text-text-secondary">모든 요소가 <span className="">업무와 창작 활동</span>을 위해 설계되었습니다</p> {/* Use secondary text color */}
             </div>
           </Card>

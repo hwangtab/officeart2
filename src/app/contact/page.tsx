@@ -20,6 +20,15 @@ import { Suspense } from 'react'; // Import Suspense
 export const metadata: Metadata = {
   title: "상담 및 문의 | 오피스아트",
   description: "오피스아트 방문 상담 예약, 카카오톡 상담, 전화/이메일 문의 방법을 안내합니다.",
+  openGraph: {
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+      }
+    ]
+  }
 };
 
 // Page component no longer needs searchParams prop

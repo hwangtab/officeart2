@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
@@ -57,7 +59,8 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
-  // isLoading prop은 cva variants에 포함됨
+  isLoading?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 // 3. UnifiedButton 컴포넌트 구현

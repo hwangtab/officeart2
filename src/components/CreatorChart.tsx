@@ -11,7 +11,7 @@ const creatorData = [
 
 const COLORS = [
   'url(#webtoonGradient)',
-  'url(#illustGradient)', 
+  'url(#illustGradient)',
   'url(#designGradient)',
   'url(#etcGradient)'
 ];
@@ -179,8 +179,10 @@ export default function CreatorChart() {
         </svg>
       </div>
 
-      <div className="mt-2 text-center text-sm text-gray-500">
-        (웹툰 35%, 일러스트레이터 25%, 디자인 20%, 기타 20%)
+      <div className="mt-4 text-center text-sm text-gray-600">
+        웹툰 작가, 일러스트레이터, 디자이너 등 다양한 분야의 창작자들이<br />
+        오피스아트와 함께하고 있습니다. 개발자, 영상 크리에이터, 스타트업까지<br />
+        서로 영감을 주고받으며 시너지를 창출하는 공간입니다.
       </div>
     </div>
   );
