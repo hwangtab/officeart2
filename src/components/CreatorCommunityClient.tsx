@@ -27,13 +27,13 @@ export default function CreatorCommunityClient() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 flex flex-col items-center">
       <DynamicCreatorChart />
       <UnifiedButton
         variant="primary"
         size="base"
         onClick={handleMembershipClick}
-        className="w-full md:w-auto"
+        className="w-full md:w-auto mx-auto"
       >
         멤버십 자세히 보기
       </UnifiedButton>
