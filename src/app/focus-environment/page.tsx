@@ -81,8 +81,8 @@ export default function FocusEnvironmentPage() {
             <Card className="text-center flex flex-col items-center">
               {/* Adjust icon and text colors */}
               <PersonalSpaceIcon className="h-8 w-8 mb-3 text-accent-blue" />
-              <SectionTitle as="h3" level="card" className="text-text-primary"><span className="">적절한 개인 공간</span></SectionTitle> {/* Use level prop */}
-              <p className="text-text-secondary text-sm"><span className="">넓은 L형 책상</span>이 당신만의 <span className="">집중 영역</span>을 만들어 드립니다. 장비와 자료를 여유롭게 펼쳐놓고 마음껏 <span className="">작업에 몰입</span>하세요. 오피스아트가 응원합니다.</p>
+              <SectionTitle as="h3" level="card" className="text-text-primary"><span className="">프리미엄 지정석</span></SectionTitle> {/* Use level prop */}
+              <p className="text-text-secondary text-sm"><span className="">전용 L형 책상</span>과 <span className="">프리미엄 공간</span>을 제공합니다. 장비와 자료를 여유롭게 배치하고 <span className="">집중력 있는 작업</span>을 경험하세요. 오피스아트가 지원합니다.</p>
             </Card>
             {/* Optimized Environment */}
             {/* Use Card component */}
