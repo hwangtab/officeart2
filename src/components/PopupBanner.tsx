@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Draggable from 'react-draggable';
+import { useRouter } from 'next/navigation';
 
 interface PopupBannerProps {
   message: string;
@@ -10,8 +11,10 @@ interface PopupBannerProps {
 }
 
 const PopupBanner = ({ message, onClose }: PopupBannerProps) => {
+  const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [dontShowAgain, setDontShowAgain] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
     const hideUntil = localStorage.getItem('popupBannerHideUntil');
@@ -45,21 +48,30 @@ const PopupBanner = ({ message, onClose }: PopupBannerProps) => {
             bottom: 100
           }}
           dragElastic={0.1}
-          className="fixed top-20 left-10 z-50 w-full max-w-md rounded-lg bg-white/50 backdrop-blur-sm shadow-xl popup-banner cursor-move hidden md:block"
+          onDragStart={() => setIsDragging(true)}
+          onDragEnd={() => setIsDragging(false)}
+          className="fixed top-20 left-10 z-50 w-full max-w-md rounded-lg bg-white/50 backdrop-blur-sm shadow-xl popup-banner hidden md:block"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -20, opacity: 0 }}
           transition={{ duration: 0.3 }}
           role="banner"
           aria-labelledby="popup-title"
-      >
-        <div className="p-6">
-          <div className="mt-2 text-center">
+        >
+          <div className="p-6">
+            <div className="mt-2 text-center">
+              <motion.div
+                onClick={() => !isDragging && router.push('/contact')}
+                className="cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
             <h2 id="popup-title" className="text-2xl font-bold text-gray-800 mb-2">
               신규 오픈 이벤트
             </h2>
             <p className="text-lg text-gray-600 font-medium">6월 내 입주시 프로모션가 25만원으로 평생 할인!</p>
-          </div>
+              </motion.div>
+            </div>
 
           <div className="mt-6 flex justify-center items-center space-x-4">
             <label className="flex items-center space-x-2">
