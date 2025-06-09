@@ -54,7 +54,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl), // Required for resolving relative image paths
   title: {
-    default: '오피스아트 | 합리적 가격으로 즐기는 프리미엄 작업 환경', // Default title
+    default: '오피스아트 | 합리적 가격으로 즐기는 최고의 업무 환경', // Default title
     template: '%s | 오피스아트', // Title template for subpages
   },
   description: '프리랜서, 스타트업, 창작자를 위한 프리미엄 공유오피스. 영등포구청역 오피스아트에서 합리적인 가격으로 프리미엄 의자, 넓은 작업공간과 최적의 집중 환경을 경험하세요.', // Updated description
