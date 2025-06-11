@@ -36,7 +36,7 @@ const PersonalInfoSection = ({ register, errors }: PersonalInfoSectionProps): JS
       <div>
         <label htmlFor="contact" className="block text-sm font-medium mb-1 text-text-secondary">연락처 <span className="text-warning-red">*</span></label>
         <input
-          type="tel" id="contact" placeholder="010-1234-5678"
+          type="tel" id="contact" placeholder="0507-1335-3128"
           {...register("contact", {
             required: "연락처를 입력해주세요.",
             pattern: { value: /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/, message: "올바른 연락처 형식(010-1234-5678)으로 입력해주세요." }

@@ -42,7 +42,7 @@ export default function InquirySection() {
           </LinkButton>
           {/* Use LinkButton component for Phone */}
           <LinkButton
-            href="tel:010-9528-3114"
+            href="tel:0507-1335-3128"
             variant="secondary" // Use secondary variant (gray)
             size="base"
             iconLeft={<PhoneIcon className="h-5 w-5" />}
@@ -52,7 +52,7 @@ export default function InquirySection() {
           </LinkButton>
           {/* Use LinkButton component for SMS */}
           <LinkButton
-            href="sms:010-9528-3114"
+            href="sms:0507-1335-3128"
             variant="secondary" // Use secondary variant (gray)
             size="base"
             iconLeft={<ChatBubbleLeftEllipsisIcon className="h-5 w-5" />}

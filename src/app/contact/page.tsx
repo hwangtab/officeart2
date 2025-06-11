@@ -79,7 +79,7 @@ export default function ContactPage() {
                 <div className="text-center md:text-left">
                     {/* Use accent-blue for icon - Use large for h3 and pass icon via prop */}
                     <SectionTitle as="h3" level="subsection" icon={<PhoneIcon className="h-5 w-5 text-accent-blue" />} className="justify-center md:justify-start text-text-primary">전화</SectionTitle> {/* Use level prop */}
-                    <p className="text-text-primary">대표번호: <a href="tel:02-764-3114" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">02-764-3114</a> / <a href="tel:010-9528-3114" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">010-9528-3114</a></p>
+                    <p className="text-text-primary">대표번호: <a href="tel:0507-1335-3128" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">0507-1335-3128</a></p>
                     <p className="text-xs text-text-secondary mt-1">(운영시간: 평일 10:00-19:00)</p>
                 </div>
                 {/* Email */}

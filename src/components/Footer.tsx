@@ -13,7 +13,7 @@ const Footer = (): JSX.Element => {
             <a href="mailto:CONTACT@KOSMART.ORG" className="hover:underline hover:opacity-80 focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded transition-colors duration-200">CONTACT@KOSMART.ORG</a>
           </div>
           <div className="flex items-center leading-normal">
-            <span className="mr-1">TEL :</span> <a href="tel:02-764-3114" className="hover:underline hover:opacity-80 focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded transition-colors duration-200">02-764-3114</a> / <a href="tel:010-9528-3114" className="hover:underline hover:opacity-80 focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded transition-colors duration-200">010-9528-3114</a>
+            <span className="mr-1">TEL :</span> <a href="tel:0507-1335-3128" className="hover:underline hover:opacity-80 focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded transition-colors duration-200">0507-1335-3128</a>
           </div>
           <div className="flex items-center leading-normal"><span className="mr-1">FAX :</span> 02-764-3828</div>
           <div className="mt-2 flex items-center leading-normal">

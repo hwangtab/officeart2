@@ -53,7 +53,7 @@ const PrivacyPolicyContent = () => (
      <ul className="list-disc list-inside space-y-1">
        <li>성명: 황경하</li>
        <li>소속/직위: 조직국/국장</li>
-       <li>연락처: 02-764-3114 / 010-9528-3114 / contact@kosmart.org</li> {/* Updated contact info */}
+       <li>연락처: 0507-1335-3128 / contact@kosmart.org</li> {/* Updated contact info */}
      </ul>
 
      <p className="font-semibold mt-4">7. 개인정보처리방침 변경</p>
