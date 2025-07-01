@@ -1,0 +1,114 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import Card from '@/components/Card';
+import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
+
+interface CoreValuesSectionProps {
+  locationId?: string;
+}
+
+export default function CoreValuesSection({ locationId }: CoreValuesSectionProps) {
+  return (
+    <section className="w-full max-w-5xl mx-auto py-20 px-4"> {/* Removed bg-background-main */}
+      {/* Use SectionTitle component */}
+      <SectionTitle level="section" align="center"><span className="">오피스아트 핵심 가치</span></SectionTitle> {/* Use level prop */}
+      {/* Added items-stretch to make cards same height */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        {/* Card 1: Premium Chairs or Large Desk */}
+        {locationId === 'bulgwang' ? (
+          <Link href="/large-desk" aria-label="180cm 대형 책상 자세히 보기" className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary rounded-lg block">
+            <Card className="overflow-hidden group h-full flex flex-col focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg">
+              <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
+                <Image
+                  src="/images/bulgwang/bulgwang05.png" // 불광점 책상 이미지
+                  alt="180cm 대형 책상"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className="group-hover:scale-105 transition-transform duration-300"
+                  sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
+                />
+              </div>
+              <div className="flex-grow flex flex-col justify-center pt-4">
+                <SectionTitle as="h3" level="card"><span className="">180cm 초대형 책상</span></SectionTitle>
+                <p className="text-text-secondary">넓은 <span className="">180cm 책상</span>으로 편안한 작업 환경을 제공합니다</p>
+              </div>
+            </Card>
+          </Link>
+        ) : (
+          <Link href="/premium-chairs" aria-label="프리미엄 의자 자세히 보기" className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary rounded-lg block">
+            <Card className="overflow-hidden group h-full flex flex-col focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg">
+              <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
+                <Image
+                  src="/images/values/premium-chair.jpg"
+                  alt="스틸케이스 또는 휴먼스케일 의자"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className="group-hover:scale-105 transition-transform duration-300"
+                  sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
+                />
+              </div>
+              <div className="flex-grow flex flex-col justify-center pt-4">
+                <SectionTitle as="h3" level="card"><span className="">프리미엄 의자</span></SectionTitle>
+                <p className="text-text-secondary"><span className="">180만원대 프리미엄 의자</span>를 기본 제공합니다</p>
+              </div>
+            </Card>
+          </Link>
+        )}
+        {/* Card 2: Focus Environment */}
+        {/* Add aria-label to the link */}
+        <Link href="/focus-environment" aria-label="집중이 잘 되는 공간 자세히 보기" className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary rounded-lg block">
+           {/* Use Card component - Add h-full */}
+           {/* Added flex flex-col for height alignment */}
+           {/* Added hover shadow and focus ring */}
+           <Card className="overflow-hidden group flex flex-col h-full focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg"> {/* Ensure rounded-lg for ring */}
+            <div className="relative w-full h-48 rounded-t-lg overflow-hidden"> {/* Add rounded top corners and overflow hidden */}
+               {/* Use Next.js Image component */}
+               <Image
+                 src={locationId === 'bulgwang' ? "/images/bulgwang/bulgwang03.png" : "/images/values/focus-environment.jpg"}
+                 alt="집중이 잘 되는 작업 환경"
+                 fill
+                 style={{ objectFit: 'cover' }}
+                 className="group-hover:scale-105 transition-transform duration-300"
+                 sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw" // More specific sizes
+               />
+            </div>
+            {/* p-6 is now handled by Card component */}
+            {/* Added flex-grow to make text content fill available space */}
+            <div className="flex-grow flex flex-col justify-center pt-4">
+              <SectionTitle as="h3" level="card"><span className="">집중이 잘 되는 넓은 지정석</span></SectionTitle> {/* Use level prop */}
+              <p className="text-text-secondary">모든 요소가 <span className="">업무와 창작 활동</span>을 위해 설계되었습니다</p> {/* Use secondary text color */}
+            </div>
+          </Card>
+        </Link>
+        {/* Card 3: Creator Community */}
+        {/* Add aria-label to the link */}
+        <Link href="/creator-community" aria-label="크리에이터 커뮤니티 자세히 보기" className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary rounded-lg block">
+           {/* Use Card component - Add h-full */}
+           {/* Added flex flex-col for height alignment */}
+           {/* Added flex flex-col for height alignment */}
+           {/* Added hover shadow and focus ring */}
+           <Card className="overflow-hidden group flex flex-col h-full focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg"> {/* Ensure rounded-lg for ring */}
+            <div className="relative w-full h-48 rounded-t-lg overflow-hidden"> {/* Add rounded top corners and overflow hidden */}
+               {/* Use Next.js Image component */}
+               <Image
+                 src="/images/values/creator-community.jpg" // 실제 이미지 경로
+                 alt="크리에이터 커뮤니티 활동"
+                 fill
+                 style={{ objectFit: 'cover' }}
+                 className="group-hover:scale-105 transition-transform duration-300"
+                 sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw" // More specific sizes
+               />
+            </div>
+            {/* p-6 is now handled by Card component */}
+            {/* Added flex-grow to make text content fill available space */}
+            {/* Added flex-grow to make text content fill available space */}
+            <div className="flex-grow flex flex-col justify-center pt-4">
+              <SectionTitle as="h3" level="card"><span className="">약 630명 창작자 네트워크</span></SectionTitle> {/* Use level prop */}
+              <p className="text-text-secondary">다양한 분야 <span className="">창작자</span>들이 활동하는 협동조합이 운영합니다</p> {/* Use secondary text color */}
+            </div>
+          </Card>
+        </Link>
+      </div>
+    </section>
+  );
+}

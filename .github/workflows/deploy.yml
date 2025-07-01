@@ -1,0 +1,42 @@
+name: Deploy with OpenRouter API Key
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY || '' }}
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # environment: production (주석 처리 - 환경 설정 전)
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build project
+        run: npm run build
+        
+      - name: Check for OpenRouter API Key
+        if: env.OPENROUTER_API_KEY == ''
+        run: echo "::warning::OPENROUTER_API_KEY is not set - Chat API features will be disabled"
+        
+      - name: Run tests
+        if: env.OPENROUTER_API_KEY != ''
+        run: npm test
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define Giants-Bold font */
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Gmarket Sans Web Font (Medium is now loaded via next/font/local) */
+/* @font-face {
+    font-family: 'GmarketSans';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: 500; // Medium
+    font-style: normal;
+} */
+/* Keep Bold font face if still needed, or remove if not used */
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+}
+/* GmarketSansMedium is now loaded via @next/font/local in layout.tsx */
+
+/* Add any global custom styles below */
+
+/* Apply Giants-Bold font directly to h1 */
+
+/* Default body font is now handled by Tailwind config using CSS variables from @next/font */
+body {
+  font-weight: 300; /* Set default font weight to Light */
+}
+
+/* Apply specific weights for h2 and h3 */
+h2 {
+  font-weight: 700; /* bold */
+}
+h3 {
+  font-weight: 500; /* medium */
+}
+
+/* Responsive Table Styles */
+@media (max-width: 639px) { /* Corresponds to sm: breakpoint */
+  .responsive-table tbody tr {
+    @apply block mb-4 border rounded border-gray-200 shadow; /* Card-like appearance */
+  }
+  .responsive-table thead {
+    @apply hidden; /* Hide table header */
+  }
+  .responsive-table td {
+    @apply block text-left relative pl-[50%] py-2 px-4 border-b border-gray-200; /* Changed text-right to text-left */
+  }
+  .responsive-table td:last-child {
+    @apply border-b-0;
+  }
+  .responsive-table td::before {
+    /* Use content from data-label attribute */
+    content: attr(data-label);
+    @apply absolute left-0 top-0 px-4 py-2 w-[50%] font-semibold text-left text-gray-600;
+  }
+}
+
+/* Remove unnecessary utility redefinitions */
+/* Tailwind automatically generates these based on tailwind.config.js */
+/*
+@layer utilities {
+  .bg-naver-green { ... }
+  .hover\:bg-naver-green-dark:hover { ... }
+  .text-white { ... }
+}
+*/
+
+/* Remove text-header-orange definition, use text-primary directly */
+/*
+.text-header-orange {
+  color: #E64A19;
+}
+*/
+
+/* Swiper Customization */
+.swiper-button-prev,
+.swiper-button-next {
+  @apply text-primary; /* Use primary theme color */
+}
+
+.swiper-pagination-bullet {
+  background-color: #9CA3AF; /* Default bullet color (gray-400) */
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-primary; /* Use primary theme color */
+  opacity: 1;
+}
+
+/* Adjust arrow size if needed */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 1.5rem; /* text-2xl equivalent */
+}
+
+/* Scroll Animation Styles */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px); /* Increased initial offset */
+  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smoother timing and easing */
+}
+
+.scroll-animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Text Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0; /* Start hidden */
+}
+
+/* Optional delay classes */
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+/* Loading Bar for Splash Screen */
+.loading-bar-container {
+  width: 300px; /* Increased width to match larger logo */
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3); /* Light background for the bar track */
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 1rem; /* Space below logo */
+}
+
+.loading-bar {
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF; /* White loading bar */
+  animation: loadingAnimation 1.5s ease-in-out forwards; /* Match timeout duration */
+  transform-origin: left;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Kakao Map Styles */
+.kakao-map-container {
+  width: 100% !important;
+  position: relative !important;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .kakao-map-container {
+    height: 350px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .kakao-map-container {
+    height: 400px !important;
+  }
+}
+
+/* Ensure Kakao Map elements are properly sized */
+.kakao-map-container > div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Fix for Kakao Map canvas sizing issues */
+.kakao-map-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
