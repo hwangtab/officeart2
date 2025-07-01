@@ -13,8 +13,7 @@ import {
   HiClock, 
   HiCurrencyDollar, 
   HiCheckCircle,
-  HiArrowRight,
-  HiQuestionMarkCircle
+  HiArrowRight
 } from 'react-icons/hi2';
 
 export const metadata: Metadata = {
@@ -111,7 +110,7 @@ export default function NonResidentOfficePage() {
                 {
                   icon: HiEnvelope,
                   title: '우편물 수령 및 보관',
-                  description: '소중한 우편물을 안전하게 수령하고 보관해드립니다. 도착 시 즉시 연락드립니다.'
+                  description: '소중한 우편물을 안전하게 수령하고 보관해드립니다. 방문 시 언제든지 수령 가능합니다.'
                 },
                 {
                   icon: HiClock,
@@ -128,11 +127,6 @@ export default function NonResidentOfficePage() {
                   title: '두 지점 선택 가능',
                   description: '영등포구청점 또는 불광점 중 원하는 지점을 선택할 수 있습니다.'
                 },
-                {
-                  icon: HiQuestionMarkCircle,
-                  title: '전화응답 서비스 (옵션)',
-                  description: '추가 비용으로 전화응답 서비스를 이용할 수 있습니다. (별도 문의)'
-                }
               ].map((benefit, index) => (
                 <div key={index} className="flex items-start space-x-4">
                   <div className="bg-primary/10 p-3 rounded-lg">
@@ -229,7 +223,7 @@ export default function NonResidentOfficePage() {
                 <LocationCard
                   key={location.id}
                   location={location}
-                  href={`/contact?service=non-resident&location=${location.id}`}
+                  href={`/locations/${location.id}`}
                   className="h-full"
                 />
               ))}
@@ -254,7 +248,7 @@ export default function NonResidentOfficePage() {
                 },
                 {
                   q: '우편물은 어떻게 받나요?',
-                  a: '우편물이 도착하면 즉시 연락드리며, 직접 방문하여 수령하시거나 택배 발송도 가능합니다. (택배비 별도)'
+                  a: '우편물이 도착하면 안전하게 보관해드립니다. 방문하시면 언제든지 수령하실 수 있습니다.'
                 },
                 {
                   q: '계약 기간이 있나요?',
@@ -266,7 +260,7 @@ export default function NonResidentOfficePage() {
                 },
                 {
                   q: '추가 비용이 있나요?',
-                  a: '월 3.3만원 외에 우편물 택배 발송비, 전화응답 서비스(옵션) 등이 별도입니다. 기본 서비스는 추가 비용이 없습니다.'
+                  a: '월 3.3만원 외에는 추가 비용이 없습니다. 모든 기본 서비스가 포함된 요금입니다.'
                 }
               ].map((faq, index) => (
                 <Card key={index}>
