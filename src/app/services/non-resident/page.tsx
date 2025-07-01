@@ -119,8 +119,8 @@ export default function NonResidentOfficePage() {
                 },
                 {
                   icon: HiCurrencyDollar,
-                  title: '회의실 할인 이용',
-                  description: '필요시 회의 공간을 저렴하게 이용할 수 있습니다. 고객 미팅이나 상담에 활용하세요.'
+                  title: '회의실 무료 이용',
+                  description: '필요시 회의 공간을 무료로 이용할 수 있습니다. 고객 미팅이나 상담에 활용하세요.'
                 },
                 {
                   icon: HiCheckCircle,

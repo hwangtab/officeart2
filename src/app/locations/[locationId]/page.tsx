@@ -107,22 +107,31 @@ export default async function LocationPage({ params }: LocationPageProps) {
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             {location.name}
           </h1>
-          <p className="text-xl md:text-2xl mb-6">
-            {location.description}
+          <p className="text-xl md:text-2xl text-white mb-10">
+            {location.id === 'bulgwang' 
+              ? '180cm 초대형 책상과 안락한 의자의 프리미엄을 만나보세요.'
+              : '180만원대 최고급 의자와 L형 책상의 프리미엄을 만나보세요.'
+            }
           </p>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-lg">
-            <div className="flex items-center">
-              <span className="mr-2">📍</span>
-              <span>{location.nearbyStation} 도보 {location.walkingTime}</span>
-            </div>
-            <div className="flex items-center">
-              <span className="mr-2">💰</span>
-              <span>월 {location.pricing.monthlyDesk.toLocaleString()}원부터</span>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <LinkButton 
+              href="/contact"
+              variant="primary"
+              size="lg"
+            >
+              상담 신청하기
+            </LinkButton>
+            <LinkButton 
+              href={`/location/${location.id}`}
+              variant="outlineWhite"
+              size="lg"
+            >
+              교통정보 보기
+            </LinkButton>
           </div>
         </div>
       </section>
@@ -131,66 +140,75 @@ export default async function LocationPage({ params }: LocationPageProps) {
       <ScrollAnimationWrapper>
         <section className="py-16 px-4 w-full">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl font-bold text-text-primary mb-6">
-                  {location.name} 상세 정보
-                </h2>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <span className="text-primary mr-3 mt-1">📍</span>
-                    <div>
-                      <h3 className="font-semibold text-text-primary">주소</h3>
-                      <p className="text-text-secondary">{location.address}</p>
-                    </div>
+            <SectionTitle level="section" align="center" className="mb-12">
+              {location.name} 상세 정보
+            </SectionTitle>
+            
+            <Card className="max-w-3xl mx-auto">
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <span className="text-primary mr-3 mt-1">📍</span>
+                  <div>
+                    <h3 className="font-semibold text-text-primary">주소</h3>
+                    <p className="text-text-secondary">{location.address}</p>
                   </div>
-                  <div className="flex items-start">
-                    <span className="text-primary mr-3 mt-1">☎️</span>
-                    <div>
-                      <h3 className="font-semibold text-text-primary">연락처</h3>
-                      <p className="text-text-secondary">
-                        <a href={`tel:${location.phone}`} className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-primary rounded">
-                          {location.phone}
-                        </a>
-                      </p>
-                    </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-primary mr-3 mt-1">☎️</span>
+                  <div>
+                    <h3 className="font-semibold text-text-primary">연락처</h3>
+                    <p className="text-text-secondary">
+                      <a href={`tel:${location.phone}`} className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-primary rounded">
+                        {location.phone}
+                      </a>
+                    </p>
                   </div>
-                  <div className="flex items-start">
-                    <span className="text-primary mr-3 mt-1">🕐</span>
-                    <div>
-                      <h3 className="font-semibold text-text-primary">운영시간</h3>
-                      <p className="text-text-secondary">평일 {location.operatingHours.weekdays}</p>
-                    </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-primary mr-3 mt-1">🕐</span>
+                  <div>
+                    <h3 className="font-semibold text-text-primary">운영시간</h3>
+                    <p className="text-text-secondary">평일 {location.operatingHours.weekdays}</p>
                   </div>
                 </div>
               </div>
-              
-              <div className="bg-background-main p-8 rounded-lg">
-                <h3 className="text-2xl font-bold text-text-primary mb-6">가격 안내</h3>
-                <div className="space-y-6">
-                  <div className="flex justify-between items-center p-4 bg-white rounded-lg">
-                    <div>
-                      <h4 className="font-semibold text-text-primary">정기 이용권</h4>
-                      <p className="text-sm text-text-secondary">프리미엄 작업공간 무제한 이용</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-2xl font-bold text-primary">{location.pricing.monthlyDesk.toLocaleString()}원</p>
-                      <p className="text-sm text-text-secondary">월</p>
-                    </div>
+            </Card>
+          </div>
+        </section>
+      </ScrollAnimationWrapper>
+
+      {/* 가격 안내 섹션 */}
+      <ScrollAnimationWrapper>
+        <section className="py-16 px-4 w-full">
+          <div className="max-w-5xl mx-auto">
+            <SectionTitle level="section" align="center" className="mb-12">
+              가격 안내
+            </SectionTitle>
+            
+            <Card className="max-w-3xl mx-auto">
+              <div className="space-y-6">
+                <div className="flex justify-between items-center p-4 bg-background-main rounded-lg">
+                  <div>
+                    <h4 className="font-semibold text-text-primary">정기 이용권</h4>
+                    <p className="text-sm text-text-secondary">프리미엄 작업공간 무제한 이용</p>
                   </div>
-                  <div className="flex justify-between items-center p-4 bg-white rounded-lg">
-                    <div>
-                      <h4 className="font-semibold text-text-primary">비상주사무실</h4>
-                      <p className="text-sm text-text-secondary">사업자등록용 주소 제공</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-2xl font-bold text-primary">{location.pricing.nonResidentOffice.price.toLocaleString()}원</p>
-                      <p className="text-sm text-text-secondary">월</p>
-                    </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-primary">{location.pricing.monthlyDesk.toLocaleString()}원</p>
+                    <p className="text-sm text-text-secondary">월</p>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center p-4 bg-background-main rounded-lg">
+                  <div>
+                    <h4 className="font-semibold text-text-primary">비상주사무실</h4>
+                    <p className="text-sm text-text-secondary">사업자등록용 주소 제공</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-primary">{location.pricing.nonResidentOffice.price.toLocaleString()}원</p>
+                    <p className="text-sm text-text-secondary">월</p>
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
         </section>
       </ScrollAnimationWrapper>

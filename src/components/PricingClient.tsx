@@ -106,8 +106,7 @@ export default function PricingClient() {
               <ul className="list-disc list-outside pl-5 space-y-2 text-text-secondary text-sm flex-grow">
                 <li>사업자등록용 주소 제공</li>
                 <li>우편물 수령 및 보관 서비스</li>
-                <li>전화응답 서비스 (옵션)</li>
-                <li>회의실 할인 이용</li>
+                <li>회의실 무료 이용</li>
                 <li>강남/여의도 대비 1/3 가격</li>
                 <li>월 단위 연장 가능 (6개월 후)</li>
                 <li>양 지점 선택 가능</li>

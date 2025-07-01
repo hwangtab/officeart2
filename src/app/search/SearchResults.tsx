@@ -15,7 +15,7 @@ const searchableContent = [
   { path: '/creator-community', title: '크리에이터 커뮤니티', description: '다양한 분야의 전문가들과 교류하고 성장하는 커뮤니티' },
   { path: '/facilities-services', title: '시설 및 서비스', description: '프리미엄 커피, 복합기, 회의 공간 등 편의 시설 안내' },
   { path: '/location', title: '오시는 길', description: '영등포구청역 인근 위치, 교통편, 주차 정보 안내' },
-  { path: '/pricing', title: '가격 및 멤버십', description: '합리적인 월 멤버십 및 일일 이용권 가격 안내' },
+  { path: '/pricing', title: '가격 및 멤버십', description: '합리적인 월 멤버십 가격 안내' },
   { path: '/faq', title: 'FAQ', description: '자주 묻는 질문과 답변 모음' },
   { path: '/contact', title: '상담 및 문의', description: '방문 상담 예약 및 기타 문의 안내' },
   { path: '/', title: '오피스아트 홈', description: '영등포구청역 프리미엄 공유오피스' },
