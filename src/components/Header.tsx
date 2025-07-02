@@ -52,13 +52,13 @@ export default function Header() {
 
   const toggleMenu = useCallback(() => {
     setIsMenuOpen((prev) => !prev);
-    if (isSearchOpen) setIsSearchOpen(false); // Close search if menu opens
-  }, [isSearchOpen]);
+    setIsSearchOpen(false); // Close search if menu opens
+  }, []);
 
   const toggleSearch = useCallback(() => {
     setIsSearchOpen((prev) => !prev);
-    if (isMenuOpen) setIsMenuOpen(false); // Close menu if search opens
-  }, [isMenuOpen]);
+    setIsMenuOpen(false); // Close menu if search opens
+  }, []);
 
   // Focus search input when it opens
   useEffect(() => {
@@ -76,6 +76,24 @@ export default function Header() {
   useEffect(() => {
    setIsMenuOpen(false);
   }, [pathname]);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        if (isSearchOpen) {
+          setIsSearchOpen(false);
+        } else if (isMenuOpen) {
+          setIsMenuOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isSearchOpen, isMenuOpen]);
 
   // 컴포넌트 언마운트 시 타이머 정리 (드롭다운 관련 제거)
   // useEffect(() => {
@@ -143,7 +161,7 @@ export default function Header() {
                 <li key={`${item.group}-${item.name}`}>
                   <Link
                     href={item.href!}
-                    className={`px-1 py-2 text-base rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
+                    className={`px-3 py-2 text-base rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
               active
                 ? 'font-bold text-accent-yellow' // Active style
                 : 'font-medium hover:text-accent-yellow' // Medium weight with hover
@@ -183,8 +201,10 @@ export default function Header() {
              </button>
             {/* Mobile Menu Button */}
             <button
+              id="mobile-menu-button"
               aria-label={isMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
               aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
               onClick={toggleMenu}
               className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white" // Adjust focus ring offset
             >
@@ -198,39 +218,51 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Search Input Panel */}
+      {/* Search Dropdown Panel */}
       {isSearchOpen && (
-        <div className="absolute top-0 left-0 w-full h-16 bg-primary shadow-md z-50 flex items-center px-4 sm:px-6 lg:px-8">
-          <form onSubmit={handleSearchSubmit} className="flex-grow flex items-center">
-            <MagnifyingGlassIcon className="h-5 w-5 text-text-secondary mr-2 flex-shrink-0" />
-            <input
-              ref={searchInputRef}
-              type="search"
-              placeholder="웹사이트 내 검색..."
-              className="w-full bg-transparent text-text-on-primary placeholder-text-secondary focus:outline-none"
-            />
+        <div className="absolute top-16 left-0 right-0 bg-white shadow-lg border border-gray-200 z-50 mx-4 sm:mx-6 lg:mx-8 rounded-md">
+          <form onSubmit={handleSearchSubmit} className="p-4">
+            <div className="flex items-center bg-gray-50 rounded-md px-3 py-2 border border-gray-300 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
+              <MagnifyingGlassIcon className="h-5 w-5 text-gray-400 mr-2 flex-shrink-0" />
+              <input
+                ref={searchInputRef}
+                type="search"
+                placeholder="웹사이트 내 검색..."
+                className="w-full bg-transparent text-gray-900 placeholder-gray-500 focus:outline-none"
+              />
+              <button
+                type="button"
+                aria-label="검색 닫기"
+                onClick={closeSearch}
+                className="p-1 ml-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary rounded"
+              >
+                <XMarkIcon className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="mt-2 text-xs text-gray-500">
+              Enter를 눌러 검색하거나 ESC로 닫기
+            </div>
           </form>
-          <button
-            aria-label="검색 닫기"
-            onClick={closeSearch}
-            className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white ml-2"
-          >
-            <XMarkIcon className="h-6 w-6" />
-          </button>
         </div>
       )}
 
-      {/* Mobile Menu Panel - Simplified */}
+      {/* Mobile Menu Panel - Enhanced Accessibility */}
       {isMenuOpen && (
-        <div className="lg:hidden absolute top-16 left-0 w-full bg-primary shadow-md py-2 z-40">
+        <div 
+          className="lg:hidden absolute top-16 left-0 w-full bg-primary shadow-md py-2 z-45 max-h-[calc(100vh-4rem)] overflow-y-auto"
+          role="menu"
+          aria-labelledby="mobile-menu-button"
+        >
           <ul className="flex flex-col space-y-1 px-2 pt-2 pb-3">
             {flattenedNavItems.map((item) => {
               const active = pathname === item.href;
               return (
-                <li key={item.name}>
+                <li key={item.name} role="none">
                   <Link
                     href={item.href!}
                     onClick={toggleMenu}
+                    role="menuitem"
+                    tabIndex={isMenuOpen ? 0 : -1}
                     className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-white ${
                       active ? 'bg-primary/80 font-bold' : ''
                     }`}
