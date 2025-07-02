@@ -3,7 +3,7 @@ import { UseFormRegister, FieldErrors } from 'react-hook-form';
 import { ContactFormData } from '@/types/contactForm'; // Import shared type
 import Modal from '@/components/Modal'; // Import the Modal component
 import { HiPaperAirplane } from 'react-icons/hi2'; // Import paper airplane icon
-import { UnifiedButton } from '../UnifiedButton'; // 경로 확인 필요
+import { UnifiedButton } from '@/components/UnifiedButton';
 
 // Updated Privacy Policy Content
 const PrivacyPolicyContent = () => (
