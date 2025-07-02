@@ -115,7 +115,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-primary text-text-on-primary shadow-md">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-3 items-center h-16">
+        <div className="grid grid-cols-[1fr_2fr_1fr] items-center h-16 gap-4">
           {/* Logo - Fixed Width */}
           <div className="flex justify-start">
             <Link href="/">
@@ -132,14 +132,14 @@ export default function Header() {
 
           {/* Desktop Navigation - Center */}
           <div className="hidden xl:flex justify-center">
-            <ul className="flex space-x-1 items-center">
+            <ul className="flex space-x-3 items-center justify-center">
               {flattenedNavItems.map((item) => {
                 const active = isActive(item);
                 return (
                   <li key={`${item.group}-${item.name}`}>
                     <Link
                       href={item.href!}
-                      className={`px-2 py-2 text-sm rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
+                      className={`px-3 py-2 text-sm rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap min-h-[44px] flex items-center ${
                 active
                   ? 'font-bold text-accent-yellow'
                   : 'font-medium hover:text-accent-yellow'
@@ -227,11 +227,11 @@ export default function Header() {
       {/* Mobile Menu Panel - Enhanced Accessibility */}
       {isMenuOpen && (
         <div 
-          className="xl:hidden absolute top-16 left-0 w-full bg-primary shadow-md py-2 z-45 max-h-[calc(100vh-4rem)] overflow-y-auto"
+          className="xl:hidden absolute top-16 right-4 w-64 bg-primary shadow-md py-2 z-45 max-h-[calc(100vh-4rem)] overflow-y-auto rounded-md"
           role="menu"
           aria-labelledby="mobile-menu-button"
         >
-          <ul className="flex flex-col space-y-1 px-2 pt-2 pb-3">
+          <ul className="flex flex-col space-y-2 px-4 pt-3 pb-4">
             {flattenedNavItems.map((item) => {
               const active = pathname === item.href;
               return (
@@ -241,7 +241,7 @@ export default function Header() {
                     onClick={toggleMenu}
                     role="menuitem"
                     tabIndex={isMenuOpen ? 0 : -1}
-                    className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-white ${
+                    className={`block px-4 py-3 rounded-md text-base font-medium cursor-pointer transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-white min-h-[48px] text-left ${
                       active ? 'bg-primary/80 font-bold' : ''
                     }`}
                   >
