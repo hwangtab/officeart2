@@ -9,6 +9,7 @@ const config = {
   theme: {
     extend: {
       screens: {
+        'nav': '1280px', // Navigation breakpoint for menu display
         'xxl': '1440px', // Custom breakpoint for 1440px
       },
       // New Color Palette (Based on user feedback)

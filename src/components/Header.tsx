@@ -15,26 +15,32 @@ interface NavItem {
 
 interface FlattenedNavItem {
   name: string;
+  shortName?: string;
   href?: string;
   group: string; // 속한 그룹 이름 (스타일링에 사용 가능)
 }
 
-// --- 원본 메뉴 데이터 ---
-const navItems: NavItem[] = [
-  { name: '지점 안내', href: '/locations' },
-  { name: '비상주사무실', href: '/services/non-resident' },
-  { name: '프리미엄 의자', href: '/premium-chairs' },
-  { name: '집중 환경', href: '/focus-environment' },
-  { name: '창작자 커뮤니티', href: '/creator-community' },
-  { name: '시설 및 서비스', href: '/facilities-services' },
-  { name: '가격 및 멤버십', href: '/pricing' },
-  { name: 'FAQ', href: '/faq' },
-  { name: '상담 및 문의', href: '/contact' },
+// --- 반응형 메뉴 데이터 ---
+interface ResponsiveNavItem extends NavItem {
+  shortName?: string; // 중간 해상도에서 사용할 단축 이름
+}
+
+const navItems: ResponsiveNavItem[] = [
+  { name: '지점 안내', shortName: '지점', href: '/locations' },
+  { name: '비상주사무실', shortName: '비상주', href: '/services/non-resident' },
+  { name: '프리미엄 의자', shortName: '의자', href: '/premium-chairs' },
+  { name: '집중 환경', shortName: '환경', href: '/focus-environment' },
+  { name: '창작자 커뮤니티', shortName: '커뮤니티', href: '/creator-community' },
+  { name: '시설 및 서비스', shortName: '시설', href: '/facilities-services' },
+  { name: '가격 및 멤버십', shortName: '가격', href: '/pricing' },
+  { name: 'FAQ', href: '/faq' }, // 이미 짧음
+  { name: '상담 및 문의', shortName: '문의', href: '/contact' },
 ];
 
 // --- 메뉴 데이터 평탄화 ---
 const flattenedNavItems: FlattenedNavItem[] = navItems.map(item => ({
   name: item.name,
+  shortName: item.shortName,
   href: item.href,
   group: item.name, // 그룹 정보는 유지하되 단순화
   isParent: false // 모든 항목을 링크로 처리
@@ -132,7 +138,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-primary text-text-on-primary shadow-md"> {/* Use new primary color */}
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 xl:px-8">
         {/* Apply Grid layout for better centering on desktop */}
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -144,7 +150,7 @@ export default function Header() {
                 width={150}
                 height={40}
                 priority
-                className="cursor-pointer"
+                className="cursor-pointer w-28 lg:w-36 xl:w-40 h-auto"
               />
             </Link>
           </div>
@@ -153,21 +159,23 @@ export default function Header() {
           {/* Desktop Navigation with Dropdowns - Apply flex-grow and justify-center */}
           {/* Apply justify-self-center for grid centering, remove flex-grow/justify-center */}
           {/* Apply mx-auto for balanced spacing and increase space-x */}
-          {/* Desktop Navigation - Flattened */}
-          <ul className="hidden lg:flex md:mx-auto md:space-x-4 items-center"> {/* Adjusted space-x, changed xxl:flex -> lg:flex */}
+          {/* Desktop Navigation - Responsive Breakpoints */}
+          <ul className="hidden nav:flex mx-auto space-x-2 lg:space-x-3 xl:space-x-4 items-center"> {/* Progressive spacing based on screen size */}
             {flattenedNavItems.map((item) => {
               const active = isActive(item);
               return (
                 <li key={`${item.group}-${item.name}`}>
                   <Link
                     href={item.href!}
-                    className={`px-3 py-2 text-base rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
+                    className={`px-2 lg:px-3 py-2 text-sm lg:text-base rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
               active
                 ? 'font-bold text-accent-yellow' // Active style
                 : 'font-medium hover:text-accent-yellow' // Medium weight with hover
                     }`}
                   >
-                    {item.name}
+                    {/* 반응형 텍스트: 중간 해상도에서는 단축명, 큰 화면에서는 전체명 */}
+                    <span className="xl:hidden">{item.shortName || item.name}</span>
+                    <span className="hidden xl:inline">{item.name}</span>
                   </Link>
                 </li>
               );
@@ -176,8 +184,7 @@ export default function Header() {
 
 
           {/* Search Icon - Desktop */}
-          {/* Search Icon - Desktop - Removed ml-4 */}
-          <div className="hidden lg:flex items-center ml-4"> {/* Added ml-4 for separation, changed xxl:flex -> lg:flex */}
+          <div className="hidden nav:flex items-center ml-2 lg:ml-4"> {/* Responsive margin and nav breakpoint */}
             <button
               aria-label="검색 열기"
               onClick={toggleSearch}
@@ -190,7 +197,7 @@ export default function Header() {
           {/* Mobile Menu & Search Buttons */}
           {/* Mobile Menu & Search Buttons - Added ml-auto */}
           {/* Mobile Menu & Search Buttons - Added ml-auto */}
-          <div className="lg:hidden flex items-center ml-auto"> {/* changed xxl:hidden -> lg:hidden */}
+          <div className="nav:hidden flex items-center ml-auto"> {/* Use nav breakpoint for consistency */}
              {/* Search Icon - Mobile */}
              <button
                aria-label="검색 열기"
@@ -249,7 +256,7 @@ export default function Header() {
       {/* Mobile Menu Panel - Enhanced Accessibility */}
       {isMenuOpen && (
         <div 
-          className="lg:hidden absolute top-16 left-0 w-full bg-primary shadow-md py-2 z-45 max-h-[calc(100vh-4rem)] overflow-y-auto"
+          className="nav:hidden absolute top-16 left-0 w-full bg-primary shadow-md py-2 z-45 max-h-[calc(100vh-4rem)] overflow-y-auto"
           role="menu"
           aria-labelledby="mobile-menu-button"
         >
