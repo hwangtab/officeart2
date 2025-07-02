@@ -27,16 +27,18 @@ export default function CreatorCommunityClient() {
   };
 
   return (
-    <div className="space-y-8 flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <DynamicCreatorChart />
-      <UnifiedButton
-        variant="primary"
-        size="base"
-        onClick={handleMembershipClick}
-        className="w-full md:w-auto mx-auto"
-      >
-        멤버십 자세히 보기
-      </UnifiedButton>
+      <div className="mt-6">
+        <UnifiedButton
+          variant="primary"
+          size="lg"
+          onClick={handleMembershipClick}
+          className="px-8 py-3 shadow-lg hover:shadow-xl transition-shadow duration-300"
+        >
+          멤버십 자세히 보기
+        </UnifiedButton>
+      </div>
     </div>
   );
 }

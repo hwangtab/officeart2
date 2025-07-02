@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>간단한 이미지 테스트</title>
+</head>
+<body>
+    <h1>기본 HTML img 태그 테스트</h1>
+    
+    <div style="margin: 20px 0;">
+        <h3>로고 (Header에서 사용)</h3>
+        <img src="/images/logo/logo2.png" alt="Logo" style="max-width: 150px; border: 1px solid #ccc;">
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>히어로 배경 (HeroSection에서 사용)</h3>
+        <img src="/images/hero/hero-background.jpg" alt="Hero" style="max-width: 300px; border: 1px solid #ccc;">
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>갤러리 이미지 (GallerySlider에서 사용)</h3>
+        <img src="/images/gallery/gallery-2.jpg" alt="Gallery" style="max-width: 200px; border: 1px solid #ccc;">
+        <img src="/images/gallery/jura-x9.jpg" alt="Jura" style="max-width: 200px; border: 1px solid #ccc;">
+    </div>
+    
+    <script>
+        let loadedCount = 0;
+        let failedCount = 0;
+        const images = document.querySelectorAll('img');
+        
+        images.forEach((img, i) => {
+            img.onload = () => {
+                loadedCount++;
+                console.log(`✅ 성공 ${i+1}: ${img.src}`);
+                updateStatus();
+            };
+            img.onerror = () => {
+                failedCount++;
+                console.error(`❌ 실패 ${i+1}: ${img.src}`);
+                img.style.border = '3px solid red';
+                img.style.backgroundColor = '#ffeeee';
+                updateStatus();
+            };
+        });
+        
+        function updateStatus() {
+            if (loadedCount + failedCount === images.length) {
+                document.body.insertAdjacentHTML('afterbegin', 
+                    `<div style="background: ${failedCount ? '#ffeeee' : '#eeffee'}; padding: 10px; margin-bottom: 20px;">
+                        <strong>결과: 성공 ${loadedCount}개, 실패 ${failedCount}개</strong>
+                    </div>`
+                );
+            }
+        }
+    </script>
+</body>
+</html>

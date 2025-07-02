@@ -36,7 +36,7 @@ export default function CreatorCommunityPage() {
                <p className="text-lg text-text-primary mb-6"> {/* Use primary text color */}
                  <span className="">웹툰 작가</span>, <span className="">일러스트레이터</span>, <span className="">디자이너</span> 등 다양한 분야의 <span className="">창작자</span>들이 오피스아트와 함께하고 있습니다. 서로 <span className="">영감</span>을 주고받으며 <span className="">시너지</span>를 창출하는 공간입니다.
                </p>
-               <SectionTitle as="h4" level="card"><span className="">커뮤니티 활동 모습</span>:</SectionTitle> {/* Use level prop */}
+               <SectionTitle as="h4" level="card"><span className="">커뮤니티 활동 모습</span></SectionTitle> {/* Use level prop */}
                <div className="grid grid-cols-2 gap-4">
                    {/* TODO: Replace with actual photos (한국스마트협동조합 행사 사진, 황경하 담당자) */}
                    <div className="relative h-40 bg-gray-200 rounded overflow-hidden group">
@@ -62,36 +62,56 @@ export default function CreatorCommunityPage() {
           <section className="mb-16">
           {/* Use SectionTitle */}
           <SectionTitle as="h2" level="section" align="center"><span className="">네트워킹</span> 및 <span className="">협업 기회</span></SectionTitle> {/* Use level prop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             {/* Regular Meetups - Use Card */}
-            <Card>
+            <Card className="h-full flex flex-col">
               {/* Use accent-blue for icon, primary text color, pass icon via prop */}
-              <SectionTitle as="h3" level="card" icon={<CalendarIcon className="h-5 w-5 text-accent-blue" />} className="text-text-primary"><span className="">정기 모임</span> 및 <span className="">이벤트</span></SectionTitle> {/* Use level prop */}
-              {/* Use secondary text color */}
-              <ul className="list-disc list-outside pl-5 space-y-2 text-text-secondary text-sm"> {/* Changed to list-outside and pl-5 */}
-                <li><span className="">월간 크리에이터 네트워킹 데이</span> (매월 마지막 금요일 저녁)</li>
-                <li><span className="">분기별 포트폴리오 리뷰 세션</span></li>
-                <li>다양한 주제의 <span className="">워크샵</span> 및 <span className="">강연</span> (비정기)</li>
-                <li><span className="">커뮤니티 보드</span>를 통한 <span className="">프로젝트 공유</span> 및 <span className="">구인/구직</span></li>
-              </ul>
+              <SectionTitle as="h3" level="card" icon={<CalendarIcon className="h-5 w-5 text-accent-blue" />} className="text-text-primary mb-4"><span className="">정기 모임</span> 및 <span className="">이벤트</span></SectionTitle> {/* Use level prop */}
+              
+              <div className="flex-grow flex flex-col justify-between">
+                {/* Use secondary text color */}
+                <ul className="list-disc list-outside pl-5 space-y-3 text-text-secondary text-sm mb-4"> {/* space-y-2 → space-y-3 */}
+                  <li><span className="">월간 크리에이터 네트워킹 데이</span><br/>
+                      <span className="text-xs text-gray-500">(매월 마지막 금요일 저녁)</span></li>
+                  <li><span className="">분기별 포트폴리오 리뷰 세션</span><br/>
+                      <span className="text-xs text-gray-500">전문가 피드백과 성장 기회 제공</span></li>
+                  <li>다양한 주제의 <span className="">워크샵</span> 및 <span className="">강연</span><br/>
+                      <span className="text-xs text-gray-500">(비정기, 실무 중심 교육)</span></li>
+                  <li><span className="">커뮤니티 보드</span>를 통한 <span className="">프로젝트 공유</span><br/>
+                      <span className="text-xs text-gray-500">구인/구직 및 협업 파트너 매칭</span></li>
+                </ul>
+                
+                <div className="bg-accent-blue/5 p-3 rounded-lg mt-auto">
+                  <p className="text-xs text-accent-blue font-medium">💡 모든 정기 모임은 무료로 참여 가능하며, 사전 예약이 필요합니다.</p>
+                </div>
+              </div>
             </Card>
+            
             {/* Collaboration Opportunities - Use Card */}
-            <Card>
+            <Card className="h-full flex flex-col">
               {/* Use accent-blue for icon, primary text color, pass icon via prop */}
-              <SectionTitle as="h3" level="card" icon={<UsersIcon className="h-5 w-5 text-accent-blue" />} className="text-text-primary">잠재적 <span className="">협업 기회</span></SectionTitle> {/* Use level prop */}
-              {/* Use secondary text color */}
-              <p className="text-text-secondary mb-4 text-sm">
-                다양한 분야의 <span className="">전문가</span>들과 교류하며 새로운 <span className="">프로젝트 기회</span>를 발굴하고 함께 <span className="">성장</span>할 수 있습니다.
-              </p>
-              {/* Use primary text color */}
-              <p className="font-semibold mb-2 text-sm text-text-primary">실제 협업 사례 (예시):</p>
-              {/* Use secondary text color */}
-              <ul className="list-disc list-outside pl-5 space-y-1 text-xs text-text-secondary"> {/* Changed to list-outside */}
-                 {/* TODO: Add actual collaboration examples */}
-                <li><span className="">웹툰 작가</span> A + <span className="">일러스트레이터</span> B &rarr; <span className="">콜라보 굿즈</span> 제작 및 판매</li>
-                <li><span className="">그래픽 디자이너</span> C + <span className="">웹 개발자</span> D &rarr; <span className="">스타트업 웹사이트</span> 공동 구축</li>
-                <li><span className="">영상 편집자</span> E + <span className="">작가</span> F &rarr; <span className="">북 트레일러 영상</span> 제작</li>
-              </ul>
+              <SectionTitle as="h3" level="card" icon={<UsersIcon className="h-5 w-5 text-accent-blue" />} className="text-text-primary mb-4">잠재적 <span className="">협업 기회</span></SectionTitle> {/* Use level prop */}
+              
+              <div className="flex-grow flex flex-col">
+                {/* Use secondary text color */}
+                <p className="text-text-secondary mb-4 text-sm">
+                  다양한 분야의 <span className="">전문가</span>들과 교류하며 새로운 <span className="">프로젝트 기회</span>를 발굴하고 함께 <span className="">성장</span>할 수 있습니다.
+                </p>
+                
+                {/* Use primary text color */}
+                <p className="font-semibold mb-3 text-sm text-text-primary">실제 협업 사례 (예시):</p>
+                {/* Use secondary text color */}
+                <ul className="list-disc list-outside pl-5 space-y-2 text-sm text-text-secondary mb-4"> {/* text-xs → text-sm */}
+                   {/* TODO: Add actual collaboration examples */}
+                  <li><span className="">웹툰 작가</span> A + <span className="">일러스트레이터</span> B → <span className="">콜라보 굿즈</span> 제작 및 판매</li>
+                  <li><span className="">그래픽 디자이너</span> C + <span className="">웹 개발자</span> D → <span className="">스타트업 웹사이트</span> 공동 구축</li>
+                  <li><span className="">영상 편집자</span> E + <span className="">작가</span> F → <span className="">북 트레일러 영상</span> 제작</li>
+                </ul>
+                
+                <div className="bg-green-50 p-3 rounded-lg mt-auto">
+                  <p className="text-xs text-green-700 font-medium">🤝 협업 성공률 80% 이상! 전담 매니저가 프로젝트 매칭을 도와드립니다.</p>
+                </div>
+              </div>
             </Card>
           </div>
           </section>

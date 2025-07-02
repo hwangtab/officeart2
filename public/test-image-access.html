@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>이미지 테스트</title>
+</head>
+<body>
+    <h1>이미지 직접 접근 테스트</h1>
+    
+    <h2>로고 이미지들</h2>
+    <img src="/images/logo/logo.png" alt="Logo 1" style="max-width: 200px;">
+    <img src="/images/logo/logo2.png" alt="Logo 2" style="max-width: 200px;">
+    
+    <h2>히어로 이미지</h2>
+    <img src="/images/hero/hero-background.jpg" alt="Hero BG" style="max-width: 300px;">
+    
+    <h2>갤러리 이미지들</h2>
+    <img src="/images/gallery/gallery-2.jpg" alt="Gallery 2" style="max-width: 200px;">
+    <img src="/images/gallery/jura-x9.jpg" alt="Jura X9" style="max-width: 200px;">
+    
+    <h2>불광점 이미지들</h2>
+    <img src="/images/bulgwang/bulgwang01.png" alt="Bulgwang 1" style="max-width: 200px;">
+    <img src="/images/bulgwang/bulgwang03.png" alt="Bulgwang 3" style="max-width: 200px;">
+    
+    <script>
+        // 이미지 로딩 상태 확인
+        document.querySelectorAll('img').forEach((img, index) => {
+            img.onload = function() {
+                console.log(`✅ 이미지 ${index + 1} 로딩 성공:`, this.src);
+            };
+            img.onerror = function() {
+                console.error(`❌ 이미지 ${index + 1} 로딩 실패:`, this.src);
+                this.style.border = '2px solid red';
+            };
+        });
+    </script>
+</body>
+</html>
