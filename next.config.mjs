@@ -17,7 +17,7 @@ const nextConfig = {
   },
   // basePath: '/officeart2', // Removed for custom domain
   images: {
-    unoptimized: true, // Disable Image Optimization for static export
+    unoptimized: true, // Disable Image Optimization temporarily for debugging
     remotePatterns: [
       {
         protocol: 'https',
