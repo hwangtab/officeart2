@@ -1,4 +1,5 @@
 import AIChatWidget from '@/components/AIChatWidget';
+import ErrorBoundary from '@/components/ErrorBoundary';
 // Server Component
 
 // Removed useState, useEffect imports
@@ -107,10 +108,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Removed loading state and useEffect
-
-  // console.log('[Debug] RootLayout rendering.'); // Simplified log
-
   return (
     <html lang="ko">
       <head>
@@ -147,14 +144,12 @@ export default function RootLayout({
       </head>
       <body className={`${notoSansKr.variable} ${gmarketSans.variable} font-sans antialiased text-text-primary flex flex-col min-h-screen break-keep leading-relaxed bg-gradient-to-b from-[#FFFBF0] via-[#FFFFFF] to-slate-100`}>
         {/* Removed loading conditional rendering */}
-        <>
+        <ErrorBoundary>
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />
           <AIChatWidget />
-          {/* 네이버 서치어드바이저 소유권 확인 */}
-          <meta name="naver-site-verification" content="46c6013ba87872d453dc8ce6631eaa1e8ff18386" />
-        </>
+        </ErrorBoundary>
       </body>
     </html>
   );

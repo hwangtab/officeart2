@@ -13,7 +13,7 @@ export default function PopupBannerWrapper() {
   }, [])
 
   const handleClose = () => {
-    console.log('Popup banner closed');
+    // Popup banner closed
   };
 
   if (!isClient) return null
