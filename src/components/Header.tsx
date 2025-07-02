@@ -1,7 +1,7 @@
 'use client'; // Add use client directive for useState hook
 
 import Link from 'next/link';
-import Image from 'next/image'; // Import Image component
+import OptimizedImage from './OptimizedImage';
 import { useState, useCallback, useRef, useEffect } from 'react'; // Import hooks
 import { usePathname, useRouter } from 'next/navigation'; // Import usePathname and useRouter hooks
 import { HiBars3 as Bars3Icon, HiXMark as XMarkIcon, HiMagnifyingGlass as MagnifyingGlassIcon } from 'react-icons/hi2'; // Import menu and search icons
@@ -120,12 +120,12 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
-              <Image
-                src="/images/logo/logo2.png" // 새로운 로고 이미지 경로
-                alt="오피스아트 로고"
-                width={150} // 로고 너비 설정 (적절히 조절)
-                height={40} // 로고 높이 설정 (비율에 맞게 조절)
-                priority // 헤더 로고는 중요하므로 우선 로딩
+              <OptimizedImage
+                src="/images/logo/logo2.png"
+                alt="오피스아트 로고 - 창의력과 집중력이 피어나는 작업 공간"
+                width={150}
+                height={40}
+                priority
                 className="cursor-pointer"
               />
             </Link>

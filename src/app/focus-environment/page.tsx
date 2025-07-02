@@ -1,6 +1,6 @@
 import React from 'react'; // Import React
 import type { Metadata } from 'next'; // Import Metadata type
-import Image from 'next/image';
+import OptimizedImage from '@/components/OptimizedImage';
 import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper'; // Import wrapper
 // Removed unused Link import
 import BackButton from '@/components/BackButton';
@@ -37,24 +37,24 @@ export default function FocusEnvironmentPage() {
             {/* Add rounded corners */}
             <div className="w-full relative h-80 bg-gray-100 rounded-lg overflow-hidden"> {/* Use gray-100 for placeholder bg */}
               {/* TODO: Add workspace image (오피스아트 자체 촬영) */}
-              <Image
-                src="/images/gallery/DSC07707.jpeg" // 실제 이미지 경로 적용 (작업 공간 전경)
-                alt="여러 개의 L자형 책상과 의자가 배치된 오피스아트의 전체 작업 공간 모습" // Improved alt text
-                fill // layout="fill" 대체
-                style={{ objectFit: 'cover' }} // objectFit 스타일 적용
-                sizes="(min-width: 768px) 50vw, 100vw" // Added sizes
+              <OptimizedImage
+                src="/images/gallery/DSC07707.jpeg"
+                alt="오피스아트 내부 전경 - 여러 개의 L자형 책상과 스틸케이스 의자가 배치된 집중 작업 공간, 넓은 지정석에서 창의력과 집중력이 극대화되는 환경"
+                fill
+                className="object-cover"
+                sizes="(min-width: 768px) 50vw, 100vw"
               />
             </div>
             {/* L-shaped Desk Image */}
             {/* Add rounded corners */}
             <div className="w-full relative h-80 bg-gray-100 rounded-lg overflow-hidden"> {/* Use gray-100 for placeholder bg */}
               {/* TODO: Add L-shaped desk image (오피스아트 자체 촬영) */}
-              <Image
-                 src="/images/gallery/l-shape-desk.jpg" // 실제 이미지 경로 적용 (L형 책상) - 파일명 확인 필요
-                 alt="160cm L형 책상 상세 이미지"
-                 fill // layout="fill" 대체
-                 style={{ objectFit: 'cover' }} // objectFit 스타일 적용
-                 sizes="(min-width: 768px) 50vw, 100vw" // Added sizes
+              <OptimizedImage
+                 src="/images/gallery/l-shape-desk.jpg"
+                 alt="160cm L형 책상 상세 이미지 - 넓은 작업 공간과 듀얼 모니터 설치가 가능한 인체공학적 설계의 프리미엄 데스크"
+                 fill
+                 className="object-cover"
+                 sizes="(min-width: 768px) 50vw, 100vw"
                />
             </div>
           </div>

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import OptimizedImage from './OptimizedImage';
 import SectionTitle from './SectionTitle';
 import LinkButton from '@/components/LinkButton';
 
@@ -8,13 +8,12 @@ export default function HeroSection() {
       {/* TODO: Replace with actual high-quality image (정영신 담당자) */}
       <div className="absolute inset-0">
         {/* Use Next.js Image component */}
-        <Image
-          src="/images/hero/hero-background.jpg" // 실제 이미지 경로
-          alt="넓은 L자형 책상과 스틸케이스 프리미엄 의자가 놓인 오피스아트의 밝고 쾌적한 내부 작업 공간" // Improved alt text
-          fill // 부모 요소 채우기
-          style={{ objectFit: 'cover' }} // CSS object-fit 적용
-          priority // 중요 이미지 우선 로딩
-          sizes="100vw" // Add sizes attribute for better optimization hint
+        <OptimizedImage
+          src="/images/hero/hero-background.jpg"
+          alt="오피스아트 메인 훐 - 넓은 L자형 책상과 스틸케이스 프리미엄 의자가 놓인 밝고 쾌적한 내부 작업 공간, 창의력과 집중력이 피어나는 환경"
+          fill
+          priority
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/30"></div>
       </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import OptimizedImage from './OptimizedImage';
 // Removed ScrollAnimationWrapper import
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -57,14 +57,13 @@ export default function GallerySlider({ images = defaultGalleryImages }: Gallery
         {images.map((src, index) => (
           <SwiperSlide key={index}>
             <div className="relative w-full h-full overflow-hidden group">
-              <Image
+              <OptimizedImage
                 src={src}
                 alt={`오피스아트 갤러리 ${index + 1}: [${src.split('/').pop()?.split('.')[0] || '이미지 설명'}]`}
                 fill
-                style={{ objectFit: 'cover' }}
                 sizes="100vw"
                 priority={index < 2}
-                className="transition-transform duration-500 ease-in-out group-hover:scale-105 cursor-pointer"
+                className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 cursor-pointer"
               />
             </div>
           </SwiperSlide>

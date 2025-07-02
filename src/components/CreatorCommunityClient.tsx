@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
+import OptimizedImage from '@/components/OptimizedImage';
 import { UnifiedButton } from '@/components/UnifiedButton';
 
 // Dynamically import the CreatorChart component with loading indicator
@@ -9,9 +9,9 @@ const DynamicCreatorChart = dynamic(() => import('@/components/CreatorChart'), {
   ssr: false,
   loading: () => (
     <div className="w-full h-80 flex flex-col items-center justify-center bg-gray-100 rounded-lg">
-      <Image
+      <OptimizedImage
         src="/images/logo/logo.png"
-        alt="Loading chart..."
+        alt="오피스아트 로고 - 창작자 커뮤니티 차트 로딩 중"
         width={100}
         height={27}
         className="animate-pulse mb-4"

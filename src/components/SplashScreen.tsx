@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import OptimizedImage from './OptimizedImage';
 
 const SplashScreen = () => {
   return (
@@ -8,12 +8,12 @@ const SplashScreen = () => {
       <div className="flex flex-col items-center -mt-8"> {/* Adjust negative margin as needed */}
         {/* Simple fade-in animation for the logo */}
         <div className="animate-pulse"> {/* Using pulse for simplicity, can be refined */}
-        <Image
+        <OptimizedImage
           src="/images/logo/logo.png"
-          alt="오피스아트 로고"
-          width={400} // Increased size by 2x
-          height={106} // Increased size by 2x
-          priority // Load logo quickly
+          alt="오피스아트 로고 - 창의력과 집중력이 피어나는 작업 공간"
+          width={400}
+          height={106}
+          priority
         />
       </div>
       {/* Loading Bar */}

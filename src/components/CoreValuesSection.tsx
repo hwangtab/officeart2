@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import OptimizedImage from './OptimizedImage';
 import Link from 'next/link';
 import Card from '@/components/Card';
 import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
@@ -19,11 +19,10 @@ export default function CoreValuesSection({ locationId }: CoreValuesSectionProps
           <Link href="/large-desk" aria-label="180cm 대형 책상 자세히 보기" className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary rounded-lg block">
             <Card className="overflow-hidden group h-full flex flex-col focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg">
               <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
-                <Image
-                  src="/images/bulgwang/bulgwang05.png" // 불광점 책상 이미지
-                  alt="180cm 대형 책상"
+                <OptimizedImage
+                  src="/images/bulgwang/bulgwang05.png"
+                  alt="오피스아트 불광점의 180cm 대형 책상 - 넓은 작업 공간을 제공하는 프리미엄 가구"
                   fill
-                  style={{ objectFit: 'cover' }}
                   className="group-hover:scale-105 transition-transform duration-300"
                   sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
                 />
@@ -38,11 +37,10 @@ export default function CoreValuesSection({ locationId }: CoreValuesSectionProps
           <Link href="/premium-chairs" aria-label="프리미엄 의자 자세히 보기" className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary rounded-lg block">
             <Card className="overflow-hidden group h-full flex flex-col focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg">
               <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
-                <Image
+                <OptimizedImage
                   src="/images/values/premium-chair.jpg"
-                  alt="스틸케이스 또는 휴먼스케일 의자"
+                  alt="스틸케이스 Think 또는 휴먼스케일 Freedom 프리미엄 의자 - 오피스아트에서 제공하는 180만원대 고급 의자"
                   fill
-                  style={{ objectFit: 'cover' }}
                   className="group-hover:scale-105 transition-transform duration-300"
                   sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
                 />
@@ -63,13 +61,12 @@ export default function CoreValuesSection({ locationId }: CoreValuesSectionProps
            <Card className="overflow-hidden group flex flex-col h-full focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg"> {/* Ensure rounded-lg for ring */}
             <div className="relative w-full h-48 rounded-t-lg overflow-hidden"> {/* Add rounded top corners and overflow hidden */}
                {/* Use Next.js Image component */}
-               <Image
+               <OptimizedImage
                  src={locationId === 'bulgwang' ? "/images/bulgwang/bulgwang03.png" : "/images/values/focus-environment.jpg"}
-                 alt="집중이 잘 되는 작업 환경"
+                 alt={locationId === 'bulgwang' ? "오피스아트 불광점의 집중 작업 환경 - 조용하고 쾌적한 지정석" : "집중이 잘 되는 작업 환경 - 업무와 창작 활동에 최적화된 공간"}
                  fill
-                 style={{ objectFit: 'cover' }}
                  className="group-hover:scale-105 transition-transform duration-300"
-                 sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw" // More specific sizes
+                 sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
                />
             </div>
             {/* p-6 is now handled by Card component */}
@@ -90,13 +87,12 @@ export default function CoreValuesSection({ locationId }: CoreValuesSectionProps
            <Card className="overflow-hidden group flex flex-col h-full focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-main rounded-lg"> {/* Ensure rounded-lg for ring */}
             <div className="relative w-full h-48 rounded-t-lg overflow-hidden"> {/* Add rounded top corners and overflow hidden */}
                {/* Use Next.js Image component */}
-               <Image
-                 src="/images/values/creator-community.jpg" // 실제 이미지 경로
-                 alt="크리에이터 커뮤니티 활동"
+               <OptimizedImage
+                 src="/images/values/creator-community.jpg"
+                 alt="오피스아트 창작자 커뮤니티 - 630명의 다양한 분야 창작자들이 활동하는 협동조합 네트워크"
                  fill
-                 style={{ objectFit: 'cover' }}
                  className="group-hover:scale-105 transition-transform duration-300"
-                 sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw" // More specific sizes
+                 sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
                />
             </div>
             {/* p-6 is now handled by Card component */}

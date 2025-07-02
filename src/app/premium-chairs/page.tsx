@@ -1,6 +1,6 @@
 import React from 'react'; // Ensure React is imported
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import OptimizedImage from '@/components/OptimizedImage';
 import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper'; // Import wrapper
 import BackButton from '@/components/BackButton';
 import Card from '@/components/Card';
@@ -38,7 +38,7 @@ export default function PremiumChairsPage() {
           <SectionTitle as="h2" level="section" align="center">오피스아트가 제공하는 <span className="">의자</span></SectionTitle> {/* Use level prop, underline=true is default for section */}
           <Card className="mb-12 flex flex-col md:flex-row items-start gap-8">
             <div className="md:w-1/2 w-full relative h-80 rounded-lg overflow-hidden">
-               <Image src="/images/gallery/steelcase-think.jpg" alt="스틸케이스 씽크 의자" fill style={{ objectFit: 'cover' }} sizes="(min-width: 768px) 50vw, 100vw" /> {/* contain -> cover */}
+               <OptimizedImage src="/images/gallery/steelcase-think.jpg" alt="스틸케이스 Think 의자 - 오피스아트에서 제공하는 120만원대 프리미엄 인체공학 의자, 4D 팔걸이와 자연스러운 반응성 제공" fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
             </div>
             <div className="md:w-1/2 w-full">
               <SectionTitle as="h3" level="subsection" className="mb-2"><span className="">스틸케이스 씽크 (Think)</span></SectionTitle> {/* Use level prop, override margin */}
@@ -58,7 +58,7 @@ export default function PremiumChairsPage() {
           </Card>
           <Card className="flex flex-col md:flex-row items-start gap-8"> {/* Removed md:flex-row-reverse */}
              <div className="md:w-1/2 w-full relative h-80 rounded-lg overflow-hidden">
-               <Image src="/images/gallery/humanscale-freedom.jpg" alt="휴먼스케일 프리덤 의자" fill style={{ objectFit: 'cover' }} sizes="(min-width: 768px) 50vw, 100vw" /> {/* contain -> cover */}
+               <OptimizedImage src="/images/gallery/humanscale-freedom.jpg" alt="휴먼스케일 프리덤 의자 - 180만원대 최고급 인체공학 의자, 자동 피벗 등받이와 체중 감지 시스템 기능 제공" fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
             </div>
             <div className="md:w-1/2 w-full">
               <SectionTitle as="h3" level="subsection" className="mb-2"><span className="">휴먼스케일 프리덤 (Freedom)</span></SectionTitle> {/* Use level prop, override margin */}

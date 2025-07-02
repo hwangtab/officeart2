@@ -1,5 +1,6 @@
 import AIChatWidget from '@/components/AIChatWidget';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import PerformanceMetrics from '@/components/PerformanceMetrics';
 // Server Component
 
 // Removed useState, useEffect imports
@@ -58,10 +59,10 @@ export const metadata: Metadata = {
     default: '오피스아트 | 합리적 가격으로 즐기는 최고의 업무 환경', // Default title
     template: '%s | 오피스아트', // Title template for subpages
   },
-  description: '프리랜서, 스타트업, 창작자를 위한 프리미엄 공유오피스. 영등포구청역 오피스아트에서 합리적인 가격으로 프리미엄 의자, 넓은 작업공간과 최적의 집중 환경을 경험하세요.', // Updated description
+  description: '프리랜서, 스타트업, 창작자를 위한 프리미엄 공유오피스. 영등포구청역 오피스아트에서 합리적인 가격으로 스틸케이스 프리미엄 의자, 넓은 L형 작업공간, 24시간 접근 가능한 최적의 집중 환경을 경험하세요.', // Updated description
   openGraph: {
     title: '오피스아트 | 합리적 가격으로 즐기는 프리미엄 작업 환경',
-    description: '프리랜서, 스타트업, 창작자를 위한 프리미엄 공유오피스. 영등포구청역 오피스아트에서 합리적인 가격으로 최적의 작업 환경을 경험하세요.', // Updated OG description
+    description: '프리랜서, 스타트업, 창작자를 위한 프리미엄 공유오피스. 영등포구청역 오피스아트에서 합리적인 가격으로 스틸케이스 프리미엄 의자, 넓은 L형 작업공간, 24시간 접근 가능한 최적의 집중 환경을 경험하세요.', // Updated OG description
     url: siteUrl,
     siteName: '오피스아트',
     images: [
@@ -145,6 +146,7 @@ export default function RootLayout({
       <body className={`${notoSansKr.variable} ${gmarketSans.variable} font-sans antialiased text-text-primary flex flex-col min-h-screen break-keep leading-relaxed bg-gradient-to-b from-[#FFFBF0] via-[#FFFFFF] to-slate-100`}>
         {/* Removed loading conditional rendering */}
         <ErrorBoundary>
+          <PerformanceMetrics />
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />

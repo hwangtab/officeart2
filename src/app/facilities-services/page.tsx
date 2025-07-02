@@ -1,7 +1,7 @@
 // Removed unused Link import
 import type { Metadata } from 'next'; // Import Metadata type
 import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper'; // Import wrapper
-import Image from 'next/image';
+import OptimizedImage from '@/components/OptimizedImage';
 import LinkButton from '@/components/LinkButton'; // Import LinkButton
 import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
 import { HiOutlineSparkles as CoffeeIcon, HiOutlinePrinter as PrinterIcon, HiOutlineWifi as WifiIcon, HiOutlineBuildingStorefront as FacilitiesIcon } from 'react-icons/hi2';
@@ -26,12 +26,12 @@ export default function FacilitiesServicesPage() {
           {/* Add rounded corners to image container */}
           <div className="md:w-1/3 w-full relative h-64 rounded-lg overflow-hidden">
             {/* TODO: Add JURA X9 image (JURA 공식 or 자체 촬영) */}
-            <Image
-              src="/images/gallery/jura-x9.jpg" // 실제 이미지 경로 적용 (커피머신)
-              alt="오피스아트에 비치된 스위스 JURA X9 전자동 커피머신" // Improved alt text
-              fill // layout="fill" 대체
-              style={{ objectFit: 'contain' }} // objectFit 스타일 적용
-              sizes="(min-width: 768px) 33vw, 100vw" // Added sizes
+            <OptimizedImage
+              src="/images/gallery/jura-x9.jpg"
+              alt="오피스아트 시설 - 스위스 JURA X9 전자동 커피머신, 12가지 이상의 스페셜티 커피를 24시간 무료로 제공"
+              fill
+              sizes="(min-width: 768px) 33vw, 100vw"
+              className="object-contain"
             />
           </div>
           <div className="md:w-2/3 w-full">
@@ -60,12 +60,12 @@ export default function FacilitiesServicesPage() {
            {/* Add rounded corners to image container */}
            <div className="md:w-1/3 w-full relative h-64 rounded-lg overflow-hidden">
              {/* TODO: Add EPSON WF-C8690 image (제조사 공식 or 자체 촬영) */}
-              <Image
-               src="/images/gallery/epson-wf-c8690.jpg" // 실제 이미지 경로 적용 (복합기)
-               alt="EPSON WF-C8690 A3 컬러 복합기"
-               fill // layout="fill" 대체
-               style={{ objectFit: 'contain' }} // objectFit 스타일 적용
-               sizes="(min-width: 768px) 33vw, 100vw" // Added sizes
+              <OptimizedImage
+               src="/images/gallery/epson-wf-c8690.jpg"
+               alt="오피스아트 시설 - EPSON WF-C8690 A3 컬러 복합기, 고품질 컬러 출력과 스캔 기능을 무료로 제공"
+               fill
+               className="object-contain"
+               sizes="(min-width: 768px) 33vw, 100vw"
              />
           </div>
           <div className="md:w-2/3 w-full">
@@ -131,7 +131,7 @@ export default function FacilitiesServicesPage() {
                    <h3 className="text-xl font-semibold mb-3">회의 공간</h3>
                    <div className="w-full relative h-48 bg-gray-200 rounded mb-3 overflow-hidden group">
                        {/* TODO: Add Rest Area image */}
-                       <Image src="/images/gallery/gallery-7.jpg" alt="프로젝터와 화이트보드가 설치된 오피스아트 회의 공간 내부" fill style={{ objectFit: 'cover' }} className="group-hover:scale-105 transition-transform" sizes="(min-width: 768px) 50vw, 100vw"/> {/* Improved alt text */}
+                       <OptimizedImage src="/images/gallery/gallery-7.jpg" alt="오피스아트 회의 공간 - 프로젝터와 화이트보드가 설치된 미팅룸 내부, 효율적인 협업과 프레젠테이션이 가능한 환경" fill className="group-hover:scale-105 transition-transform object-cover" sizes="(min-width: 768px) 50vw, 100vw"/>
                    </div>
                    {/* Adjust text color */}
                    <p className="text-text-secondary text-sm">
@@ -147,7 +147,7 @@ export default function FacilitiesServicesPage() {
                 <Card>
                    <h3 className="text-xl font-semibold mb-3">옥상 공간</h3>
                     <div className="w-full relative h-48 bg-gray-200 rounded mb-3 overflow-hidden group">
-                        <Image src="/images/gallery/gallery-5.jpg" alt="테이블과 파라솔이 설치된 오피스아트 건물 옥상 휴식 공간" fill style={{ objectFit: 'cover' }} className="group-hover:scale-105 transition-transform" sizes="(min-width: 768px) 50vw, 100vw"/> {/* Improved alt text */}
+                        <OptimizedImage src="/images/gallery/gallery-5.jpg" alt="오피스아트 옥상 휴식 공간 - 테이블과 파라솔이 설치된 옥외 휴게 공간, 업무 중 휴식과 네트워킹이 가능한 공간" fill className="group-hover:scale-105 transition-transform object-cover" sizes="(min-width: 768px) 50vw, 100vw"/>
                    </div>
                    {/* Adjust text color */}
                    <p className="text-text-secondary text-sm">
