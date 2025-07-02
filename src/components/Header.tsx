@@ -174,8 +174,8 @@ export default function Header() {
                 : 'font-medium hover:text-accent-yellow' // Medium weight with hover
                     }`}
                   >
-                    {/* 반응형 텍스트: 중간 해상도에서는 단축명, 큰 화면에서는 전체명 */}
-                    <span className="xl:hidden">{item.shortName || item.name}</span>
+                    {/* 반응형 텍스트: 1280px-1535px에서는 단축명, 1536px+에서는 전체명 */}
+                    <span className="nav:inline xl:hidden">{item.shortName || item.name}</span>
                     <span className="hidden xl:inline">{item.name}</span>
                   </Link>
                 </li>
