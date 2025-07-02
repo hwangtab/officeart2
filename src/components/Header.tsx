@@ -160,7 +160,8 @@ export default function Header() {
           {/* Apply justify-self-center for grid centering, remove flex-grow/justify-center */}
           {/* Apply mx-auto for balanced spacing and increase space-x */}
           {/* Desktop Navigation - Responsive Breakpoints */}
-          <ul className="hidden nav:flex mx-auto space-x-2 lg:space-x-3 xl:space-x-4 items-center"> {/* Progressive spacing based on screen size */}
+          <div className="hidden nav:flex flex-1 justify-center ml-8 lg:ml-12 xl:ml-16">
+            <ul className="flex space-x-2 lg:space-x-3 xl:space-x-4 items-center"> {/* Progressive spacing with proper logo separation */}
             {flattenedNavItems.map((item) => {
               const active = isActive(item);
               return (
@@ -180,8 +181,8 @@ export default function Header() {
                 </li>
               );
             })}
-          </ul>
-
+            </ul>
+          </div>
 
           {/* Search Icon - Desktop */}
           <div className="hidden nav:flex items-center ml-2 lg:ml-4"> {/* Responsive margin and nav breakpoint */}
