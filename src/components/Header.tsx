@@ -15,12 +15,11 @@ interface NavItem {
 
 interface FlattenedNavItem {
   name: string;
-  shortName?: string;
   href?: string;
   group: string; // 속한 그룹 이름 (스타일링에 사용 가능)
 }
 
-// --- 메뉴 데이터 (단순화) ---
+// --- 원본 메뉴 데이터 ---
 const navItems: NavItem[] = [
   { name: '지점 안내', href: '/locations' },
   { name: '비상주사무실', href: '/services/non-resident' },
@@ -37,8 +36,8 @@ const navItems: NavItem[] = [
 const flattenedNavItems: FlattenedNavItem[] = navItems.map(item => ({
   name: item.name,
   href: item.href,
-  group: item.name,
-  isParent: false
+  group: item.name, // 그룹 정보는 유지하되 단순화
+  isParent: false // 모든 항목을 링크로 처리
 }));
 
 
@@ -51,13 +50,13 @@ export default function Header() {
 
   const toggleMenu = useCallback(() => {
     setIsMenuOpen((prev) => !prev);
-    setIsSearchOpen(false);
-  }, []);
+    if (isSearchOpen) setIsSearchOpen(false); // Close search if menu opens
+  }, [isSearchOpen]);
 
   const toggleSearch = useCallback(() => {
     setIsSearchOpen((prev) => !prev);
-    setIsMenuOpen(false);
-  }, []);
+    if (isMenuOpen) setIsMenuOpen(false); // Close menu if search opens
+  }, [isMenuOpen]);
 
   // Focus search input when it opens
   useEffect(() => {
@@ -96,10 +95,11 @@ export default function Header() {
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const searchTerm = searchInputRef.current?.value.trim();
+    const searchTerm = searchInputRef.current?.value.trim(); // Trim whitespace
     if (searchTerm) {
+      // Navigate to the search results page with the query parameter
       router.push(`/search?q=${encodeURIComponent(searchTerm)}`);
-      setIsSearchOpen(false);
+      setIsSearchOpen(false); // Close search panel after submission
     }
   };
 
@@ -115,83 +115,78 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-primary text-text-on-primary shadow-md">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-[1fr_2fr_1fr] items-center h-16 gap-4">
-          {/* Logo - Fixed Width */}
-          <div className="flex justify-start">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0">
             <Link href="/">
               <OptimizedImage
                 src="/images/logo/logo2.png"
                 alt="오피스아트 로고 - 창의력과 집중력이 피어나는 작업 공간"
-                width={120}
-                height={32}
+                width={150}
+                height={40}
                 priority
-                className="cursor-pointer h-8 w-auto"
+                className="cursor-pointer"
               />
             </Link>
           </div>
 
-          {/* Desktop Navigation - Center */}
-          <div className="hidden xl:flex justify-center">
-            <ul className="flex space-x-3 items-center justify-center">
-              {flattenedNavItems.map((item) => {
-                const active = isActive(item);
-                return (
-                  <li key={`${item.group}-${item.name}`}>
-                    <Link
-                      href={item.href!}
-                      className={`px-3 py-2 text-sm rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap min-h-[44px] flex items-center ${
-                active
-                  ? 'font-bold text-accent-yellow'
-                  : 'font-medium hover:text-accent-yellow'
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+          {/* Desktop Navigation - 가로 스크롤 방지를 위해 xl 브레이크포인트 사용 */}
+          <ul className="hidden xl:flex mx-auto space-x-3 items-center">
+            {flattenedNavItems.map((item) => {
+              const active = isActive(item);
+              return (
+                <li key={`${item.group}-${item.name}`}>
+                  <Link
+                    href={item.href!}
+                    className={`px-2 py-2 text-sm rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
+              active
+                ? 'font-bold text-accent-yellow' 
+                : 'font-medium hover:text-accent-yellow'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* Search Icon - Desktop */}
+          <div className="hidden xl:flex items-center ml-4">
+            <button
+              aria-label="검색 열기"
+              onClick={toggleSearch}
+              className="p-2 rounded-md hover:bg-primary/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
+            >
+              <MagnifyingGlassIcon className="h-6 w-6" />
+            </button>
           </div>
 
-          {/* Right Side - Search + Mobile Menu */}
-          <div className="flex justify-end items-center space-x-2">
-            {/* Search Icon - Desktop */}
-            <div className="hidden xl:flex">
-              <button
-                aria-label="검색 열기"
-                onClick={toggleSearch}
-                className="p-2 rounded-md hover:bg-primary/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
-              >
-                <MagnifyingGlassIcon className="h-5 w-5" />
-              </button>
-            </div>
-
-            {/* Mobile Menu & Search Buttons */}
-            <div className="xl:hidden flex items-center space-x-1">
-              {/* Search Icon - Mobile */}
-              <button
-                aria-label="검색 열기"
-                onClick={toggleSearch}
-                className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
-              >
-                <MagnifyingGlassIcon className="h-5 w-5" />
-              </button>
-              {/* Mobile Menu Button */}
-              <button
-                id="mobile-menu-button"
-                aria-label={isMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
-                aria-expanded={isMenuOpen}
-                aria-controls="mobile-menu"
-                onClick={toggleMenu}
-                className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
-              >
-                {isMenuOpen ? (
-                  <XMarkIcon className="h-5 w-5" />
-                ) : (
-                  <Bars3Icon className="h-5 w-5" />
-                )}
-              </button>
-            </div>
+          {/* Mobile Menu & Search Buttons */}
+          <div className="xl:hidden flex items-center ml-auto">
+             {/* Search Icon - Mobile */}
+             <button
+               aria-label="검색 열기"
+               onClick={toggleSearch}
+               className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white mr-2"
+             >
+               <MagnifyingGlassIcon className="h-6 w-6" />
+             </button>
+            {/* Mobile Menu Button */}
+            <button
+              id="mobile-menu-button"
+              aria-label={isMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              onClick={toggleMenu}
+              className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
+            >
+              {isMenuOpen ? (
+                <XMarkIcon className="h-6 w-6" />
+              ) : (
+                <Bars3Icon className="h-6 w-6" />
+              )}
+            </button>
           </div>
         </div>
       </nav>
@@ -224,14 +219,14 @@ export default function Header() {
         </div>
       )}
 
-      {/* Mobile Menu Panel - Enhanced Accessibility */}
+      {/* Mobile Menu Panel - 원래 안정적이었던 버전 */}
       {isMenuOpen && (
         <div 
-          className="xl:hidden absolute top-16 right-4 w-64 bg-primary shadow-md py-2 z-45 max-h-[calc(100vh-4rem)] overflow-y-auto rounded-md"
+          className="xl:hidden absolute top-16 left-0 w-full bg-primary shadow-md py-2 z-45 max-h-[calc(100vh-4rem)] overflow-y-auto"
           role="menu"
           aria-labelledby="mobile-menu-button"
         >
-          <ul className="flex flex-col space-y-2 px-4 pt-3 pb-4">
+          <ul className="flex flex-col space-y-1 px-2 pt-2 pb-3">
             {flattenedNavItems.map((item) => {
               const active = pathname === item.href;
               return (
@@ -241,7 +236,7 @@ export default function Header() {
                     onClick={toggleMenu}
                     role="menuitem"
                     tabIndex={isMenuOpen ? 0 : -1}
-                    className={`block px-4 py-3 rounded-md text-base font-medium cursor-pointer transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-white min-h-[48px] text-left ${
+                    className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-white ${
                       active ? 'bg-primary/80 font-bold' : ''
                     }`}
                   >
