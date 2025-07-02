@@ -38,13 +38,13 @@ export default function LocationCard({ location, href, className = '' }: Locatio
         </div>
 
         <div className="bg-background-main p-4 rounded-lg mb-6 border border-border-light">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="text-center">
               <p className="text-xs text-text-secondary mb-1">정기 이용권</p>
               <p className="text-lg font-bold text-primary">{location.pricing.monthlyDesk.toLocaleString()}원</p>
               <p className="text-xs text-text-secondary">월</p>
             </div>
-            <div>
+            <div className="text-center">
               <p className="text-xs text-text-secondary mb-1">비상주사무실</p>
               <p className="text-lg font-bold text-primary">{location.pricing.nonResidentOffice.price.toLocaleString()}원</p>
               <p className="text-xs text-text-secondary">월</p>
