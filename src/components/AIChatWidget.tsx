@@ -123,7 +123,7 @@ export default function AIChatWidget() {
                                 /(0\d{2,4}-\d{3,4}-\d{4})/g,
                                 '<a href="tel:$1" class="text-blue-600 hover:underline">$1</a>'
                               ).replace(
-                                /(https?:\/\/[^\s<]+?)(?=으로|에서|에게|으로서|에|와|과|이|가|을|를|의|부터|까지|\s|$)/g,
+                                /(https?:\/\/[^\s<\)]+?)(?=[\)\(]|으로|에서|에게|으로서|에|와|과|이|가|을|를|의|부터|까지|\s|$)/g,
                                 '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">$1</a>'
                               ).replace(
                                 /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
