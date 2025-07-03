@@ -103,10 +103,10 @@ export default function AIChatWidget() {
                       : 'bg-gray-100 text-gray-800'}`}
                   >
 {(() => {
-                      // 마크다운 전화번호 링크를 HTML로 변환
-                      const contentWithPhoneLinks = msg.content.replace(
+                      // 마크다운 전화번호 링크를 일반 텍스트로 변환하여 Linkify가 처리할 수 있게 함
+                      const processedContent = msg.content.replace(
                         /\[(\d{3,4}-\d{3,4}-\d{4})\]\(tel:(\d{10,11})\)/g,
-                        '<a href="tel:$2" class="text-blue-600 hover:underline">$1</a>'
+                        '$1'
                       );
                       
                       return (
@@ -126,7 +126,7 @@ export default function AIChatWidget() {
                             </a>
                           );
                         }}>
-                          <span dangerouslySetInnerHTML={{ __html: contentWithPhoneLinks }} />
+                          {processedContent}
                         </Linkify>
                       );
                     })()}
