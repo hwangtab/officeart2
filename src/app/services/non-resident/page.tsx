@@ -57,7 +57,7 @@ export default function NonResidentOfficePage() {
             </LinkButton>
             <LinkButton 
               href="#pricing"
-              variant="outlineWhite"
+              variant="secondary"
               size="lg"
             >
               가격 확인하기

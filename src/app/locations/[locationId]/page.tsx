@@ -127,7 +127,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
             </LinkButton>
             <LinkButton 
               href={`/location/${location.id}`}
-              variant="outlineWhite"
+              variant="secondary"
               size="lg"
             >
               교통정보 보기

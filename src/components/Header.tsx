@@ -174,7 +174,7 @@ export default function Header() {
                     className={`px-1 py-1 text-xs rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
                       active
                         ? 'nav-active-gradient' 
-                        : 'font-medium hover:text-accent-yellow'
+                        : 'font-medium hover:text-yellow-300'
                     }`}
                   >
                     {item.shortName}
@@ -185,7 +185,7 @@ export default function Header() {
             {lowPriorityItems.length > 0 && (
               <li className="relative">
                 <button 
-                  className="px-1 py-1 text-xs font-medium hover:text-accent-yellow flex items-center rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
+                  className="px-1 py-1 text-xs font-medium hover:text-yellow-300 flex items-center rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsMoreMenuOpen(!isMoreMenuOpen);
@@ -230,7 +230,7 @@ export default function Header() {
                     className={`px-2 py-2 text-sm rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
                       active
                         ? 'nav-active-gradient' 
-                        : 'font-medium hover:text-accent-yellow'
+                        : 'font-medium hover:text-yellow-300'
                     }`}
                   >
                     {item.name}
