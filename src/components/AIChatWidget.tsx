@@ -44,12 +44,12 @@ export default function AIChatWidget() {
 
     try {
       const response = await queryOpenRouter(inputValue);
-      // 마크다운 특수문자 제거
+      // 마크다운 특수문자 제거 (전화번호 링크는 보존)
       const cleanResponse = response
         .replace(/\*\*(.*?)\*\*/g, '$1') // **bold** 제거
         .replace(/```[\s\S]*?```/g, '') // ```code block``` 제거
         .replace(/`(.*?)`/g, '$1') // `inline code` 제거
-        .replace(/\[(.*?)\]\(.*?\)/g, '$1') // [link](url) 제거
+        .replace(/\[(.*?)\]\((?!tel:).*?\)/g, '$1') // tel: 링크 제외하고 [link](url) 제거
         .replace(/^#{1,6}\s*/gm, ''); // #, ##, ### 제거
         
       const botMessage: Message = {
