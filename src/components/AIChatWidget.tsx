@@ -50,6 +50,7 @@ export default function AIChatWidget() {
         .replace(/^\[(.*?)\]$/gm, '<div class="bg-blue-50 border-l-4 border-blue-400 p-2 mt-4 mb-2 font-semibold text-blue-800">$1</div>') // [섹션] → 박스형 헤더
         .replace(/^#{1,6}\s*(.*$)/gm, '<h4 class="font-semibold text-gray-800 mt-3 mb-2">$1</h4>') // # 제목
         .replace(/^- (.*$)/gm, '<div class="ml-3 mb-1 text-gray-700">• $1</div>') // - 목록 항목
+        .replace(/^\* (.*$)/gm, '<div class="ml-3 mb-1 text-gray-700">• $1</div>') // * 목록 항목
         .replace(/```[\s\S]*?```/g, '') // ```code block``` 제거
         .replace(/`(.*?)`/g, '<code class="bg-gray-200 px-1 rounded text-sm">$1</code>') // `inline code`
         .replace(/\[(.*?)\]\((?!tel:).*?\)/g, '$1') // tel: 링크 제외하고 [link](url) 제거
