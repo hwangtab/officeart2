@@ -10,6 +10,8 @@ const config = {
     extend: {
       screens: {
         'nav': '1280px', // Navigation breakpoint for menu display
+        'nav-compact': '1280px', // Compact menu start
+        'nav-full': '1440px', // Full menu start (was xxl)
         'xxl': '1440px', // Custom breakpoint for 1440px
       },
       // New Color Palette (Based on user feedback)

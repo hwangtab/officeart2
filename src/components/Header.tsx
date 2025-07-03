@@ -4,7 +4,7 @@ import Link from 'next/link';
 import OptimizedImage from './OptimizedImage';
 import { useState, useCallback, useRef, useEffect } from 'react'; // Import hooks
 import { usePathname, useRouter } from 'next/navigation'; // Import usePathname and useRouter hooks
-import { HiBars3 as Bars3Icon, HiXMark as XMarkIcon, HiMagnifyingGlass as MagnifyingGlassIcon } from 'react-icons/hi2'; // Import menu and search icons
+import { HiBars3 as Bars3Icon, HiXMark as XMarkIcon, HiMagnifyingGlass as MagnifyingGlassIcon, HiChevronDown as ChevronDownIcon } from 'react-icons/hi2'; // Import menu and search icons
 
 // --- 데이터 구조 정의 ---
 interface NavItem {
@@ -19,18 +19,31 @@ interface FlattenedNavItem {
   group: string; // 속한 그룹 이름 (스타일링에 사용 가능)
 }
 
-// --- 원본 메뉴 데이터 ---
-const navItems: NavItem[] = [
-  { name: '지점 안내', href: '/locations' },
-  { name: '비상주사무실', href: '/services/non-resident' },
-  { name: '프리미엄 의자', href: '/premium-chairs' },
-  { name: '집중 환경', href: '/focus-environment' },
-  { name: '창작자 커뮤니티', href: '/creator-community' },
-  { name: '시설 및 서비스', href: '/facilities-services' },
-  { name: '가격 및 멤버십', href: '/pricing' },
-  { name: 'FAQ', href: '/faq' },
-  { name: '상담 및 문의', href: '/contact' },
+interface ResponsiveNavItem {
+  name: string;
+  shortName: string;    // 압축 모드용 단축명
+  href: string;
+  priority: 'high' | 'medium' | 'low';  // 공간 부족시 우선순위
+}
+
+// --- 반응형 메뉴 데이터 ---
+const navItemsResponsive: ResponsiveNavItem[] = [
+  { name: '지점 안내', shortName: '지점', href: '/locations', priority: 'high' },
+  { name: '비상주사무실', shortName: '비상주', href: '/services/non-resident', priority: 'medium' },
+  { name: '프리미엄 의자', shortName: '의자', href: '/premium-chairs', priority: 'medium' },
+  { name: '집중 환경', shortName: '환경', href: '/focus-environment', priority: 'medium' },
+  { name: '창작자 커뮤니티', shortName: '커뮤니티', href: '/creator-community', priority: 'high' },
+  { name: '시설 및 서비스', shortName: '시설', href: '/facilities-services', priority: 'low' },
+  { name: '가격 및 멤버십', shortName: '가격', href: '/pricing', priority: 'high' },
+  { name: 'FAQ', shortName: 'FAQ', href: '/faq', priority: 'low' },
+  { name: '상담 및 문의', shortName: '문의', href: '/contact', priority: 'high' },
 ];
+
+// --- 기존 호환성을 위한 레거시 데이터 (모바일 메뉴용) ---
+const navItems: NavItem[] = navItemsResponsive.map(item => ({
+  name: item.name,
+  href: item.href
+}));
 
 // --- 메뉴 데이터 평탄화 ---
 const flattenedNavItems: FlattenedNavItem[] = navItems.map(item => ({
@@ -44,6 +57,7 @@ const flattenedNavItems: FlattenedNavItem[] = navItems.map(item => ({
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
   const pathname = usePathname();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
@@ -75,7 +89,7 @@ export default function Header() {
    setIsMenuOpen(false);
   }, [pathname]);
 
-  // Handle keyboard navigation
+  // Handle keyboard navigation and outside clicks
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -83,15 +97,25 @@ export default function Header() {
           setIsSearchOpen(false);
         } else if (isMenuOpen) {
           setIsMenuOpen(false);
+        } else if (isMoreMenuOpen) {
+          setIsMoreMenuOpen(false);
         }
       }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isMoreMenuOpen) {
+        setIsMoreMenuOpen(false);
+      }
+    };
+
     document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('click', handleClickOutside);
     };
-  }, [isSearchOpen, isMenuOpen]);
+  }, [isSearchOpen, isMenuOpen, isMoreMenuOpen]);
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -112,6 +136,15 @@ export default function Header() {
     return !!item.href && pathname === item.href;
   };
 
+  // Helper function to check if responsive nav item is active
+  const isActiveResponsive = (item: ResponsiveNavItem): boolean => {
+    return pathname === item.href;
+  };
+
+  // Split menu items by priority for compact view
+  const highPriorityItems = navItemsResponsive.filter(item => item.priority === 'high');
+  const lowPriorityItems = navItemsResponsive.filter(item => item.priority === 'low' || item.priority === 'medium');
+
   return (
     <header className="sticky top-0 z-50 w-full bg-primary text-text-on-primary shadow-md">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,18 +163,74 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Desktop Navigation - 가로 스크롤 방지를 위해 xl 브레이크포인트 사용 */}
-          <ul className="hidden xl:flex mx-auto space-x-3 items-center">
-            {flattenedNavItems.map((item) => {
-              const active = isActive(item);
+          {/* Compact Menu: 1280px-1439px */}
+          <ul className="hidden nav-compact:flex nav-full:hidden space-x-1 items-center mx-auto">
+            {highPriorityItems.map((item) => {
+              const active = isActiveResponsive(item);
               return (
-                <li key={`${item.group}-${item.name}`}>
+                <li key={item.name}>
                   <Link
-                    href={item.href!}
+                    href={item.href}
+                    className={`px-1 py-1 text-xs rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
+                      active
+                        ? 'font-bold text-accent-yellow' 
+                        : 'font-medium hover:text-accent-yellow'
+                    }`}
+                  >
+                    {item.shortName}
+                  </Link>
+                </li>
+              );
+            })}
+            {lowPriorityItems.length > 0 && (
+              <li className="relative">
+                <button 
+                  className="px-1 py-1 text-xs font-medium hover:text-accent-yellow flex items-center rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsMoreMenuOpen(!isMoreMenuOpen);
+                  }}
+                >
+                  더보기 <ChevronDownIcon className="h-3 w-3 ml-1" />
+                </button>
+                
+                {isMoreMenuOpen && (
+                  <div className="absolute top-full right-0 mt-1 bg-white shadow-lg rounded-md py-1 z-50 min-w-[120px] border border-gray-200">
+                    {lowPriorityItems.map((item) => {
+                      const active = isActiveResponsive(item);
+                      return (
+                        <Link 
+                          key={item.name}
+                          href={item.href}
+                          className={`block px-3 py-2 text-sm transition-colors duration-150 ${
+                            active 
+                              ? 'bg-primary text-white font-bold' 
+                              : 'text-gray-700 hover:bg-gray-100'
+                          }`}
+                          onClick={() => setIsMoreMenuOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </li>
+            )}
+          </ul>
+
+          {/* Full Menu: 1440px+ */}
+          <ul className="hidden nav-full:flex space-x-3 items-center mx-auto">
+            {navItemsResponsive.map((item) => {
+              const active = isActiveResponsive(item);
+              return (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
                     className={`px-2 py-2 text-sm rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
-              active
-                ? 'font-bold text-accent-yellow' 
-                : 'font-medium hover:text-accent-yellow'
+                      active
+                        ? 'font-bold text-accent-yellow' 
+                        : 'font-medium hover:text-accent-yellow'
                     }`}
                   >
                     {item.name}
@@ -152,7 +241,7 @@ export default function Header() {
           </ul>
 
           {/* Search Icon - Desktop */}
-          <div className="hidden xl:flex items-center ml-4">
+          <div className="hidden nav-compact:flex items-center ml-4">
             <button
               aria-label="검색 열기"
               onClick={toggleSearch}
@@ -163,7 +252,7 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu & Search Buttons */}
-          <div className="xl:hidden flex items-center ml-auto">
+          <div className="nav-compact:hidden flex items-center ml-auto">
              {/* Search Icon - Mobile */}
              <button
                aria-label="검색 열기"
@@ -222,7 +311,7 @@ export default function Header() {
       {/* Mobile Menu Panel - 원래 안정적이었던 버전 */}
       {isMenuOpen && (
         <div 
-          className="xl:hidden absolute top-16 left-0 w-full bg-primary shadow-md py-2 z-45 max-h-[calc(100vh-4rem)] overflow-y-auto"
+          className="nav-compact:hidden absolute top-16 left-0 w-full bg-primary shadow-md py-2 z-45 max-h-[calc(100vh-4rem)] overflow-y-auto"
           role="menu"
           aria-labelledby="mobile-menu-button"
         >
