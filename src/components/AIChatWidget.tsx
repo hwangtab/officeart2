@@ -102,24 +102,34 @@ export default function AIChatWidget() {
                       ? 'bg-primary text-white'
                       : 'bg-gray-100 text-gray-800'}`}
                   >
-                    <Linkify componentDecorator={(decoratedHref, decoratedText, key) => {
-                      // 전화번호인 경우 tel: 링크로 변환 (010, 0507 등 다양한 번호 형태 지원)
-                      if (decoratedText.match(/^0\d{2,4}-\d{3,4}-\d{4}$/)) {
-                        return (
-                          <a href={`tel:${decoratedText.replace(/-/g, '')}`} key={key} className="text-blue-600 hover:underline">
-                            {decoratedText}
-                          </a>
-                        );
-                      }
-                      // 일반 URL인 경우
-                      return (
-                        <a href={decoratedHref} key={key} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                          {decoratedText}
-                        </a>
+{(() => {
+                      // 마크다운 전화번호 링크를 HTML로 변환
+                      const contentWithPhoneLinks = msg.content.replace(
+                        /\[(\d{3,4}-\d{3,4}-\d{4})\]\(tel:(\d{10,11})\)/g,
+                        '<a href="tel:$2" class="text-blue-600 hover:underline">$1</a>'
                       );
-                    }}>
-                      {msg.content}
-                    </Linkify>
+                      
+                      return (
+                        <Linkify componentDecorator={(decoratedHref, decoratedText, key) => {
+                          // 전화번호인 경우 tel: 링크로 변환 (010, 0507 등 다양한 번호 형태 지원)
+                          if (decoratedText.match(/^0\d{2,4}-\d{3,4}-\d{4}$/)) {
+                            return (
+                              <a href={`tel:${decoratedText.replace(/-/g, '')}`} key={key} className="text-blue-600 hover:underline">
+                                {decoratedText}
+                              </a>
+                            );
+                          }
+                          // 일반 URL인 경우
+                          return (
+                            <a href={decoratedHref} key={key} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                              {decoratedText}
+                            </a>
+                          );
+                        }}>
+                          <span dangerouslySetInnerHTML={{ __html: contentWithPhoneLinks }} />
+                        </Linkify>
+                      );
+                    })()}
                   </div>
                 </div>
               ))
