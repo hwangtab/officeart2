@@ -20,9 +20,9 @@ const VisitInfoSection = ({ register, errors }: VisitInfoSectionProps): JSX.Elem
           type="date" id="visitDate"
           min={new Date().toISOString().split('T')[0]} // Today onwards
           {...register("visitDate", {})}
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-1 ${errors.visitDate ? 'border-warning-red focus:ring-warning-red' : 'border-border-light focus:ring-primary'}`} />
+          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-1 ${errors.visitDate ? 'border-error focus:ring-error' : 'border-border-light focus:ring-primary'}`} />
         {/* Error Message */}
-        {errors.visitDate && <span className="text-warning-red text-xs mt-1">{errors.visitDate.message}</span>}
+        {errors.visitDate && <span className="text-error text-xs mt-1">{errors.visitDate.message}</span>}
       </div>
       <div>
         <label htmlFor="visitTime" className="block text-sm font-medium mb-1 text-text-secondary">희망 시간</label>

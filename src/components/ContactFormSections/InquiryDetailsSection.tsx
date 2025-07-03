@@ -20,9 +20,9 @@ const InquiryDetailsSection = ({ register, errors }: InquiryDetailsSectionProps)
         <textarea
           id="inquiry" rows={4} placeholder="궁금한 점을 남겨주세요 (최대 500자)"
           {...register("inquiry", { maxLength: { value: 500, message: "최대 500자까지 입력 가능합니다." } })}
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-1 ${errors.inquiry ? 'border-warning-red focus:ring-warning-red' : 'border-border-light focus:ring-primary'}`}></textarea>
+          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-1 ${errors.inquiry ? 'border-error focus:ring-error' : 'border-border-light focus:ring-primary'}`}></textarea>
         {/* Error Message */}
-        {errors.inquiry && <span className="text-warning-red text-xs mt-1">{errors.inquiry.message}</span>}
+        {errors.inquiry && <span className="text-error text-xs mt-1">{errors.inquiry.message}</span>}
       </div>
 
       {/* Service Interest Checkboxes */}

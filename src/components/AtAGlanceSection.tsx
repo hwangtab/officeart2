@@ -14,9 +14,9 @@ export default function AtAGlanceSection() {
         <div className="flex flex-col items-center">
            <CurrencyDollarIcon className="h-8 w-8 mb-3 text-accent-blue" aria-hidden="true" /> {/* Use accent-blue */}
           <SectionTitle as="h4" level="card" className="text-text-primary">가격</SectionTitle> {/* Use level prop */}
-          <p><del>정가 45만원</del> <span className="text-accent-orange font-semibold"><span className="">특가 25만원</span></span></p>
+          <p><del>정가 45만원</del> <span className="text-primary font-semibold"><span className="">특가 25만원</span></span></p>
           <p className="text-sm text-text-secondary">(<span className="">모든 시설 무료 이용</span> 포함)</p> {/* Use secondary text color */}
-          <p className="text-xs text-warning-red mt-1">(<span className="">한정 좌석 특가</span>, 조기 마감될 수 있음)</p>
+          <p className="text-xs text-error mt-1">(<span className="">한정 좌석 특가</span>, 조기 마감될 수 있음)</p>
         </div>
         <div className="flex flex-col items-center">
            <BuildingOffice2Icon className="h-8 w-8 mb-3 text-accent-blue" aria-hidden="true" /> {/* Use accent-blue */}

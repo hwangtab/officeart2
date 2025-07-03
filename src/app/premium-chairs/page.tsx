@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 export default function PremiumChairsPage() {
   // Data for comparison tables (needed for React.cloneElement)
   const comparisonTableData = [
-    { item: '의자 편안함', icon: <ChairIcon />, cafe: { text: '낮음', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '최상', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-    { item: '책상 크기', icon: <DeskIcon />, cafe: { text: '작음', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '넓음 (160cm L형)', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-    { item: '집중도', icon: <FocusIcon />, cafe: { text: '낮음 (소음, 시선)', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '높음 (집중 환경)', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-    { item: '비용 효율성', icon: <ValueIcon />, cafe: { text: '음료값 (월 8만+)', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '월 25만원 (모든 것 포함)', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-    { item: '24시간 이용성', icon: <ClockIcon />, cafe: { text: '불가', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '가능', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
+    { item: '의자 편안함', icon: <ChairIcon />, cafe: { text: '낮음', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '최상', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+    { item: '책상 크기', icon: <DeskIcon />, cafe: { text: '작음', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '넓음 (160cm L형)', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+    { item: '집중도', icon: <FocusIcon />, cafe: { text: '낮음 (소음, 시선)', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '높음 (집중 환경)', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+    { item: '비용 효율성', icon: <ValueIcon />, cafe: { text: '음료값 (월 8만+)', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '월 25만원 (모든 것 포함)', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+    { item: '24시간 이용성', icon: <ClockIcon />, cafe: { text: '불가', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '가능', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
   ];
 
   return (
@@ -137,14 +137,14 @@ export default function PremiumChairsPage() {
           <SectionTitle as="h2" level="section" align="center"><span className="">월 25만원</span>으로 누리는 가치</SectionTitle> {/* Use level prop */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card className="flex flex-col items-center">
-              <ValueIcon className="h-8 w-8 mb-4 text-success-green" />
+              <ValueIcon className="h-8 w-8 mb-4 text-success" />
               <SectionTitle as="h3" level="card" align="center" className="text-text-primary"><span className="">180만원대 의자</span>를 <span className="">월 25만원</span>에</SectionTitle> {/* Use level prop */}
               <p className="text-text-secondary mb-4 text-sm">
                 <span className="">초기 비용 부담없이</span> 최고의 환경을 경험하세요. <span className="">카페 이용 비용</span>과 비교해 보세요. <span className="">월 25만원</span>으로 <span className="">프리미엄 의자</span>, <span className="">넓은 책상</span>, <span className="">무제한 커피/출력</span>까지, 비교할 수 없는 <span className="">가성비</span>를 제공합니다.
               </p>
             </Card>
             <Card className="flex flex-col items-center">
-               <HealthIcon className="h-8 w-8 mb-4 text-warning-red" />
+               <HealthIcon className="h-8 w-8 mb-4 text-error" />
               <SectionTitle as="h3" level="card" align="center" className="text-text-primary"><span className="">허리 건강</span>을 지키는 선택</SectionTitle> {/* Use level prop */}
               <p className="text-text-secondary mb-4 text-sm">
                 잘못된 자세는 <span className="">만성 통증</span>과 <span className="">생산성 저하</span>의 주요 원인입니다. <span className="">좋은 의자</span>는 <span className="">건강한 작업 습관</span>의 시작입니다. 오피스아트의 <span className="">프리미엄 의자</span>는 <span className="">바른 자세</span>를 유지하도록 도와 <span className="">장시간 작업</span>에도 <span className="">피로</span>를 덜어줍니다.

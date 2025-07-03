@@ -124,13 +124,13 @@ export default function FocusEnvironmentPage() {
               </thead>
               <tbody>
                 {[
-                  { item: '소음', icon: <NoiseIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '대화 소음, 음악, 기계 소리', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '모두가 집중하는 정숙한 분위기', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-                  { item: '공간 안정성', icon: <StabilityIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '자리 확보 불확실, 짐 보관 어려움', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '고정석 보장, 개인 물품 보관 가능', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-                  { item: '비용 효율성', icon: <CostIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '음료값 (월 8만원+) + 식사/간식', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '월 25만원 (커피, 출력 무제한 포함)', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-                  { item: '책상 크기', icon: <DeskIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '작은 테이블', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '160cm L형 책상', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-                  { item: '이용 시간', icon: <AccessIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '카페 영업시간', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '24시간', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-                  { item: '의자', icon: <ChairIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '불편한 카페 의자', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '180만원대 프리미엄 의자', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } }, // Updated price
-                  { item: '네트워크', icon: <WifiIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '불안정할 수 있음', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '안정적인 기가 인터넷', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
+                  { item: '소음', icon: <NoiseIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '대화 소음, 음악, 기계 소리', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '모두가 집중하는 정숙한 분위기', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+                  { item: '공간 안정성', icon: <StabilityIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '자리 확보 불확실, 짐 보관 어려움', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '고정석 보장, 개인 물품 보관 가능', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+                  { item: '비용 효율성', icon: <CostIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '음료값 (월 8만원+) + 식사/간식', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '월 25만원 (커피, 출력 무제한 포함)', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+                  { item: '책상 크기', icon: <DeskIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '작은 테이블', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '160cm L형 책상', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+                  { item: '이용 시간', icon: <AccessIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '카페 영업시간', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '24시간', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+                  { item: '의자', icon: <ChairIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '불편한 카페 의자', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '180만원대 프리미엄 의자', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } }, // Updated price
+                  { item: '네트워크', icon: <WifiIcon className="h-5 w-5 text-text-secondary" />, cafe: { text: '불안정할 수 있음', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '안정적인 기가 인터넷', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
                 ].map((row, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="py-3 px-4 border-b font-medium whitespace-normal" data-label="항목">
@@ -141,13 +141,13 @@ export default function FocusEnvironmentPage() {
                     </td>
                     <td className="py-3 px-4 border-b whitespace-normal" data-label="카페">
                       <div className="flex items-center gap-1">
-                        {React.cloneElement(row.cafe.icon, { className: "h-5 w-5 text-warning-red flex-shrink-0" })}
+                        {React.cloneElement(row.cafe.icon, { className: "h-5 w-5 text-error flex-shrink-0" })}
                         <span>{row.cafe.text}</span>
                       </div>
                     </td>
                     <td className="py-3 px-4 border-b border-border-light bg-orange-50 whitespace-normal" data-label="오피스아트">
                       <div className="flex items-center gap-1 text-primary">
-                        {React.cloneElement(row.officeart.icon, { className: "h-5 w-5 text-success-green flex-shrink-0" })}
+                        {React.cloneElement(row.officeart.icon, { className: "h-5 w-5 text-success flex-shrink-0" })}
                         <span>{row.officeart.text}</span>
                       </div>
                     </td>
@@ -179,15 +179,15 @@ export default function FocusEnvironmentPage() {
               </thead>
               <tbody>
                 {[
-                  { item: '월 비용', icon: <CostIcon className="h-5 w-5 text-text-secondary" />, general: { text: '30-40만원', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '25만원', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-                  { item: '의자', icon: <ChairIcon className="h-5 w-5 text-text-secondary" />, general: { text: '일반 의자', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '180만원대 프리미엄 의자', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } }, // Added '의자'
-                  { item: '책상', icon: <DeskIcon className="h-5 w-5 text-text-secondary" />, general: { text: '일반 데스크', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '160cm L형 책상', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-                  { item: '커피', icon: <OptimizedEnvIcon className="h-5 w-5 text-text-secondary" />, general: { text: '유료 또는 제한적', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '무제한 무료', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } }, // Reusing OptimizedEnvIcon for Coffee
-                  { item: '출력', icon: <PrinterIcon className="h-5 w-5 text-text-secondary" />, general: { text: '유료 또는 제한적', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '무제한 무료', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-                  { item: '계약 기간', icon: <CalendarIcon className="h-5 w-5 text-text-secondary" />, general: { text: '최소 3-6개월', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '1개월부터 가능', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
-                  { item: '보증금', icon: <StabilityIcon className="h-5 w-5 text-text-secondary" />, general: { text: '1-2개월치', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '없음', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } }, // Reusing StabilityIcon for Deposit
-                  { item: '네트워킹', icon: <PersonalSpaceIcon className="h-5 w-5 text-text-secondary" />, general: { text: '일반적', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '웹툰/일러스트 특화', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } }, // Reusing PersonalSpaceIcon for Networking
-                  { item: '특화 서비스', icon: <ServiceIcon className="h-5 w-5 text-text-secondary" />, general: { text: '일반적', icon: <XCircleIcon className="h-5 w-5 text-warning-red" /> }, officeart: { text: '창작자 특화 서비스', icon: <CheckCircleIcon className="h-5 w-5 text-success-green" /> } },
+                  { item: '월 비용', icon: <CostIcon className="h-5 w-5 text-text-secondary" />, general: { text: '30-40만원', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '25만원', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+                  { item: '의자', icon: <ChairIcon className="h-5 w-5 text-text-secondary" />, general: { text: '일반 의자', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '180만원대 프리미엄 의자', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } }, // Added '의자'
+                  { item: '책상', icon: <DeskIcon className="h-5 w-5 text-text-secondary" />, general: { text: '일반 데스크', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '160cm L형 책상', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+                  { item: '커피', icon: <OptimizedEnvIcon className="h-5 w-5 text-text-secondary" />, general: { text: '유료 또는 제한적', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '무제한 무료', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } }, // Reusing OptimizedEnvIcon for Coffee
+                  { item: '출력', icon: <PrinterIcon className="h-5 w-5 text-text-secondary" />, general: { text: '유료 또는 제한적', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '무제한 무료', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+                  { item: '계약 기간', icon: <CalendarIcon className="h-5 w-5 text-text-secondary" />, general: { text: '최소 3-6개월', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '1개월부터 가능', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
+                  { item: '보증금', icon: <StabilityIcon className="h-5 w-5 text-text-secondary" />, general: { text: '1-2개월치', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '없음', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } }, // Reusing StabilityIcon for Deposit
+                  { item: '네트워킹', icon: <PersonalSpaceIcon className="h-5 w-5 text-text-secondary" />, general: { text: '일반적', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '웹툰/일러스트 특화', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } }, // Reusing PersonalSpaceIcon for Networking
+                  { item: '특화 서비스', icon: <ServiceIcon className="h-5 w-5 text-text-secondary" />, general: { text: '일반적', icon: <XCircleIcon className="h-5 w-5 text-error" /> }, officeart: { text: '창작자 특화 서비스', icon: <CheckCircleIcon className="h-5 w-5 text-success" /> } },
                 ].map((row, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="py-3 px-4 border-b font-medium whitespace-normal" data-label="항목">
@@ -198,13 +198,13 @@ export default function FocusEnvironmentPage() {
                     </td>
                     <td className="py-3 px-4 border-b whitespace-normal" data-label="일반 공유오피스">
                       <div className="flex items-center gap-1">
-                        {React.cloneElement(row.general.icon, { className: "h-5 w-5 text-warning-red flex-shrink-0" })}
+                        {React.cloneElement(row.general.icon, { className: "h-5 w-5 text-error flex-shrink-0" })}
                         <span>{row.general.text}</span>
                       </div>
                     </td>
                     <td className="py-3 px-4 border-b border-border-light bg-orange-50 whitespace-normal" data-label="오피스아트">
                       <div className="flex items-center gap-1 text-primary">
-                        {React.cloneElement(row.officeart.icon, { className: "h-5 w-5 text-success-green flex-shrink-0" })}
+                        {React.cloneElement(row.officeart.icon, { className: "h-5 w-5 text-success flex-shrink-0" })}
                         <span>{row.officeart.text}</span>
                       </div>
                     </td>

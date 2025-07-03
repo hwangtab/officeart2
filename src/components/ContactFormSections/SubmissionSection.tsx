@@ -85,13 +85,13 @@ const SubmissionSection = ({ register, errors, isSubmitting, submitStatus, submi
           <label className="inline-flex items-center cursor-pointer">
             <input type="checkbox" id="privacy"
                    {...register("privacy", { required: "개인정보 수집 및 이용에 동의해주세요." })}
-                   className={`form-checkbox h-4 w-4 border-border-light rounded focus:ring-primary ${errors.privacy ? 'border-warning-red text-warning-red' : 'text-primary'}`} />
-            <span className={`ml-2 text-sm ${errors.privacy ? 'text-warning-red' : 'text-text-secondary'}`}>개인정보 수집 및 이용에 동의합니다. <span className="text-warning-red">*</span></span>
+                   className={`form-checkbox h-4 w-4 border-border-light rounded focus:ring-primary ${errors.privacy ? 'border-error text-error' : 'text-primary'}`} />
+            <span className={`ml-2 text-sm ${errors.privacy ? 'text-error' : 'text-text-secondary'}`}>개인정보 수집 및 이용에 동의합니다. <span className="text-error">*</span></span>
             {/* Open modal on button click */}
             <button type="button" onClick={() => setIsModalOpen(true)} className="ml-2 text-xs text-accent-blue hover:underline">(내용보기)</button>
           </label>
           {/* Error Message */}
-          {errors.privacy && <span className="text-warning-red text-xs mt-1 block">{errors.privacy.message}</span>}
+          {errors.privacy && <span className="text-error text-xs mt-1 block">{errors.privacy.message}</span>}
         </div>
 
         {/* Submit Button */}
@@ -109,10 +109,10 @@ const SubmissionSection = ({ register, errors, isSubmitting, submitStatus, submi
           </UnifiedButton>
           {/* Submission Status Message */}
           {submitStatus === 'success' && (
-            <p className="mt-4 text-center text-success-green">상담 신청이 성공적으로 전송되었습니다. 빠른 시일 내에 연락드리겠습니다.</p>
+            <p className="mt-4 text-center text-success">상담 신청이 성공적으로 전송되었습니다. 빠른 시일 내에 연락드리겠습니다.</p>
           )}
           {submitStatus === 'error' && (
-            <p className="mt-4 text-center text-warning-red">
+            <p className="mt-4 text-center text-error">
               {submitErrorMessage || '오류가 발생했습니다. 잠시 후 다시 시도하거나 다른 방법으로 문의해주세요.'} {/* Display specific error message */}
             </p>
           )}

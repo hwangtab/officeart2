@@ -90,7 +90,7 @@ export default function LocationSelectionSection({
         </div>
 
         {errors.selectedLocation && (
-          <p className="text-warning-red text-sm mt-2">{errors.selectedLocation.message}</p>
+          <p className="text-error text-sm mt-2">{errors.selectedLocation.message}</p>
         )}
       </div>
 
@@ -148,7 +148,7 @@ export default function LocationSelectionSection({
         </div>
 
         {errors.serviceType && (
-          <p className="text-warning-red text-sm mt-2">{errors.serviceType.message}</p>
+          <p className="text-error text-sm mt-2">{errors.serviceType.message}</p>
         )}
       </div>
 

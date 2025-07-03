@@ -93,7 +93,7 @@ const OccupancyCategoriesSection = () => {
                 <ul className="space-y-2">
                   {category.subItems.map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <CheckIcon className="h-5 w-5 text-success-green mt-0.5 mr-2 flex-shrink-0" />
+                      <CheckIcon className="h-5 w-5 text-success mt-0.5 mr-2 flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
