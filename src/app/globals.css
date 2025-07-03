@@ -198,3 +198,43 @@ h3 {
   width: 100% !important;
   height: 100% !important;
 }
+
+/* Glass morphism utility classes */
+.glass {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-card {
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.glass-nav {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 251, 240, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hero section highlight text with gradient */
+.hero-highlight-text {
+  background: linear-gradient(135deg, #FEF08A 0%, #FBBF24 30%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  text-shadow: none; /* Remove text shadow for cleaner gradient effect */
+}
+
+/* Header navigation active text gradient */
+.nav-active-gradient {
+  background: linear-gradient(135deg, #FEF08A 0%, #FBBF24 30%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+}
+

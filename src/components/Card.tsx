@@ -6,9 +6,8 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ children, className = '' }) => {
-  // Define base card styles
-  // Add hover effects: increased shadow and primary color border
-  const baseStyles = "bg-background-section p-6 rounded-lg shadow border border-border-light transition duration-300 hover:shadow-xl hover:border-primary transform hover:-translate-y-1"; // Added transform and hover:translate-y
+  // Define enhanced card styles with improved depth and hover effects
+  const baseStyles = "bg-background-section p-6 rounded-xl shadow-card border border-border-light transition-all duration-300 ease-out hover:shadow-card-hover hover:border-primary/30 transform hover:-translate-y-2 hover:scale-[1.02] group";
 
   // Combine base styles with any additional classes passed via props
   const combinedClassName = `${baseStyles} ${className}`;

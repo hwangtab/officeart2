@@ -25,9 +25,13 @@ const config = {
         'background-main': '#FFFBF0', // 메인 배경 (아이보리)
         'background-section': '#FFFFFF', // 섹션/카드 배경 (화이트)
 
-        // === 액센트 컬러 (2개로 축소) ===
-        'accent-blue': '#4FC3F7', // 정보, 링크용 블루
-        'accent-yellow': '#FFF176', // 강조, 하이라이트용 옐로우
+        // === 확장된 액센트 컬러 ===
+        'accent-blue': '#3B82F6', // 더 세련된 블루 (정보, 링크)
+        'accent-green': '#059669', // 성공, 성장 (새로운)
+        'accent-purple': '#7C3AED', // 창의성, 혁신 (새로운)
+        'accent-yellow': '#F59E0B', // 강조, 하이라이트 (개선됨)
+        'accent-warm': '#F97316', // 따뜻한 액센트 (새로운)
+        'accent-bright': '#FF8A50', // 밝은 오렌지 (어두운 배경용)
 
         // === 텍스트 컬러 ===
         'text-primary': '#424242', // 주요 텍스트 (진한 회색)
@@ -42,6 +46,18 @@ const config = {
         'success': '#22C55E', // 성공 상태 (더 선명한 초록)
         'warning': '#F59E0B', // 경고 상태 (더 선명한 오렌지)
         'error': '#EF4444', // 오류 상태 (더 선명한 빨강)
+
+        // === 확장된 중성 컬러 팔레트 ===
+        'gray-50': '#F8FAFC',
+        'gray-100': '#F1F5F9', 
+        'gray-200': '#E2E8F0',
+        'gray-300': '#CBD5E1',
+        'gray-400': '#94A3B8',
+        'gray-500': '#64748B',
+        'gray-600': '#475569',
+        'gray-700': '#334155',
+        'gray-800': '#1E293B',
+        'gray-900': '#0F172A',
 
         // === 외부 서비스 브랜드 컬러 ===
         'kakao': '#FEE500', // 카카오톡 옐로우
@@ -126,10 +142,35 @@ const config = {
           }
         }], // 48px → 64px (히어로 제목)
       },
+      // Enhanced shadow system for better depth
+      boxShadow: {
+        'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'sm': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+        'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        'inner': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+        'none': 'none',
+        // Enhanced card shadows
+        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        'card-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'card-lg-hover': '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+        // Neutral shadows for primary elements (removed colored shadows)
+        'primary': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'primary-lg': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        // Enhanced gradient backgrounds
+        'gradient-warm': 'linear-gradient(135deg, #F97316 0%, #E2690D 100%)',
+        'gradient-cool': 'linear-gradient(135deg, #3B82F6 0%, #7C3AED 100%)',
+        'gradient-success': 'linear-gradient(135deg, #059669 0%, #22C55E 100%)',
+        'gradient-hero': 'linear-gradient(135deg, rgba(226, 105, 13, 0.8) 0%, rgba(249, 115, 22, 0.9) 100%)',
+        'gradient-card': 'linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
       },
     },
   },

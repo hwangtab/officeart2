@@ -19,13 +19,13 @@ export default function HeroSection() {
       </div>
       <div className="relative z-10 px-4 py-12 sm:py-16 w-full max-w-4xl mx-auto">
         <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center break-words px-4"> {/* Use level prop with new typography token */}
-          <span className="text-accent-yellow">창의력과 집중력이 피어나는 작업 공간</span> <span className="">오피스아트</span>
+          <span className="hero-highlight-text">창의력과 집중력이 피어나는 작업 공간</span> <span className="">오피스아트</span>
         </SectionTitle>
         <p className="text-body-large mb-6 animate-fade-in-up animation-delay-200 px-4"> {/* Added animation with delay - using body-large token */}
           <span className="font-bold text-body-large break-words"> {/* Using body-large token */}
-            <span className="text-accent-yellow">합리적 가격</span>으로{' '}
+            <span className="hero-highlight-text">합리적 가격</span>으로{' '}
             <span className="md:hidden"><br/></span>
-            즐기는 <span className="text-accent-yellow">프리미엄 작업 환경</span>
+            즐기는 <span className="hero-highlight-text">프리미엄 작업 환경</span>
           </span>
         </p>
         {/* CTA Buttons */}

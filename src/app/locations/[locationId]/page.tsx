@@ -109,12 +109,12 @@ export default async function LocationPage({ params }: LocationPageProps) {
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            {location.name}
+            <span className="hero-highlight-text">{location.name}</span>
           </h1>
           <p className="text-xl md:text-2xl text-white mb-10">
             {location.id === 'bulgwang' 
-              ? '180cm 초대형 책상과 안락한 의자의 프리미엄을 만나보세요.'
-              : '180만원대 최고급 의자와 L형 책상의 프리미엄을 만나보세요.'
+              ? <>180cm <span className="hero-highlight-text">초대형 책상</span>과 안락한 의자의 <span className="hero-highlight-text">프리미엄</span>을 만나보세요.</>
+              : <>180만원대 <span className="hero-highlight-text">최고급 의자</span>와 L형 책상의 <span className="hero-highlight-text">프리미엄</span>을 만나보세요.</>
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -74,7 +74,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
   return (
     <main className="flex min-h-screen flex-col items-center py-20 px-4">
       <div className="w-full max-w-5xl mx-auto">
-        <SectionTitle as="h1" level="page" align="center">{location.name} 오시는 길</SectionTitle>
+        <SectionTitle as="h1" level="page" align="center"><span className="hero-highlight-text">{location.name}</span> 오시는 길</SectionTitle>
 
         {/* 1. Map Section */}
         <ScrollAnimationWrapper>

@@ -21,17 +21,17 @@ function ServiceCard({ title, description, icon, href, isNew = false }: ServiceC
 
   return (
     <Link href={href} className="block">
-      <Card className="relative transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+      <Card className="relative cursor-pointer overflow-hidden">
         {isNew && (
-          <span className="absolute -top-2 -right-2 bg-accent-yellow text-text-primary text-xs font-bold px-2 py-1 rounded-full">
+          <span className="absolute -top-2 -right-2 bg-gradient-success text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg">
             NEW
           </span>
         )}
         <div className="flex flex-col items-center text-center">
-          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-            <IconComponent className="w-8 h-8 text-primary" />
+          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
+            <IconComponent className="w-8 h-8 text-primary transition-all duration-300 group-hover:text-primary-dark" />
           </div>
-          <SectionTitle as="h3" level="card" className="text-text-primary">{title}</SectionTitle>
+          <SectionTitle as="h3" level="card" className="text-text-primary group-hover:text-primary transition-colors duration-300">{title}</SectionTitle>
           <p className="text-text-secondary text-sm leading-relaxed">{description}</p>
         </div>
       </Card>
