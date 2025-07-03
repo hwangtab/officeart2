@@ -104,7 +104,7 @@ export default function AIChatWidget() {
                   >
                     <Linkify componentDecorator={(decoratedHref, decoratedText, key) => {
                       // 전화번호인 경우 tel: 링크로 변환 (010, 0507 등 다양한 번호 형태 지원)
-                      if (decoratedText.match(/^0\d{2,3}-\d{3,4}-\d{4}$/)) {
+                      if (decoratedText.match(/^0\d{2,4}-\d{3,4}-\d{4}$/)) {
                         return (
                           <a href={`tel:${decoratedText.replace(/-/g, '')}`} key={key} className="text-blue-600 hover:underline">
                             {decoratedText}
