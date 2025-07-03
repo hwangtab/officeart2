@@ -18,14 +18,14 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
       <div className="relative z-10 px-4 py-12 sm:py-16 w-full max-w-4xl mx-auto">
-        <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center break-words px-4"> {/* Use level prop with new typography token */}
-          <span className="hero-highlight-text">창의력과 집중력이 피어나는 작업 공간</span> <span className="">오피스아트</span>
+        <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center px-4 text-2xl md:text-5xl lg:text-6xl leading-tight"> {/* Enhanced responsive font size */}
+          <span className="hero-highlight-text block sm:inline">창의력과 집중력이 피어나는<br className="sm:hidden"/> 작업 공간</span>{' '}
+          <span className="block sm:inline mt-2 sm:mt-0">오피스아트</span>
         </SectionTitle>
-        <p className="text-body-large mb-6 animate-fade-in-up animation-delay-200 px-4"> {/* Added animation with delay - using body-large token */}
-          <span className="font-bold text-body-large break-words"> {/* Using body-large token */}
+        <p className="text-base md:text-xl lg:text-2xl mb-6 animate-fade-in-up animation-delay-200 px-4 leading-relaxed"> {/* Enhanced responsive subtitle */}
+          <span className="font-bold break-words">
             <span className="hero-highlight-text">합리적 가격</span>으로{' '}
-            <span className="md:hidden"><br/></span>
-            즐기는 <span className="hero-highlight-text">프리미엄 작업 환경</span>
+            <span className="block sm:inline">즐기는 <span className="hero-highlight-text">프리미엄 작업 환경</span></span>
           </span>
         </p>
         {/* CTA Buttons */}
