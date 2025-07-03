@@ -44,7 +44,7 @@ export default function ContactPage() {
       <div className="w-full max-w-5xl mx-auto"> {/* Changed max-w-4xl to max-w-5xl */}
         {/* Use SectionTitle for page title */}
         {/* Restore h1 for page title, apply styles directly */}
-        <SectionTitle as="h1" level="page" align="center" className="text-text-primary">상담 및 문의</SectionTitle> {/* Use level prop */}
+        <SectionTitle as="h1" level="page" align="center" underline={false} className="text-text-primary text-display">상담 및 문의</SectionTitle> {/* Use level prop - page level same as other pages - FORCE text-display */}
 
         {/* 2. KakaoTalk Section (4.8 카카오톡 상담) */}
         <ScrollAnimationWrapper>
@@ -74,20 +74,20 @@ export default function ContactPage() {
             {/* Adjust heading style */}
             {/* Use SectionTitle for sub-section title - Use xlarge for consistency */}
             <SectionTitle as="h2" level="section" className="text-center">직접 문의</SectionTitle> {/* Use level prop */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-body-base"> {/* Using body-base token */}
                 {/* Phone */}
                 <div className="text-center md:text-left">
                     {/* Use accent-blue for icon - Use large for h3 and pass icon via prop */}
                     <SectionTitle as="h3" level="subsection" icon={<PhoneIcon className="h-5 w-5 text-accent-blue" />} className="justify-center md:justify-start text-text-primary">전화</SectionTitle> {/* Use level prop */}
                     <p className="text-text-primary">대표번호: <a href="tel:0507-1335-3128" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">0507-1335-3128</a></p>
-                    <p className="text-xs text-text-secondary mt-1">(운영시간: 평일 10:00-19:00)</p>
+                    <p className="text-caption text-text-secondary mt-1">(운영시간: 평일 10:00-19:00)</p> {/* Using caption token */}
                 </div>
                 {/* Email */}
                  <div className="text-center md:text-left">
                     {/* Use accent-blue for icon - Use large for h3 and pass icon via prop */}
                     <SectionTitle as="h3" level="subsection" icon={<EmailIcon className="h-5 w-5 text-accent-blue" />} className="justify-center md:justify-start text-text-primary">이메일</SectionTitle> {/* Use level prop */}
                     <p className="text-text-primary">대표: <a href="mailto:contact@kosmart.org" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">contact@kosmart.org</a></p>
-                    <p className="text-xs text-text-secondary mt-1">(응답시간: 평일 기준 24시간 이내)</p>
+                    <p className="text-caption text-text-secondary mt-1">(응답시간: 평일 기준 24시간 이내)</p> {/* Using caption token */}
                 </div>
                 {/* Visit */}
                  <div className="text-center md:text-left">

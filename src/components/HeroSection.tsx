@@ -18,11 +18,11 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
       <div className="relative z-10 px-4 py-12 sm:py-16 w-full max-w-4xl mx-auto">
-        <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl break-words px-4"> {/* Use level prop */}
+        <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center break-words px-4"> {/* Use level prop with new typography token */}
           <span className="text-accent-yellow">창의력과 집중력이 피어나는 작업 공간</span> <span className="">오피스아트</span>
         </SectionTitle>
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 animate-fade-in-up animation-delay-200 px-4"> {/* Added animation with delay */}
-          <span className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl break-words">
+        <p className="text-body-large mb-6 animate-fade-in-up animation-delay-200 px-4"> {/* Added animation with delay - using body-large token */}
+          <span className="font-bold text-body-large break-words"> {/* Using body-large token */}
             <span className="text-accent-yellow">합리적 가격</span>으로{' '}
             <span className="md:hidden"><br/></span>
             즐기는 <span className="text-accent-yellow">프리미엄 작업 환경</span>

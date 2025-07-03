@@ -52,6 +52,80 @@ const config = {
         sans: ['var(--font-gmarket-sans)', 'var(--font-noto-sans-kr)', ...defaultTheme.fontFamily.sans], // Use CSS variables from next/font
         // gong: ['var(--font-gong)', ...defaultTheme.fontFamily.sans], // Removed GongGothic
       },
+      
+      // 체계적 타이포그래피 토큰 정의
+      fontSize: {
+        // 기존 Tailwind 크기 유지하면서 확장
+        ...defaultTheme.fontSize,
+        
+        // === 제목 레벨 (반응형 + 가독성 최적화) ===
+        'heading-1': ['2rem', { 
+          lineHeight: '2.5rem', 
+          letterSpacing: '-0.025em',
+          '@screen md': {
+            fontSize: '2.5rem',
+            lineHeight: '3rem'
+          }
+        }], // 32px → 40px (h1)
+        
+        'heading-2': ['1.75rem', { 
+          lineHeight: '2.25rem', 
+          letterSpacing: '-0.025em',
+          '@screen md': {
+            fontSize: '2rem',
+            lineHeight: '2.5rem'
+          }
+        }], // 28px → 32px (h2)
+        
+        'heading-3': ['1.5rem', { 
+          lineHeight: '2rem', 
+          letterSpacing: '-0.025em',
+          '@screen md': {
+            fontSize: '1.75rem',
+            lineHeight: '2.25rem'
+          }
+        }], // 24px → 28px (h3)
+        
+        'heading-4': ['1.25rem', { 
+          lineHeight: '1.75rem', 
+          letterSpacing: '-0.025em',
+          '@screen md': {
+            fontSize: '1.375rem',
+            lineHeight: '1.875rem'
+          }
+        }], // 20px → 22px (h4)
+        
+        // === 본문 레벨 (한글 최적화) ===
+        'body-large': ['1.125rem', { 
+          lineHeight: '1.75rem',
+          letterSpacing: '0em'
+        }], // 18px (강조 본문)
+        
+        'body-base': ['1rem', { 
+          lineHeight: '1.625rem',
+          letterSpacing: '0em'
+        }], // 16px (기본 본문)
+        
+        'body-small': ['0.875rem', { 
+          lineHeight: '1.375rem',
+          letterSpacing: '0em'
+        }], // 14px (보조 본문)
+        
+        'caption': ['0.75rem', { 
+          lineHeight: '1.125rem',
+          letterSpacing: '0.025em'
+        }], // 12px (캡션, 라벨)
+        
+        // === 특별 용도 ===
+        'display': ['3rem', { 
+          lineHeight: '3.5rem', 
+          letterSpacing: '-0.05em',
+          '@screen md': {
+            fontSize: '4rem',
+            lineHeight: '4.5rem'
+          }
+        }], // 48px → 64px (히어로 제목)
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

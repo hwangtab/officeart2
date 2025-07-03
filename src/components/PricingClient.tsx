@@ -61,13 +61,13 @@ export default function PricingClient() {
           <Card className="shadow-lg border-2 border-primary flex flex-col h-full">
             <div className="text-center p-6">
               <SectionTitle as="h3" level="subsection" className="text-text-primary mb-2">정기 이용권</SectionTitle>
-              <p className="text-sm text-text-secondary mb-4">프리미엄 작업공간 무제한 이용</p>
-              <p className="text-4xl font-bold text-primary mb-2">월 25만원</p>
-              <p className="text-xs text-error mb-4">(한정 좌석 특가, 소진 시 조기 마감)</p>
+              <p className="text-body-small text-text-secondary mb-4">프리미엄 작업공간 무제한 이용</p> {/* Using body-small token */}
+              <p className="text-display font-bold text-primary mb-2">월 25만원</p> {/* Using display token for pricing */}
+              <p className="text-caption text-error mb-4">(한정 좌석 특가, 소진 시 조기 마감)</p> {/* Using caption token */}
             </div>
 
             <div className="px-6 mb-6">
-              <ul className="list-disc list-outside pl-5 space-y-2 text-text-secondary text-sm flex-grow">
+              <ul className="list-disc list-outside pl-5 space-y-2 text-text-secondary text-body-small flex-grow"> {/* Using body-small token */}
                 <li>지정석 (160cm L형 책상)</li>
                 <li>프리미엄 의자 (스틸케이스/휴먼스케일)</li>
                 <li>24시간 자유 이용 (지문 인식)</li>
@@ -97,13 +97,13 @@ export default function PricingClient() {
             
             <div className="text-center p-6">
               <SectionTitle as="h3" level="subsection" className="text-text-primary mb-2">비상주사무실</SectionTitle>
-              <p className="text-sm text-text-secondary mb-4">사업자등록용 주소 제공 서비스</p>
-              <p className="text-4xl font-bold text-primary mb-2">월 3.3만원</p>
-              <p className="text-xs text-text-secondary mb-4">최소 6개월 계약</p>
+              <p className="text-body-small text-text-secondary mb-4">사업자등록용 주소 제공 서비스</p> {/* Using body-small token */}
+              <p className="text-display font-bold text-primary mb-2">월 3.3만원</p> {/* Using display token for pricing */}
+              <p className="text-caption text-text-secondary mb-4">최소 6개월 계약</p> {/* Using caption token */}
             </div>
 
             <div className="px-6 mb-6">
-              <ul className="list-disc list-outside pl-5 space-y-2 text-text-secondary text-sm flex-grow">
+              <ul className="list-disc list-outside pl-5 space-y-2 text-text-secondary text-body-small flex-grow"> {/* Using body-small token */}
                 <li>사업자등록용 주소 제공</li>
                 <li>우편물 수령 및 보관 서비스</li>
                 <li>회의실 무료 이용</li>
@@ -136,7 +136,7 @@ export default function PricingClient() {
              <div>
                  {/* Pass icon via prop */}
                  <SectionTitle as="h3" level="card" icon={<ContractIcon className="h-5 w-5 text-accent-blue" />} className="text-text-primary"><span className="">계약 방식</span></SectionTitle> {/* Use level prop */}
-                 <ul className="list-disc list-outside pl-8 space-y-1 text-text-secondary text-sm"> {/* Changed list-inside to list-outside, pl-7 to pl-8 */}
+                 <ul className="list-disc list-outside pl-8 space-y-1 text-text-secondary text-body-small"> {/* Changed list-inside to list-outside, pl-7 to pl-8 - using body-small token */}
                      <li><span className="">전자계약</span> (카카오톡으로 간편하게)</li>
                      <li>계약 담당: 김성은 팀장</li>
                  </ul>
@@ -144,7 +144,7 @@ export default function PricingClient() {
              <div>
                  {/* Pass icon via prop */}
                  <SectionTitle as="h3" level="card" icon={<PaymentIcon className="h-5 w-5 text-accent-blue" />} className="text-text-primary"><span className="">결제 수단</span></SectionTitle> {/* Use level prop */}
-                  <ul className="list-disc list-outside pl-8 space-y-1 text-text-secondary text-sm"> {/* Changed list-inside to list-outside, pl-5 to pl-8 */}
+                  <ul className="list-disc list-outside pl-8 space-y-1 text-text-secondary text-body-small"> {/* Changed list-inside to list-outside, pl-5 to pl-8 - using body-small token */}
                      <li><span className="">계좌이체</span>: 기업은행 301-101031-01-050 (예금주: 한국스마트협동조합)</li>
                      <li><span className="">카드 결제</span>: 현장 방문 결제 또는 <span className="">정기결제 신청</span> 가능</li>
                      <li><span className="">세금계산서 발행</span>: 사업자 회원 요청 시 발행 (VAT 별도)</li>
@@ -163,7 +163,7 @@ export default function PricingClient() {
           <Card className="overflow-x-auto">
             <SectionTitle as="h3" level="subsection" align="center" className="text-text-primary"><span className="">일반 공유오피스</span> vs <span className="">오피스아트</span></SectionTitle> {/* Use level prop */}
             <div className="overflow-x-auto">
-              <table className="min-w-full border border-border-light text-sm responsive-table">
+              <table className="min-w-full border border-border-light text-body-small responsive-table"> {/* Using body-small token */}
                 <thead>
                   <tr className="bg-background-main">
                     <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">항목</th>
@@ -203,7 +203,7 @@ export default function PricingClient() {
           <Card className="overflow-x-auto">
             <SectionTitle as="h3" level="subsection" align="center" className="text-text-primary"><span className="">카페 작업</span> vs <span className="">오피스아트</span></SectionTitle> {/* Use level prop */}
             <div className="overflow-x-auto">
-               <table className="min-w-full border border-border-light text-sm responsive-table">
+               <table className="min-w-full border border-border-light text-body-small responsive-table"> {/* Using body-small token */}
                 <thead>
                   <tr className="bg-background-main">
                     <th className="py-3 px-4 border-b border-border-light text-left font-semibold text-text-primary">항목</th>

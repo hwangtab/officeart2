@@ -12,13 +12,13 @@ const sectionTitleVariants = cva(
         center: 'text-center',
         right: 'text-right',
       },
-      // Add level variant for semantic styling
+      // Add level variant for semantic styling (새 타이포그래피 토큰 적용)
       level: {
-        page: 'text-3xl md:text-4xl mb-12', // h1
-        section: 'text-2xl md:text-3xl mb-8', // h2
-        subsection: 'text-xl md:text-2xl mb-4', // h3
-        card: 'text-lg md:text-xl mb-2', // h4 in cards
-        footer: 'text-lg mb-2', // h4 in footer
+        page: 'text-display mb-12', // h1 - 히어로 제목용
+        section: 'text-heading-1 mb-8', // h2 - 섹션 제목용
+        subsection: 'text-heading-2 mb-4', // h3 - 서브섹션 제목용
+        card: 'text-heading-3 mb-2', // h4 - 카드 제목용
+        footer: 'text-heading-4 mb-2', // h4 - 푸터 제목용
         // Add more levels if needed
       },
       // underline is now an optional override, handled separately
@@ -31,22 +31,19 @@ const sectionTitleVariants = cva(
   }
 );
 
-// Define level options
-type Level = 'page' | 'section' | 'subsection' | 'card' | 'footer';
 
-// Define component props, extending cva variants
-interface SectionTitleProps extends Omit<VariantProps<typeof sectionTitleVariants>, 'level'> { // Omit level from direct props
+// Define component props, extending cva variants directly
+interface SectionTitleProps extends VariantProps<typeof sectionTitleVariants> {
   children: ReactNode;
   icon?: ReactNode;
   as?: ElementType;
-  level?: Level; // Add level prop
   underline?: boolean; // Keep underline as an optional override
   className?: string;
   verticalCenter?: boolean;
 }
 
 // Define default underline behavior based on level
-const levelUnderlineDefaults: Record<Level, boolean> = {
+const levelUnderlineDefaults = {
   page: false,
   section: true, // Sections have underline by default
   subsection: false,
@@ -67,11 +64,12 @@ const SectionTitle = ({
 }: SectionTitleProps): JSX.Element => {
 
   // Determine if underline should be applied
-  const shouldUnderline = underline === undefined ? levelUnderlineDefaults[level] : underline;
+  const shouldUnderline = underline === undefined ? levelUnderlineDefaults[level || 'section'] : underline;
 
   // Generate the final className by merging cva variants and custom className
   const finalClassName = twMerge(
-    sectionTitleVariants({ level, align, className }) // Pass level and align to cva
+    sectionTitleVariants({ level, align }), // Only pass level and align to cva
+    className // Merge additional className separately
   );
 
   return (
