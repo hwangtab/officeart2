@@ -44,17 +44,21 @@ export default function AIChatWidget() {
 
     try {
       const response = await queryOpenRouter(inputValue);
-      // 마크다운 특수문자 제거 (전화번호 링크는 보존)
-      const cleanResponse = response
-        .replace(/\*\*(.*?)\*\*/g, '$1') // **bold** 제거
+      // 마크다운을 HTML로 변환하여 포맷팅 개선
+      const formattedResponse = response
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // **굵게** → <strong>
+        .replace(/^\[(.*?)\]$/gm, '<div class="bg-blue-50 border-l-4 border-blue-400 p-2 mt-4 mb-2 font-semibold text-blue-800">$1</div>') // [섹션] → 박스형 헤더
+        .replace(/^#{1,6}\s*(.*$)/gm, '<h4 class="font-semibold text-gray-800 mt-3 mb-2">$1</h4>') // # 제목
+        .replace(/^- (.*$)/gm, '<div class="ml-3 mb-1 text-gray-700">• $1</div>') // - 목록 항목
         .replace(/```[\s\S]*?```/g, '') // ```code block``` 제거
-        .replace(/`(.*?)`/g, '$1') // `inline code` 제거
+        .replace(/`(.*?)`/g, '<code class="bg-gray-200 px-1 rounded text-sm">$1</code>') // `inline code`
         .replace(/\[(.*?)\]\((?!tel:).*?\)/g, '$1') // tel: 링크 제외하고 [link](url) 제거
-        .replace(/^#{1,6}\s*/gm, ''); // #, ##, ### 제거
+        .replace(/\n\n/g, '<div class="my-2"></div>') // 빈 줄 → 여백
+        .replace(/\n/g, '<br>'); // 일반 줄바꿈 → <br>
         
       const botMessage: Message = {
         role: 'assistant',
-        content: cleanResponse
+        content: formattedResponse
       };
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
@@ -103,15 +107,36 @@ export default function AIChatWidget() {
                       : 'bg-gray-100 text-gray-800'}`}
                   >
 {(() => {
-                      // 마크다운 전화번호 링크를 일반 텍스트로 변환하여 Linkify가 처리할 수 있게 함
+                      // 마크다운 전화번호 링크를 일반 텍스트로 변환
                       const processedContent = msg.content.replace(
                         /\[(\d{3,4}-\d{3,4}-\d{4})\]\(tel:(\d{10,11})\)/g,
                         '$1'
                       );
                       
+                      // HTML 태그가 포함된 경우 dangerouslySetInnerHTML 사용
+                      if (processedContent.includes('<')) {
+                        return (
+                          <div 
+                            dangerouslySetInnerHTML={{ 
+                              __html: processedContent.replace(
+                                /(0\d{2,4}-\d{3,4}-\d{4})/g,
+                                '<a href="tel:$1" class="text-blue-600 hover:underline">$1</a>'
+                              ).replace(
+                                /(https?:\/\/[^\s<]+)/g,
+                                '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">$1</a>'
+                              ).replace(
+                                /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
+                                '<a href="mailto:$1" class="text-blue-600 hover:underline">$1</a>'
+                              )
+                            }} 
+                          />
+                        );
+                      }
+                      
+                      // HTML 태그가 없는 경우 기존 Linkify 사용
                       return (
                         <Linkify componentDecorator={(decoratedHref, decoratedText, key) => {
-                          // 전화번호인 경우 tel: 링크로 변환 (010, 0507 등 다양한 번호 형태 지원)
+                          // 전화번호인 경우 tel: 링크로 변환
                           if (decoratedText.match(/^0\d{2,4}-\d{3,4}-\d{4}$/)) {
                             return (
                               <a href={`tel:${decoratedText.replace(/-/g, '')}`} key={key} className="text-blue-600 hover:underline">
