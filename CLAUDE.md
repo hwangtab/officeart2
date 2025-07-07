@@ -29,8 +29,10 @@ This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-worki
 
 ### Testing
 - Test files are located alongside components with `.test.tsx` extension
-- Jest is configured with jsdom environment
+- Jest is configured with jsdom environment and React Testing Library
+- Mock files available: `__mocks__/fileMock.js` and `__mocks__/styleMock.js`
 - Run specific tests: `npm test -- --testPathPattern=ComponentName`
+- Jest setup includes module path mapping that matches TypeScript aliases
 
 ## Architecture
 
@@ -42,10 +44,12 @@ This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-worki
 - `public/` - Static assets including fonts and images
 
 ### Key Components Architecture
-- **Layout System**: Root layout (`src/app/layout.tsx`) includes Header, Footer, and AIChatWidget
+- **Layout System**: Root layout (`src/app/layout.tsx`) includes Header, Footer, AIChatWidget, ErrorBoundary, and PerformanceMetrics
 - **Page Structure**: Pages are composed of section components wrapped in `ScrollAnimationWrapper`
-- **Form Handling**: Contact forms use `react-hook-form` with EmailJS integration
-- **Styling**: Custom Tailwind config with Korean brand colors and Gmarket Sans fonts
+- **Form Handling**: Contact forms use `react-hook-form` with EmailJS integration and TypeScript interfaces
+- **Multi-location Support**: Location data model (`src/types/location.ts`) with comprehensive facility information
+- **Styling**: Custom Tailwind config with Korean brand colors, extensive typography system, and Gmarket Sans fonts
+- **Data Layer**: Structured location data in `src/data/locations.ts` with utility functions
 
 ### Font Configuration
 - Primary: Gmarket Sans (local fonts from `public/fonts/`)
@@ -59,33 +63,42 @@ This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-worki
 
 ## Configuration Files
 
-### Next.js Configuration
+### Next.js Configuration (`next.config.mjs`)
 - Bundle analyzer enabled with `ANALYZE=true`
 - Standalone output for Vercel deployment
-- Image optimization disabled for static export
-- Server actions allowed for specific origins
+- Image optimization disabled for static export compatibility
+- Server actions allowed for specific origins (`officeart.co.kr`, `localhost:3000`)
+- Remote image patterns configured for placeholder services
+- ESLint builds ignored for faster deployment
 
-### TypeScript
+### TypeScript (`tsconfig.json`)
 - Path aliases: `@/*` maps to `./src/*`
-- Strict mode enabled
-- Target: ES2017
+- Strict mode enabled with comprehensive type checking
+- Target: ES2017 for broad browser compatibility
+- Module path mapping matches Jest configuration
 
-### Tailwind
-- Custom breakpoint: `xxl` at 1440px
-- Korean-specific color palette
-- Font family configuration using CSS variables
+### Tailwind (`tailwind.config.js`)
+- Custom navigation breakpoints: `nav` (1280px), `nav-full` (1440px), `xxl` (1440px)
+- Comprehensive Korean brand color system with primary `#E2690D`
+- Extended typography tokens optimized for Korean text with responsive scaling
+- Enhanced shadow system with card-specific shadows
+- CSS variable integration for Next.js fonts (`--font-gmarket-sans`, `--font-noto-sans-kr`)
 
 ## API Integration
 
 ### Chat API (`/api/chat`)
-- Uses OpenRouter API for AI chat functionality
+- Uses OpenRouter API with Google Gemini 2.0 Flash model for AI chat functionality
 - Requires `OPENROUTER_API_KEY` environment variable
+- Korean-language AI assistant with embedded OfficeArt business knowledge
 - Comprehensive error handling with Korean messages
+- Client helper: `src/lib/openrouter.ts` provides `queryOpenRouter(prompt: string)`
 
 ### Contact Forms
-- EmailJS integration for form submissions
-- Type-safe with `ContactFormData` interface
-- Validation using react-hook-form
+- EmailJS integration for form submissions (`@emailjs/browser`)
+- Type-safe with `ContactFormData` interface in `src/types/contactForm.ts`
+- Supports multiple service types: desk rental, non-resident office, general inquiries
+- Location selection support for multi-branch operations
+- Validation using react-hook-form with custom error messages
 
 ## Deployment Notes
 
