@@ -4,7 +4,7 @@ import LinkButton from '@/components/LinkButton';
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-[70vh] flex items-center justify-center text-center text-white bg-gray-800 overflow-x-hidden">
+    <section className="relative w-full min-h-[70vh] flex items-center justify-center text-center text-white bg-gray-800 overflow-x-hidden">
       {/* TODO: Replace with actual high-quality image (정영신 담당자) */}
       <div className="absolute inset-0">
         {/* Use Next.js Image component */}
