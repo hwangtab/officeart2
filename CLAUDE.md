@@ -33,6 +33,7 @@ This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-worki
 - Mock files available: `__mocks__/fileMock.js` and `__mocks__/styleMock.js`
 - Run specific tests: `npm test -- --testPathPattern=ComponentName`
 - Jest setup includes module path mapping that matches TypeScript aliases
+- Test setup file: `jest.setup.js` imports `@testing-library/jest-dom` for DOM assertions
 
 ## Architecture
 

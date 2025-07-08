@@ -17,21 +17,21 @@ const config = {
       // 정리된 색상 시스템 (UI/UX 분석 기반)
       colors: {
         // === 브랜드 컬러 (Primary) ===
-        'primary': '#E2690D', // 메인 오렌지 (헤더, 주요 버튼, 브랜딩)
-        'primary-dark': '#CC5A0A', // 호버 상태용 어두운 오렌지
-        'primary-light': '#F5944A', // 연한 오렌지 (배경, 강조)
+        'primary': '#2563EB', // 메인 블루 (헤더, 주요 버튼, 브랜딩)
+        'primary-dark': '#1D4ED8', // 호버 상태용 어두운 블루
+        'primary-light': '#3B82F6', // 연한 블루 (배경, 강조)
 
         // === 배경 컬러 ===
-        'background-main': '#FFFBF0', // 메인 배경 (아이보리)
-        'background-section': '#FFFFFF', // 섹션/카드 배경 (화이트)
+        'background-main': '#FFFFFF', // 메인 배경 (순백)
+        'background-section': '#F8FAFC', // 섹션/카드 배경 (밝은 회색)
 
         // === 확장된 액센트 컬러 ===
-        'accent-blue': '#3B82F6', // 더 세련된 블루 (정보, 링크)
-        'accent-green': '#059669', // 성공, 성장 (새로운)
-        'accent-purple': '#7C3AED', // 창의성, 혁신 (새로운)
-        'accent-yellow': '#F59E0B', // 강조, 하이라이트 (개선됨)
-        'accent-warm': '#F97316', // 따뜻한 액센트 (새로운)
-        'accent-bright': '#FF8A50', // 밝은 오렌지 (어두운 배경용)
+        'accent-blue': '#2563EB', // 메인 블루 (정보, 링크)
+        'accent-green': '#059669', // 성공, 성장 (보조 컬러)
+        'accent-green-light': '#10B981', // 연한 그린 (강조용)
+        'accent-purple': '#7C3AED', // 창의성, 혁신 (보조)
+        'accent-yellow': '#F59E0B', // 강조, 하이라이트 (보조)
+        'accent-teal': '#0D9488', // 시원한 틸 (보조)
 
         // === 텍스트 컬러 ===
         'text-primary': '#424242', // 주요 텍스트 (진한 회색)
@@ -39,13 +39,13 @@ const config = {
         'text-on-primary': '#FFFFFF', // Primary 색상 위의 텍스트 (화이트)
 
         // === UI 컬러 ===
-        'border-light': '#E0E0E0', // 경계선 (연한 회색)
-        'border-primary': '#E2690D', // Primary 경계선
+        'border-light': '#E2E8F0', // 경계선 (연한 회색)
+        'border-primary': '#2563EB', // Primary 경계선
 
         // === 상태 컬러 ===
-        'success': '#22C55E', // 성공 상태 (더 선명한 초록)
-        'warning': '#F59E0B', // 경고 상태 (더 선명한 오렌지)
-        'error': '#EF4444', // 오류 상태 (더 선명한 빨강)
+        'success': '#059669', // 성공 상태 (그린)
+        'warning': '#F59E0B', // 경고 상태 (오렌지)
+        'error': '#EF4444', // 오류 상태 (빨강)
 
         // === 확장된 중성 컬러 팔레트 ===
         'gray-50': '#F8FAFC',
@@ -166,10 +166,10 @@ const config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         // Enhanced gradient backgrounds
-        'gradient-warm': 'linear-gradient(135deg, #F97316 0%, #E2690D 100%)',
-        'gradient-cool': 'linear-gradient(135deg, #3B82F6 0%, #7C3AED 100%)',
-        'gradient-success': 'linear-gradient(135deg, #059669 0%, #22C55E 100%)',
-        'gradient-hero': 'linear-gradient(135deg, rgba(226, 105, 13, 0.8) 0%, rgba(249, 115, 22, 0.9) 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)',
+        'gradient-cool': 'linear-gradient(135deg, #2563EB 0%, #059669 100%)',
+        'gradient-success': 'linear-gradient(135deg, #059669 0%, #10B981 100%)',
+        'gradient-hero': 'linear-gradient(135deg, rgba(37, 99, 235, 0.8) 0%, rgba(5, 150, 105, 0.9) 100%)',
         'gradient-card': 'linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
       },
     },

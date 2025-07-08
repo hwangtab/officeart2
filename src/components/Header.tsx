@@ -195,7 +195,7 @@ export default function Header() {
                 </button>
                 
                 {isMoreMenuOpen && (
-                  <div className="absolute top-full right-0 mt-1 bg-white shadow-lg rounded-md py-1 z-50 min-w-[120px] border border-gray-200">
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-white shadow-lg rounded-md py-1 z-50 min-w-[120px] border border-gray-200">
                     {lowPriorityItems.map((item) => {
                       const active = isActiveResponsive(item);
                       return (
