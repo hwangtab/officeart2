@@ -103,9 +103,9 @@ export default function FaqPage() {
                     <summary className="flex justify-between cursor-pointer list-none text-text-primary hover:text-primary transition-colors w-full">
                       <div className="flex items-baseline mr-2">
                         <span className="font-semibold mr-2 flex-shrink-0">Q.</span>
-                        <SectionTitle as="h3" level="subsection" align="left" className="mb-0">
+                        <h3 className="text-lg font-semibold leading-relaxed">
                           {item.question}
-                        </SectionTitle>
+                        </h3>
                       </div>
                       <span className="transition group-open:rotate-180 flex-shrink-0">
                         <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
@@ -135,9 +135,9 @@ export default function FaqPage() {
                     <summary className="flex justify-between cursor-pointer list-none text-text-primary hover:text-primary transition-colors w-full">
                       <div className="flex items-baseline mr-2">
                         <span className="font-semibold mr-2 flex-shrink-0">Q.</span>
-                        <SectionTitle as="h3" level="subsection" align="left" className="mb-0">
+                        <h3 className="text-lg font-semibold leading-relaxed">
                           {item.question}
-                        </SectionTitle>
+                        </h3>
                       </div>
                       <span className="transition group-open:rotate-180 flex-shrink-0">
                         <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
