@@ -29,7 +29,7 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
   const searchParams = useSearchParams();
   // Use shared ContactFormData type
   // Destructure setValue from useForm
-  const { register, handleSubmit: handleRHFSubmit, formState: { errors }, reset, setValue } = useForm<ContactFormData>();
+  const { register, handleSubmit: handleRHFSubmit, formState: { errors }, reset, setValue, watch, trigger } = useForm<ContactFormData>();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
   const [submitErrorMessage, setSubmitErrorMessage] = useState<string | null>(null); // Add state for error message
@@ -89,6 +89,45 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
           setIsSubmitting(false);
       });
   }, [isSubmitting, SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY, reset]);
+
+  // 자동 입력 텍스트 병합 함수
+  const handleAutoFillInquiry = useCallback((newText: string) => {
+    console.log('handleAutoFillInquiry called with:', newText); // 디버깅용
+    const currentInquiry = watch('inquiry') || '';
+    console.log('Current inquiry:', currentInquiry); // 디버깅용
+    
+    // 중복 텍스트 방지
+    if (currentInquiry.includes(newText)) {
+      console.log('Duplicate text detected, skipping'); // 디버깅용
+      return;
+    }
+    
+    // 텍스트 병합 로직
+    let mergedText = '';
+    if (currentInquiry.trim()) {
+      mergedText = `${currentInquiry}\n\n${newText}`;
+    } else {
+      mergedText = newText;
+    }
+    
+    console.log('Setting merged text:', mergedText); // 디버깅용
+    setValue('inquiry', mergedText);
+    
+    // 폼 필드 업데이트 트리거
+    trigger('inquiry');
+    
+    // 텍스트 에리어로 스크롤 이동
+    setTimeout(() => {
+      const inquiryTextArea = document.getElementById('inquiry') as HTMLTextAreaElement;
+      if (inquiryTextArea) {
+        inquiryTextArea.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+        inquiryTextArea.focus();
+      }
+    }, 100);
+  }, [setValue, watch, trigger]);
 
   // useEffect to set default values based on searchParams
   useEffect(() => {
@@ -160,6 +199,7 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
           errors={errors} 
           setValue={setValue}
           searchParams={searchParams}
+          onAutoFillInquiry={handleAutoFillInquiry}
         />
 
         {/* Pass register and errors typed with ContactFormData */}

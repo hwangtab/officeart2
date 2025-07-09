@@ -13,15 +13,18 @@ interface LocationSelectionSectionProps {
   errors: FieldErrors<ContactFormData>;
   setValue: UseFormSetValue<ContactFormData>;
   searchParams?: URLSearchParams | null;
+  onAutoFillInquiry?: (text: string) => void;
 }
 
 export default function LocationSelectionSection({ 
   register, 
   errors, 
   setValue,
-  searchParams 
+  searchParams,
+  onAutoFillInquiry
 }: LocationSelectionSectionProps) {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+  const [selectedService, setSelectedService] = useState<string>('');
 
   // URL 파라미터에서 location과 service 정보 읽기
   useEffect(() => {
@@ -39,6 +42,7 @@ export default function LocationSelectionSection({
       
       if (service) {
         setValue('serviceType', service as 'desk' | 'non-resident' | 'general');
+        setSelectedService(service);
       }
     }
   }, [searchParams, setValue]);
@@ -46,6 +50,36 @@ export default function LocationSelectionSection({
   const handleLocationSelect = (location: Location) => {
     setSelectedLocation(location);
     setValue('selectedLocation', location.id);
+    
+    // 자동 입력 텍스트 생성
+    if (onAutoFillInquiry) {
+      const autoText = `${location.name} 방문 희망합니다.`;
+      onAutoFillInquiry(autoText);
+    }
+  };
+
+  const handleServiceSelect = (serviceType: string) => {
+    console.log('Service selected:', serviceType); // 디버깅용
+    setSelectedService(serviceType);
+    setValue('serviceType', serviceType as 'desk' | 'non-resident' | 'general');
+    
+    // 자동 입력 텍스트 생성
+    if (onAutoFillInquiry) {
+      let autoText = '';
+      switch (serviceType) {
+        case 'desk':
+          autoText = '정기 이용권(월 25만원)에 대해 문의드립니다.';
+          break;
+        case 'non-resident':
+          autoText = '비상주 사무실(월 3.3만원)에 대해 문의드립니다.';
+          break;
+        case 'general':
+          autoText = '일반 문의사항이 있습니다.';
+          break;
+      }
+      console.log('Auto text:', autoText); // 디버깅용
+      onAutoFillInquiry(autoText);
+    }
   };
 
   return (
@@ -101,28 +135,38 @@ export default function LocationSelectionSection({
         </h3>
         
         <div className="grid md:grid-cols-3 gap-4">
-          <label className="cursor-pointer">
+          <label className="cursor-pointer" onClick={() => handleServiceSelect('desk')}>
             <input
               type="radio"
               {...register('serviceType', { required: '서비스를 선택해주세요.' })}
               value="desk"
+              checked={selectedService === 'desk'}
               className="sr-only"
             />
-            <div className="p-4 border rounded-lg text-center hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 has-[:checked]:border-primary has-[:checked]:bg-primary/5 has-[:checked]:ring-2 has-[:checked]:ring-primary/20">
+            <div className={`p-4 border rounded-lg text-center hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 ${
+              selectedService === 'desk' 
+                ? 'border-primary bg-primary/5 ring-2 ring-primary/20' 
+                : 'border-border-light'
+            }`}>
               <div className="text-2xl mb-2">💼</div>
               <h4 className="font-semibold text-text-primary mb-1">정기 이용권</h4>
               <p className="text-sm text-text-secondary">월 25만원</p>
             </div>
           </label>
           
-          <label className="cursor-pointer">
+          <label className="cursor-pointer" onClick={() => handleServiceSelect('non-resident')}>
             <input
               type="radio"
               {...register('serviceType')}
               value="non-resident"
+              checked={selectedService === 'non-resident'}
               className="sr-only"
             />
-            <div className="p-4 border rounded-lg text-center hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 has-[:checked]:border-primary has-[:checked]:bg-primary/5 has-[:checked]:ring-2 has-[:checked]:ring-primary/20 relative">
+            <div className={`p-4 border rounded-lg text-center hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 relative ${
+              selectedService === 'non-resident' 
+                ? 'border-primary bg-primary/5 ring-2 ring-primary/20' 
+                : 'border-border-light'
+            }`}>
               <span className="absolute -top-2 -right-2 bg-accent-yellow text-text-primary text-xs font-bold px-2 py-1 rounded-full">
                 NEW
               </span>
@@ -132,14 +176,19 @@ export default function LocationSelectionSection({
             </div>
           </label>
           
-          <label className="cursor-pointer">
+          <label className="cursor-pointer" onClick={() => handleServiceSelect('general')}>
             <input
               type="radio"
               {...register('serviceType')}
               value="general"
+              checked={selectedService === 'general'}
               className="sr-only"
             />
-            <div className="p-4 border rounded-lg text-center hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 has-[:checked]:border-primary has-[:checked]:bg-primary/5 has-[:checked]:ring-2 has-[:checked]:ring-primary/20">
+            <div className={`p-4 border rounded-lg text-center hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 ${
+              selectedService === 'general' 
+                ? 'border-primary bg-primary/5 ring-2 ring-primary/20' 
+                : 'border-border-light'
+            }`}>
               <div className="text-2xl mb-2">💬</div>
               <h4 className="font-semibold text-text-primary mb-1">일반 문의</h4>
               <p className="text-sm text-text-secondary">기타 문의사항</p>
