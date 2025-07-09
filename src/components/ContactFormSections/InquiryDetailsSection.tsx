@@ -34,11 +34,7 @@ const InquiryDetailsSection = ({ register, errors }: InquiryDetailsSectionProps)
                        className="form-checkbox h-4 w-4 text-primary border-border-light rounded focus:ring-primary"/>
                 <span className="ml-2 text-sm">월 정기권</span>
             </label>
-             <label className="inline-flex items-center cursor-pointer">
-                <input type="checkbox" value="daily" {...register("interest")}
-                       className="form-checkbox h-4 w-4 text-primary border-border-light rounded focus:ring-primary"/>
-                <span className="ml-2 text-sm">일일권</span>
-            </label>
+             
              <label className="inline-flex items-center cursor-pointer">
                 <input type="checkbox" value="tour" {...register("interest")}
                        className="form-checkbox h-4 w-4 text-primary border-border-light rounded focus:ring-primary"/>

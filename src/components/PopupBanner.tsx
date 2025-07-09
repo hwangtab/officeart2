@@ -2,15 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import Draggable from 'react-draggable';
 import { useRouter } from 'next/navigation';
 
 interface PopupBannerProps {
-  message: string;
   onClose: () => void;
 }
 
-const PopupBanner = ({ message, onClose }: PopupBannerProps) => {
+const PopupBanner = ({ onClose }: PopupBannerProps) => {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [dontShowAgain, setDontShowAgain] = useState(false);

@@ -11,12 +11,10 @@ interface Message {
 }
 
 export default function AIChatWidget() {
-  const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
       setIsOpen(!window.matchMedia('(max-width: 768px)').matches);
     };
     
@@ -63,6 +61,7 @@ export default function AIChatWidget() {
       };
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
+      console.error('AI chat error:', error);
       const errorMessage: Message = {
         role: 'assistant',
         content: '죄송합니다. 요청을 처리하는 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.'

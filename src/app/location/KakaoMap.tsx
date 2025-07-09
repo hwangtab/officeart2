@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     kakao: any;
   }
 }
@@ -33,9 +34,12 @@ export default function KakaoMap({ officeAddress, apiKey, coordinates }: KakaoMa
         const searchAddressToCoordinate = (address: string) => {
           const geocoder = new window.kakao.maps.services.Geocoder();
           
-          geocoder.addressSearch(address, (result: any, status: any) => {
+          type SearchResult = { y: string; x: string }[];
+          type SearchStatus = 'OK' | 'ZERO_RESULT' | 'ERROR';
+
+          geocoder.addressSearch(address, (result: SearchResult, status: SearchStatus) => {
             if (status === window.kakao.maps.services.Status.OK) {
-              const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
+              const coords = new window.kakao.maps.LatLng(Number(result[0].y), Number(result[0].x));
               
               const mapOptions = {
                 center: coords,

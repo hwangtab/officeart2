@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, SyntheticEvent } from 'react';
 
 interface OptimizedImageProps {
   src: string;
@@ -35,7 +35,7 @@ export default function OptimizedImage({
     setIsLoading(false);
   };
 
-  const handleError = (error: any) => {
+  const handleError = (error: SyntheticEvent<HTMLImageElement, Event>) => {
     console.error('이미지 로딩 실패:', src, error);
     setIsLoading(false);
     setHasError(true);

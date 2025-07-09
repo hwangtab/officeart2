@@ -64,7 +64,7 @@ export default function SearchResults() {
   return (
     <div className="w-full max-w-3xl mx-auto">
       <SectionTitle as="h1" level="section" className="text-center">
-        '{query}' 검색 결과
+        &apos;{query}&apos; 검색 결과
       </SectionTitle>
 
       {isLoading ? (
@@ -85,7 +85,7 @@ export default function SearchResults() {
         </ul>
       ) : (
         <p className="text-center text-text-secondary">
-          '{query}'에 대한 검색 결과가 없습니다. (검색어는 2자 이상 입력해주세요)
+          &apos;{query}&apos;에 대한 검색 결과가 없습니다. (검색어는 2자 이상 입력해주세요)
         </p>
       )}
 

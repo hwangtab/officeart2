@@ -20,7 +20,6 @@ export default function PopupBannerWrapper() {
 
   return (
     <PopupBanner
-      message="오피스아트에 오신 것을 환영합니다!"
       onClose={handleClose}
     />
   )

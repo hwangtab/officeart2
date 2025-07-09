@@ -13,7 +13,6 @@ import {
   HiOutlineTruck as BusIcon,
   HiOutlineMap as AmenitiesIcon,
   HiOutlineBanknotes as BankIcon,
-  HiOutlineShoppingBag as ShopIcon,
   HiOutlineHomeModern as StoreIcon,
   HiOutlineSparkles as CafeIcon,
   HiOutlineRectangleGroup as ParkingIcon

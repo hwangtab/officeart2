@@ -9,7 +9,7 @@ import { UnifiedButton } from '@/components/UnifiedButton';
 const PrivacyPolicyContent = () => (
   <div className="prose prose-sm max-w-none text-text-secondary">
     <p className="font-bold">개인정보처리방침</p>
-    <p>한국스마트협동조합(이하 '조합')은 개인정보보호법 등 관련 법령상의 개인정보보호 규정을 준수하며, 상담 신청자의 개인정보 보호에 최선을 다하고 있습니다.</p>
+    <p>한국스마트협동조합(이하 &apos;조합&apos;)은 개인정보보호법 등 관련 법령상의 개인정보보호 규정을 준수하며, 상담 신청자의 개인정보 보호에 최선을 다하고 있습니다.</p>
 
     <p className="font-semibold mt-4">1. 수집하는 개인정보 항목 및 수집 목적</p>
     <ul className="list-disc list-inside space-y-1">
@@ -47,7 +47,7 @@ const PrivacyPolicyContent = () => (
      </ul>
 
      <p className="font-semibold mt-4">5. 개인정보 자동 수집 장치의 설치·운영 및 거부에 관한 사항</p>
-     <p>조합은 귀하의 정보를 수시로 저장하고 찾아내는 '쿠키(cookie)' 등을 운용하지 않습니다.</p>
+     <p>조합은 귀하의 정보를 수시로 저장하고 찾아내는 &apos;쿠키(cookie)&apos; 등을 운용하지 않습니다.</p>
 
      <p className="font-semibold mt-4">6. 개인정보 보호책임자 및 담당부서</p>
      <ul className="list-disc list-inside space-y-1">

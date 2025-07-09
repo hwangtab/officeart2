@@ -11,7 +11,7 @@ export default function PerformanceMetrics() {
         const observer = new PerformanceObserver((list) => {
           for (const entry of list.getEntries()) {
             if (entry.entryType === 'layout-shift') {
-              const layoutShiftEntry = entry as any;
+              const layoutShiftEntry = entry as LayoutShift;
               if (!layoutShiftEntry.hadRecentInput) {
                 console.log('CLS Score:', layoutShiftEntry.value);
               }
@@ -20,7 +20,7 @@ export default function PerformanceMetrics() {
               console.log('LCP:', entry.startTime);
             }
             if (entry.entryType === 'first-input') {
-              const firstInputEntry = entry as any;
+              const firstInputEntry = entry as PerformanceEventTiming;
               console.log('FID:', firstInputEntry.processingStart - firstInputEntry.startTime);
             }
           }

@@ -1,6 +1,5 @@
 // src/app/services/non-resident/page.tsx
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
 import SectionTitle from '@/components/SectionTitle';
 import LinkButton from '@/components/LinkButton';
@@ -12,8 +11,7 @@ import {
   HiEnvelope, 
   HiClock, 
   HiCurrencyDollar, 
-  HiCheckCircle,
-  HiArrowRight
+  HiCheckCircle
 } from 'react-icons/hi2';
 
 export const metadata: Metadata = {

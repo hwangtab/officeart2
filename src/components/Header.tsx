@@ -103,7 +103,7 @@ export default function Header() {
       }
     };
 
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = () => {
       if (isMoreMenuOpen) {
         setIsMoreMenuOpen(false);
       }
@@ -131,10 +131,7 @@ export default function Header() {
     setIsSearchOpen(false);
   }, []);
 
-  // Helper function to determine if a link or its children are active
-  const isActive = (item: FlattenedNavItem): boolean => {
-    return !!item.href && pathname === item.href;
-  };
+  
 
   // Helper function to check if responsive nav item is active
   const isActiveResponsive = (item: ResponsiveNavItem): boolean => {
