@@ -9,7 +9,7 @@ This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-worki
 **Current Status & Renewal Plan:**
 - Currently features single location (Yeongdeungpo branch)
 - Planning expansion to multi-location architecture (Yeongdeungpo + Bulgwang)
-- Adding non-resident office services (비상주사무실) for business registration
+- Adding non-resident office services (비상주 사무실) for business registration
 - Comprehensive renewal plan documented in `docs/officeart_renewal_plan.md`
 
 **Key Services:**
@@ -58,9 +58,11 @@ This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-worki
 - CSS variables: `--font-gmarket-sans` and `--font-noto-sans-kr`
 
 ### Color System
-- Primary: `#E2690D` (orange)
-- Background: `#FFFBF0` (cream) and `#FFFFFF` (white)
+- Primary: `#2563EB` (blue) with dark variant `#1D4ED8`
+- Accent: `#059669` (green) for success and secondary actions
+- Background: `#FFFFFF` (main) and `#F8FAFC` (section backgrounds)
 - Text: `#424242` (primary), `#757575` (secondary)
+- Extended color palette with grays, state colors, and brand integrations
 
 ## Configuration Files
 
@@ -80,10 +82,11 @@ This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-worki
 
 ### Tailwind (`tailwind.config.js`)
 - Custom navigation breakpoints: `nav` (1280px), `nav-full` (1440px), `xxl` (1440px)
-- Comprehensive Korean brand color system with primary `#E2690D`
+- Updated modern color system with primary `#2563EB` (blue) and accent green `#059669`
 - Extended typography tokens optimized for Korean text with responsive scaling
 - Enhanced shadow system with card-specific shadows
 - CSS variable integration for Next.js fonts (`--font-gmarket-sans`, `--font-noto-sans-kr`)
+- Background gradients and enhanced visual system
 
 ## API Integration
 
@@ -141,7 +144,7 @@ This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-worki
 3. Content enhancement and features (1 week)
 4. Testing and deployment (1 week)
 
-See `docs/officeart_renewal_plan.md` for detailed implementation specifications.
+See `docs/officeart-ux-improvement-plan.md` and related UX improvement documentation for detailed implementation specifications.
 
 ## Testing Strategy
 

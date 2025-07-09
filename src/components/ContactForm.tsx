@@ -104,7 +104,7 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
     // Set service type based on URL parameter
     if (service === 'non-resident') {
       setValue('serviceType', 'non-resident');
-      defaultInquiryText = '[비상주사무실 문의] ';
+      defaultInquiryText = '[비상주 사무실 문의] ';
     } else if (service === 'desk') {
       setValue('serviceType', 'desk');
       defaultInquiryText = '[정기 이용권 문의] ';

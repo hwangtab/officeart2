@@ -59,11 +59,10 @@ export default function ServicesSection() {
             href="/pricing"
           />
           <ServiceCard 
-            title="비상주사무실"
+            title="비상주 사무실"
             description="월 3.3만원으로 사업자등록이 가능합니다. 홈오피스 창업자에게 완벽한 솔루션입니다."
             icon="business"
             href="/services/non-resident"
-            isNew={true}
           />
           <ServiceCard 
             title="프리미엄 시설"

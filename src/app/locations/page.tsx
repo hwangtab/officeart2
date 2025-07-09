@@ -50,7 +50,7 @@ export default function LocationsPage() {
                 <span className="text-2xl">💰</span>
               </div>
               <h4 className="font-semibold text-text-primary mb-2">합리적 가격</h4>
-              <p className="text-sm text-text-secondary">정기권 25만원, 비상주사무실 3.3만원</p>
+              <p className="text-sm text-text-secondary">정기권 25만원, 비상주 사무실 3.3만원</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">

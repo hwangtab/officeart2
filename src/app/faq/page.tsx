@@ -6,11 +6,11 @@ import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
 
 export const metadata: Metadata = {
   title: "자주 묻는 질문 (FAQ) | 오피스아트",
-  description: "오피스아트 이용 관련 자주 묻는 질문과 답변을 확인하세요. 정기 이용권, 비상주사무실, 운영 시간, 시설 이용, 사업자등록 등 궁금한 모든 것을 해결해드립니다.",
-  keywords: ['오피스아트 FAQ', '공유오피스 문의', '비상주사무실 문의', '사업자등록 방법', '영등포 공유오피스', '불광 공유오피스'],
+  description: "오피스아트 이용 관련 자주 묻는 질문과 답변을 확인하세요. 정기 이용권, 비상주 사무실, 운영 시간, 시설 이용, 사업자등록 등 궁금한 모든 것을 해결해드립니다.",
+  keywords: ['오피스아트 FAQ', '공유오피스 문의', '비상주 사무실 문의', '사업자등록 방법', '영등포 공유오피스', '불광 공유오피스'],
   openGraph: {
     title: "자주 묻는 질문 (FAQ) | 오피스아트",
-    description: "오피스아트 이용과 비상주사무실 서비스에 대한 모든 궁금증을 해결해드립니다.",
+    description: "오피스아트 이용과 비상주 사무실 서비스에 대한 모든 궁금증을 해결해드립니다.",
   }
 };
 
@@ -50,7 +50,7 @@ const generalFaqData = [
   },
 ];
 
-// 비상주사무실 FAQ 데이터
+// 비상주 사무실 FAQ 데이터
 const nonResidentFaqData = [
   {
     question: "사업자등록이 정말 가능한가요?",
@@ -73,8 +73,8 @@ const nonResidentFaqData = [
     answer: "월 3.3만원 외에는 추가 비용이 없습니다. 모든 기본 서비스가 포함된 요금입니다.",
   },
   {
-    question: "비상주사무실과 정기 이용권의 차이는 무엇인가요?",
-    answer: "비상주사무실은 주소 제공만 받는 서비스이고, 정기 이용권은 실제 작업공간을 이용하는 서비스입니다. 비상주사무실 이용자도 회의실을 무료로 이용할 수 있습니다.",
+    question: "비상주 사무실과 정기 이용권의 차이는 무엇인가요?",
+    answer: "비상주 사무실은 주소 제공만 받는 서비스이고, 정기 이용권은 실제 작업공간을 이용하는 서비스입니다. 비상주 사무실 이용자도 회의실을 무료로 이용할 수 있습니다.",
   },
   {
     question: "법인 설립도 가능한가요?",
@@ -122,11 +122,11 @@ export default function FaqPage() {
           </section>
         </ScrollAnimationWrapper>
 
-        {/* 비상주사무실 FAQ 섹션 */}
+        {/* 비상주 사무실 FAQ 섹션 */
         <ScrollAnimationWrapper>
           <section className="mb-16">
             <div className="text-center mb-8">
-              <SectionTitle as="h2" level="section" align="center">비상주사무실 FAQ</SectionTitle>
+              <SectionTitle as="h2" level="section" align="center">비상주 사무실 FAQ</SectionTitle>
             </div>
             <div className="space-y-6">
               {nonResidentFaqData.map((item, index) => (

@@ -199,7 +199,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
                 </div>
                 <div className="flex justify-between items-center p-4 bg-background-main rounded-lg">
                   <div>
-                    <h4 className="font-semibold text-text-primary">비상주사무실</h4>
+                    <h4 className="font-semibold text-text-primary">비상주 사무실</h4>
                     <p className="text-sm text-text-secondary">사업자등록용 주소 제공</p>
                   </div>
                   <div className="text-right">

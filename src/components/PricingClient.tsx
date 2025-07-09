@@ -96,7 +96,7 @@ export default function PricingClient() {
             </div>
             
             <div className="text-center p-6">
-              <SectionTitle as="h3" level="subsection" className="text-text-primary mb-2">비상주사무실</SectionTitle>
+              <SectionTitle as="h3" level="subsection" className="text-text-primary mb-2">비상주 사무실</SectionTitle>
               <p className="text-body-small text-text-secondary mb-4">사업자등록용 주소 제공 서비스</p> {/* Using body-small token */}
               <p className="text-display font-bold text-primary mb-2">월 3.3만원</p> {/* Using display token for pricing */}
               <p className="text-caption text-text-secondary mb-4">최소 6개월 계약</p> {/* Using caption token */}

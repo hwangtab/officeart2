@@ -127,7 +127,7 @@ export default function LocationSelectionSection({
                 NEW
               </span>
               <div className="text-2xl mb-2">🏢</div>
-              <h4 className="font-semibold text-text-primary mb-1">비상주사무실</h4>
+              <h4 className="font-semibold text-text-primary mb-1">비상주 사무실</h4>
               <p className="text-sm text-text-secondary">월 3.3만원</p>
             </div>
           </label>

@@ -17,9 +17,9 @@ import {
 } from 'react-icons/hi2';
 
 export const metadata: Metadata = {
-  title: '비상주사무실 서비스 | 오피스아트',
-  description: '월 3.3만원으로 사업자등록이 가능한 비상주사무실 서비스. 홈오피스 창업자와 프리랜서를 위한 완벽한 솔루션을 제공합니다.',
-  keywords: ['비상주사무실', '사업자등록', '창업', '홈오피스', '프리랜서', '가상오피스', '주소제공'],
+  title: '비상주 사무실 서비스 | 오피스아트',
+  description: '월 3.3만원으로 사업자등록이 가능한 비상주 사무실 서비스. 홈오피스 창업자와 프리랜서를 위한 완벽한 솔루션을 제공합니다.',
+  keywords: ['비상주 사무실', '사업자등록', '창업', '홈오피스', '프리랜서', '가상오피스', '주소제공'],
 };
 
 export default function NonResidentOfficePage() {
@@ -38,7 +38,7 @@ export default function NonResidentOfficePage() {
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            <span className="hero-highlight-text">비상주사무실</span>
+            <span className="hero-highlight-text">비상주 사무실</span>
           </h1>
           <p className="text-xl md:text-2xl text-white mb-8">
             월 <span className="hero-highlight-text">3.3만원</span>으로 사업자등록하세요

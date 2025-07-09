@@ -45,7 +45,7 @@ export default function LocationCard({ location, href, className = '' }: Locatio
               <p className="text-caption text-text-secondary">월</p> {/* Using caption token */}
             </div>
             <div className="text-center">
-              <p className="text-caption text-text-secondary mb-1">비상주사무실</p> {/* Using caption token */}
+              <p className="text-caption text-text-secondary mb-1">비상주 사무실</p> {/* Using caption token */}
               <p className="text-heading-4 font-bold text-primary">{location.pricing.nonResidentOffice.price.toLocaleString()}원</p> {/* Using heading-4 token */}
               <p className="text-caption text-text-secondary">월</p> {/* Using caption token */}
             </div>
