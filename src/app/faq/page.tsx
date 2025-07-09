@@ -48,6 +48,10 @@ const generalFaqData = [
     question: "프린터/복합기 이용 제한이 있나요?",
     answer: "아니요, 정기 이용권 사용자분들은 A3 컬러 복합기를 용지 포함해서 무제한 무료로 사용하실 수 있어요!",
   },
+  {
+    question: "커피는 무제한인가요?",
+    answer: "네, 정기 이용 회원님들은 원두커피를 무제한으로 이용하실 수 있어요!",
+  },
 ];
 
 // 비상주 사무실 FAQ 데이터
@@ -90,7 +94,7 @@ export default function FaqPage() {
   return (
     <main className="flex min-h-screen flex-col items-center py-20 px-4">
       <div className="w-full max-w-5xl mx-auto">
-        <SectionTitle as="h1" level="page" align="center">자주 묻는 질문 (FAQ)</SectionTitle> {/* Use level prop */}
+        <SectionTitle as="h1" level="page" align="center">자주 묻는 질문 (FAQ)</SectionTitle>
 
         {/* 일반 FAQ 섹션 */}
         <ScrollAnimationWrapper>
@@ -122,7 +126,7 @@ export default function FaqPage() {
           </section>
         </ScrollAnimationWrapper>
 
-        {/* 비상주 사무실 FAQ 섹션 */
+        {/* 비상주 사무실 FAQ 섹션 */}
         <ScrollAnimationWrapper>
           <section className="mb-16">
             <div className="text-center mb-8">
@@ -154,8 +158,32 @@ export default function FaqPage() {
           </section>
         </ScrollAnimationWrapper>
 
-        {/* Back button */}
-        <div className="mt-12">
+        {/* 하단 안내 섹션 */}
+        <ScrollAnimationWrapper>
+          <section className="text-center">
+            <div className="bg-background-section rounded-xl p-8">
+              <h3 className="text-2xl font-bold text-text-primary mb-4">더 궁금한 점이 있으시다면?</h3>
+              <p className="text-text-secondary mb-6">언제든지 편하게 문의해주세요. 친절하게 답변드리겠습니다!</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="/contact" 
+                  className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors font-semibold"
+                >
+                  온라인 문의하기
+                </a>
+                <a 
+                  href="tel:02-123-4567" 
+                  className="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors font-semibold"
+                >
+                  전화 문의하기
+                </a>
+              </div>
+            </div>
+          </section>
+        </ScrollAnimationWrapper>
+
+        {/* 뒤로가기 버튼 */}
+        <div className="mt-12 text-center">
           <BackButton />
         </div>
       </div>
