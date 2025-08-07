@@ -149,5 +149,12 @@ See `docs/officeart-ux-improvement-plan.md` and related UX improvement documenta
 ## Testing Strategy
 
 - Component testing with Jest and React Testing Library
-- Mock files for static assets and styles
+- Mock files for static assets and styles (`__mocks__/fileMock.js`, `__mocks__/styleMock.js`)
 - Module path mapping matches TypeScript aliases
+- Jest setup file: `jest.setup.js` imports `@testing-library/jest-dom` for DOM assertions
+
+# important-instruction-reminders
+Do what has been asked; nothing more, nothing less.
+NEVER create files unless they're absolutely necessary for achieving your goal.
+ALWAYS prefer editing an existing file to creating a new one.
+NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.

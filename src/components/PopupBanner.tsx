@@ -67,7 +67,7 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
             <h2 id="popup-title" className="text-2xl font-bold text-gray-800 mb-2">
               신규 오픈 이벤트
             </h2>
-            <p className="text-lg text-gray-600 font-medium">7월 내 입주시 프로모션가 25만원으로 평생 할인!</p>
+            <p className="text-lg text-gray-600 font-medium">8월 내 입주시 프로모션가 25만원으로 평생 할인!</p>
               </motion.div>
             </div>
 
