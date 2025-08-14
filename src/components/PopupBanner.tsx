@@ -72,7 +72,7 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
               <br />
               프리미엄 작업 공간, 참가비 전액 환급 혜택
               <br />
-              <strong>선착순 10명</strong>
+              <strong>선착순 10명 (마감시 공지)</strong>
             </p>
               </motion.div>
             </div>
