@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+
 
 interface PopupBannerProps {
   onClose: () => void;
 }
 
 const PopupBanner = ({ onClose }: PopupBannerProps) => {
-  const router = useRouter();
+  
   const [isVisible, setIsVisible] = useState(false);
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -59,15 +59,21 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
           <div className="p-6">
             <div className="mt-2 text-center">
               <motion.div
-                onClick={() => !isDragging && router.push('/contact')}
+                onClick={() => !isDragging && window.open('https://docs.google.com/forms/d/e/1FAIpQLSfGOotSqq_eXu-atuxNb06tyAYGG3DDkQrp5MUm99PFKikENw/viewform?usp=header', '_blank')}
                 className="cursor-pointer"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
             <h2 id="popup-title" className="text-2xl font-bold text-gray-800 mb-2">
-              신규 오픈 이벤트
+              2025 지역 예술인 창작환경 지원사업
             </h2>
-            <p className="text-lg text-gray-600 font-medium">8월 내 입주시 프로모션가 25만원으로 평생 할인!</p>
+                        <p className="text-lg text-gray-600 font-medium">
+              영등포·마포·구로·동작·양천구 등 인근 예술가 대상
+              <br />
+              프리미엄 작업 공간, 참가비 전액 환급 혜택
+              <br />
+              <strong>선착순 10명</strong>
+            </p>
               </motion.div>
             </div>
 
