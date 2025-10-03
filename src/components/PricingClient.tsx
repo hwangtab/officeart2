@@ -240,6 +240,20 @@ export default function PricingClient() {
             </div>
           </Card>
         </div>
+        <div className="mt-10 flex flex-col items-center gap-4 text-center">
+          <p className="text-body-base text-text-secondary">어떤 이용권이 맞을지 고민되신다면, 전문 매니저가 필요한 플랜을 5분 만에 추천해드립니다.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <LinkButton href="https://open.kakao.com/me/offceart" variant="kakao" size="base" target="_blank" rel="noopener noreferrer">
+              카카오톡으로 상담 요청
+            </LinkButton>
+            <LinkButton href="/contact" variant="primary" size="base">
+              1:1 컨설팅 신청하기
+            </LinkButton>
+            <LinkButton href="/contact?inquiryType=daily" variant="outline" size="base">
+              하루 체험 예약 문의
+            </LinkButton>
+          </div>
+        </div>
         </section>
       </ScrollAnimationWrapper>
 

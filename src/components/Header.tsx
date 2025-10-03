@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import OptimizedImage from './OptimizedImage';
+import LinkButton from './LinkButton';
 import { useState, useCallback, useRef, useEffect } from 'react'; // Import hooks
 import { usePathname, useRouter } from 'next/navigation'; // Import usePathname and useRouter hooks
 import { HiBars3 as Bars3Icon, HiXMark as XMarkIcon, HiMagnifyingGlass as MagnifyingGlassIcon, HiChevronDown as ChevronDownIcon } from 'react-icons/hi2'; // Import menu and search icons
@@ -139,8 +140,10 @@ export default function Header() {
   };
 
   // Split menu items by priority for compact view
-  const highPriorityItems = navItemsResponsive.filter(item => item.priority === 'high');
-  const lowPriorityItems = navItemsResponsive.filter(item => item.priority === 'low' || item.priority === 'medium');
+  const contactNavItem = navItemsResponsive.find(item => item.href === '/contact');
+  const desktopNavItems = navItemsResponsive.filter(item => item.href !== '/contact');
+  const highPriorityItems = desktopNavItems.filter(item => item.priority === 'high');
+  const lowPriorityItems = desktopNavItems.filter(item => item.priority === 'low' || item.priority === 'medium');
 
   return (
     <header className="sticky top-0 z-50 w-full bg-primary text-text-on-primary shadow-md">
@@ -218,7 +221,7 @@ export default function Header() {
 
           {/* Full Menu: 1440px+ */}
           <ul className="hidden nav-full:flex space-x-3 items-center mx-auto">
-            {navItemsResponsive.map((item) => {
+            {desktopNavItems.map((item) => {
               const active = isActiveResponsive(item);
               return (
                 <li key={item.name}>
@@ -238,7 +241,7 @@ export default function Header() {
           </ul>
 
           {/* Search Icon - Desktop */}
-          <div className="hidden nav-compact:flex items-center ml-4">
+          <div className="hidden nav-compact:flex items-center ml-4 space-x-3">
             <button
               aria-label="검색 열기"
               onClick={toggleSearch}
@@ -246,18 +249,36 @@ export default function Header() {
             >
               <MagnifyingGlassIcon className="h-6 w-6" />
             </button>
+            {contactNavItem && (
+              <LinkButton
+                href={contactNavItem.href}
+                variant="outlineWhite"
+                size="sm"
+                className="hidden nav-compact:inline-flex">
+                상담 신청
+              </LinkButton>
+            )}
           </div>
 
           {/* Mobile Menu & Search Buttons */}
           <div className="nav-compact:hidden flex items-center ml-auto">
              {/* Search Icon - Mobile */}
-             <button
-               aria-label="검색 열기"
-               onClick={toggleSearch}
-               className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white mr-2"
-             >
-               <MagnifyingGlassIcon className="h-6 w-6" />
-             </button>
+           <button
+              aria-label="검색 열기"
+              onClick={toggleSearch}
+              className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white mr-2"
+            >
+              <MagnifyingGlassIcon className="h-6 w-6" />
+            </button>
+            {contactNavItem && (
+              <LinkButton
+                href={contactNavItem.href}
+                variant="outlineWhite"
+                size="sm"
+                className="mr-2">
+                상담 신청
+              </LinkButton>
+            )}
             {/* Mobile Menu Button */}
             <button
               id="mobile-menu-button"

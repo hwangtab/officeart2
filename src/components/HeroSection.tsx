@@ -18,35 +18,43 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
       <div className="relative z-10 px-4 py-12 sm:py-16 w-full max-w-4xl mx-auto">
-        <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center hero-dynamic-title"> {/* Dynamic scaling font size */}
-          <span className="hero-highlight-text block sm:inline">창의력과 집중력이 피어나는<br className="sm:hidden"/> 작업 공간</span>{' '}
-          <span className="block sm:inline mt-2 sm:mt-0">오피스아트</span>
+        <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center hero-dynamic-title text-balance"> {/* Dynamic scaling font size */}
+          <span className="hero-highlight-text block sm:inline">월 25만원 특가로 누리는</span>{' '}
+          <span className="block sm:inline mt-2 sm:mt-0">창작자 전용 프리미엄 오피스</span>
         </SectionTitle>
-        <p className="mb-6 animate-fade-in-up animation-delay-200 hero-dynamic-subtitle"> {/* Dynamic scaling subtitle */}
-          <span className="font-bold break-words">
-            <span className="hero-highlight-text">합리적 가격</span>으로{' '}
-            <span className="block sm:inline">즐기는 <span className="hero-highlight-text">프리미엄 작업 환경</span></span>
-          </span>
+        <p className="mb-4 animate-fade-in-up animation-delay-200 hero-dynamic-subtitle text-text-on-primary/90 text-balance"> {/* Dynamic scaling subtitle */}
+          <span className="block sm:inline">영등포구청역 5분 · 선착순 10석 한정</span>
+          <span className="block sm:inline sm:ml-1">참가비 환급 지원 사업 진행 중</span>
         </p>
+        <div className="animate-fade-in-up animation-delay-400 flex flex-wrap justify-center gap-3 text-sm text-white/90">
+          <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">180만원대 스틸케이스 의자</span>
+          <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">160cm L형 집중석</span>
+          <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">24시간 출입 &amp; 무제한 커피</span>
+        </div>
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8 animate-fade-in-up animation-delay-600">
           <LinkButton 
-            href="/pricing" 
-            variant="secondary" 
+            href="https://open.kakao.com/me/offceart" 
+            variant="kakao" 
             size="lg"
             className="w-full sm:w-auto min-w-[200px]"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            가격보기
+            카카오톡으로 바로 상담
           </LinkButton>
           <LinkButton 
-            href="/contact" 
-            variant="primary" 
+            href="/pricing" 
+            variant="outlineWhite" 
             size="lg"
             className="w-full sm:w-auto min-w-[200px]"
           >
-            연락하기
+            가격 &amp; 혜택 살펴보기
           </LinkButton>
         </div>
+        <p className="mt-6 text-sm text-white/80 animate-fade-in-up animation-delay-800 text-balance">
+          신청 후 24시간 이내 상담 연락 · 사업자등록 및 세무 서류 지원
+        </p>
       </div>
     </section>
   );

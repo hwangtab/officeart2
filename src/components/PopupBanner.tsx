@@ -1,7 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import LinkButton from './LinkButton';
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
 
 
 interface PopupBannerProps {
@@ -23,6 +30,12 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
     }
   }, []);
 
+  const trackEvent = (action: string, params: Record<string, string>) => {
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', action, params);
+    }
+  };
+
   const handleClose = () => {
     if (dontShowAgain) {
       const hideUntil = new Date();
@@ -32,6 +45,25 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
     setIsVisible(false);
     setTimeout(onClose, 300); // 애니메이션 완료 후 onClose 호출
   };
+
+  const handleApplyClick = () => {
+    trackEvent('popup_apply_click', { location: 'hero_promo', label: 'support_program' });
+  };
+
+  const handleKakaoClick = () => {
+    trackEvent('popup_kakao_click', { location: 'hero_promo', label: 'kakao_consult' });
+  };
+
+  const openSupportProgram = () => {
+    handleApplyClick();
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSfGOotSqq_eXu-atuxNb06tyAYGG3DDkQrp5MUm99PFKikENw/viewform?usp=header', '_blank');
+  };
+
+  const containerClassName = useMemo(
+    () =>
+      'fixed inset-x-4 bottom-6 md:bottom-auto md:top-20 md:left-10 md:right-auto z-50 w-auto md:max-w-md rounded-2xl bg-white/80 md:bg-white/70 backdrop-blur-lg shadow-xl border border-white/40 md:border-transparent',
+    []
+  );
 
   if (!isVisible) return null;
 
@@ -48,7 +80,7 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
           dragElastic={0.1}
           onDragStart={() => setIsDragging(true)}
           onDragEnd={() => setIsDragging(false)}
-          className="fixed top-20 left-10 z-50 w-full max-w-md rounded-lg bg-white/50 backdrop-blur-sm shadow-xl popup-banner hidden md:block"
+          className={containerClassName}
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -20, opacity: 0 }}
@@ -56,10 +88,14 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
           role="banner"
           aria-labelledby="popup-title"
         >
-          <div className="p-6">
+          <div className="p-6 space-y-5">
             <div className="mt-2 text-center">
               <motion.div
-                onClick={() => !isDragging && window.open('https://docs.google.com/forms/d/e/1FAIpQLSfGOotSqq_eXu-atuxNb06tyAYGG3DDkQrp5MUm99PFKikENw/viewform?usp=header', '_blank')}
+                onClick={() => {
+                  if (!isDragging) {
+                    openSupportProgram();
+                  }
+                }}
                 className="cursor-pointer"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
@@ -76,6 +112,31 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
             </p>
               </motion.div>
             </div>
+
+          <div className="flex flex-col gap-3">
+            <LinkButton
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfGOotSqq_eXu-atuxNb06tyAYGG3DDkQrp5MUm99PFKikENw/viewform?usp=header"
+              onClick={handleApplyClick}
+              variant="primary"
+              size="base"
+              className="w-full"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              지원 프로그램 신청하기
+            </LinkButton>
+            <LinkButton
+              href="https://open.kakao.com/me/offceart"
+              variant="kakao"
+              size="base"
+              className="w-full"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleKakaoClick}
+            >
+              카카오톡으로 상담 받기
+            </LinkButton>
+          </div>
 
           <div className="mt-6 flex justify-center items-center space-x-4">
             <label className="flex items-center space-x-2">

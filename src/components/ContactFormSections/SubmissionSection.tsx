@@ -1,9 +1,15 @@
-import React, { useState } from 'react'; // Import useState
+import React, { useEffect, useState } from 'react'; // Import useState
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
 import { ContactFormData } from '@/types/contactForm'; // Import shared type
 import Modal from '@/components/Modal'; // Import the Modal component
 import { HiPaperAirplane } from 'react-icons/hi2'; // Import paper airplane icon
 import { UnifiedButton } from '@/components/UnifiedButton';
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
 
 // Updated Privacy Policy Content
 const PrivacyPolicyContent = () => (
@@ -76,6 +82,15 @@ interface SubmissionSectionProps {
 
 const SubmissionSection = ({ register, errors, isSubmitting, submitStatus, submitErrorMessage }: SubmissionSectionProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+
+  useEffect(() => {
+    if (submitStatus === 'success' && typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion_complete', {
+        event_category: 'contact_form',
+        event_label: 'contact_form_success',
+      });
+    }
+  }, [submitStatus]);
 
   return (
     <> {/* Use Fragment to return multiple elements */}

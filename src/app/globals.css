@@ -115,6 +115,14 @@ h3 {
   transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Hero Text Animation */
 @keyframes fadeInUp {
   from {
@@ -248,4 +256,3 @@ h3 {
   background-clip: text;
   font-weight: bold;
 }
-

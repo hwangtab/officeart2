@@ -64,6 +64,12 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
       service: Array.isArray(data.interest) ? data.interest.join(', ') : data.interest || '미선택',
       location: data.selectedLocation || '미선택',
       serviceType: data.serviceType || '일반 문의',
+      utmSource: data.utmSource,
+      utmMedium: data.utmMedium,
+      utmCampaign: data.utmCampaign,
+      utmTerm: data.utmTerm,
+      utmContent: data.utmContent,
+      referrer: data.referrer,
     };
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
@@ -71,6 +77,17 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
           console.log('EmailJS Success:', result.text);
           setSubmitStatus('success');
           reset();
+          const persistedTrackingFields: Partial<ContactFormData> = {
+            utmSource: data.utmSource || '',
+            utmMedium: data.utmMedium || '',
+            utmCampaign: data.utmCampaign || '',
+            utmTerm: data.utmTerm || '',
+            utmContent: data.utmContent || '',
+            referrer: data.referrer || '',
+          };
+          Object.entries(persistedTrackingFields).forEach(([key, value]) => {
+            setValue(key as keyof ContactFormData, value as string);
+          });
       }, (error) => {
           console.error('EmailJS Error:', error.text);
           setSubmitStatus('error');
@@ -88,7 +105,7 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
       .finally(() => {
           setIsSubmitting(false);
       });
-  }, [isSubmitting, SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY, reset]);
+  }, [SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY, isSubmitting, reset, setValue]);
 
   // 자동 입력 텍스트 병합 함수
   const handleAutoFillInquiry = useCallback((newText: string) => {
@@ -136,6 +153,11 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
     const duration = searchParams.get('duration');
     const pkg = searchParams.get('package'); // 'package' is a reserved word, use 'pkg'
     const service = searchParams.get('service');
+    const utmSource = searchParams.get('utm_source');
+    const utmMedium = searchParams.get('utm_medium');
+    const utmCampaign = searchParams.get('utm_campaign');
+    const utmTerm = searchParams.get('utm_term');
+    const utmContent = searchParams.get('utm_content');
     // const location = searchParams.get('location'); // Will be handled by LocationSelectionSection
 
     let defaultInquiryText = '';
@@ -179,6 +201,14 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
       }
 
       setValue('inquiry', defaultInquiryText);
+      setValue('utmSource', utmSource || '');
+      setValue('utmMedium', utmMedium || '');
+      setValue('utmCampaign', utmCampaign || '');
+      setValue('utmTerm', utmTerm || '');
+      setValue('utmContent', utmContent || '');
+      if (typeof document !== 'undefined') {
+        setValue('referrer', document.referrer || '');
+      }
 
       // Optionally focus the first relevant field, e.g., name
       // document.getElementById('name')?.focus();
@@ -219,6 +249,13 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
           submitStatus={submitStatus}
           submitErrorMessage={submitErrorMessage} // Pass the error message prop
         />
+
+        <input type="hidden" {...register('utmSource')} />
+        <input type="hidden" {...register('utmMedium')} />
+        <input type="hidden" {...register('utmCampaign')} />
+        <input type="hidden" {...register('utmTerm')} />
+        <input type="hidden" {...register('utmContent')} />
+        <input type="hidden" {...register('referrer')} />
 
       </form>
     </Card>

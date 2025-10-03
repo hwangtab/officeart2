@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { FiSend, FiMessageSquare } from 'react-icons/fi';
 import Linkify from 'react-linkify';
 import { queryOpenRouter } from '@/lib/openrouter';
@@ -12,16 +12,6 @@ interface Message {
 
 export default function AIChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsOpen(!window.matchMedia('(max-width: 768px)').matches);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -29,19 +19,20 @@ export default function AIChatWidget() {
 
   const toggleChat = () => setIsOpen(!isOpen);
 
-  const handleSendMessage = async () => {
-    if (!inputValue.trim() || isLoading) return;
+  const handleSendMessage = async (overrideMessage?: string) => {
+    const messageToSend = (overrideMessage ?? inputValue).trim();
+    if (!messageToSend || isLoading) return;
 
     const userMessage: Message = {
       role: 'user',
-      content: inputValue
+      content: messageToSend
     };
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
 
     try {
-      const response = await queryOpenRouter(inputValue);
+      const response = await queryOpenRouter(messageToSend);
       // 마크다운을 HTML로 변환하여 포맷팅 개선
       const formattedResponse = response
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // **굵게** → <strong>
@@ -75,6 +66,19 @@ export default function AIChatWidget() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  const quickReplies = useMemo(
+    () => [
+      { label: '투어 예약 가능 시간은?', prompt: '투어 가능한 날짜와 시간을 알려주세요.' },
+      { label: '비상주 비용 문의', prompt: '비상주 사무실 비용과 준비 서류를 안내해주세요.' },
+      { label: '장기 이용 할인', prompt: '3개월 이상 이용 시 제공 가능한 혜택이 있나요?' },
+    ],
+    []
+  );
+
+  const handleQuickReply = (prompt: string) => {
+    handleSendMessage(prompt);
+  };
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -178,13 +182,31 @@ export default function AIChatWidget() {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="p-3 border-t border-gray-200 overflow-x-hidden">
-            <div className="flex w-full min-w-0">
+          <div className="border-t border-gray-200">
+            <div className="flex flex-wrap gap-2 px-3 py-2">
+              {quickReplies.map((reply) => (
+                <button
+                  key={reply.prompt}
+                  type="button"
+                  onClick={() => handleQuickReply(reply.prompt)}
+                  className="rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary hover:text-white"
+                >
+                  {reply.label}
+                </button>
+              ))}
+            </div>
+            <div className="p-3 overflow-x-hidden">
+              <div className="flex w-full min-w-0">
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleSendMessage();
+                  }
+                }}
                 className="w-[calc(100%-3rem)] border border-gray-300 rounded-l-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary box-border"
                 placeholder="메시지를 입력하세요..."
                 style={{
@@ -193,11 +215,12 @@ export default function AIChatWidget() {
                 }}
               />
               <button
-                onClick={handleSendMessage}
+                onClick={() => handleSendMessage()}
                 className="w-12 bg-primary text-white rounded-r-lg hover:bg-primary-dark flex items-center justify-center"
               >
                 <FiSend size={18} />
               </button>
+              </div>
             </div>
           </div>
         </div>
