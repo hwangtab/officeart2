@@ -5,6 +5,7 @@ import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
 import LinkButton from '@/components/LinkButton';
 import SectionTitle from '@/components/SectionTitle';
 import Card from '@/components/Card';
+import ComparisonCtaGroup from '@/components/ComparisonCtaGroup';
 import {
   HiOutlineDocumentText as ContractIcon, HiOutlineCreditCard as PaymentIcon,
   HiOutlineCurrencyDollar as CurrencyDollarIcon, HiOutlineRectangleGroup as ChairIcon, HiOutlineComputerDesktop as DeskIcon,
@@ -199,20 +200,7 @@ export default function PricingClient() {
               </table>
             </div>
             {/* CTA immediately after coworking comparison */}
-            <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-              <LinkButton
-                href="https://open.kakao.com/me/offceart"
-                variant="kakao"
-                size="base"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                지금 카카오톡 상담
-              </LinkButton>
-              <LinkButton href="/contact" variant="outline" size="base">
-                하루 체험 예약
-              </LinkButton>
-            </div>
+            <ComparisonCtaGroup />
           </Card>
           {/* Comparison Table 2 */}
           <Card className="overflow-x-auto">
@@ -254,20 +242,7 @@ export default function PricingClient() {
               </table>
             </div>
             {/* CTA immediately after cafe comparison */}
-            <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-              <LinkButton
-                href="https://open.kakao.com/me/offceart"
-                variant="kakao"
-                size="base"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                지금 카카오톡 상담
-              </LinkButton>
-              <LinkButton href="/contact" variant="outline" size="base">
-                하루 체험 예약
-              </LinkButton>
-            </div>
+            <ComparisonCtaGroup />
           </Card>
         </div>
         <div className="mt-10 flex flex-col items-center gap-4 text-center">

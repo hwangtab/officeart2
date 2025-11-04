@@ -110,13 +110,21 @@ colors: {
 ```
 
 **Quick Win (즉시 적용 가능):**
-1. **히어로 그라데이션 제거**
+1. **히어로 텍스트 그라데이션 제거 및 오버레이 강화**
    ```tsx
+   // 텍스트: 브랜드 컬러 그라데이션 → 순수 화이트
    // AS-IS
    <span className="hero-highlight-text">월 25만원 특가로 누리는</span>
 
    // TO-BE
    <span className="font-bold text-white">월 25만원 특가로 누리는</span>
+
+   // 배경: 텍스트 가독성을 위한 블랙 오버레이 그라데이션 강화
+   // AS-IS
+   <div className="absolute inset-0 bg-black/30"></div>
+
+   // TO-BE
+   <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
    ```
 
 2. **Primary 블루 대체**
@@ -816,10 +824,11 @@ colors: {
 
 **즉시 효과가 큰 변경사항:**
 
-**1. 히어로 섹션 그라데이션 제거**
+**1. 히어로 섹션 텍스트 그라데이션 제거 및 오버레이 강화**
 ```tsx
 // src/components/HeroSection.tsx
 
+// 텍스트: 브랜드 컬러 그라데이션 제거
 // AS-IS
 <span className="hero-highlight-text block sm:inline">
   월 25만원 특가로 누리는
@@ -829,6 +838,13 @@ colors: {
 <span className="font-bold text-white block sm:inline">
   월 25만원 특가로 누리는
 </span>
+
+// 배경: 텍스트 가독성을 위한 오버레이 강화
+// AS-IS
+<div className="absolute inset-0 bg-black/30"></div>
+
+// TO-BE
+<div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
 ```
 
 **2. 네비게이션 활성 상태 단순화**
