@@ -18,7 +18,7 @@ export default function InquirySection() {
        </p>
        <div className="mb-6 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-left">
          <p className="flex items-center justify-center gap-2 text-sm font-semibold text-primary">
-           <span className="inline-flex items-center rounded-full bg-primary text-text-on-primary px-3 py-1 text-caption">추천</span>
+           <span className="inline-flex items-center rounded-full bg-primary text-text-on-primary px-3 py-1 text-caption">가장 빠른 상담</span>
            카카오톡 실시간 상담 시 평균 10분 내 응답
          </p>
        </div>

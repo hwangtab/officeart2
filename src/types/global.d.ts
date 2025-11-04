@@ -21,3 +21,8 @@ interface PerformanceEventTiming extends PerformanceEntry {
   duration: DOMHighResTimeStamp;
   interactionId?: number;
 }
+
+// Google Analytics gtag function
+interface Window {
+  gtag?: (...args: unknown[]) => void;
+}

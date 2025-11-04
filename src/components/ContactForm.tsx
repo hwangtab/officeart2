@@ -75,6 +75,16 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
       .then((result) => {
           console.log('EmailJS Success:', result.text);
           setSubmitStatus('success');
+
+          // Track conversion event
+          if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+            window.gtag('event', 'conversion_complete', {
+              event_category: 'Contact',
+              event_label: data.serviceType || 'general_inquiry',
+              value: 1
+            });
+          }
+
           reset();
           const persistedTrackingFields: Partial<ContactFormData> = {
             utmSource: data.utmSource || '',
