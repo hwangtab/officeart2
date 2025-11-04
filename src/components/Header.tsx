@@ -29,6 +29,7 @@ interface ResponsiveNavItem {
 
 // --- 반응형 메뉴 데이터 ---
 const navItemsResponsive: ResponsiveNavItem[] = [
+  { name: '지점 안내', shortName: '지점', href: '/location', priority: 'high' },
   { name: '비상주 사무실', shortName: '비상주', href: '/services/non-resident', priority: 'medium' },
   { name: '프리미엄 의자', shortName: '의자', href: '/premium-chairs', priority: 'medium' },
   { name: '집중 환경', shortName: '환경', href: '/focus-environment', priority: 'medium' },

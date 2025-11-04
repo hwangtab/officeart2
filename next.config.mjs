@@ -19,22 +19,12 @@ const nextConfig = {
     return [
       {
         source: '/locations',
-        destination: '/contact',
+        destination: '/location',
         permanent: true,
       },
       {
         source: '/locations/:path*',
-        destination: '/contact',
-        permanent: true,
-      },
-      {
-        source: '/location',
-        destination: '/contact',
-        permanent: true,
-      },
-      {
-        source: '/location/:path*',
-        destination: '/contact',
+        destination: '/location',
         permanent: true,
       },
     ];
