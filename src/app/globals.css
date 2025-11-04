@@ -35,13 +35,8 @@ body {
   font-weight: 400; /* Set default font weight to Regular for better readability */
 }
 
-/* Apply specific weights for h2 and h3 */
-h2 {
-  font-weight: 700; /* bold */
-}
-h3 {
-  font-weight: 500; /* medium */
-}
+/* Note: h2, h3 font weights are now handled via Tailwind utility classes (text-heading-*)
+   to avoid specificity conflicts with utility classes */
 
 /* Responsive Table Styles */
 @media (max-width: 639px) { /* Corresponds to sm: breakpoint */
@@ -175,7 +170,9 @@ h3 {
   }
 }
 
-/* Kakao Map Styles */
+/* Kakao Map Styles
+   Note: !important is required to override inline styles injected by Kakao Maps JavaScript API
+   The Kakao Maps SDK dynamically applies inline styles that would otherwise override these CSS rules */
 .kakao-map-container {
   width: 100% !important;
   position: relative !important;
@@ -205,26 +202,6 @@ h3 {
 .kakao-map-container canvas {
   width: 100% !important;
   height: 100% !important;
-}
-
-/* Glass morphism utility classes */
-.glass {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.glass-card {
-  backdrop-filter: blur(16px);
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-}
-
-.glass-nav {
-  backdrop-filter: blur(20px);
-  background: rgba(255, 251, 240, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Dynamic responsive hero text that automatically scales */
