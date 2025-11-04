@@ -46,17 +46,20 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
     setTimeout(onClose, 300); // 애니메이션 완료 후 onClose 호출
   };
 
-  const handleApplyClick = () => {
-    trackEvent('popup_apply_click', { location: 'hero_promo', label: 'support_program' });
+  const handleViewSpaceClick = () => {
+    trackEvent('popup_view_space_click', { location: 'hero_promo', label: 'view_facilities' });
+    handleClose();
+    // 시설 안내 섹션으로 스크롤
+    setTimeout(() => {
+      const facilitiesSection = document.getElementById('facilities');
+      if (facilitiesSection) {
+        facilitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 350);
   };
 
   const handleKakaoClick = () => {
     trackEvent('popup_kakao_click', { location: 'hero_promo', label: 'kakao_consult' });
-  };
-
-  const openSupportProgram = () => {
-    handleApplyClick();
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLSfGOotSqq_eXu-atuxNb06tyAYGG3DDkQrp5MUm99PFKikENw/viewform?usp=header', '_blank');
   };
 
   const containerClassName = useMemo(
@@ -90,41 +93,21 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
         >
           <div className="p-6 space-y-5">
             <div className="mt-2 text-center">
-              <motion.div
-                onClick={() => {
-                  if (!isDragging) {
-                    openSupportProgram();
-                  }
-                }}
-                className="cursor-pointer"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
             <h2 id="popup-title" className="text-2xl font-bold text-gray-800 mb-2">
-              2025 지역 예술인 창작환경 지원사업
+              수많은 아티스트와 프리랜서가 선택한 작업 공간
             </h2>
                         <p className="text-lg text-gray-600 font-medium">
-              영등포·마포·구로·동작·양천구 등 인근 예술가 대상
-              <br />
-              프리미엄 작업 공간, 참가비 전액 환급 혜택
-              <br />
-              <strong>선착순 10명 (마감시 공지)</strong>
+              프리미엄 책상·의자, 무제한 커피, 24시간 출입
             </p>
-              </motion.div>
             </div>
 
           <div className="flex flex-col gap-3">
-            <LinkButton
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfGOotSqq_eXu-atuxNb06tyAYGG3DDkQrp5MUm99PFKikENw/viewform?usp=header"
-              onClick={handleApplyClick}
-              variant="primary"
-              size="base"
-              className="w-full"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={handleViewSpaceClick}
+              className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
             >
-              지원 프로그램 신청하기
-            </LinkButton>
+              공간 둘러보기
+            </button>
             <LinkButton
               href="https://open.kakao.com/me/offceart"
               variant="kakao"
