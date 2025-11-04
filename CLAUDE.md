@@ -6,11 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-working space in Seoul, Korea. The site is built with TypeScript, Tailwind CSS, and uses the App Router architecture.
 
-**Current Status & Renewal Plan:**
-- Currently features single location (Yeongdeungpo branch)
-- Planning expansion to multi-location architecture (Yeongdeungpo + Bulgwang)
-- Adding non-resident office services (비상주 사무실) for business registration
-- Comprehensive renewal plan documented in `docs/officeart_renewal_plan.md`
+**Current Status:**
+- Single location operation (Yeongdeungpo branch only)
+- Bulgwang location has been closed
+- Non-resident office services (비상주 사무실) available for business registration
 
 **Key Services:**
 - Monthly desk rental (25만원/월) with premium chairs and L-shaped desks
@@ -101,7 +100,7 @@ This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-worki
 - EmailJS integration for form submissions (`@emailjs/browser`)
 - Type-safe with `ContactFormData` interface in `src/types/contactForm.ts`
 - Supports multiple service types: desk rental, non-resident office, general inquiries
-- Location selection support for multi-branch operations
+- Location automatically set to Yeongdeungpo (single location)
 - Validation using react-hook-form with custom error messages
 
 ## Deployment Notes
@@ -118,33 +117,13 @@ This is a Next.js 15 website for OfficeArt (오피스아트), a premium co-worki
 - Korean SEO metadata and structured data
 - Locale set to `ko_KR` for Open Graph
 
-## Future Expansion Plan
+## Architecture Notes
 
-**Multi-Location Architecture (Planned):**
-- Location data model with TypeScript interfaces
-- Dynamic routing: `/locations/[locationId]` structure
-- Location selector components for branch selection
-- Bulgwang branch: 불광역 2분, same pricing as Yeongdeungpo
-
-**New Services Integration:**
-- Non-resident office service page (`/services/non-resident`)
-- Updated pricing page with 3.3만원/월 non-resident option
-- Enhanced contact forms with location selection
-- Business registration service highlighting
-
-**Component Development Plan:**
-- `LocationCard` and `LocationSelector` components
-- Service highlighting with "NEW" badges
-- Location-aware content rendering
-- Enhanced FAQ section for new services
-
-**Implementation Phases:**
-1. Data structure and routing (1 week)
-2. Page development with content reuse (2 weeks)
-3. Content enhancement and features (1 week)
-4. Testing and deployment (1 week)
-
-See `docs/officeart-ux-improvement-plan.md` and related UX improvement documentation for detailed implementation specifications.
+**Single Location Implementation:**
+- Location data maintained in array format for potential future expansion
+- All location references default to Yeongdeungpo
+- Removed multi-location selection UI components
+- Redirects from old `/locations` and `/location` routes to `/contact`
 
 ## Testing Strategy
 

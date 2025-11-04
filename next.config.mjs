@@ -15,6 +15,30 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/locations',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/locations/:path*',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/location',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/location/:path*',
+        destination: '/contact',
+        permanent: true,
+      },
+    ];
+  },
   // basePath: '/officeart2', // Removed for custom domain
   images: {
     unoptimized: true, // Disable Image Optimization temporarily for debugging

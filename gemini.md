@@ -13,6 +13,10 @@
 - **린팅**: ESLint (^9.24.0)
 - **폼 관리**: React Hook Form (^7.55.0)
 - **아이콘**: Heroicons, React Icons
+- **검색**: Fuse.js (^7.1.0)
+- **이메일**: EmailJS (@emailjs/browser ^4.4.1)
+- **차트**: Recharts (^2.15.2)
+- **슬라이더**: Swiper (^11.2.6)
 
 ## 주요 디렉토리 구조
 - `src/app`: Next.js의 App Router를 사용한 페이지 및 라우팅 구조. 각 디렉토리가 URL 경로에 해당합니다.
@@ -28,6 +32,7 @@
 - **온라인 문의**: EmailJS를 연동한 방문 및 제휴 문의 기능.
 - **AI 챗봇**: OpenRouter API를 활용한 AI 채팅 위젯.
 - **반응형 디자인**: 다양한 디바이스에 최적화된 UI.
+- **지점 검색**: Fuse.js를 활용한 지점 검색 기능.
 
 ## 주요 개발 스크립트
 - `npm run dev`: 개발 서버를 실행합니다.
@@ -35,3 +40,4 @@
 - `npm run start`: 빌드된 애플리케이션을 실행합니다.
 - `npm run lint`: ESLint를 사용하여 코드 스타일을 검사하고 수정합니다.
 - `npm run test`: Jest를 사용하여 단위/컴포넌트 테스트를 실행합니다.
+- `npm run analyze`: 프로덕션 번들 사이즈를 분석합니다.

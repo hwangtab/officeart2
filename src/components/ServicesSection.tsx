@@ -74,10 +74,10 @@ export default function ServicesSection() {
 
         <div className="mt-12 text-center">
           <div className="inline-flex items-center bg-primary/5 rounded-lg px-6 py-4">
-            <span className="text-2xl mr-3">💡</span>
+            <span className="text-2xl mr-3">📍</span>
             <div className="text-left">
-              <p className="text-text-primary font-semibold">영등포구청점 • 불광점</p>
-              <p className="text-text-secondary text-sm">두 지점 모두 동일한 서비스를 제공합니다</p>
+              <p className="text-text-primary font-semibold">영등포구청역 도보 5분</p>
+              <p className="text-text-secondary text-sm">2호선·5호선 환승역, 접근성 우수</p>
             </div>
           </div>
         </div>

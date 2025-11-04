@@ -8,7 +8,6 @@ import Card from '@/components/Card'; // Import Card
 import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
 
 // Import the section components
-import LocationSelectionSection from './ContactFormSections/LocationSelectionSection';
 import PersonalInfoSection from './ContactFormSections/PersonalInfoSection';
 import VisitInfoSection from './ContactFormSections/VisitInfoSection';
 import InquiryDetailsSection from './ContactFormSections/InquiryDetailsSection';
@@ -62,7 +61,7 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
       date: data.visitDate ? `${data.visitDate} ${data.visitTime || ''}`.trim() : '미지정',
       message: data.inquiry,
       service: Array.isArray(data.interest) ? data.interest.join(', ') : data.interest || '미선택',
-      location: data.selectedLocation || '미선택',
+      location: '영등포구청점',
       serviceType: data.serviceType || '일반 문의',
       utmSource: data.utmSource,
       utmMedium: data.utmMedium,
@@ -222,15 +221,6 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
       <SectionTitle as="h2" level="section" className="text-center">간편 상담 신청</SectionTitle> {/* Use level prop */}
       {/* Use react-hook-form's handleSubmit */}
       <form onSubmit={handleRHFSubmit(onValid)} className="space-y-6">
-
-        {/* 지점 및 서비스 선택 섹션 */}
-        <LocationSelectionSection 
-          register={register} 
-          errors={errors} 
-          setValue={setValue}
-          searchParams={searchParams}
-          onAutoFillInquiry={handleAutoFillInquiry}
-        />
 
         {/* Pass register and errors typed with ContactFormData */}
         <PersonalInfoSection register={register} errors={errors} />

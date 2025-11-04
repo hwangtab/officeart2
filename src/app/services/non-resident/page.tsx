@@ -122,8 +122,8 @@ export default function NonResidentOfficePage() {
                 },
                 {
                   icon: HiCheckCircle,
-                  title: '두 지점 선택 가능',
-                  description: '영등포구청점 또는 불광점 중 원하는 지점을 선택할 수 있습니다.'
+                  title: '영등포구청역 접근성',
+                  description: '2·5호선 환승역에서 도보 5분. 교통이 편리한 영등포 프리미엄 오피스입니다.'
                 },
               ].map((benefit, index) => (
                 <div key={index} className="flex items-start space-x-4">
@@ -204,32 +204,6 @@ export default function NonResidentOfficePage() {
         </section>
       </ScrollAnimationWrapper>
 
-      {/* 지점 선택 */}
-      <ScrollAnimationWrapper>
-        <section className="py-20 px-4">
-          <div className="max-w-5xl mx-auto">
-            <SectionTitle level="section" align="center">
-              지점 선택
-            </SectionTitle>
-            
-            <p className="text-center text-text-secondary mb-12 max-w-2xl mx-auto">
-              두 지점 중 원하는 곳을 선택하세요. 서비스 내용과 가격은 동일합니다.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {locations.map((location) => (
-                <LocationCard
-                  key={location.id}
-                  location={location}
-                  href={`/locations/${location.id}`}
-                  className="h-full"
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      </ScrollAnimationWrapper>
-
       {/* FAQ 섹션 */}
       <ScrollAnimationWrapper>
         <section className="py-20 px-4">
@@ -251,10 +225,6 @@ export default function NonResidentOfficePage() {
                 {
                   q: '계약 기간이 있나요?',
                   a: '최소 6개월 계약이며, 이후 월 단위로 연장 가능합니다. 안정적인 사업 주소 확보를 위한 최소 기간입니다.'
-                },
-                {
-                  q: '두 지점 중 어디를 선택해야 하나요?',
-                  a: '접근성이 좋은 곳을 선택하시면 됩니다. 서비스 내용과 가격은 동일하며, 우편물 수령 등을 고려하여 편리한 지점을 선택하세요.'
                 },
                 {
                   q: '추가 비용이 있나요?',

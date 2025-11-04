@@ -29,12 +29,11 @@ interface ResponsiveNavItem {
 
 // --- 반응형 메뉴 데이터 ---
 const navItemsResponsive: ResponsiveNavItem[] = [
-  { name: '지점 안내', shortName: '지점', href: '/locations', priority: 'high' },
   { name: '비상주 사무실', shortName: '비상주', href: '/services/non-resident', priority: 'medium' },
   { name: '프리미엄 의자', shortName: '의자', href: '/premium-chairs', priority: 'medium' },
   { name: '집중 환경', shortName: '환경', href: '/focus-environment', priority: 'medium' },
   { name: '창작자 커뮤니티', shortName: '커뮤니티', href: '/creator-community', priority: 'high' },
-  { name: '시설 및 서비스', shortName: '시설', href: '/facilities-services', priority: 'low' },
+  { name: '시설 및 서비스', shortName: '시설', href: '/facilities-services', priority: 'high' },
   { name: '가격 및 멤버십', shortName: '가격', href: '/pricing', priority: 'high' },
   { name: 'FAQ', shortName: 'FAQ', href: '/faq', priority: 'low' },
   { name: '상담 및 문의', shortName: '문의', href: '/contact', priority: 'high' },
