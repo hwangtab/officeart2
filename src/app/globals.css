@@ -227,16 +227,6 @@ h3 {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Hero section highlight text with gradient */
-.hero-highlight-text {
-  background: linear-gradient(135deg, #FEF08A 0%, #FBBF24 30%, #FFFFFF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 700;
-  text-shadow: none; /* Remove text shadow for cleaner gradient effect */
-}
-
 /* Dynamic responsive hero text that automatically scales */
 .hero-dynamic-title {
   font-size: clamp(2.5rem, 8vw, 5rem); /* 40px to 80px, much larger minimum size */
@@ -246,13 +236,4 @@ h3 {
 .hero-dynamic-subtitle {
   font-size: clamp(1.25rem, 4vw, 2rem); /* 20px to 32px, larger subtitle */
   line-height: 1.3;
-}
-
-/* Header navigation active text gradient */
-.nav-active-gradient {
-  background: linear-gradient(135deg, #FEF08A 0%, #FBBF24 30%, #FFFFFF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: bold;
 }
