@@ -15,11 +15,11 @@ export default function HeroSection() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
       </div>
       <div className="relative z-10 px-4 py-12 sm:py-16 w-full max-w-4xl mx-auto">
         <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center hero-dynamic-title text-balance"> {/* Dynamic scaling font size */}
-          <span className="hero-highlight-text block sm:inline">월 25만원 특가로 누리는</span>{' '}
+          <span className="font-bold text-white block sm:inline">월 25만원 특가로 누리는</span>{' '}
           <span className="block sm:inline mt-2 sm:mt-0">창작자 전용 프리미엄 오피스</span>
         </SectionTitle>
         <p className="mb-4 animate-fade-in-up animation-delay-200 hero-dynamic-subtitle text-text-on-primary/90 text-balance"> {/* Dynamic scaling subtitle */}

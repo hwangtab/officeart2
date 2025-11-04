@@ -32,7 +32,7 @@
 
 /* Default body font is now handled by Tailwind config using CSS variables from @next/font */
 body {
-  font-weight: 300; /* Set default font weight to Light */
+  font-weight: 400; /* Set default font weight to Regular for better readability */
 }
 
 /* Apply specific weights for h2 and h3 */
@@ -106,8 +106,8 @@ h3 {
 /* Scroll Animation Styles */
 .scroll-animate {
   opacity: 0;
-  transform: translateY(30px); /* Increased initial offset */
-  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smoother timing and easing */
+  transform: translateY(20px); /* Reduced initial offset for subtler animation */
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* Faster timing for better UX */
 }
 
 .scroll-animate-visible {

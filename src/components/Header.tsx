@@ -173,8 +173,8 @@ export default function Header() {
                     href={item.href}
                     className={`px-1 py-1 text-xs rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
                       active
-                        ? 'nav-active-gradient' 
-                        : 'font-medium hover:text-yellow-300'
+                        ? 'font-bold border-b-2 border-white'
+                        : 'font-medium hover:opacity-80'
                     }`}
                   >
                     {item.shortName}
@@ -229,8 +229,8 @@ export default function Header() {
                     href={item.href}
                     className={`px-2 py-2 text-sm rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white whitespace-nowrap ${
                       active
-                        ? 'nav-active-gradient' 
-                        : 'font-medium hover:text-yellow-300'
+                        ? 'font-bold border-b-2 border-white'
+                        : 'font-medium hover:opacity-80'
                     }`}
                   >
                     {item.name}

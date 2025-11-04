@@ -76,32 +76,32 @@ const config = {
         ...defaultTheme.fontSize,
         
         // === 제목 레벨 (반응형 + 가독성 최적화) ===
-        'heading-1': ['2rem', { 
-          lineHeight: '2.5rem', 
-          letterSpacing: '-0.025em',
+        'heading-1': ['2.75rem', {
+          lineHeight: '1.2',
+          letterSpacing: '-0.02em',
+          '@screen md': {
+            fontSize: '3.5rem',
+            lineHeight: '1.2'
+          }
+        }], // 44px → 56px (h1) - 시각적 위계 강화
+
+        'heading-2': ['2rem', {
+          lineHeight: '1.3',
+          letterSpacing: '-0.01em',
           '@screen md': {
             fontSize: '2.5rem',
-            lineHeight: '3rem'
+            lineHeight: '1.3'
           }
-        }], // 32px → 40px (h1)
-        
-        'heading-2': ['1.75rem', { 
-          lineHeight: '2.25rem', 
-          letterSpacing: '-0.025em',
-          '@screen md': {
-            fontSize: '2rem',
-            lineHeight: '2.5rem'
-          }
-        }], // 28px → 32px (h2)
-        
-        'heading-3': ['1.5rem', { 
-          lineHeight: '2rem', 
-          letterSpacing: '-0.025em',
+        }], // 32px → 40px (h2) - 섹션 제목
+
+        'heading-3': ['1.5rem', {
+          lineHeight: '1.4',
+          letterSpacing: '-0.01em',
           '@screen md': {
             fontSize: '1.75rem',
-            lineHeight: '2.25rem'
+            lineHeight: '1.4'
           }
-        }], // 24px → 28px (h3)
+        }], // 24px → 28px (h3) - 카드 제목
         
         'heading-4': ['1.25rem', { 
           lineHeight: '1.75rem', 
@@ -113,18 +113,18 @@ const config = {
         }], // 20px → 22px (h4)
         
         // === 본문 레벨 (한글 최적화) ===
-        'body-large': ['1.125rem', { 
-          lineHeight: '1.75rem',
+        'body-large': ['1.125rem', {
+          lineHeight: '1.75',
           letterSpacing: '0em'
         }], // 18px (강조 본문)
-        
-        'body-base': ['1rem', { 
-          lineHeight: '1.625rem',
+
+        'body-base': ['1rem', {
+          lineHeight: '1.75',
           letterSpacing: '0em'
-        }], // 16px (기본 본문)
-        
-        'body-small': ['0.875rem', { 
-          lineHeight: '1.375rem',
+        }], // 16px (기본 본문) - 한글 최적 line-height
+
+        'body-small': ['0.875rem', {
+          lineHeight: '1.7',
           letterSpacing: '0em'
         }], // 14px (보조 본문)
         
