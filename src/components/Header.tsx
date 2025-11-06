@@ -171,7 +171,7 @@ export default function Header() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className={`px-1 py-1 text-xs rounded-md transition-colors duration-150 focus:outline-none whitespace-nowrap ${
+                    className={`px-1 py-1 text-xs rounded-md transition-colors duration-150 outline-none whitespace-nowrap ${
                       active
                         ? 'font-bold border-b-2 border-white'
                         : 'font-medium hover:opacity-80 focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white'
@@ -185,7 +185,7 @@ export default function Header() {
             {lowPriorityItems.length > 0 && (
               <li className="relative">
                 <button 
-                  className="px-1 py-1 text-xs font-medium hover:text-yellow-300 flex items-center rounded-md transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
+                  className="px-1 py-1 text-xs font-medium hover:text-yellow-300 flex items-center rounded-md transition-colors duration-150 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsMoreMenuOpen(!isMoreMenuOpen);
@@ -227,7 +227,7 @@ export default function Header() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className={`px-2 py-2 text-sm rounded-md transition-colors duration-150 focus:outline-none whitespace-nowrap ${
+                    className={`px-2 py-2 text-sm rounded-md transition-colors duration-150 outline-none whitespace-nowrap ${
                       active
                         ? 'font-bold border-b-2 border-white'
                         : 'font-medium hover:opacity-80 focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white'
@@ -245,7 +245,7 @@ export default function Header() {
             <button
               aria-label="검색 열기"
               onClick={toggleSearch}
-              className="p-2 rounded-md hover:bg-primary/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
+              className="p-2 rounded-md hover:bg-primary/20 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
             >
               <MagnifyingGlassIcon className="h-6 w-6" />
             </button>
@@ -266,7 +266,7 @@ export default function Header() {
            <button
               aria-label="검색 열기"
               onClick={toggleSearch}
-              className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white mr-2"
+              className="p-2 rounded-md outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white mr-2"
             >
               <MagnifyingGlassIcon className="h-6 w-6" />
             </button>
@@ -286,7 +286,7 @@ export default function Header() {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
               onClick={toggleMenu}
-              className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
+              className="p-2 rounded-md outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white"
             >
               {isMenuOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -314,7 +314,7 @@ export default function Header() {
                 type="button"
                 aria-label="검색 닫기"
                 onClick={closeSearch}
-                className="p-1 ml-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary rounded"
+                className="p-1 ml-2 text-gray-400 hover:text-gray-600 outline-none focus:ring-2 focus:ring-primary rounded"
               >
                 <XMarkIcon className="h-4 w-4" />
               </button>
@@ -343,7 +343,7 @@ export default function Header() {
                     onClick={toggleMenu}
                     role="menuitem"
                     tabIndex={isMenuOpen ? 0 : -1}
-                    className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-white ${
+                    className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer transition-colors duration-150 outline-none focus:ring-2 focus:ring-white ${
                       active ? 'bg-primary/80 font-bold' : ''
                     }`}
                   >
