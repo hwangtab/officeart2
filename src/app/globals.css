@@ -214,3 +214,8 @@ body {
   font-size: clamp(1.25rem, 4vw, 2rem); /* 20px to 32px, larger subtitle */
   line-height: 1.3;
 }
+
+/* Remove tap highlight color for all elements on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
