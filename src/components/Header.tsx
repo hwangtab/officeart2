@@ -171,10 +171,10 @@ export default function Header() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className={`px-1 py-1 text-xs rounded-md transition-colors duration-150 outline-none whitespace-nowrap ${
+                    className={`px-1 py-1 text-xs rounded-md transition-colors duration-150 whitespace-nowrap focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white ${
                       active
-                        ? 'font-bold border-b-2 border-white'
-                        : 'font-medium hover:opacity-80 focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white'
+                        ? 'font-bold'
+                        : 'font-medium hover:opacity-80'
                     }`}
                   >
                     {item.shortName}
@@ -227,10 +227,10 @@ export default function Header() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className={`px-2 py-2 text-sm rounded-md transition-colors duration-150 outline-none whitespace-nowrap ${
+                    className={`px-2 py-2 text-sm rounded-md transition-colors duration-150 whitespace-nowrap focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white ${
                       active
-                        ? 'font-bold border-b-2 border-white'
-                        : 'font-medium hover:opacity-80 focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white'
+                        ? 'font-bold'
+                        : 'font-medium hover:opacity-80'
                     }`}
                   >
                     {item.name}
