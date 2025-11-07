@@ -32,7 +32,7 @@ export default function LocationPage() {
   const kakaoMapApiKey = process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY || "9b52ab4382965154f8f524a4c8c37099";
 
   // Function to generate map links
-  const getNaverMapUrl = () => `https://map.naver.com/v5/search/${encodeURIComponent(location.address)}`;
+  const getNaverMapUrl = () => `https://naver.me/xHg9R2Ah`;
   const getKakaoMapUrl = () => `https://map.kakao.com/link/search/${encodeURIComponent(location.address)}`;
 
   return (
