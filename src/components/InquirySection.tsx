@@ -13,9 +13,10 @@ export default function InquirySection() {
       {/* Increased max-width to potentially fit buttons horizontally */}
       <Card className="max-w-xl mx-auto shadow-lg text-center"> {/* Use Card component */}
          <SectionTitle as="h3" level="subsection" className="text-text-primary text-center">편하게 문의하세요</SectionTitle> {/* Use level prop */}
-         <p className="mb-6 text-base text-text-secondary"> {/* Use secondary text color */}
-          가장 빠른 카카오톡 상담을 추천드려요. 문의 유형에 따라 맞춤형 안내를 도와드립니다.
-       </p>
+         <div className="mb-6 text-base text-text-secondary"> {/* Use secondary text color */}
+          <p>가장 빠른 카카오톡 상담을 추천드려요.</p>
+          <p>문의 유형에 따라 맞춤형 안내를 도와드립니다.</p>
+       </div>
        <div className="mb-6 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-left">
          <p className="flex items-center justify-center gap-2 text-sm font-semibold text-primary">
            <span className="inline-flex items-center rounded-full bg-primary text-text-on-primary px-3 py-1 text-caption">가장 빠른 상담</span>
