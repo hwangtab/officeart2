@@ -4,6 +4,8 @@ import KakaoMapWrapper from '@/components/KakaoMapWrapper';
 import LinkButton from '@/components/LinkButton';
 import SectionTitle from '@/components/SectionTitle';
 import Card from '@/components/Card';
+import InquirySection from '@/components/InquirySection';
+import BackButton from '@/components/BackButton';
 import { getDefaultLocation } from '@/data/locations';
 import {
   HiMapPin as MapPinIcon,
@@ -186,6 +188,44 @@ export default function LocationPage() {
             </Card>
           </section>
         </ScrollAnimationWrapper>
+
+        {/* Visit CTA Section */}
+        <ScrollAnimationWrapper>
+          <section className="mb-16 text-center">
+            <Card className="max-w-2xl mx-auto shadow-lg text-center">
+              <SectionTitle as="h3" level="subsection" className="text-text-primary">
+                오시는 길을 확인하셨나요?
+              </SectionTitle>
+              <p className="mb-6 text-base text-text-secondary">
+                지금 바로 방문 상담을 예약하시거나, 궁금한 점을 카카오톡으로 문의해보세요.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <LinkButton
+                  href="/contact?service=desk"
+                  variant="primary"
+                  size="lg"
+                >
+                  방문 상담 예약하기
+                </LinkButton>
+                <LinkButton
+                  href="/pricing"
+                  variant="outline"
+                  size="lg"
+                >
+                  가격 확인하기
+                </LinkButton>
+              </div>
+            </Card>
+          </section>
+        </ScrollAnimationWrapper>
+
+        {/* General Inquiry Section */}
+        <ScrollAnimationWrapper>
+          <InquirySection />
+        </ScrollAnimationWrapper>
+
+        {/* Back Button */}
+        <BackButton />
       </div>
     </main>
   );
