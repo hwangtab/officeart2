@@ -7,6 +7,7 @@ import OptimizedImage from '@/components/OptimizedImage';
 import BackButton from '@/components/BackButton'; // Import BackButton
 import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
 import Card from '@/components/Card'; // Import Card
+import InquirySection from '@/components/InquirySection';
 import { HiOutlineCalendarDays as CalendarIcon, HiOutlineUserGroup as UsersIcon, HiOutlineBuildingLibrary as BuildingLibraryIcon, HiOutlineSparkles as SparklesIcon } from 'react-icons/hi2';
 import CreatorCommunityClient from '@/components/CreatorCommunityClient'; // Import the client component
 
@@ -185,6 +186,11 @@ export default function CreatorCommunityPage() {
               </div>
             </div>
           </Card>
+        </ScrollAnimationWrapper>
+
+        {/* Inquiry Section */}
+        <ScrollAnimationWrapper>
+          <InquirySection />
         </ScrollAnimationWrapper>
 
         {/* Back to Home Button */}
