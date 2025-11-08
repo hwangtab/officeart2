@@ -65,16 +65,29 @@ export default function CreatorChart() {
 
   const labelPositions = paths.map((item) => {
     const angleRad = (item.midAngle * Math.PI) / 180;
-    const radius = 90; // 75 → 90으로 증가하여 더 넉넉한 간격
+    const radius = 65; // 차트 바로 바깥쪽에 라벨 배치
     const x = 130 + radius * Math.sin(angleRad);
     const y = 130 - radius * Math.cos(angleRad);
-    
-    // 더 정확한 텍스트 정렬 계산
+
+    // 각도 기반 텍스트 정렬
+    const angleDeg = item.midAngle;
     let textAnchor: 'start' | 'middle' | 'end' = 'middle';
-    if (x < 120) textAnchor = 'end';      // 왼쪽
-    else if (x > 140) textAnchor = 'start'; // 오른쪽
-    else textAnchor = 'middle';            // 상하단
-    
+
+    // 각도에 따라 정확한 텍스트 정렬
+    if (angleDeg > -60 && angleDeg < 60) {
+      // 위쪽 (12시 방향 근처)
+      textAnchor = 'middle';
+    } else if (angleDeg >= 60 && angleDeg < 120) {
+      // 오른쪽 위
+      textAnchor = 'start';
+    } else if (angleDeg >= 120 && angleDeg < 240) {
+      // 오른쪽 아래 및 아래
+      textAnchor = 'middle';
+    } else {
+      // 왼쪽
+      textAnchor = 'end';
+    }
+
     return {
       x,
       y,
