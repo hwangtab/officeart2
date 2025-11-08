@@ -94,12 +94,12 @@ const PopupBanner = ({ onClose }: PopupBannerProps) => {
           <div className="p-6 space-y-5">
             <div className="mt-2 text-center">
             <h2 id="popup-title" className="text-2xl font-bold text-gray-800 mb-2">
-              수많은 아티스트와 프리랜서가 선택한<br />
-              작업 공간
+              수많은 아티스트와<br />
+              프리랜서가 선택한 작업 공간
             </h2>
                         <p className="text-lg text-gray-600 font-medium">
-              프리미엄 책상·의자, 무제한 커피,<br />
-              24시간 출입
+              프리미엄 책상·의자,<br />
+              무제한 커피, 24시간 출입
             </p>
             </div>
 
