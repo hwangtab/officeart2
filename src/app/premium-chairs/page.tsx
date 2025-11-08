@@ -5,6 +5,7 @@ import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper'; // Imp
 import BackButton from '@/components/BackButton';
 import Card from '@/components/Card';
 import SectionTitle from '@/components/SectionTitle';
+import InquirySection from '@/components/InquirySection';
 import {
   HiArrowTopRightOnSquare as ExternalLinkIcon, HiOutlineCurrencyDollar as ValueIcon, HiOutlineHeart as HealthIcon,
   HiOutlineRectangleGroup as ChairIcon, HiOutlineComputerDesktop as DeskIcon, HiOutlineAdjustmentsHorizontal as FocusIcon,
@@ -152,6 +153,11 @@ export default function PremiumChairsPage() {
             </Card>
           </div>
           </section>
+        </ScrollAnimationWrapper>
+
+        {/* Inquiry Section */}
+        <ScrollAnimationWrapper>
+          <InquirySection />
         </ScrollAnimationWrapper>
 
          <BackButton />
