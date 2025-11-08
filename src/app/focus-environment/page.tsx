@@ -6,6 +6,7 @@ import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper'; // Imp
 import BackButton from '@/components/BackButton';
 import Card from '@/components/Card';
 import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
+import InquirySection from '@/components/InquirySection';
 // Import icons (Removed ArrowLeftIcon)
 import {
   HiOutlineUserGroup as PersonalSpaceIcon, HiOutlineSparkles as OptimizedEnvIcon, HiOutlineClock as AccessIcon,
@@ -214,6 +215,11 @@ export default function FocusEnvironmentPage() {
             </table>
           </div>
           </Card>
+        </ScrollAnimationWrapper>
+
+        {/* Inquiry Section */}
+        <ScrollAnimationWrapper>
+          <InquirySection />
         </ScrollAnimationWrapper>
 
         {/* Back to Home Button */}
