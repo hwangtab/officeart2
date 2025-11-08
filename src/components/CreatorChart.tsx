@@ -65,7 +65,7 @@ export default function CreatorChart() {
 
   const labelPositions = paths.map((item) => {
     const angleRad = (item.midAngle * Math.PI) / 180;
-    const radius = 65; // 차트 바로 바깥쪽에 라벨 배치
+    const radius = 75; // 차트와 안전한 거리 확보
     const x = 130 + radius * Math.sin(angleRad);
     const y = 130 - radius * Math.cos(angleRad);
 
@@ -73,24 +73,28 @@ export default function CreatorChart() {
     const angleDeg = item.midAngle;
     let textAnchor: 'start' | 'middle' | 'end' = 'middle';
 
-    // 각도에 따라 정확한 텍스트 정렬
-    if (angleDeg > -60 && angleDeg < 60) {
-      // 위쪽 (12시 방향 근처)
-      textAnchor = 'middle';
-    } else if (angleDeg >= 60 && angleDeg < 120) {
-      // 오른쪽 위
-      textAnchor = 'start';
-    } else if (angleDeg >= 120 && angleDeg < 240) {
-      // 오른쪽 아래 및 아래
-      textAnchor = 'middle';
+    // 실제 섹션 위치에 맞춘 텍스트 정렬
+    if (angleDeg >= -90 && angleDeg < 30) {
+      textAnchor = 'middle'; // 위쪽 영역
+    } else if (angleDeg >= 30 && angleDeg < 150) {
+      textAnchor = 'start'; // 오른쪽 영역
+    } else if (angleDeg >= 150 && angleDeg < 210) {
+      textAnchor = 'middle'; // 아래쪽 영역
     } else {
-      // 왼쪽
-      textAnchor = 'end';
+      textAnchor = 'end'; // 왼쪽 영역
+    }
+
+    // 상하 라벨 위치 미세 조정
+    let dy = 0;
+    if (angleDeg >= -60 && angleDeg < 60) {
+      dy = -5; // 위쪽 라벨 살짝 위로
+    } else if (angleDeg >= 120 && angleDeg < 240) {
+      dy = 5; // 아래쪽 라벨 살짝 아래로
     }
 
     return {
       x,
-      y,
+      y: y + dy,
       textAnchor,
       ...item
     };
