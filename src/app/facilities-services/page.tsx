@@ -4,6 +4,7 @@ import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper'; // Imp
 import OptimizedImage from '@/components/OptimizedImage';
 import LinkButton from '@/components/LinkButton'; // Import LinkButton
 import SectionTitle from '@/components/SectionTitle'; // Import SectionTitle
+import InquirySection from '@/components/InquirySection';
 import { HiOutlineSparkles as CoffeeIcon, HiOutlinePrinter as PrinterIcon, HiOutlineWifi as WifiIcon, HiOutlineBuildingStorefront as FacilitiesIcon } from 'react-icons/hi2';
 import BackButton from '@/components/BackButton';
 import Card from '@/components/Card';
@@ -163,22 +164,13 @@ export default function FacilitiesServicesPage() {
            </section>
          </ScrollAnimationWrapper>
 
-
-        {/* CTA Buttons */}
-        {/* CTA Buttons - Improved Layout */}
-        <div className="mt-16 flex flex-col items-stretch gap-4 sm:flex-row sm:justify-center sm:items-center sm:gap-6"> {/* Increased gap for sm screens */}
-          <LinkButton href="/pricing" variant="secondary" size="lg" className="w-full sm:w-auto sm:min-w-[160px]"> {/* Added min-width for sm screens */}
-            가격 확인하기
-          </LinkButton>
-          <LinkButton href="/contact" variant="primary" size="lg" className="w-full sm:w-auto sm:min-w-[160px]"> {/* Added min-width for sm screens */}
-            문의하기
-          </LinkButton>
-        </div>
+        {/* Inquiry Section */}
+        <ScrollAnimationWrapper>
+          <InquirySection />
+        </ScrollAnimationWrapper>
 
         {/* Back to Home Button */}
-        <div className="mt-12"> {/* Add margin top to BackButton container */}
-          <BackButton />
-        </div>
+        <BackButton />
       </div>
     </main>
   );
