@@ -31,7 +31,6 @@ export default function OptimizedImage({
   const [hasError, setHasError] = useState(false);
 
   const handleLoad = () => {
-    console.log('이미지 로딩 성공:', src);
     setIsLoading(false);
   };
 

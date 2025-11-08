@@ -18,6 +18,7 @@ export default function CoreValuesSection() {
                 src="/images/values/premium-chair.jpg"
                 alt="스틸케이스 Think 또는 휴먼스케일 Freedom 프리미엄 의자 - 오피스아트에서 제공하는 180만원대 고급 의자"
                 fill
+                priority
                 className="group-hover:scale-105 transition-transform duration-300"
                 sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
               />
@@ -41,6 +42,7 @@ export default function CoreValuesSection() {
                  src="/images/values/focus-environment.jpg"
                  alt="집중이 잘 되는 작업 환경 - 업무와 창작 활동에 최적화된 공간"
                  fill
+                 priority
                  className="group-hover:scale-105 transition-transform duration-300"
                  sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
                />
@@ -67,6 +69,7 @@ export default function CoreValuesSection() {
                  src="/images/values/creator-community.jpg"
                  alt="오피스아트 창작자 커뮤니티 - 630명의 다양한 분야 창작자들이 활동하는 협동조합 네트워크"
                  fill
+                 priority
                  className="group-hover:scale-105 transition-transform duration-300"
                  sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
                />
