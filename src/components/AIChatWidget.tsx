@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useMemo } from 'react';
 import { FiSend, FiMessageSquare } from 'react-icons/fi';
 import Linkify from 'react-linkify';
 import { queryOpenRouter } from '@/lib/openrouter';
+import DOMPurify from 'dompurify';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -45,10 +46,17 @@ export default function AIChatWidget() {
         .replace(/\[(.*?)\]\((?!tel:).*?\)/g, '$1') // tel: 링크 제외하고 [link](url) 제거
         .replace(/\n\n/g, '<div class="my-2"></div>') // 빈 줄 → 여백
         .replace(/\n/g, '<br>'); // 일반 줄바꿈 → <br>
-        
+
+      // DOMPurify로 XSS 공격 방지
+      const sanitizedResponse = DOMPurify.sanitize(formattedResponse, {
+        ALLOWED_TAGS: ['strong', 'div', 'h4', 'code', 'br', 'a'],
+        ALLOWED_ATTR: ['class', 'href', 'target', 'rel'],
+        ALLOW_DATA_ATTR: false,
+      });
+
       const botMessage: Message = {
         role: 'assistant',
-        content: formattedResponse
+        content: sanitizedResponse
       };
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {

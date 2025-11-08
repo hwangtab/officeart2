@@ -1,6 +1,7 @@
 'use client';
 import SectionTitle from './SectionTitle';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const creatorData = [
   { name: '웹툰 작가', value: 35 },
@@ -39,69 +40,25 @@ function calculateArcPath(
 
 export default function CreatorChart() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [animationProgress, setAnimationProgress] = useState(0);
-  const [labelsVisible, setLabelsVisible] = useState(false);
-
-  useEffect(() => {
-    // 부드러운 원형 진행 애니메이션
-    let startTime: number;
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const elapsed = currentTime - startTime;
-      const duration = 1500; // 1.5초
-      
-      const progress = Math.min(elapsed / duration, 1);
-      // easeOutCubic 곡선 적용
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
-      
-      setAnimationProgress(easedProgress);
-      
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        // 애니메이션 완료 후 라벨 표시
-        setTimeout(() => setLabelsVisible(true), 200);
-      }
-    };
-    
-    const timer = setTimeout(() => {
-      requestAnimationFrame(animate);
-    }, 300); // 초기 지연
-    
-    return () => clearTimeout(timer);
-  }, []);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
 
   const total = creatorData.reduce((sum, item) => sum + item.value, 0);
-  
+
   // 시계방향으로 시작점을 12시 방향(-90도)으로 설정
   let cumulativeAngle = -90;
   const paths = creatorData.map((item, index) => {
     const fullAngle = (item.value / total) * 360;
-    
-    // 현재 섹션이 그려져야 할 진행도 계산
-    const sectionStart = index / creatorData.length;
-    const sectionEnd = (index + 1) / creatorData.length;
-    
-    let currentAngle = 0;
-    if (animationProgress > sectionStart) {
-      const sectionProgress = Math.min((animationProgress - sectionStart) / (sectionEnd - sectionStart), 1);
-      // 각 섹션에 easeOutQuart 적용
-      const easedSectionProgress = 1 - Math.pow(1 - sectionProgress, 4);
-      currentAngle = fullAngle * easedSectionProgress;
-    }
-    
-    const endAngle = cumulativeAngle + currentAngle;
+    const endAngle = cumulativeAngle + fullAngle;
     const path = calculateArcPath(cumulativeAngle, endAngle, 100, 130, 130);
-    
+
     const result = {
       path,
       color: COLORS[index % COLORS.length],
       name: item.name,
       percent: (item.value / total) * 100,
       midAngle: cumulativeAngle + fullAngle / 2,
-      opacity: animationProgress > sectionStart ? 1 : 0,
     };
-    
+
     cumulativeAngle += fullAngle;
     return result;
   });
@@ -164,7 +121,7 @@ export default function CreatorChart() {
           </defs>
 
           {paths.map((item, index) => (
-            <path
+            <motion.path
               key={index}
               d={item.path}
               fill={item.color}
@@ -172,18 +129,32 @@ export default function CreatorChart() {
               strokeWidth="1.5"
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
-              style={{ 
-                opacity: item.opacity * (activeIndex === null || activeIndex === index ? 1 : 0.7),
-                transition: 'opacity 0.3s ease, transform 0.2s ease',
+              initial={{
+                opacity: 0,
+                scale: 0.8,
+              }}
+              animate={{
+                opacity: activeIndex === null || activeIndex === index ? 1 : 0.7,
+                scale: activeIndex === index ? 1.03 : 1,
+              }}
+              transition={{
+                opacity: { delay: 0.3 + index * 0.15, duration: 0.6, ease: [0.23, 1, 0.32, 1] },
+                scale: { duration: 0.2 },
+              }}
+              onAnimationComplete={() => {
+                if (index === paths.length - 1) {
+                  setIsAnimationComplete(true);
+                }
+              }}
+              style={{
                 transformOrigin: 'center',
-                transform: activeIndex === index ? 'scale(1.03)' : 'scale(1)',
                 filter: activeIndex === index ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.15))' : 'none',
               }}
             />
           ))}
 
           {labelPositions.map((label, index) => (
-            <text
+            <motion.text
               key={index}
               x={label.x}
               y={label.y}
@@ -192,11 +163,20 @@ export default function CreatorChart() {
               fontSize="13"
               fontWeight="600"
               className="pointer-events-none"
+              initial={{
+                opacity: 0,
+                y: label.y + 10,
+              }}
+              animate={isAnimationComplete ? {
+                opacity: 1,
+                y: label.y,
+              } : {}}
+              transition={{
+                delay: index * 0.08,
+                duration: 0.4,
+                ease: 'easeOut',
+              }}
               style={{
-                opacity: labelsVisible ? 1 : 0,
-                transition: 'all 0.4s ease-out',
-                transitionDelay: `${index * 0.08}s`,
-                transform: labelsVisible ? 'translateY(0)' : 'translateY(10px)',
                 paintOrder: 'stroke',
                 stroke: 'white',
                 strokeWidth: '4px',
@@ -205,7 +185,7 @@ export default function CreatorChart() {
               }}
             >
               {label.name}
-            </text>
+            </motion.text>
           ))}
 
           {activeIndex !== null && (

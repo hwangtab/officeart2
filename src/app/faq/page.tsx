@@ -3,6 +3,7 @@ import BackButton from '@/components/BackButton';
 import SectionTitle from '@/components/SectionTitle'; // SectionTitle은 현재 사용되지 않지만 추후 필요할 수 있어 유지
 import Card from '@/components/Card';
 import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
+import FaqCta from '@/components/FaqCta';
 
 export const metadata: Metadata = {
   title: "자주 묻는 질문 (FAQ) | 오피스아트",
@@ -160,20 +161,7 @@ export default function FaqPage() {
             <div className="bg-background-section rounded-xl p-8">
               <h3 className="text-2xl font-bold text-text-primary mb-4">더 궁금한 점이 있으시다면?</h3>
               <p className="text-text-secondary mb-6">언제든지 편하게 문의해주세요. 친절하게 답변드리겠습니다!</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="/contact" 
-                  className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors font-semibold"
-                >
-                  온라인 문의하기
-                </a>
-                <a 
-                  href="tel:02-123-4567" 
-                  className="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors font-semibold"
-                >
-                  전화 문의하기
-                </a>
-              </div>
+              <FaqCta />
             </div>
           </section>
         </ScrollAnimationWrapper>
