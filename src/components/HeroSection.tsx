@@ -35,15 +35,15 @@ export default function HeroSection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8 animate-fade-in-up animation-delay-600">
           {/* Add urgency badge above primary CTA */}
-          <div className="relative w-full sm:w-auto">
-            <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent-yellow text-text-primary text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap animate-bounce-subtle">
+          <div className="relative group w-full sm:w-auto">
+            <span className="absolute -top-3 left-1/2 z-10 w-max -translate-x-1/2 transform rounded-full bg-accent-yellow px-3 py-1 text-xs font-bold text-text-primary transition-all duration-300 ease-out group-hover:-top-4 group-hover:scale-105">
               ⚡ 선착순 10석 한정
             </span>
             <LinkButton
               href="https://open.kakao.com/me/offceart"
               variant="kakao"
               size="xl"
-              className="w-full sm:w-auto min-w-[240px] shadow-primary-lg hover:shadow-2xl"
+              className="w-full sm:w-auto min-w-[240px] shadow-primary-lg transition-shadow hover:shadow-2xl"
               target="_blank"
               rel="noopener noreferrer"
               iconLeft={<RiKakaoTalkFill className="h-6 w-6" />}
