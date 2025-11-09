@@ -173,6 +173,26 @@ const config = {
         'gradient-hero': 'linear-gradient(135deg, rgba(37, 99, 235, 0.8) 0%, rgba(5, 150, 105, 0.9) 100%)',
         'gradient-card': 'linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
       },
+      // Custom animations for CTA enhancements
+      keyframes: {
+        'pulse-subtle': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(1.02)', opacity: '0.95' }
+        },
+        'bounce-subtle': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-3px)' }
+        },
+        'glow': {
+          '0%, 100%': { boxShadow: '0 0 5px rgba(37, 99, 235, 0.3)' },
+          '50%': { boxShadow: '0 0 20px rgba(37, 99, 235, 0.6)' }
+        }
+      },
+      animation: {
+        'pulse-subtle': 'pulse-subtle 2.5s ease-in-out infinite',
+        'bounce-subtle': 'bounce-subtle 2s ease-in-out infinite',
+        'glow': 'glow 2s ease-in-out infinite'
+      }
     },
   },
   plugins: [],

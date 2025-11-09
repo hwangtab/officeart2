@@ -27,6 +27,7 @@ const buttonVariants = cva(
         sm: 'py-1.5 px-4 text-sm',
         base: 'py-2.5 px-6 text-base',
         lg: 'py-3 px-8 text-lg',
+        xl: 'py-4 px-10 text-xl font-extrabold',
       },
       // Loading 상태
       isLoading: {

@@ -46,17 +46,24 @@ export default function NonResidentOfficePage() {
             정식 사업장 주소를 제공하여 안전하고 신뢰할 수 있는 사업 시작을 도와드립니다.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <LinkButton 
-              href="/contact"
-              variant="primary"
-              size="lg"
-            >
-              상담 신청하기
-            </LinkButton>
-            <LinkButton 
+            {/* Add urgency badge */}
+            <div className="relative">
+              <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent-green text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                💰 강남 대비 1/3 가격
+              </span>
+              <LinkButton
+                href="/contact?service=non-resident"
+                variant="primary"
+                size="xl"
+                className="shadow-primary-lg hover:shadow-2xl"
+              >
+                상담 신청하기
+              </LinkButton>
+            </div>
+            <LinkButton
               href="#pricing"
-              variant="secondary"
-              size="lg"
+              variant="outlineWhite"
+              size="xl"
             >
               가격 확인하기
             </LinkButton>
@@ -259,19 +266,20 @@ export default function NonResidentOfficePage() {
               홈오피스 창업의 첫 걸음을 오피스아트와 함께하세요.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <LinkButton 
+              <LinkButton
                 href="/contact?service=non-resident"
                 variant="primary"
-                size="lg"
+                size="xl"
+                className="shadow-card-lg hover:shadow-card-lg-hover animate-pulse-subtle"
               >
                 상담 신청하기
               </LinkButton>
-              <LinkButton 
-                href="/locations"
+              <LinkButton
+                href="/pricing"
                 variant="outline"
-                size="lg"
+                size="xl"
               >
-                지점 둘러보기
+                전체 요금제 보기
               </LinkButton>
             </div>
           </div>

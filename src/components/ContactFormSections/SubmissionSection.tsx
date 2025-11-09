@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'; // Import useState
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
-import { ContactFormData } from '@/types/contactForm'; // Import shared type
+import { ContactFormData, SubmitStatus, FeedbackMessage } from '@/types/contactForm'; // Import shared types
 import Modal from '@/components/Modal'; // Import the Modal component
-import { HiPaperAirplane } from 'react-icons/hi2'; // Import paper airplane icon
+import { HiPaperAirplane, HiCheckCircle, HiXCircle, HiExclamationCircle } from 'react-icons/hi2'; // Import icons
 import { UnifiedButton } from '@/components/UnifiedButton';
+import LinkButton from '@/components/LinkButton';
 
 declare global {
   interface Window {
@@ -72,25 +73,115 @@ const PrivacyPolicyContent = () => (
 );
 
 
+// FeedbackDisplay Component
+interface FeedbackDisplayProps {
+  message: FeedbackMessage;
+  onRetry: () => void;
+  submitStatus: SubmitStatus;
+}
+
+const FeedbackDisplay = ({ message, onRetry, submitStatus }: FeedbackDisplayProps): JSX.Element => {
+  const isSuccess = submitStatus.type === 'success';
+  const isError = submitStatus.type === 'error';
+
+  // Icon selection based on status
+  const Icon = isSuccess ? HiCheckCircle : isError ? HiXCircle : HiExclamationCircle;
+  const iconColor = isSuccess ? 'text-success' : isError ? 'text-error' : 'text-warning';
+  const borderColor = isSuccess ? 'border-success/20' : isError ? 'border-error/20' : 'border-warning/20';
+  const bgColor = isSuccess ? 'bg-success/5' : isError ? 'bg-error/5' : 'bg-warning/5';
+
+  return (
+    <div className={`mt-6 p-6 rounded-lg border ${borderColor} ${bgColor}`}>
+      <div className="flex items-start gap-4">
+        <Icon className={`h-6 w-6 ${iconColor} flex-shrink-0 mt-1`} />
+        <div className="flex-1">
+          <h4 className="text-lg font-bold text-text-primary mb-2">{message.title}</h4>
+          <p className="text-sm text-text-secondary mb-4 whitespace-pre-line">{message.message}</p>
+
+          {/* Contact Information */}
+          {message.contactInfo && (
+            <div className="mb-4 p-4 bg-background-section rounded-lg border border-border-light">
+              <p className="text-sm font-semibold text-text-primary mb-2">직접 연락하기</p>
+              <div className="space-y-2 text-sm text-text-secondary">
+                {message.contactInfo.phone && (
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium">전화:</span>
+                    <a href={`tel:${message.contactInfo.phone}`} className="text-primary hover:underline">
+                      {message.contactInfo.phone}
+                    </a>
+                  </div>
+                )}
+                {message.contactInfo.email && (
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium">이메일:</span>
+                    <a href={`mailto:${message.contactInfo.email}`} className="text-primary hover:underline">
+                      {message.contactInfo.email}
+                    </a>
+                  </div>
+                )}
+                {message.contactInfo.kakao && (
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium">카카오톡:</span>
+                    <a href={message.contactInfo.kakao} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                      실시간 상담
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Action Button */}
+          {message.actionLabel && message.actionType === 'retry' && submitStatus.canRetry && (
+            <UnifiedButton
+              type="button"
+              variant="primary"
+              size="base"
+              onClick={onRetry}
+              className="w-full sm:w-auto"
+            >
+              {message.actionLabel}
+            </UnifiedButton>
+          )}
+
+          {message.actionLabel && message.actionType === 'contact' && message.contactInfo?.kakao && (
+            <LinkButton
+              href={message.contactInfo.kakao}
+              variant="kakao"
+              size="base"
+              className="w-full sm:w-auto"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {message.actionLabel}
+            </LinkButton>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 interface SubmissionSectionProps {
   register: UseFormRegister<ContactFormData>;
   errors: FieldErrors<ContactFormData>;
   isSubmitting: boolean;
-  submitStatus: 'success' | 'error' | null;
-  submitErrorMessage: string | null; // Add prop for specific error message
+  submitStatus: SubmitStatus;
+  feedbackMessage: FeedbackMessage | null;
+  onRetry: () => void;
 }
 
-const SubmissionSection = ({ register, errors, isSubmitting, submitStatus, submitErrorMessage }: SubmissionSectionProps): JSX.Element => {
+const SubmissionSection = ({ register, errors, isSubmitting, submitStatus, feedbackMessage, onRetry }: SubmissionSectionProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
 
   useEffect(() => {
-    if (submitStatus === 'success' && typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    if (submitStatus.type === 'success' && typeof window !== 'undefined' && typeof window.gtag === 'function') {
       window.gtag('event', 'conversion_complete', {
         event_category: 'contact_form',
         event_label: 'contact_form_success',
       });
     }
-  }, [submitStatus]);
+  }, [submitStatus.type]);
 
   return (
     <> {/* Use Fragment to return multiple elements */}
@@ -122,14 +213,16 @@ const SubmissionSection = ({ register, errors, isSubmitting, submitStatus, submi
           >
             {isSubmitting ? '전송 중...' : '상담 신청 제출'}
           </UnifiedButton>
-          {/* Submission Status Message */}
-          {submitStatus === 'success' && (
-            <p className="mt-4 text-center text-success">상담 신청이 성공적으로 전송되었습니다. 빠른 시일 내에 연락드리겠습니다.</p>
-          )}
-          {submitStatus === 'error' && (
-            <p className="mt-4 text-center text-error">
-              {submitErrorMessage || '오류가 발생했습니다. 잠시 후 다시 시도하거나 다른 방법으로 문의해주세요.'} {/* Display specific error message */}
-            </p>
+        </div>
+
+        {/* Enhanced Feedback Display */}
+        <div aria-live="polite" aria-atomic="true">
+          {feedbackMessage && (submitStatus.type === 'success' || submitStatus.type === 'error') && (
+            <FeedbackDisplay
+              message={feedbackMessage}
+              onRetry={onRetry}
+              submitStatus={submitStatus}
+            />
           )}
         </div>
       </div>

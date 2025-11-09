@@ -4,7 +4,7 @@ import Link from 'next/link';
 // Define LinkButton props based on Anchor attributes
 interface LinkButtonProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
   variant?: 'primary' | 'secondary' | 'kakao' | 'naver' | 'outline' | 'outlineWhite' | 'ghost' | 'link'; // Added outlineWhite
-  size?: 'sm' | 'base' | 'lg';
+  size?: 'sm' | 'base' | 'lg' | 'xl';
   href: string; // href is required for LinkButton
   children: React.ReactNode;
   iconLeft?: React.ReactNode;
@@ -34,6 +34,7 @@ const LinkButton = ({
     sm: 'py-2 px-5 text-sm',
     base: 'py-3 px-8 text-base',
     lg: 'py-3 px-8 text-lg',
+    xl: 'py-4 px-10 text-xl font-extrabold',
   };
 
   // Enhanced variant styles with better shadows and depth

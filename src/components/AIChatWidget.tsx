@@ -94,15 +94,22 @@ export default function AIChatWidget() {
         <div className="w-80 h-96 bg-white rounded-lg shadow-xl flex flex-col border border-gray-200">
           <div className="bg-primary text-white p-3 rounded-t-lg flex justify-between items-center">
             <h3 className="font-bold">오피스아트 AI 상담</h3>
-            <button 
+            <button
               onClick={toggleChat}
-              className="text-white hover:text-gray-200"
+              className="text-white hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white rounded"
+              aria-label="채팅 닫기"
             >
               &times;
             </button>
           </div>
 
-          <div className="flex-1 p-3 overflow-y-auto">
+          <div
+            className="flex-1 p-3 overflow-y-auto"
+            role="log"
+            aria-live="polite"
+            aria-atomic="false"
+            aria-relevant="additions"
+          >
             {messages.length === 0 ? (
               <div className="h-full flex items-center justify-center text-gray-500">
                 오피스아트에 대해 무엇이든 물어보세요!
@@ -217,6 +224,7 @@ export default function AIChatWidget() {
                 }}
                 className="w-[calc(100%-3rem)] border border-gray-300 rounded-l-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary box-border"
                 placeholder="메시지를 입력하세요..."
+                aria-label="채팅 메시지 입력"
                 style={{
                   WebkitAppearance: 'none',
                   borderRadius: '0.5rem 0 0 0.5rem'
@@ -224,7 +232,9 @@ export default function AIChatWidget() {
               />
               <button
                 onClick={() => handleSendMessage()}
-                className="w-12 bg-primary text-white rounded-r-lg hover:bg-primary-dark flex items-center justify-center"
+                className="w-12 bg-primary text-white rounded-r-lg hover:bg-primary-dark flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary"
+                aria-label="메시지 전송"
+                disabled={isLoading || !inputValue.trim()}
               >
                 <FiSend size={18} />
               </button>
@@ -235,7 +245,8 @@ export default function AIChatWidget() {
       ) : (
         <button
           onClick={toggleChat}
-          className="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition-colors"
+          className="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          aria-label="AI 상담 채팅 열기"
         >
           <FiMessageSquare size={24} />
         </button>

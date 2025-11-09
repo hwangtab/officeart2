@@ -14,7 +14,8 @@ import InquiryDetailsSection from './ContactFormSections/InquiryDetailsSection';
 import SubmissionSection from './ContactFormSections/SubmissionSection';
 
 // Import shared types
-import { ContactFormData, EmailParams } from '@/types/contactForm'; // Use shared types
+import { ContactFormData, EmailParams, SubmitStatus, FeedbackMessage, ContactFormErrorCode } from '@/types/contactForm'; // Use shared types
+import { classifyEmailJSError, generateFeedbackMessage, isRetryableError } from '@/utils/contactFormErrors';
 
 // Remove local interface definitions
 
@@ -30,8 +31,11 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
   // Destructure setValue from useForm
   const { register, handleSubmit: handleRHFSubmit, formState: { errors }, reset, setValue, watch, trigger } = useForm<ContactFormData>();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
-  const [submitErrorMessage, setSubmitErrorMessage] = useState<string | null>(null); // Add state for error message
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({
+    type: 'idle',
+    retryCount: 0,
+  });
+  const [feedbackMessage, setFeedbackMessage] = useState<FeedbackMessage | null>(null);
 
   // EmailJS IDs from environment variables
   const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
@@ -43,15 +47,25 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
     // Check if environment variables are loaded
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
       console.error('EmailJS environment variables are not set.');
-      setSubmitStatus('error');
-      setSubmitErrorMessage('설정 오류로 인해 메일을 전송할 수 없습니다. 관리자에게 문의해주세요.'); // Set specific error message for env var issue
+      const errorCode = ContactFormErrorCode.CONFIG_ERROR;
+      setSubmitStatus({
+        type: 'error',
+        errorCode,
+        errorMessage: 'Configuration error',
+        timestamp: Date.now(),
+        canRetry: false,
+      });
+      setFeedbackMessage(generateFeedbackMessage(errorCode));
       return;
     }
 
     if (isSubmitting) return;
     setIsSubmitting(true);
-    setSubmitStatus(null);
-    setSubmitErrorMessage(null); // Reset error message on new submission
+    setSubmitStatus(prev => ({
+      type: 'submitting',
+      retryCount: prev.retryCount || 0,
+    }));
+    setFeedbackMessage(null);
 
     const templateParams: EmailParams = {
       name: data.name,
@@ -74,7 +88,18 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
       .then((result) => {
           console.log('EmailJS Success:', result.text);
-          setSubmitStatus('success');
+          setSubmitStatus({
+            type: 'success',
+            timestamp: Date.now(),
+          });
+          setFeedbackMessage({
+            title: '상담 신청 완료',
+            message: '상담 신청이 성공적으로 접수되었습니다. 영업일 기준 24시간 이내에 담당자가 연락드리겠습니다.',
+            contactInfo: {
+              phone: '0507-1335-3128',
+              email: 'contact@kosmart.org',
+            },
+          });
 
           // Track conversion event
           if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
@@ -97,18 +122,34 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
           Object.entries(persistedTrackingFields).forEach(([key, value]) => {
             setValue(key as keyof ContactFormData, value as string);
           });
-      }, (error) => {
-          console.error('EmailJS Error:', error.text);
-          setSubmitStatus('error');
-          // Provide a more user-friendly error message based on common EmailJS errors if possible
-          if (error.text?.includes('service_id')) {
-            setSubmitErrorMessage('메일 서비스 설정에 문제가 발생했습니다. 관리자에게 문의해주세요.');
-          } else if (error.text?.includes('template_id')) {
-            setSubmitErrorMessage('메일 템플릿 설정에 문제가 발생했습니다. 관리자에게 문의해주세요.');
-          } else if (error.text?.includes('user_id') || error.text?.includes('public_key')) {
-            setSubmitErrorMessage('메일 인증 정보에 문제가 발생했습니다. 관리자에게 문의해주세요.');
-          } else {
-            setSubmitErrorMessage('메일 전송 중 오류가 발생했습니다. 네트워크 상태를 확인 후 다시 시도해주세요.');
+      })
+      .catch((error) => {
+          console.error('EmailJS Error:', error);
+
+          // Classify the error
+          const errorCode = classifyEmailJSError(error);
+          const feedback = generateFeedbackMessage(errorCode);
+          const canRetry = isRetryableError(errorCode);
+
+          setSubmitStatus(prev => ({
+            type: 'error',
+            errorCode,
+            errorMessage: error.text || 'Unknown error',
+            errorDetails: JSON.stringify(error),
+            timestamp: Date.now(),
+            retryCount: prev.retryCount || 0,
+            canRetry,
+          }));
+
+          setFeedbackMessage(feedback);
+
+          // Track error event
+          if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+            window.gtag('event', 'form_submission_error', {
+              event_category: 'Contact',
+              event_label: errorCode,
+              value: 0
+            });
           }
       })
       .finally(() => {
@@ -247,7 +288,8 @@ export default function ContactForm(/* { searchParams }: ContactFormProps */) { 
           errors={errors}
           isSubmitting={isSubmitting}
           submitStatus={submitStatus}
-          submitErrorMessage={submitErrorMessage} // Pass the error message prop
+          feedbackMessage={feedbackMessage}
+          onRetry={() => handleRHFSubmit(onValid)()}
         />
 
         <input type="hidden" {...register('utmSource')} />

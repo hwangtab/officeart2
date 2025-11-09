@@ -81,10 +81,15 @@ export default function PricingClient() {
               </ul>
             </div>
             
-            <div className="text-center px-6 pb-6 mt-auto space-y-2">
-               <LinkButton href="/contact?service=desk" variant="primary" size="lg" className="w-full" iconLeft={<CalendarIcon className="h-5 w-5"/>}>
-                 방문 상담 예약
-               </LinkButton>
+            <div className="text-center px-6 pb-6 mt-auto space-y-3">
+              {/* Add urgency text */}
+              <p className="text-sm text-error font-semibold flex items-center justify-center gap-2 animate-pulse-subtle">
+                <ClockIcon className="h-5 w-5" />
+                선착순 10석 한정 - 조기 마감 임박
+              </p>
+              <LinkButton href="/contact?service=desk" variant="primary" size="xl" className="w-full shadow-card-lg hover:shadow-card-lg-hover" iconLeft={<CalendarIcon className="h-6 w-6"/>}>
+                방문 상담 예약
+              </LinkButton>
               <LinkButton href="https://open.kakao.com/me/offceart" variant="kakao" size="lg" iconLeft={<RiKakaoTalkFill className="h-5 w-5" />} className="w-full" target="_blank" rel="noopener noreferrer">
                 카카오톡 문의
               </LinkButton>
@@ -116,13 +121,18 @@ export default function PricingClient() {
               </ul>
             </div>
             
-            <div className="text-center px-6 pb-6 mt-auto space-y-2">
-               <LinkButton href="/contact?service=non-resident" variant="primary" size="lg" className="w-full" iconLeft={<CalendarIcon className="h-5 w-5"/>}>
-                 상담 신청하기
-               </LinkButton>
-               <LinkButton href="/services/non-resident" variant="outline" size="lg" className="w-full">
-                 자세히 보기
-               </LinkButton>
+            <div className="text-center px-6 pb-6 mt-auto space-y-3">
+              {/* Add value proposition */}
+              <p className="text-sm text-primary font-semibold flex items-center justify-center gap-2">
+                <CheckCircleIcon className="h-5 w-5" />
+                강남/여의도 대비 1/3 가격
+              </p>
+              <LinkButton href="/contact?service=non-resident" variant="primary" size="xl" className="w-full shadow-card-lg hover:shadow-card-lg-hover" iconLeft={<CalendarIcon className="h-6 w-6"/>}>
+                상담 신청하기
+              </LinkButton>
+              <LinkButton href="/services/non-resident" variant="outline" size="base" className="w-full">
+                자세히 보기
+              </LinkButton>
             </div>
           </Card>
 

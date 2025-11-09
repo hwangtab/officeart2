@@ -144,11 +144,18 @@ export default function RootLayout({
         />
       </head>
       <body className={`${notoSansKr.variable} ${gmarketSans.variable} font-sans antialiased text-text-primary flex flex-col min-h-screen break-keep leading-relaxed bg-gradient-to-b from-[#FFFBF0] via-[#FFFFFF] to-slate-100`}>
+        {/* Skip to main content link for keyboard accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+        >
+          본문으로 바로가기
+        </a>
         {/* Removed loading conditional rendering */}
         <ErrorBoundary>
           <PerformanceMetrics />
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main id="main-content" className="flex-grow">{children}</main>
           <Footer />
           <AIChatWidget />
         </ErrorBoundary>

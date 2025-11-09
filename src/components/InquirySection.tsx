@@ -28,9 +28,9 @@ export default function InquirySection() {
           <LinkButton
             href="https://open.kakao.com/me/offceart"
             variant="kakao"
-            size="lg"
-            iconLeft={<RiKakaoTalkFill className="h-5 w-5" />}
-            className="w-full"
+            size="xl"
+            iconLeft={<RiKakaoTalkFill className="h-6 w-6" />}
+            className="w-full shadow-card-lg hover:shadow-card-lg-hover animate-glow"
             target="_blank"
             rel="noopener noreferrer"
           >

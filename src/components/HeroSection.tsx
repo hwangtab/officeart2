@@ -1,6 +1,7 @@
 import OptimizedImage from './OptimizedImage';
 import SectionTitle from './SectionTitle';
 import LinkButton from '@/components/LinkButton';
+import { RiKakaoTalkFill } from 'react-icons/ri';
 
 export default function HeroSection() {
   return (
@@ -33,23 +34,30 @@ export default function HeroSection() {
         </div>
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8 animate-fade-in-up animation-delay-600">
-          <LinkButton 
-            href="https://open.kakao.com/me/offceart" 
-            variant="kakao" 
-            size="lg"
-            className="w-full sm:w-auto min-w-[200px]"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Add urgency badge above primary CTA */}
+          <div className="relative w-full sm:w-auto">
+            <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent-yellow text-text-primary text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap animate-bounce-subtle">
+              ⚡ 선착순 10석 한정
+            </span>
+            <LinkButton
+              href="https://open.kakao.com/me/offceart"
+              variant="kakao"
+              size="xl"
+              className="w-full sm:w-auto min-w-[240px] shadow-primary-lg hover:shadow-2xl"
+              target="_blank"
+              rel="noopener noreferrer"
+              iconLeft={<RiKakaoTalkFill className="h-6 w-6" />}
+            >
+              카카오톡으로 바로 상담
+            </LinkButton>
+          </div>
+          <LinkButton
+            href="/pricing"
+            variant="outlineWhite"
+            size="xl"
+            className="w-full sm:w-auto min-w-[240px]"
           >
-            카카오톡으로 바로 상담
-          </LinkButton>
-          <LinkButton 
-            href="/pricing" 
-            variant="outlineWhite" 
-            size="lg"
-            className="w-full sm:w-auto min-w-[200px]"
-          >
-            가격 &amp; 혜택 살펴보기
+            가격 & 혜택 살펴보기
           </LinkButton>
         </div>
         <p className="mt-6 text-sm text-white/80 animate-fade-in-up animation-delay-800 text-balance">
