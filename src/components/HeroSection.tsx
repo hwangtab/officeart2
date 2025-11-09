@@ -14,7 +14,7 @@ export default function HeroSection() {
           alt="오피스아트 메인 훐 - 넓은 L자형 책상과 스틸케이스 프리미엄 의자가 놓인 밝고 쾌적한 내부 작업 공간, 창의력과 집중력이 피어나는 환경"
           fill
           priority
-          sizes="100vw"
+          sizes="(min-width: 1920px) 1920px, 100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
       </div>

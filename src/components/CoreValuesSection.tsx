@@ -20,7 +20,7 @@ export default function CoreValuesSection() {
                 fill
                 priority
                 className="group-hover:scale-105 transition-transform duration-300"
-                sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
+                sizes="(min-width: 1024px) 320px, (min-width: 768px) 33vw, 100vw"
               />
             </div>
             <div className="p-8 space-y-3">
@@ -44,7 +44,7 @@ export default function CoreValuesSection() {
                  fill
                  priority
                  className="group-hover:scale-105 transition-transform duration-300"
-                 sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
+                 sizes="(min-width: 1024px) 320px, (min-width: 768px) 33vw, 100vw"
                />
             </div>
             {/* p-6 is now handled by Card component */}
@@ -71,7 +71,7 @@ export default function CoreValuesSection() {
                  fill
                  priority
                  className="group-hover:scale-105 transition-transform duration-300"
-                 sizes="(min-width: 1024px) 400px, (min-width: 768px) 33vw, 100vw"
+                 sizes="(min-width: 1024px) 320px, (min-width: 768px) 33vw, 100vw"
                />
             </div>
             {/* p-6 is now handled by Card component */}

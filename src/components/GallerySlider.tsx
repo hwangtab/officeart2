@@ -61,7 +61,7 @@ export default function GallerySlider({ images = defaultGalleryImages }: Gallery
                 src={src}
                 alt={`오피스아트 갤러리 ${index + 1}: [${src.split('/').pop()?.split('.')[0] || '이미지 설명'}]`}
                 fill
-                sizes="100vw"
+                sizes="(min-width: 1920px) 1920px, 100vw"
                 priority={index < 2}
                 className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 cursor-pointer"
               />
