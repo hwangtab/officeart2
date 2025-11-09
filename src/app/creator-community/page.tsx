@@ -29,31 +29,27 @@ export default function CreatorCommunityPage() {
         <ScrollAnimationWrapper>
           <Card className="mb-16">
           <SectionTitle as="h2" level="section" align="center"><span className="">오피스아트 입주 크리에이터</span></SectionTitle> {/* Use level prop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Creator Distribution Chart - Use dynamically imported component */}
-            <CreatorCommunityClient /> {/* Use the client component */}
-            {/* Community Activity Photos */}
-            <div className="space-y-4">
-               <p className="text-lg text-text-primary mb-6"> {/* Use primary text color */}
-                 <span className="">웹툰 작가</span>, <span className="">일러스트레이터</span>, <span className="">디자이너</span> 등 다양한 분야의 <span className="">창작자</span>들이 오피스아트와 함께하고 있습니다. 서로 <span className="">영감</span>을 주고받으며 <span className="">시너지</span>를 창출하는 공간입니다.
-               </p>
-               <SectionTitle as="h4" level="card"><span className="">커뮤니티 활동 모습</span></SectionTitle> {/* Use level prop */}
-               <div className="grid grid-cols-2 gap-4">
-                   {/* TODO: Replace with actual photos (한국스마트협동조합 행사 사진, 황경하 담당자) */}
-                   <div className="relative h-40 bg-gray-200 rounded overflow-hidden group">
-                       <OptimizedImage src="/images/gallery/networking-event.jpg" alt="오피스아트 창작자 커뮤니티 네트워킹 행사 - 다양한 분야의 창작자들이 교류하고 영감을 주고받는 모습" fill className="group-hover:scale-105 transition-transform object-cover" sizes="(min-width: 1024px) 300px, (min-width: 768px) 50vw, 100vw"/>
-                   </div>
-                   <div className="relative h-40 bg-gray-200 rounded overflow-hidden group">
-                       <OptimizedImage src="/images/gallery/114a0b_5a0652ec2a844e2fa7d3b2bc3371dfac~mv2.jpeg" alt="오피스아트 창작자 네트워킹 행사 2 - 협동조합 네트워크 활동으로 시너지를 창출하는 에생" fill className="group-hover:scale-105 transition-transform object-cover" sizes="(min-width: 1024px) 300px, (min-width: 768px) 50vw, 100vw"/>
-                   </div>
-                   <div className="relative h-40 bg-gray-200 rounded overflow-hidden group">
-                       <OptimizedImage src="/images/gallery/114a0b_6b0b9e479c004a3b8cf7f3679123365e~mv2.jpeg" alt="오피스아트 내 창작자 협업 사례 - 웹툰, 일러스트, 디자인 등 다양한 분야의 전문가들이 함께 작업하는 모습" fill className="group-hover:scale-105 transition-transform object-cover" sizes="(min-width: 1024px) 300px, (min-width: 768px) 50vw, 100vw"/>
-                   </div>
-                    <div className="relative h-40 bg-gray-200 rounded overflow-hidden group">
-                       <OptimizedImage src="/images/gallery/114a0b_f3b211e026c247109344756fc861a703~mv2.jpeg" alt="오피스아트 창작자 네트워킹 행사 3 - 다양한 분야의 전문가들이 모여 아이디어를 공유하고 협업 기회를 탐색하는 소중한 시간" fill className="group-hover:scale-105 transition-transform object-cover" sizes="(min-width: 1024px) 300px, (min-width: 768px) 50vw, 100vw"/>
-                   </div>
-               </div>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-lg text-text-primary mb-8 text-center"> {/* Use primary text color */}
+              <span className="">웹툰 작가</span>, <span className="">일러스트레이터</span>, <span className="">디자이너</span> 등 다양한 분야의 <span className="">창작자</span>들이 오피스아트와 함께하고 있습니다. 서로 <span className="">영감</span>을 주고받으며 <span className="">시너지</span>를 창출하는 공간입니다.
+            </p>
+            <SectionTitle as="h4" level="card" align="center"><span className="">커뮤니티 활동 모습</span></SectionTitle> {/* Use level prop */}
+            <div className="grid grid-cols-2 gap-4 mb-6">
+                {/* TODO: Replace with actual photos (한국스마트협동조합 행사 사진, 황경하 담당자) */}
+                <div className="relative h-48 bg-gray-200 rounded overflow-hidden group">
+                    <OptimizedImage src="/images/gallery/networking-event.jpg" alt="오피스아트 창작자 커뮤니티 네트워킹 행사 - 다양한 분야의 창작자들이 교류하고 영감을 주고받는 모습" fill className="group-hover:scale-105 transition-transform object-cover" sizes="(min-width: 1024px) 350px, (min-width: 768px) 50vw, 100vw"/>
+                </div>
+                <div className="relative h-48 bg-gray-200 rounded overflow-hidden group">
+                    <OptimizedImage src="/images/gallery/114a0b_5a0652ec2a844e2fa7d3b2bc3371dfac~mv2.jpeg" alt="오피스아트 창작자 네트워킹 행사 2 - 협동조합 네트워크 활동으로 시너지를 창출하는 에생" fill className="group-hover:scale-105 transition-transform object-cover" sizes="(min-width: 1024px) 350px, (min-width: 768px) 50vw, 100vw"/>
+                </div>
+                <div className="relative h-48 bg-gray-200 rounded overflow-hidden group">
+                    <OptimizedImage src="/images/gallery/114a0b_6b0b9e479c004a3b8cf7f3679123365e~mv2.jpeg" alt="오피스아트 내 창작자 협업 사례 - 웹툰, 일러스트, 디자인 등 다양한 분야의 전문가들이 함께 작업하는 모습" fill className="group-hover:scale-105 transition-transform object-cover" sizes="(min-width: 1024px) 350px, (min-width: 768px) 50vw, 100vw"/>
+                </div>
+                 <div className="relative h-48 bg-gray-200 rounded overflow-hidden group">
+                    <OptimizedImage src="/images/gallery/114a0b_f3b211e026c247109344756fc861a703~mv2.jpeg" alt="오피스아트 창작자 네트워킹 행사 3 - 다양한 분야의 전문가들이 모여 아이디어를 공유하고 협업 기회를 탐색하는 소중한 시간" fill className="group-hover:scale-105 transition-transform object-cover" sizes="(min-width: 1024px) 350px, (min-width: 768px) 50vw, 100vw"/>
+                </div>
             </div>
+            <CreatorCommunityClient /> {/* Use the client component */}
           </div>
           </Card>
         </ScrollAnimationWrapper>
