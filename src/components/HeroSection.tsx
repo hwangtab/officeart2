@@ -24,8 +24,7 @@ export default function HeroSection() {
           <span className="block sm:inline mt-2 sm:mt-0">창작자 전용 프리미엄 오피스</span>
         </SectionTitle>
         <p className="mb-4 animate-fade-in-up animation-delay-200 hero-dynamic-subtitle text-text-on-primary/90 text-balance"> {/* Dynamic scaling subtitle */}
-          <span className="block sm:inline">영등포구청역 5분 · 선착순 10석 한정</span>
-          <span className="block sm:inline sm:ml-1">참가비 환급 지원 사업 진행 중</span>
+          <span className="block sm:inline">영등포구청역 5분 · 180만원대 스틸케이스 의자 · 24시간 이용</span>
         </p>
         <div className="animate-fade-in-up animation-delay-400 flex flex-wrap justify-center gap-3 text-sm text-white/90">
           <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">180만원대 스틸케이스 의자</span>
@@ -37,7 +36,7 @@ export default function HeroSection() {
           {/* Add urgency badge above primary CTA */}
           <div className="relative group w-full sm:w-auto">
             <span className="absolute -top-3 left-1/2 z-10 w-max -translate-x-1/2 transform rounded-full bg-accent-yellow px-3 py-1 text-xs font-bold text-text-primary transition-all duration-300 ease-out group-hover:-top-4 group-hover:scale-105">
-              ⚡ 선착순 10석 한정
+              ⚡ 오늘 바로 입주 가능
             </span>
             <LinkButton
               href="https://open.kakao.com/me/offceart"
