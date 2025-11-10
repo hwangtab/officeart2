@@ -46,6 +46,7 @@
 /* Default body font is now handled by Tailwind config using CSS variables from @next/font */
 body {
   font-weight: 400; /* Set default font weight to Regular for better readability */
+  line-height: 1.75; /* Optimal line-height for Korean text readability */
 }
 
 /* Note: h2, h3 font weights are now handled via Tailwind utility classes (text-heading-*)
