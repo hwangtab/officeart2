@@ -122,14 +122,16 @@ export default function PricingClient() {
             </div>
             
             <div className="text-center px-6 pb-6 mt-auto space-y-3">
-              {/* Add value proposition */}
-              <p className="text-sm text-primary font-semibold flex items-center justify-center gap-2">
-                <CheckCircleIcon className="h-5 w-5" />
-                강남/여의도 대비 1/3 가격
-              </p>
-              <LinkButton href="/contact?service=non-resident" variant="primary" size="xl" className="w-full shadow-card-lg hover:shadow-card-lg-hover" iconLeft={<CalendarIcon className="h-6 w-6"/>}>
-                상담 신청하기
-              </LinkButton>
+              {/* Add value proposition with proper z-index */}
+              <div className="relative group">
+                <span className="absolute -top-3 left-1/2 z-10 w-max -translate-x-1/2 transform rounded-full bg-accent-green px-3 py-1 text-xs font-bold text-white transition-all duration-300 ease-out group-hover:-top-4 group-hover:scale-105 flex items-center gap-1">
+                  <CheckCircleIcon className="h-4 w-4" />
+                  💰 강남 대비 1/3 가격
+                </span>
+                <LinkButton href="/contact?service=non-resident" variant="primary" size="xl" className="w-full shadow-card-lg hover:shadow-card-lg-hover transition-shadow" iconLeft={<CalendarIcon className="h-6 w-6"/>}>
+                  상담 신청하기
+                </LinkButton>
+              </div>
               <LinkButton href="/services/non-resident" variant="outline" size="base" className="w-full">
                 자세히 보기
               </LinkButton>
