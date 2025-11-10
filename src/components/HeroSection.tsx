@@ -16,7 +16,9 @@ export default function HeroSection() {
           priority
           sizes="(min-width: 1920px) 1920px, 100vw"
         />
+        {/* Enhanced gradient with brand colors */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent-green/20"></div>
       </div>
       <div className="relative z-10 px-4 py-12 sm:py-16 w-full max-w-4xl mx-auto">
         <SectionTitle as="h1" level="page" underline={false} className="animate-fade-in-up text-center hero-dynamic-title text-balance"> {/* Dynamic scaling font size */}

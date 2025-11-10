@@ -39,7 +39,7 @@ const LinkButton = ({
 
   // Enhanced variant styles with better shadows and depth
   const variantStyles = {
-    primary: 'bg-primary hover:bg-primary-dark text-white focus:ring-primary shadow-card hover:shadow-card-hover', // Align hover state with brand palette
+    primary: 'bg-gradient-primary hover:opacity-90 text-white focus:ring-primary shadow-card hover:shadow-card-hover', // Gradient for dynamic feel
     secondary: 'bg-gray-200 hover:bg-gray-300 text-text-primary focus:ring-gray-400 shadow-card hover:shadow-card-hover', // Enhanced shadows
     kakao: 'bg-kakao hover:opacity-90 text-black focus:ring-yellow-500 shadow-card hover:shadow-card-hover',
     naver: 'bg-naver-green hover:bg-naver-green-dark text-white focus:ring-naver-green shadow-card hover:shadow-card-hover',

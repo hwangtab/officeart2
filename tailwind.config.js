@@ -17,9 +17,9 @@ const config = {
       // 정리된 색상 시스템 (UI/UX 분석 기반)
       colors: {
         // === 브랜드 컬러 (Primary) ===
-        'primary': '#2563EB', // 메인 블루 (헤더, 주요 버튼, 브랜딩)
-        'primary-dark': '#1D4ED8', // 호버 상태용 어두운 블루
-        'primary-light': '#3B82F6', // 연한 블루 (배경, 강조)
+        'primary': '#3B82F6', // 메인 블루 (헤더, 주요 버튼, 브랜딩) - 더 밝고 친근한 톤
+        'primary-dark': '#2563EB', // 호버 상태용 어두운 블루
+        'primary-light': '#60A5FA', // 연한 블루 (배경, 강조)
 
         // === 배경 컬러 ===
         'background-main': '#FFFFFF', // 메인 배경 (순백)

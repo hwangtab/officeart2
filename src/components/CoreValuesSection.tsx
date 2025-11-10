@@ -24,8 +24,8 @@ export default function CoreValuesSection() {
               />
             </div>
             <div className="p-8 space-y-3">
-              <SectionTitle as="h3" level="card"><span className="">프리미엄 의자</span></SectionTitle>
-              <p className="text-text-secondary leading-relaxed"><span className="">180만원대 프리미엄 의자</span>를 기본 제공합니다</p>
+              <SectionTitle as="h3" level="card"><span className="text-primary">프리미엄 의자</span></SectionTitle>
+              <p className="text-text-secondary leading-relaxed"><span className="text-accent-green font-semibold">180만원대 프리미엄 의자</span>를 기본 제공합니다</p>
             </div>
           </Card>
         </Link>
@@ -50,8 +50,8 @@ export default function CoreValuesSection() {
             {/* p-6 is now handled by Card component */}
             {/* Added flex-grow to make text content fill available space */}
             <div className="p-8 space-y-3">
-              <SectionTitle as="h3" level="card"><span className="">집중이 잘 되는 넓은 지정석</span></SectionTitle> {/* Use level prop */}
-              <p className="text-text-secondary leading-relaxed">모든 요소가 <span className="">업무와 창작 활동</span>을 위해 설계되었습니다</p> {/* Use secondary text color */}
+              <SectionTitle as="h3" level="card"><span className="text-primary">집중이 잘 되는 넓은 지정석</span></SectionTitle> {/* Use level prop */}
+              <p className="text-text-secondary leading-relaxed">모든 요소가 <span className="text-accent-green font-semibold">업무와 창작 활동</span>을 위해 설계되었습니다</p> {/* Use secondary text color */}
             </div>
           </Card>
         </Link>
@@ -78,8 +78,8 @@ export default function CoreValuesSection() {
             {/* Added flex-grow to make text content fill available space */}
             {/* Added flex-grow to make text content fill available space */}
             <div className="p-8 space-y-3">
-              <SectionTitle as="h3" level="card"><span className="">약 630명 창작자 네트워크</span></SectionTitle> {/* Use level prop */}
-              <p className="text-text-secondary leading-relaxed">다양한 분야 <span className="">창작자</span>들이 활동하는 협동조합이 운영합니다</p> {/* Use secondary text color */}
+              <SectionTitle as="h3" level="card"><span className="text-primary">약 630명 창작자 네트워크</span></SectionTitle> {/* Use level prop */}
+              <p className="text-text-secondary leading-relaxed">다양한 분야 <span className="text-accent-green font-semibold">창작자</span>들이 활동하는 협동조합이 운영합니다</p> {/* Use secondary text color */}
             </div>
           </Card>
         </Link>
