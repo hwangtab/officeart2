@@ -5,10 +5,15 @@ import Card from '@/components/Card';
 import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
 import FaqCta from '@/components/FaqCta';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr';
+
 export const metadata: Metadata = {
   title: "자주 묻는 질문 (FAQ) | 오피스아트",
-  description: "오피스아트 이용 관련 자주 묻는 질문과 답변을 확인하세요. 정기 이용권, 비상주 사무실, 운영 시간, 시설 이용, 사업자등록 등 궁금한 모든 것을 해결해드립니다.",
+  description: "오피스아트 정기 이용권 월 25만원, 비상주 사무실 월 3.3만원 관련 FAQ. 운영시간, 사업자등록, 주차, 회의실, 프린터 이용 등 모든 궁금증을 해결해드립니다. 지금 문의하세요!",
   keywords: ['오피스아트 FAQ', '공유오피스 문의', '비상주 사무실 문의', '사업자등록 방법', '영등포 공유오피스', '불광 공유오피스'],
+  alternates: {
+    canonical: `${siteUrl}/faq`,
+  },
   openGraph: {
     title: "자주 묻는 질문 (FAQ) | 오피스아트",
     description: "오피스아트 이용과 비상주 사무실 서비스에 대한 모든 궁금증을 해결해드립니다.",
@@ -88,8 +93,37 @@ const nonResidentFaqData = [
 ];
 
 export default function FaqPage() {
+  // Create FAQ schema
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      ...generalFaqData.map((item) => ({
+        '@type': 'Question',
+        'name': item.question,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': item.answer,
+        },
+      })),
+      ...nonResidentFaqData.map((item) => ({
+        '@type': 'Question',
+        'name': item.question,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': item.answer,
+        },
+      })),
+    ],
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center py-20 px-4">
+      {/* JSON-LD for FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="w-full max-w-5xl mx-auto">
         <SectionTitle as="h1" level="page" align="center">자주 묻는 질문 (FAQ)</SectionTitle>
 

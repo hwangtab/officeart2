@@ -20,9 +20,14 @@ import {
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { SiNaver as NaverIcon } from "react-icons/si";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr';
+
 export const metadata: Metadata = {
   title: '영등포구청점 오시는 길 | 오피스아트',
-  description: '영등포구청역에서 도보 5분 거리에 위치한 프리미엄 공유오피스. 지하철 2호선·5호선 6번 출구. 주차장 및 주변 편의시설 정보를 확인하세요.',
+  description: '영등포구청역 2·5호선 6번 출구에서 도보 5분! 서울 영등포구 양산로 96 A213호. 주차장 완비, 주변 식당·카페·편의점 다수. 네이버/카카오맵 길찾기 →',
+  alternates: {
+    canonical: `${siteUrl}/location`,
+  },
   openGraph: {
     title: '영등포구청점 오시는 길 | 오피스아트',
     description: '서울 영등포구 양산로 96 A213호 위치 안내 및 교통 정보',

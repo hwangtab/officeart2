@@ -6,25 +6,66 @@ import LinkButton from '@/components/LinkButton';
 import Card from '@/components/Card';
 import { locations } from '@/data/locations';
 import LocationCard from '@/components/LocationCard';
-import { 
-  HiHome, 
-  HiEnvelope, 
-  HiClock, 
-  HiCurrencyDollar, 
+import {
+  HiHome,
+  HiEnvelope,
+  HiClock,
+  HiCurrencyDollar,
   HiCheckCircle
 } from 'react-icons/hi2';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr';
+
+// Service Schema for 비상주 사무실
+const nonResidentSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  'name': '비상주 사무실 서비스',
+  'description': '월 3.3만원으로 사업자등록이 가능한 비상주 사무실. 우편물 수령, 회의실 이용 포함',
+  'provider': {
+    '@type': 'LocalBusiness',
+    'name': '오피스아트',
+    'url': siteUrl,
+  },
+  'areaServed': {
+    '@type': 'City',
+    'name': '서울',
+    'address': {
+      '@type': 'PostalAddress',
+      'addressLocality': '영등포구',
+      'addressRegion': '서울',
+      'addressCountry': 'KR',
+    },
+  },
+  'offers': {
+    '@type': 'Offer',
+    'price': '33000',
+    'priceCurrency': 'KRW',
+    'availability': 'https://schema.org/InStock',
+    'url': `${siteUrl}/services/non-resident`,
+    'priceValidUntil': '2025-12-31',
+  },
+};
+
 export const metadata: Metadata = {
   title: '비상주 사무실 서비스 | 오피스아트',
-  description: '월 3.3만원으로 사업자등록이 가능한 비상주 사무실 서비스. 홈오피스 창업자와 프리랜서를 위한 완벽한 솔루션을 제공합니다.',
+  description: '월 3.3만원으로 사업자등록 가능! 홈오피스 창업자와 프리랜서를 위한 완벽한 솔루션. 우편물 수령, 회의실 무료 이용 포함. 영등포구청역 5분 거리. 지금 상담하세요 →',
   keywords: ['비상주 사무실', '사업자등록', '창업', '홈오피스', '프리랜서', '가상오피스', '주소제공'],
+  alternates: {
+    canonical: `${siteUrl}/services/non-resident`,
+  },
 };
 
 export default function NonResidentOfficePage() {
   return (
     <main>
+      {/* JSON-LD for Service Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(nonResidentSchema) }}
+      />
       {/* Hero Section */}
-      <section 
+      <section
         className="relative h-[70vh] flex items-center justify-center pt-20"
         style={{
           backgroundImage: 'url("/images/hero/party.png")',
@@ -42,7 +83,7 @@ export default function NonResidentOfficePage() {
             월 <span className="hero-highlight-text">3.3만원</span>으로 사업자등록하세요
           </p>
           <p className="text-lg text-white/90 mb-10 max-w-2xl mx-auto">
-            홈오피스 창업자와 프리랜서를 위한 완벽한 솔루션. 
+            홈오피스 창업자와 프리랜서를 위한 완벽한 솔루션.
             정식 사업장 주소를 제공하여 안전하고 신뢰할 수 있는 사업 시작을 도와드립니다.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -78,7 +119,7 @@ export default function NonResidentOfficePage() {
             <SectionTitle level="section" align="center">
               이런 분들께 추천합니다
             </SectionTitle>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { title: '홈오피스 창업자', desc: '집에서 사업을 시작하는 분', icon: '🏠' },
@@ -104,7 +145,7 @@ export default function NonResidentOfficePage() {
             <SectionTitle level="section" align="center">
               서비스 혜택
             </SectionTitle>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
@@ -155,14 +196,14 @@ export default function NonResidentOfficePage() {
             <SectionTitle level="section" align="center">
               합리적인 비용
             </SectionTitle>
-            
+
             <Card className="p-8">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-text-primary mb-4">
                   월 <span className="text-primary">3.3만원</span>의 합리적 비용
                 </h3>
                 <p className="text-text-secondary">
-                  동일한 서비스를 강남이나 여의도에서 이용하면 월 10만원 이상!<br/>
+                  동일한 서비스를 강남이나 여의도에서 이용하면 월 10만원 이상!<br />
                   오피스아트에서는 3분의 1 가격으로 이용 가능합니다.
                 </p>
               </div>
@@ -218,7 +259,7 @@ export default function NonResidentOfficePage() {
             <SectionTitle level="section" align="center">
               자주 묻는 질문
             </SectionTitle>
-            
+
             <div className="space-y-6">
               {[
                 {
@@ -262,7 +303,7 @@ export default function NonResidentOfficePage() {
               지금 바로 시작하세요
             </h2>
             <p className="text-text-secondary mb-8 text-lg">
-              월 3.3만원으로 안전하고 신뢰할 수 있는 사업 주소를 확보하세요.<br/>
+              월 3.3만원으로 안전하고 신뢰할 수 있는 사업 주소를 확보하세요.<br />
               홈오피스 창업의 첫 걸음을 오피스아트와 함께하세요.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

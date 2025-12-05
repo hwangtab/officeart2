@@ -16,10 +16,15 @@ import { HiOutlinePhone as PhoneIcon, HiOutlineEnvelope as EmailIcon, HiOutlineM
 import ContactForm from '@/components/ContactForm'; // Import the client component
 import { Suspense } from 'react'; // Import Suspense
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr';
+
 // Add metadata for the contact page
 export const metadata: Metadata = {
   title: "상담 및 문의 | 오피스아트",
-  description: "오피스아트 방문 상담 예약, 카카오톡 상담, 전화/이메일 문의 방법을 안내합니다.",
+  description: "오피스아트 방문 상담, 카카오톡 상담, 전화/이메일 문의 안내. 영등포구청역 5분 거리, 평일 10-19시 운영. 정기 이용권 및 비상주 사무실 상담 가능. 지금 문의하세요!",
+  alternates: {
+    canonical: `${siteUrl}/contact`,
+  },
   openGraph: {
     images: [
       {
@@ -49,23 +54,23 @@ export default function ContactPage() {
         {/* 2. KakaoTalk Section (4.8 카카오톡 상담) */}
         <ScrollAnimationWrapper>
           <section className="mb-16 text-center">
-           {/* Ensure consistent styling with other sub-section title */}
-           {/* Use SectionTitle for sub-section title - Use xlarge for consistency */}
-           <SectionTitle as="h2" level="section" className="text-center">카카오톡 상담</SectionTitle> {/* Use level prop */}
-           {/* KakaoTalk Button Only */}
-           {/* Use LinkButton component */}
-           <LinkButton
-             href="https://open.kakao.com/me/offceart"
-             variant="kakao"
-             size="base" // Changed size to base for consistency
-             iconLeft={<RiKakaoTalkFill className="h-5 w-5" />}
-             target="_blank"
-             rel="noopener noreferrer"
-           >
-             카카오톡으로 상담하기
-           </LinkButton>
-           </section>
-         </ScrollAnimationWrapper>
+            {/* Ensure consistent styling with other sub-section title */}
+            {/* Use SectionTitle for sub-section title - Use xlarge for consistency */}
+            <SectionTitle as="h2" level="section" className="text-center">카카오톡 상담</SectionTitle> {/* Use level prop */}
+            {/* KakaoTalk Button Only */}
+            {/* Use LinkButton component */}
+            <LinkButton
+              href="https://open.kakao.com/me/offceart"
+              variant="kakao"
+              size="base" // Changed size to base for consistency
+              iconLeft={<RiKakaoTalkFill className="h-5 w-5" />}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              카카오톡으로 상담하기
+            </LinkButton>
+          </section>
+        </ScrollAnimationWrapper>
 
         {/* 3. Direct Contact Info (4.8 직접 문의) */}
         {/* Use Card component for Direct Contact Info */}
@@ -75,41 +80,41 @@ export default function ContactPage() {
             {/* Use SectionTitle for sub-section title - Use xlarge for consistency */}
             <SectionTitle as="h2" level="section" className="text-center">직접 문의</SectionTitle> {/* Use level prop */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-body-base"> {/* Using body-base token */}
-                {/* Phone */}
-                <div className="text-center md:text-left">
-                    {/* Use accent-blue for icon - Use large for h3 and pass icon via prop */}
-                    <SectionTitle as="h3" level="subsection" icon={<PhoneIcon className="h-5 w-5 text-accent-blue" />} className="justify-center md:justify-start text-text-primary">전화</SectionTitle> {/* Use level prop */}
-                    <p className="text-text-primary">대표번호: <a href="tel:0507-1335-3128" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">0507-1335-3128</a></p>
-                    <p className="text-caption text-text-secondary mt-1">(운영시간: 평일 10:00-19:00)</p> {/* Using caption token */}
-                </div>
-                {/* Email */}
-                 <div className="text-center md:text-left">
-                    {/* Use accent-blue for icon - Use large for h3 and pass icon via prop */}
-                    <SectionTitle as="h3" level="subsection" icon={<EmailIcon className="h-5 w-5 text-accent-blue" />} className="justify-center md:justify-start text-text-primary">이메일</SectionTitle> {/* Use level prop */}
-                    <p className="text-text-primary">대표: <a href="mailto:contact@kosmart.org" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">contact@kosmart.org</a></p>
-                    <p className="text-caption text-text-secondary mt-1">(응답시간: 평일 기준 24시간 이내)</p> {/* Using caption token */}
-                </div>
-                {/* Visit */}
-                 <div className="text-center md:text-left">
-                    {/* Use accent-blue for icon - Use large for h3 and pass icon via prop */}
-                    <SectionTitle as="h3" level="subsection" icon={<VisitIcon className="h-5 w-5 text-accent-blue" />} className="justify-center md:justify-start text-text-primary">방문 상담</SectionTitle> {/* Use level prop */}
-                    {/* Add Naver Map link to address */}
-                    <p className="text-text-primary">주소: <a href="https://naver.me/xHg9R2Ah" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">서울특별시 영등포구 양산로 96</a></p>
-                    <p className="text-text-primary">상담 시간: 평일 10:00-19:00</p>
-                </div>
+              {/* Phone */}
+              <div className="text-center md:text-left">
+                {/* Use accent-blue for icon - Use large for h3 and pass icon via prop */}
+                <SectionTitle as="h3" level="subsection" icon={<PhoneIcon className="h-5 w-5 text-accent-blue" />} className="justify-center md:justify-start text-text-primary">전화</SectionTitle> {/* Use level prop */}
+                <p className="text-text-primary">대표번호: <a href="tel:0507-1335-3128" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">0507-1335-3128</a></p>
+                <p className="text-caption text-text-secondary mt-1">(운영시간: 평일 10:00-19:00)</p> {/* Using caption token */}
+              </div>
+              {/* Email */}
+              <div className="text-center md:text-left">
+                {/* Use accent-blue for icon - Use large for h3 and pass icon via prop */}
+                <SectionTitle as="h3" level="subsection" icon={<EmailIcon className="h-5 w-5 text-accent-blue" />} className="justify-center md:justify-start text-text-primary">이메일</SectionTitle> {/* Use level prop */}
+                <p className="text-text-primary">대표: <a href="mailto:contact@kosmart.org" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">contact@kosmart.org</a></p>
+                <p className="text-caption text-text-secondary mt-1">(응답시간: 평일 기준 24시간 이내)</p> {/* Using caption token */}
+              </div>
+              {/* Visit */}
+              <div className="text-center md:text-left">
+                {/* Use accent-blue for icon - Use large for h3 and pass icon via prop */}
+                <SectionTitle as="h3" level="subsection" icon={<VisitIcon className="h-5 w-5 text-accent-blue" />} className="justify-center md:justify-start text-text-primary">방문 상담</SectionTitle> {/* Use level prop */}
+                {/* Add Naver Map link to address */}
+                <p className="text-text-primary">주소: <a href="https://naver.me/xHg9R2Ah" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:outline-none focus:ring-1 focus:ring-offset-primary focus:ring-white rounded">서울특별시 영등포구 양산로 96</a></p>
+                <p className="text-text-primary">상담 시간: 평일 10:00-19:00</p>
+              </div>
             </div>
           </Card>
-       </ScrollAnimationWrapper>
+        </ScrollAnimationWrapper>
 
-       {/* Render the client component for the form (no searchParams prop needed) */}
-       <ScrollAnimationWrapper>
-         <Suspense fallback={<div>Loading...</div>}> {/* Wrap ContactForm with Suspense */}
-           <ContactForm />
-         </Suspense>
-       </ScrollAnimationWrapper>
+        {/* Render the client component for the form (no searchParams prop needed) */}
+        <ScrollAnimationWrapper>
+          <Suspense fallback={<div>Loading...</div>}> {/* Wrap ContactForm with Suspense */}
+            <ContactForm />
+          </Suspense>
+        </ScrollAnimationWrapper>
 
-       {/* Back to Home Button */}
-       <BackButton />
+        {/* Back to Home Button */}
+        <BackButton />
       </div>
     </main>
   );

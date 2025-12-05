@@ -55,6 +55,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr
 // Define Metadata for the application
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl), // Required for resolving relative image paths
+  alternates: {
+    canonical: siteUrl,
+  },
   title: {
     default: '오피스아트 | 합리적 가격으로 즐기는 최고의 업무 환경', // Default title
     template: '%s | 오피스아트', // Title template for subpages
