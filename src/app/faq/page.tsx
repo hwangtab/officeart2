@@ -4,6 +4,7 @@ import SectionTitle from '@/components/SectionTitle'; // SectionTitle은 현재 
 import Card from '@/components/Card';
 import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
 import FaqCta from '@/components/FaqCta';
+import RelatedPages from '@/components/RelatedPages';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr';
 
@@ -198,6 +199,11 @@ export default function FaqPage() {
               <FaqCta />
             </div>
           </section>
+        </ScrollAnimationWrapper>
+
+        {/* Related Pages Section */}
+        <ScrollAnimationWrapper>
+          <RelatedPages currentPath="/faq" className="mb-12" />
         </ScrollAnimationWrapper>
 
         {/* 뒤로가기 버튼 */}

@@ -13,6 +13,7 @@ import {
   HiCurrencyDollar,
   HiCheckCircle
 } from 'react-icons/hi2';
+import RelatedPages from '@/components/RelatedPages';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr';
 
@@ -325,6 +326,13 @@ export default function NonResidentOfficePage() {
             </div>
           </div>
         </section>
+      </ScrollAnimationWrapper>
+
+      {/* Related Pages Section */}
+      <ScrollAnimationWrapper>
+        <div className="max-w-5xl mx-auto px-4">
+          <RelatedPages currentPath="/services/non-resident" className="mb-16" />
+        </div>
       </ScrollAnimationWrapper>
     </main>
   );

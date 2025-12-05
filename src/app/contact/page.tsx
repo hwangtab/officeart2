@@ -15,6 +15,7 @@ import { HiOutlinePhone as PhoneIcon, HiOutlineEnvelope as EmailIcon, HiOutlineM
 
 import ContactForm from '@/components/ContactForm'; // Import the client component
 import { Suspense } from 'react'; // Import Suspense
+import RelatedPages from '@/components/RelatedPages';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr';
 
@@ -111,6 +112,11 @@ export default function ContactPage() {
           <Suspense fallback={<div>Loading...</div>}> {/* Wrap ContactForm with Suspense */}
             <ContactForm />
           </Suspense>
+        </ScrollAnimationWrapper>
+
+        {/* Related Pages Section */}
+        <ScrollAnimationWrapper>
+          <RelatedPages currentPath="/contact" className="mb-12" />
         </ScrollAnimationWrapper>
 
         {/* Back to Home Button */}

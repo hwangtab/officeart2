@@ -64,6 +64,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.6,
         },
+        {
+            url: `${baseUrl}/ai-chat`,
+            lastModified: new Date('2025-12-05'),
+            changeFrequency: 'daily',
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/ai-answers`,
+            lastModified: new Date('2025-12-05'),
+            changeFrequency: 'weekly',
+            priority: 0.6,
+        },
     ];
 
     return staticPages;

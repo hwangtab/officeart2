@@ -1,6 +1,7 @@
-// src/app/pricing/page.tsx
 import type { Metadata } from 'next';
 import PricingClient from '@/components/PricingClient'; // Import the new client component
+import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
+import RelatedPages from '@/components/RelatedPages';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr';
 
@@ -52,8 +53,16 @@ export default function PricingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingSchema) }}
       />
-      {/* Render the client component */}
-      <PricingClient />
+
+      <div className="w-full max-w-5xl mx-auto">
+        {/* Render the client component */}
+        <PricingClient />
+
+        {/* Related Pages Section */}
+        <ScrollAnimationWrapper>
+          <RelatedPages currentPath="/pricing" className="mt-16 mb-8" />
+        </ScrollAnimationWrapper>
+      </div>
     </main>
   );
 }
