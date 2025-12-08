@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import PricingClient from '@/components/PricingClient'; // Import the new client component
-import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
+import PricingClient from '@/components/PricingClient'; import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
 import RelatedPages from '@/components/RelatedPages';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr';
 
@@ -55,6 +55,9 @@ export default function PricingPage() {
       />
 
       <div className="w-full max-w-5xl mx-auto">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb />
+
         {/* Render the client component */}
         <PricingClient />
 

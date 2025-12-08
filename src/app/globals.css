@@ -11,22 +11,12 @@
 }
 
 /* Gmarket Sans Web Font (Medium is now loaded via next/font/local) */
-/* @font-face {
-    font-family: 'GmarketSans';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: 500; // Medium
-    font-style: normal;
-} */
-/* Keep Bold font face if still needed, or remove if not used */
 @font-face {
-    font-family: 'GmarketSans';
+    font-family: 'Gmarket Sans';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
     font-weight: 700; /* Bold */
     font-style: normal;
 }
-/* GmarketSansMedium is now loaded via @next/font/local in layout.tsx */
-
-/* Add any global custom styles below */
 
 /* Screen Reader Only utility class for accessibility */
 .sr-only {
@@ -41,82 +31,58 @@
   border-width: 0;
 }
 
-/* Apply Giants-Bold font directly to h1 */
-
-/* Default body font is now handled by Tailwind config using CSS variables from @next/font */
+/* Default body font */
 body {
-  font-weight: 400; /* Set default font weight to Regular for better readability */
-  line-height: 1.75; /* Optimal line-height for Korean text readability */
+  font-weight: 400;
+  line-height: 1.75;
 }
 
-/* Note: h2, h3 font weights are now handled via Tailwind utility classes (text-heading-*)
-   to avoid specificity conflicts with utility classes */
-
 /* Responsive Table Styles */
-@media (max-width: 639px) { /* Corresponds to sm: breakpoint */
+@media (max-width: 639px) {
   .responsive-table tbody tr {
-    @apply block mb-4 border rounded border-gray-200 shadow; /* Card-like appearance */
+    @apply block mb-4 border rounded border-gray-200 shadow;
   }
   .responsive-table thead {
-    @apply hidden; /* Hide table header */
+    @apply hidden;
   }
   .responsive-table td {
-    @apply block text-left relative pl-[50%] py-2 px-4 border-b border-gray-200; /* Changed text-right to text-left */
+    @apply block text-left relative pl-[50%] py-2 px-4 border-b border-gray-200;
   }
   .responsive-table td:last-child {
     @apply border-b-0;
   }
   .responsive-table td::before {
-    /* Use content from data-label attribute */
     content: attr(data-label);
     @apply absolute left-0 top-0 px-4 py-2 w-[50%] font-semibold text-left text-gray-600;
   }
 }
 
-/* Remove unnecessary utility redefinitions */
-/* Tailwind automatically generates these based on tailwind.config.js */
-/*
-@layer utilities {
-  .bg-naver-green { ... }
-  .hover\:bg-naver-green-dark:hover { ... }
-  .text-white { ... }
-}
-*/
-
-/* Remove text-header-orange definition, use text-primary directly */
-/*
-.text-header-orange {
-  color: #E64A19;
-}
-*/
-
 /* Swiper Customization */
 .swiper-button-prev,
 .swiper-button-next {
-  @apply text-primary; /* Use primary theme color */
+  @apply text-primary;
 }
 
 .swiper-pagination-bullet {
-  background-color: #9CA3AF; /* Default bullet color (gray-400) */
+  background-color: #9CA3AF;
   opacity: 0.5;
 }
 
 .swiper-pagination-bullet-active {
-  @apply bg-primary; /* Use primary theme color */
+  @apply bg-primary;
   opacity: 1;
 }
 
-/* Adjust arrow size if needed */
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  font-size: 1.5rem; /* text-2xl equivalent */
+  font-size: 1.5rem;
 }
 
 /* Scroll Animation Styles */
 .scroll-animate {
   opacity: 0;
-  transform: translateY(20px); /* Reduced initial offset for subtler animation */
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* Faster timing for better UX */
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .scroll-animate-visible {
@@ -146,10 +112,9 @@ body {
 
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
-  opacity: 0; /* Start hidden */
+  opacity: 0;
 }
 
-/* Optional delay classes */
 .animation-delay-200 {
   animation-delay: 0.2s;
 }
@@ -157,21 +122,21 @@ body {
   animation-delay: 0.4s;
 }
 
-/* Loading Bar for Splash Screen */
+/* Loading Bar */
 .loading-bar-container {
-  width: 300px; /* Increased width to match larger logo */
+  width: 300px;
   height: 4px;
-  background-color: rgba(255, 255, 255, 0.3); /* Light background for the bar track */
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 2px;
   overflow: hidden;
-  margin-top: 1rem; /* Space below logo */
+  margin-top: 1rem;
 }
 
 .loading-bar {
   width: 100%;
   height: 100%;
-  background-color: #FFFFFF; /* White loading bar */
-  animation: loadingAnimation 1.5s ease-in-out forwards; /* Match timeout duration */
+  background-color: #FFFFFF;
+  animation: loadingAnimation 1.5s ease-in-out forwards;
   transform-origin: left;
 }
 
@@ -184,9 +149,7 @@ body {
   }
 }
 
-/* Kakao Map Styles
-   Note: !important is required to override inline styles injected by Kakao Maps JavaScript API
-   The Kakao Maps SDK dynamically applies inline styles that would otherwise override these CSS rules */
+/* Kakao Map Styles */
 .kakao-map-container {
   width: 100% !important;
   position: relative !important;
@@ -206,38 +169,62 @@ body {
   }
 }
 
-/* Ensure Kakao Map elements are properly sized */
 .kakao-map-container > div {
   width: 100% !important;
   height: 100% !important;
 }
 
-/* Fix for Kakao Map canvas sizing issues */
 .kakao-map-container canvas {
   width: 100% !important;
   height: 100% !important;
 }
 
-/* Dynamic responsive hero text that automatically scales */
+/* Dynamic responsive hero text */
 .hero-dynamic-title {
-  font-size: clamp(2.5rem, 8vw, 5rem); /* 40px to 80px, much larger minimum size */
+  font-size: clamp(2.5rem, 8vw, 5rem);
   line-height: 1.1;
 }
 
 .hero-dynamic-subtitle {
-  font-size: clamp(1.25rem, 4vw, 2rem); /* 20px to 32px, larger subtitle */
+  font-size: clamp(1.25rem, 4vw, 2rem);
   line-height: 1.3;
 }
 
-/* Remove tap highlight color for all elements on mobile */
+/* Remove tap highlight */
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Remove focus-visible outline for better mobile UX */
-/* Note: Custom focus rings via Tailwind provide alternative indicators */
 a:focus-visible,
 button:focus-visible,
 [role="button"]:focus-visible {
   outline: none !important;
+}
+
+/* Mobile Performance Optimizations - Phase 3 */
+@media (max-width: 640px) {
+  /* Respect user's motion preferences */ 
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Optimize font rendering for mobile */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Reduce animation complexity on mobile */
+  .scroll-animate {
+    transition: opacity 0.3s ease-out;
+    transform: none !important;
+  }
 }

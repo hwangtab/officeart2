@@ -5,6 +5,7 @@ import Card from '@/components/Card';
 import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper';
 import FaqCta from '@/components/FaqCta';
 import RelatedPages from '@/components/RelatedPages';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.officeart.co.kr';
 
@@ -126,6 +127,9 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="w-full max-w-5xl mx-auto">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb />
+
         <SectionTitle as="h1" level="page" align="center">자주 묻는 질문 (FAQ)</SectionTitle>
 
         {/* 일반 FAQ 섹션 */}
