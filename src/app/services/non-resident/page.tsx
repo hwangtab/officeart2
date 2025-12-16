@@ -23,6 +23,7 @@ const nonResidentSchema = {
   '@type': 'Service',
   'name': '비상주 사무실 서비스',
   'description': '월 3.3만원으로 사업자등록이 가능한 비상주 사무실. 우편물 수령, 회의실 이용 포함',
+  'image': `${siteUrl}/og-image.png`,
   'provider': {
     '@type': 'LocalBusiness',
     'name': '오피스아트',

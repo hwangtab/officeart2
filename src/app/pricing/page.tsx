@@ -11,6 +11,7 @@ const pricingSchema = {
   '@type': 'Product',
   'name': '오피스아트 정기 이용권',
   'description': '프리미엄 의자와 L형 책상을 갖춘 정기 이용권. 24시간 접근, 무제한 커피, 회의실 무료 이용 포함',
+  'image': `${siteUrl}/og-image.png`,
   'offers': {
     '@type': 'Offer',
     'price': '250000',

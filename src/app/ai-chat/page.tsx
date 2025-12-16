@@ -15,6 +15,7 @@ const aiChatSchema = {
     '@type': 'WebApplication',
     'name': '오피스아트 AI 상담원',
     'description': '24시간 운영되는 AI 상담원이 오피스아트 이용, 가격, 시설에 대한 모든 질문에 실시간으로 답변해드립니다.',
+    'image': `${siteUrl}/og-image.png`,
     'url': `${siteUrl}/ai-chat`,
     'applicationCategory': 'CommunicationApplication',
     'offers': {
